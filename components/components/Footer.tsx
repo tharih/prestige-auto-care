@@ -132,12 +132,12 @@ const Footer = (props: Props) => {
           <div className="row justify-content-between align-items-center">
             <div className="col-lg-8 text-center text-lg-start">
               <p className="copyright-text">
-                Copyright <i className="fal fa-copyright" /> 2022{" "}
+                Copyright <i className="fal fa-copyright" /> 2023{" "}
                 <a
                   className="text-white"
-                  href="https://themeforest.net/user/angfuz_soft"
+                  href="https://radiant-spark-technology-1uo8.vercel.app/"
                 >
-                  Angfuzsoft
+                  Radiant Spark Technology
                 </a>
                 . All Rights Reserved.
               </p>

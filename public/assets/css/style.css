@@ -2143,7 +2143,7 @@ textarea.is-invalid {
   background-color: var(--smoke-color) !important;
 }
 .bg-white {
-  background-color: var(--white-color) !important;
+  background-color: white !important;
 }
 .bg-black {
   background-color: var(--black-color) !important;
@@ -5200,7 +5200,7 @@ blockquote cite:before {
 .as-hero-bg img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 @media (max-width: 1500px) {
   .as-hero-wrapper .slick-arrow {
@@ -11081,7 +11081,7 @@ span.select2-selection.select2-selection--single:focus {
     var(--space-x);
   position: relative;
   z-index: 2;
-  margin-left: 22px;
+  /* margin-left: 22px; */
 }
 .service-block_content:before {
   content: "";

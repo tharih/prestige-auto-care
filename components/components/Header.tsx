@@ -277,7 +277,7 @@ const Header = (props: Props) => {
           <div className="row justify-content-center justify-content-md-between align-items-center">
             <div className="col-auto">
               <p className="header-notice d-none d-lg-block">
-                Welcome To Mechon Car Repair Company
+                Welcome To Prestige Auto Care
               </p>
             </div>
             <div className="col-auto">
@@ -306,7 +306,7 @@ const Header = (props: Props) => {
             <div className="col-auto">
               <div className="logo-style2">
                 <a href="index.html">
-                  <img src="assets/img/logo-white2.png" alt="Mechon" />
+                  <img src="assets/img/logo1.png" alt="PrestigeAutoCare" />
                 </a>
               </div>
             </div>
@@ -324,7 +324,7 @@ const Header = (props: Props) => {
                             Make An Email
                           </span>
                           <div className="header-info_link">
-                            <a href="mailto:info@Mechon.com">info@Mechon.com</a>
+                            <a href="mailto:prestigeautocare@gmail.com">prestige@gmail.com</a>
                           </div>
                         </div>
                       </div>
@@ -339,7 +339,7 @@ const Header = (props: Props) => {
                             Call us 24/7
                           </span>
                           <div className="header-info_link">
-                            <a href="tel:58924621452142">589 (246) 2145 2142</a>
+                            <a href="tel:+61478033023">+61 478 033 023</a>
                           </div>
                         </div>
                       </div>
@@ -391,7 +391,7 @@ const Header = (props: Props) => {
               <div className="col-auto">
                 <nav className="main-menu menu-style1 d-none d-lg-block">
                   <ul>
-                    <li className="menu-item-has-children">
+                    <li className="">
                       <a href="index.html">Home</a>
                       {/* <ul className="sub-menu">
                         <li>
@@ -413,32 +413,32 @@ const Header = (props: Props) => {
                       </ul> */}
                     </li>
                     <li>
-                      <a href="about.html">About</a>
+                      <a href="About">About</a>
                     </li>
-                    <li className="menu-item-has-children">
-                      <a href="#">Service</a>
-                      <ul className="sub-menu">
+                    <li className="">
+                      <a href="Services">Service</a>
+                      {/* <ul className="sub-menu">
                         <li>
-                          <a href="service.html">Service</a>
+                          <a href="Service">Service</a>
                         </li>
                         <li>
                           <a href="service-details.html">Service Details</a>
                         </li>
-                      </ul>
+                      </ul> */}
                     </li>
-                    <li className="menu-item-has-children">
-                      <a href="#">Blog</a>
-                      <ul className="sub-menu">
+                    <li className="">
+                      <a href="Shop">Shop</a>
+                      {/* <ul className="sub-menu">
                         <li>
                           <a href="blog.html">Blog</a>
                         </li>
                         <li>
                           <a href="blog-details.html">Blog Details</a>
                         </li>
-                      </ul>
+                      </ul> */}
                     </li>
-                    <li className="menu-item-has-children mega-menu-wrap">
-                      <a href="#">Pages</a>
+                    <li className=" mega-menu-wrap">
+                      <a href="Price">Price</a>
                       {/* <ul className="mega-menu">
                         <li>
                           <a href="shop.html">Pagelist 1</a>
@@ -529,7 +529,7 @@ const Header = (props: Props) => {
                       </ul> */}
                     </li>
                     <li>
-                      <a href="contact.html">Contact</a>
+                      <a href="Contact">Contact</a>
                     </li>
                   </ul>
                 </nav>

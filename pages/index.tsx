@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { url } from 'inspector';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -12,13 +13,14 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const settings = {
-    // class:"as-hero-wrapper hero-slider-3 as-carousel number-dots",
+   
     infinite: true,
     speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     autoplay: true,
+    
     
   };
 
@@ -167,160 +169,28 @@ export default function Home() {
         </button>
       </div>
     </div>
-    <Slider {...settings} className="as-hero-wrapper hero-slider-3 as-carousel number-dots">
+    
 
-      <div className="as-hero-slide">
-        <div className="as-hero-bg" data-bg-src="assets/img/bg/hero_bg_3_1.jpg">
-          <img src="assets/img/bg/hero_overlay_3_1.png" alt="Hero Image" />
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col">
-              <div className="hero-style3">
-                <span
-                  className="hero-subtitle"
-                  data-ani="slideindown"
-                  data-ani-delay="0.2s"
-                >
-                  Non Stop Car Servicing Center
-                </span>
-                <h1
-                  className="hero-title"
-                  data-ani="slideindown"
-                  data-ani-delay="0.3s"
-                >
-                  Get Your Amazing
-                </h1>
-                <h1
-                  className="hero-title"
-                  data-ani="slideindown"
-                  data-ani-delay="0.4s"
-                >
-                  Car Solution
-                </h1>
-                <p
-                  className="hero-text"
-                  data-ani="slideindown"
-                  data-ani-delay="0.5s"
-                >
-                  Take payments online with a scalable platform that grows with
-                  your perfect business.
-                </p>
-                <a
-                  href="contact.html"
-                  className="as-btn style3"
-                  data-ani="slideindown"
-                  data-ani-delay="0.6s"
-                >
-                  Get A Quote
-                </a>
-              </div>
-            </div>
+    <div className="as-hero-wrapper hero-slider-3 as-carousel number-dots" >
+        {/* <h2> Single Item</h2> */}
+        <Slider {...settings} >
+          <div >
+          <Image src="/assets/img/bg/hero_bg_3_1.jpg" alt="Hero Image" width={1920} height={850} />
+          
           </div>
-        </div>
-      </div>
-      <div className="as-hero-slide">
-        <div className="as-hero-bg" data-bg-src="assets/img/bg/hero_bg_3_2.jpg">
-          {/* <img src="assets/img/bg/hero_overlay_3_1.png" alt="Hero Image" /> */}
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col">
-              <div className="hero-style3">
-                <span
-                  className="hero-subtitle"
-                  data-ani="slideindown"
-                  data-ani-delay="0.2s"
-                >
-                  Amazing Car Servicing Center
-                </span>
-                <h1
-                  className="hero-title"
-                  data-ani="slideindown"
-                  data-ani-delay="0.3s"
-                >
-                  Fix Your Personal
-                </h1>
-                <h1
-                  className="hero-title"
-                  data-ani="slideindown"
-                  data-ani-delay="0.4s"
-                >
-                  Car Problem
-                </h1>
-                <p
-                  className="hero-text"
-                  data-ani="slideindown"
-                  data-ani-delay="0.5s"
-                >
-                  Take payments online with a scalable platform that grows with
-                  your perfect business.
-                </p>
-                <a
-                  href="contact.html"
-                  className="as-btn style3"
-                  data-ani="slideindown"
-                  data-ani-delay="0.6s"
-                >
-                  Get A Quote
-                </a>
-              </div>
-            </div>
+          
+          <div>
+          <Image src="/assets/img/bg/hero_bg_3_2.jpg" alt="Hero Image" width={1920} height={850} />
           </div>
-        </div>
-      </div>
-      <div className="as-hero-slide">
-        <div className="as-hero-bg" data-bg-src="assets/img/bg/hero_bg_3_3.jpg">
-          {/* <img src="assets/img/bg/hero_overlay_3_1.png" alt="Hero Image" /> */}
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col">
-              <div className="hero-style3">
-                <span
-                  className="hero-subtitle"
-                  data-ani="slideindown"
-                  data-ani-delay="0.2s"
-                >
-                  Car Servicing Center In Newyork
-                </span>
-                <h1
-                  className="hero-title"
-                  data-ani="slideindown"
-                  data-ani-delay="0.3s"
-                >
-                  Fix Any Complex
-                </h1>
-                <h1
-                  className="hero-title"
-                  data-ani="slideindown"
-                  data-ani-delay="0.4s"
-                >
-                  Car Problem
-                </h1>
-                <p
-                  className="hero-text"
-                  data-ani="slideindown"
-                  data-ani-delay="0.5s"
-                >
-                  Take payments online with a scalable platform that grows with
-                  your perfect business.
-                </p>
-                <a
-                  href="contact.html"
-                  className="as-btn style3"
-                  data-ani="slideindown"
-                  data-ani-delay="0.6s"
-                >
-                  Get A Quote
-                </a>
-              </div>
-            </div>
+          <div>
+          <Image src="/assets/img/bg/hero_bg_3_3.jpg" alt="Hero Image" width={1920} height={850} />
           </div>
-        </div>
+          
+        </Slider>
       </div>
-    </Slider>
-    {/* <div
+
+    
+    <div
       
       data-slide-show={1}
       data-md-slide-show={1}
@@ -330,8 +200,8 @@ export default function Home() {
       data-ml-dots="true"
       data-lg-dots="true"
     >
-    </div> */}
-    <section className="space">
+    </div>
+    <section className="space" style={{backgroundColor:"white"}}>
       <div className="container">
         <div className="title-area text-center">
           <span className="sub-title">Our Best Service</span>
@@ -343,7 +213,7 @@ export default function Home() {
           data-md-slide-show={2}
           data-arrows="true"
         >
-          <Slider {...settings_001}>
+          {/* <Slider {...settings_001} > */}
 
           <div className="col-md-6 col-lg-4">
             <div className="service-block">
@@ -356,12 +226,14 @@ export default function Home() {
               <div
                 className="service-block_content"
                 data-bg-src="assets/img/bg/pattern_bg_7.png"
+                style={{ backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`}}
+
               >
                 <span className="service-block_number">Service 01</span>
                 <h3 className="service-block_title">
-                  <a href="service-details.html">Engine Diagnostics</a>
+                  <a href="Servicedetails">Parts</a>
                 </h3>
-                <a href="service-details.html" className="as-btn">
+                <a href="Servicedetails" className="as-btn">
                   View Service
                 </a>
               </div>
@@ -378,12 +250,13 @@ export default function Home() {
               <div
                 className="service-block_content"
                 data-bg-src="assets/img/bg/pattern_bg_7.png"
+                style={{ backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`}}
               >
                 <span className="service-block_number">Service 02</span>
                 <h3 className="service-block_title">
-                  <a href="service-details.html">Electrical System</a>
+                  <a href="Servicedetails">Panel & Paint</a>
                 </h3>
-                <a href="service-details.html" className="as-btn">
+                <a href="Servicedetails" className="as-btn">
                   View Service
                 </a>
               </div>
@@ -400,18 +273,19 @@ export default function Home() {
               <div
                 className="service-block_content"
                 data-bg-src="assets/img/bg/pattern_bg_7.png"
+                style={{ backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`}}
               >
                 <span className="service-block_number">Service 03</span>
                 <h3 className="service-block_title">
-                  <a href="service-details.html">Auto Car Repair</a>
+                  <a href="Servicedetails">Mechanical</a>
                 </h3>
-                <a href="service-details.html" className="as-btn">
+                <a href="Servicedetails" className="as-btn">
                   View Service
                 </a>
               </div>
             </div>
           </div>
-          <div className="col-md-6 col-lg-4">
+          {/* <div className="col-md-6 col-lg-4">
             <div className="service-block">
               <div className="service-block_img">
                 <img
@@ -425,19 +299,49 @@ export default function Home() {
               >
                 <span className="service-block_number">Service 04</span>
                 <h3 className="service-block_title">
-                  <a href="service-details.html">Engine Cleaning</a>
+                  <a href="Servicedetails">Engine Cleaning</a>
                 </h3>
-                <a href="service-details.html" className="as-btn">
+                <a href="Servicedetails" className="as-btn">
                   View Service
                 </a>
               </div>
             </div>
-          </div>
-          </Slider>
+          </div> */}
+          {/* </Slider> */}
         </div>
       </div>
     </section>
-    <div className="space position-relative overflow-hidden">
+    <section
+      className="space"
+      data-overlay="title"
+      data-opacity={7}
+      style={{ backgroundImage: `url('assets/img/bg/cta_bg_1.jpg')`}}
+    //  style={{backgroundImage:url("assets/img/bg/cta_bg_1.jpg")}}
+    >
+      <div className="container" >
+        <div className="row align-items-center">
+          <div className="col-xl-7 col-lg-6 mb-5 mb-lg-0">
+            <div className="title-area mb-0 text-lg-start text-center">
+              <span className="sub-title text-white">Get Our Service</span>
+              <h2 className="sec-title text-white">
+                Get Premium Auto Car Service Feel Free To Contact Us.
+              </h2>
+            </div>
+          </div>
+          <div className="col-xl-5 col-lg-6">
+            <div className="btn-group justify-content-lg-end justify-content-center">
+              <a href="Services" className="as-btn style3">
+                Get Our Service
+              </a>{" "}
+              <a href="Contact" className="as-btn style-play">
+                <i className="fa-solid fa-play" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div className="space position-relative overflow-hidden" style={{backgroundColor:"white"}}>
       <div className="bg-shape1" />
       <div className="container">
         <div className="row flex-row-reverse">
@@ -510,11 +414,7 @@ export default function Home() {
                 aria-labelledby="nav-one-tab"
               >
                 <p className="mb-35">
-                  Nostra habitasse inceptos placerat vivamus vestibulum blandit
-                  odio dignissim aliquet nunc taciti, cubilia aenean lobortis
-                  class sollicitudin conubia urna acter elementum mauris porttitor
-                  mus commodo tortor leo litora etiam orci varius nibh. Sagittis
-                  class nascetur euismod dui sed justo.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, sapiente nisi magni rem dolore voluptates vero, neque alias fugit nulla praesentium exercitationem eos totam, consequuntur tenetur quasi esse eveniet sequi?
                 </p>
                 <div className="pt-40">
                   <div className="about-progress">
@@ -535,7 +435,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="pt-2">
-                  <a href="contact.html" className="as-btn">
+                  <a href="Contact" className="as-btn">
                     Get A Quote
                   </a>
                 </div>
@@ -547,11 +447,7 @@ export default function Home() {
                 aria-labelledby="nav-two-tab"
               >
                 <p className="mb-35">
-                  Nostra habitasse inceptos placerat vivamus vestibulum blandit
-                  odio dignissim aliquet nunc taciti, cubilia aenean lobortis
-                  class sollicitudin conubia urna acter elementum mauris porttitor
-                  mus commodo tortor leo litora etiam orci varius nibh. Sagittis
-                  class nascetur euismod dui sed justo.
+                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem rerum nulla eveniet dolorum beatae quia illum, earum qui? Aperiam est debitis hic, blanditiis unde totam repellendus eaque quos officiis architecto!
                 </p>
                 <div className="pt-40">
                   <div className="about-progress">
@@ -572,7 +468,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="pt-2">
-                  <a href="contact.html" className="as-btn">
+                  <a href="Contact" className="as-btn">
                     Get A Quote
                   </a>
                 </div>
@@ -584,11 +480,7 @@ export default function Home() {
                 aria-labelledby="nav-three-tab"
               >
                 <p className="mb-35">
-                  Nostra habitasse inceptos placerat vivamus vestibulum blandit
-                  odio dignissim aliquet nunc taciti, cubilia aenean lobortis
-                  class sollicitudin conubia urna acter elementum mauris porttitor
-                  mus commodo tortor leo litora etiam orci varius nibh. Sagittis
-                  class nascetur euismod dui sed justo.
+                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, nostrum sit ratione veritatis praesentium recusandae fugiat ab labore quam nemo earum dolore optio sint, ut cum culpa quaerat aut totam.
                 </p>
                 <div className="pt-40">
                   <div className="about-progress">
@@ -611,7 +503,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="pt-2">
-                  <a href="contact.html" className="as-btn">
+                  <a href="Contact" className="as-btn">
                     Get A Quote
                   </a>
                 </div>
@@ -621,36 +513,8 @@ export default function Home() {
         </div>
       </div>
     </div>
-    <section
-      className="space"
-      data-overlay="title"
-      data-opacity={7}
-      data-bg-src="assets/img/bg/cta_bg_1.jpg"
-    >
-      <div className="container">
-        <div className="row align-items-center">
-          <div className="col-xl-7 col-lg-6 mb-5 mb-lg-0">
-            <div className="title-area mb-0 text-lg-start text-center">
-              <span className="sub-title text-white">Get Our Service</span>
-              <h2 className="sec-title text-white">
-                Get Premium Auto Car Service Feel Free To Contact Us.
-              </h2>
-            </div>
-          </div>
-          <div className="col-xl-5 col-lg-6">
-            <div className="btn-group justify-content-lg-end justify-content-center">
-              <a href="service.html" className="as-btn style3">
-                Get Our Service
-              </a>{" "}
-              <a href="contact.html" className="as-btn style-play">
-                <i className="fa-solid fa-play" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section className="bg-white space">
+   
+    {/* <section className="bg-white space" style={{backgroundColor:"white"}}>
       <div className="container">
         <div className="title-area text-center">
           <span className="sub-title">Expert Technician</span>
@@ -700,6 +564,7 @@ export default function Home() {
               <div
                 className="as-social"
                 data-bg-src="assets/img/bg/pattern_bg_2.png"
+                style={{ backgroundImage: `url('assets/img/bg/pattern_bg_2')`}}
               >
                 <a target="_blank" href="https://facebook.com/">
                   <i className="fab fa-facebook-f" />
@@ -831,7 +696,7 @@ export default function Home() {
 
         </div>
       </div>
-    </section>
+    </section> */}
     <div className="bg-title position-relative overflow-hidden">
       <div className="row">
         <div className="col-xl-6">
@@ -888,7 +753,7 @@ export default function Home() {
         <img src="assets/img/shape/shape_2.png" alt="shape" />
       </div>
     </div>
-    <section className="space">
+    <section className="space" style={{backgroundColor:"white"}}>
       <div className="container">
         <div className="title-area text-center">
           <span className="sub-title">Popular Products</span>
@@ -1379,19 +1244,19 @@ export default function Home() {
         </div>
       </div>
     </section>
-    <section className="">
+    <section className="" style={{backgroundColor:"white"}}>
       <div className="as-container3 space bg-title position-relative">
         <div className="container">
           <div className="row justify-content-lg-between justify-content-center align-items-center">
             <div className="col-lg-6">
               <div className="title-area text-center text-lg-start">
                 <span className="sub-title">Our Price Plan</span>
-                <h2 className="sec-title text-white">Mechanic Services Cost</h2>
+                <h2 className="sec-title text-white">Services Cost</h2>
               </div>
             </div>
             <div className="col-auto">
               <div className="sec-btn">
-                <a href="pricing.html" className="as-btn style2">
+                <a href="Price" className="as-btn style2">
                   See All Plans
                 </a>
               </div>
@@ -1406,7 +1271,7 @@ export default function Home() {
                   </div>
                   <div className="price-box_content">
                     <div className="price-box_header">
-                      <h3 className="price-box_title">Body Servicing</h3>
+                      <h3 className="price-box_title">Panel & Paint</h3>
                       <h4 className="price-box_price">$599.00</h4>
                     </div>
                     <div className="price-box_list">
@@ -1425,7 +1290,7 @@ export default function Home() {
                   </div>
                   <div className="price-box_content">
                     <div className="price-box_header">
-                      <h3 className="price-box_title">Engine Management</h3>
+                      <h3 className="price-box_title">Mechanical</h3>
                       <h4 className="price-box_price">$399.00</h4>
                     </div>
                     <div className="price-box_list">
@@ -1438,7 +1303,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="price-box">
+                {/* <div className="price-box">
                   <div className="price-box_img">
                     <img src="assets/img/price/price_1_3.jpg" alt="price image" />
                   </div>
@@ -1456,7 +1321,7 @@ export default function Home() {
                       </ul>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="col-xl-4">
@@ -1475,7 +1340,7 @@ export default function Home() {
                     <i className="fal fa-truck-pickup" />
                   </div>
                   <div className="price-card_content">
-                    <div className="checklist">
+                    {/* <div className="checklist">
                       <ul>
                         <li>Rims &amp; Tire Change</li>
                         <li>Interior Cleaning</li>
@@ -1483,8 +1348,8 @@ export default function Home() {
                         <li>Leather Clean &amp; Dry</li>
                         <li>Light Carpet Clean</li>
                       </ul>
-                    </div>
-                    <a href="pricing.html" className="as-btn">
+                    </div> */}
+                    <a href="Price" className="as-btn">
                       Purchase Now
                     </a>
                   </div>
@@ -1493,12 +1358,12 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="body-shape7">
+        <div className="body-shape7" >
           <img src="assets/img/shape/tier_shape_2.png" alt="shape" />
         </div>
       </div>
     </section>
-    <section className="space">
+    <section className="space" style={{backgroundColor:"white"}}>
       <div className="container">
         <div className="title-area text-center">
           <span className="sub-title">OUR WORK PROCESS</span>
@@ -1656,7 +1521,7 @@ export default function Home() {
         <img src="assets/img/shape/road_shape_1.png" alt="shape" />
       </div>
     </section>
-    <section className="space blog-sec">
+    {/* <section className="space blog-sec" style={{backgroundColor:"white"}}>
       <div className="container">
         <div className="title-area text-center">
           <span className="sub-title">News &amp; Updates</span>
@@ -1789,7 +1654,7 @@ export default function Home() {
           </Slider>
         </div>
       </div>
-    </section>
+    </section> */}
   </>
   
   

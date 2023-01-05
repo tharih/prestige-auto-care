@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 type Props = {}
 
 const Header = (props: Props) => {
+ 
+
   return (
     
   <>
@@ -14,7 +16,7 @@ const Header = (props: Props) => {
   </div> */}
   <div className="sidemenu-wrapper d-none d-lg-block">
     <div className="sidemenu-content">
-      <button className="closeButton sideMenuCls">
+      <button className="closeButton sideMenuCls" >
         <i className="far fa-times" />
       </button>
       <div className="widget woocommerce widget_shopping_cart">
@@ -138,7 +140,7 @@ const Header = (props: Props) => {
       </button>
       <div className="mobile-logo">
         <a href="index.html">
-          <img src="assets/img/logo.png" alt="Mechon" />
+          <img src="assets/img/logo1.png" alt="Prestige Auto Care" />
         </a>
       </div>
       <div className="as-mobile-menu">
@@ -536,7 +538,7 @@ const Header = (props: Props) => {
               </div>
               <div className="col-auto">
                 <div className="d-flex align-items-center">
-                  <a href="contact.html" className="header-link-btn">
+                  <a href="Contact" className="header-link-btn">
                     <i className="far fa-map-marker-alt" />
                     Office Location
                   </a>{" "}

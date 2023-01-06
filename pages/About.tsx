@@ -116,7 +116,7 @@ export default function About() {
     data-sec-space="margin-bottom"
     data-margin-bottom="225px"
   >
-    <div className="container">
+    {/* <div className="container">
       <div className="row gy-4">
         <div className="col-lg-3 col-sm-6">
           <div
@@ -171,7 +171,7 @@ export default function About() {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
   </section>
   <div className="circle-bg space-bottom bg-smoke" />
   <div className="bg-title position-relative overflow-hidden">
@@ -230,7 +230,7 @@ export default function About() {
       <img src="assets/img/shape/shape_2.png" alt="shape" />
     </div>
   </div>
-  <section className="bg-white space position-relative">
+  {/* <section className="bg-white space position-relative">
     <div className="container">
       <div className="title-area text-center">
         <span className="sub-title">Expert Technician</span>
@@ -412,37 +412,8 @@ export default function About() {
     <div className="body-shape3">
       <img src="assets/img/shape/shape_3.png" alt="shape" />
     </div>
-  </section>
-  <section
-    className="space"
-    data-overlay="title"
-    data-opacity={7}
-    // data-bg-src="assets/img/bg/cta_bg_1.jpg"
-    style={{backgroundImage: `url('assets/img/bg/cta_bg_1.jpg')`}}
-  >
-    <div className="container">
-      <div className="row align-items-center">
-        <div className="col-xl-7 col-lg-6 mb-5 mb-lg-0">
-          <div className="title-area mb-0 text-lg-start text-center">
-            <span className="sub-title text-white">Get Our Service</span>
-            <h2 className="sec-title text-white">
-              Get Premium Auto Car Service Feel Free To Contact Us.
-            </h2>
-          </div>
-        </div>
-        <div className="col-xl-5 col-lg-6">
-          <div className="btn-group justify-content-lg-end justify-content-center">
-            <a href="service.html" className="as-btn style3">
-              Get Our Service
-            </a>{" "}
-            <a href="contact.html" className="as-btn style2">
-              Contact Us
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </section> */}
+ 
   <section className="space" style={{backgroundColor:"white"}}>
     <div className="container">
       <div className="title-area text-center">
@@ -534,7 +505,37 @@ export default function About() {
       </div>
     </div>
   </section>
-  <div className="space bg-smoke position-relative overflow-hidden">
+  <section
+    className="space"
+    data-overlay="title"
+    data-opacity={7}
+    // data-bg-src="assets/img/bg/cta_bg_1.jpg"
+    style={{backgroundImage: `url('assets/img/bg/cta_bg_1.jpg')`}}
+  >
+    <div className="container">
+      <div className="row align-items-center">
+        <div className="col-xl-7 col-lg-6 mb-5 mb-lg-0">
+          <div className="title-area mb-0 text-lg-start text-center">
+            <span className="sub-title text-white">Get Our Service</span>
+            <h2 className="sec-title text-white">
+              Get Premium Auto Car Service Feel Free To Contact Us.
+            </h2>
+          </div>
+        </div>
+        <div className="col-xl-5 col-lg-6">
+          <div className="btn-group justify-content-lg-end justify-content-center">
+            <a href="service.html" className="as-btn style3">
+              Get Our Service
+            </a>{" "}
+            <a href="contact.html" className="as-btn style2">
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {/* <div className="space bg-smoke position-relative overflow-hidden">
     <div className="container">
       <div className="row justify-content-lg-between justify-content-center align-items-center">
         <div className="col-lg-6">
@@ -576,7 +577,7 @@ export default function About() {
     <div className="body-shape3">
       <img src="assets/img/shape/road_shape_3.png" alt="shape" />
     </div>
-  </div>
+  </div> */}
 </>
 
   )

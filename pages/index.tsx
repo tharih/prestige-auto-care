@@ -8,8 +8,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { url } from 'inspector';
 import { useEffect } from 'react';
 import { motion } from "framer-motion"
-import "jquery-ui-dist/jquery-ui";
-import  $ from 'jquery';
+// import "jquery-ui-dist/jquery-ui";
+// import  $ from 'jquery';
 
 
 
@@ -19,93 +19,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 export default function Home({$}: Props) {
-  useEffect(() => {
-    $("[data-bg-src]").length > 0 &&
-      $("[data-bg-src]").each(function () {
-        var t = $(this).attr("data-bg-src");
-        $(this).css("background-image", "url(" + t + ")"),
-          $(this).removeAttr("data-bg-src").addClass("background-image");
-      })
-
-    $("[data-ani-duration]").each(function () {
-      var t = $(this).data("ani-duration");
-      $(this).css("animation-duration", t);
-    }),
-      $("[data-ani-delay]").each(function () {
-        var t = $(this).data("ani-delay");
-        $(this).css("animation-delay", t);
-      }),
-      $("[data-ani]").each(function () {
-        var t = $(this).data("ani");
-        $(this).addClass(t),
-          $(".slick-current [data-ani]").addClass("as-animated");
-      }),
-      $(".as-carousel").on("afterChange", function (t, s, a, n) {
-        $(s.$slides).find("[data-ani]").removeClass("as-animated"),
-          $(s.$slides[a]).find("[data-ani]").addClass("as-animated");
-      });
-      $(".tab-menu1").length && $(".tab-menu1").indicator(),
-      $(".tab-menu2").length && $(".tab-menu2").indicator(),
-     $('button[data-bs-toggle="tab"]').on("shown.bs.tab", function (t) {
-     $(".as-carousel").slick("setPosition");
-      }),
-      ($.fn.vsTab = function (t) {
-        var s = $.extend({ sliderTab: !1, tabButton: "button" }, t);
-        $(this).each(function () {
-          var t = $(this),
-            a = t.find(s.tabButton);
-          t.append('<span class="indicator"></span>');
-          var n = t.find(".indicator");
-          if (
-            (a.on("click", function (t) {
-              t.preventDefault();
-              var a =$(this);
-              a.addClass("active").siblings().removeClass("active"),
-                s.sliderTab
-                  ? $(i).slick("slickGoTo", a.data("slide-go-to"))
-                  : r();
-            }),
-            s.sliderTab)
-          ) {
-            var i = t.data("asnavfor"),
-              o = 0;
-            a.each(function () {
-              var a = $(this);
-              a.attr("data-slide-go-to", o),
-                o++,
-                a.hasClass("active") &&
-                  $(i).slick("slickGoTo", a.data("slide-go-to")),
-                $(i).on("beforeChange", function (e, a, n, i) {
-                  t
-                    .find(s.tabButton + '[data-slide-go-to="' + i + '"]')
-                    .addClass("active")
-                    .siblings()
-                    .removeClass("active"),
-                    r();
-                });
-            });
-          }
-          function r() {
-            var i = t.find(s.tabButton + ".active"),
-              o = i.css("height"),
-              r = i.css("width"),
-              l = i.position().top + "px",
-              c = i.position().left + "px";
-            n.get(0).style.setProperty("--height-set", o),
-              n.get(0).style.setProperty("--width-set", r),
-              n.get(0).style.setProperty("--pos-y", l),
-              n.get(0).style.setProperty("--pos-x", c),
-              e(a).first().position().left == i.position().left
-                ? n.addClass("start").removeClass("center").removeClass("end")
-                : e(a).last().position().left == i.position().left
-                ? n.addClass("end").removeClass("center").removeClass("start")
-                : n.addClass("center").removeClass("start").removeClass("end");
-          }
-          r();
-        });
-      }),
-  }, [])
-
+  
   const settings = {
 
     infinite: true,
@@ -267,11 +181,11 @@ export default function Home({$}: Props) {
 
 
       <div className="as-hero-wrapper hero-slider-3 as-carousel number-dots" style={{ maxHeight: "80vh" }}>
-        {/* <h2> Single Item</h2> */}
+      
         <Slider {...settings} >
           <div style={{ position: "relative" }}>
             <img src="/assets/img/bg/hero_bg_3_1.jpg" alt="Hero Image" style={{ backgroundSize: "cover" }} />
-            <div className="container" >
+            {/* <div className="container" >
               <div className="row">
                 <div className="col">
                   <motion.div initial={{ opacity: 0, translateY: -100 }}
@@ -286,6 +200,22 @@ export default function Home({$}: Props) {
                   </motion.div>
                 </div>
               </div>
+            </div> */}
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-12">
+                        <div className="infetech-banner-content" style={{marginTop:"-620px"}} >
+                        <span className="hero-subtitle" data-ani="slideindown"
+                      data-ani-delay="0.2s">Non Stop Car Servicing Center</span>
+                        <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.3s" style={{color:"white", fontSize:"80px"}}>Get Your Amazing</h1>
+                    <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.4s" style={{color:"white", fontSize:"80px",marginBottom:"20px"}}>Car Solution</h1>
+                            <p className="hero-text" data-ani="slideindown" data-ani-delay="0.5s" style={{marginBottom:"50px"}}>Take payments online with
+                      a scalable platform that grows with your perfect business.</p><a href="Contact"
+                        className="as-btn style3" data-ani="slideindown" data-ani-delay="0.6s">Get A Quote</a>
+                            <img className="banner-arrow" data-animation="fadeInRight" data-delay=".9s" src="assets/images/banner-arrow.png" alt="" />
+                        </div>
+                    </div>
+                </div>
             </div>
           </div>
 
@@ -300,6 +230,7 @@ export default function Home({$}: Props) {
                       data-ani-delay="0.2s">Non Stop Car Servicing Center</span>
                     <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.3s">Get Your Amazing</h1>
                     <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.4s">Car Solution</h1>
+                    
                     <p className="hero-text" data-ani="slideindown" data-ani-delay="0.5s">Take payments online with
                       a scalable platform that grows with your perfect business.</p><a href="Contact"
                         className="as-btn style3" data-ani="slideindown" data-ani-delay="0.6s">Get A Quote</a>
@@ -313,18 +244,18 @@ export default function Home({$}: Props) {
             <img src="/assets/img/bg/hero_bg_3_3.jpg" alt="Hero Image" style={{ backgroundSize: "cover" }} />
             <div className="container" >
               <div className="row">
-                <div className="col">
-                  <motion.div initial={{ opacity: 0, translateY: -100 }}
-                    animate={{ opacity: 1, translateY: 0 }}
-                    transition={{ duration: 2 }} className="hero-style3" style={{ position: "absolute", zIndex: 2, top: '30%', left: '30%' }}><span className="hero-subtitle" data-ani="slideindown"
+              <div className="col-lg-12">
+                        <div className="infetech-banner-content" style={{marginTop:"-620px"}} >
+                        <span className="hero-subtitle" data-ani="slideindown"
                       data-ani-delay="0.2s">Non Stop Car Servicing Center</span>
-                    <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.3s">Get Your Amazing</h1>
-                    <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.4s">Car Solution</h1>
-                    <p className="hero-text" data-ani="slideindown" data-ani-delay="0.5s">Take payments online with
+                        <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.3s" style={{color:"white", fontSize:"80px"}}>Get Your Amazing</h1>
+                    <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.4s" style={{color:"white", fontSize:"80px",marginBottom:"20px"}}>Car Solution</h1>
+                            <p className="hero-text" data-ani="slideindown" data-ani-delay="0.5s" style={{marginBottom:"50px"}}>Take payments online with
                       a scalable platform that grows with your perfect business.</p><a href="Contact"
                         className="as-btn style3" data-ani="slideindown" data-ani-delay="0.6s">Get A Quote</a>
-                  </motion.div>
-                </div>
+                            <img className="banner-arrow" data-animation="fadeInRight" data-delay=".9s" src="assets/images/banner-arrow.png" alt="" />
+                        </div>
+                    </div>
               </div>
             </div>
           </div>
@@ -335,10 +266,7 @@ export default function Home({$}: Props) {
 
         </Slider>
       </div>
-
-
-      <div
-
+       <div
         data-slide-show={1}
         data-md-slide-show={1}
         data-fade="true"
@@ -350,7 +278,15 @@ export default function Home({$}: Props) {
       </div>
 
 
-      <section className="space" style={{ backgroundColor: "white" }}>
+
+
+
+
+
+
+
+
+      <section className="space" style={{ backgroundColor: "white", marginTop:"25px" }}>
         <div className="container">
           <div className="title-area text-center">
             <span className="sub-title">Our Best Service</span>
@@ -530,7 +466,7 @@ export default function Home({$}: Props) {
                 >
                   About Us
                 </button>{" "}
-                <button
+                {/* <button
                   className="as-btn"
                   id="nav-two-tab"
                   data-bs-toggle="tab"
@@ -541,8 +477,8 @@ export default function Home({$}: Props) {
                   aria-selected="false"
                 >
                   Our Mission
-                </button>{" "}
-                <button
+                </button>{" "} */}
+                {/* <button
                   className="as-btn"
                   id="nav-three-tab"
                   data-bs-toggle="tab"
@@ -553,7 +489,7 @@ export default function Home({$}: Props) {
                   aria-selected="false"
                 >
                   Our Vision
-                </button>
+                </button> */}
               </div>
               <div className="tab-content why-tabcontent" id="why-tabContent">
                 <div

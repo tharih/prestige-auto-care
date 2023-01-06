@@ -116,6 +116,8 @@ class MyDocument extends Document {
   <link rel="stylesheet" href="assets/css/app.min.css" />
   <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
+
+ 
 </>
 
 
@@ -131,6 +133,10 @@ class MyDocument extends Document {
           <Script src="assets/js/vendor/jquery-3.6.0.min.js"></Script>
           <Script src="assets/js/app.min.js"></Script>
           <Script src="assets/js/main.js"></Script>
+
+         
+
+  
         </body>
       </Html>
     )

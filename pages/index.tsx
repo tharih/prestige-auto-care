@@ -1361,10 +1361,10 @@ export default function Home({$}: Props) {
                       </div>
                       <div className="price-box_list">
                         <ul>
-                          <li>Rims &amp; Tire Change</li>
-                          <li>Rims &amp; Tire Change</li>
-                          <li>Rims &amp; Tire Change</li>
-                          <li>Rims &amp; Tire Change</li>
+                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
+                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
+                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
+                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
                         </ul>
                       </div>
                     </div>
@@ -1380,10 +1380,10 @@ export default function Home({$}: Props) {
                       </div>
                       <div className="price-box_list">
                         <ul>
-                          <li>Rims &amp; Tire Change</li>
-                          <li>Rims &amp; Tire Change</li>
-                          <li>Rims &amp; Tire Change</li>
-                          <li>Rims &amp; Tire Change</li>
+                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
+                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
+                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
+                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
                         </ul>
                       </div>
                     </div>

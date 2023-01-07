@@ -1,0 +1,10 @@
+.subMenu > li {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+.subMenu.active > li {
+  height: auto;
+  opacity: 1;
+}

@@ -1,3 +1,4 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css");
 @use "sass:math";
 :root {
   --theme-color: #e81c2e;
@@ -13,7 +14,7 @@
   --border-color: #e0e0e0;
   --title-font: "Hind Madurai", sans-serif;
   --body-font: "DM Sans", sans-serif;
-  --icon-font: "Font Awesome 6 Pro";
+  --icon-font: "FontAwesome";
   --main-container: 1220px;
   --container-gutters: 30px;
   --section-space: 120px;
@@ -649,7 +650,6 @@ ul.wp-block-rss a {
   .as-search .search-grid-content {
     padding: 20px;
   }
-  
 }
 .as-search .search-grid-title {
   font-size: 20px;
@@ -1323,7 +1323,7 @@ textarea.is-invalid {
 }
 .as-mobile-menu ul li a:before {
   content: "\f105";
-  font-family: var(--icon-font);
+  font-family: "FontAwesome";
   position: relative;
   left: 0;
   top: 0;
@@ -5278,7 +5278,7 @@ blockquote cite:before {
     padding: 140px 0;
   }
   .hero-style1 .hero-title {
-    font-size: 54px;
+    font-size: 40px;
   }
   .hero-meta {
     margin-bottom: 25px;
@@ -11002,7 +11002,10 @@ span.select2-selection.select2-selection--single:focus {
     padding: 160px 0;
   }
   .hero-style3 .hero-title {
-    font-size: 64px;
+    font-size: 40px;
+  }
+  .hero-slider-3 .slide_01 {
+    margin-bottom: -500px !important;
   }
   .hero-style3 .hero-text {
     margin-bottom: 35px;
@@ -11023,7 +11026,7 @@ span.select2-selection.select2-selection--single:focus {
     padding: 120px 0;
   }
   .hero-style3 .hero-title {
-    font-size: 54px;
+    font-size: 40px;
   }
 }
 @media (max-width: 767px) {

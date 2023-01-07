@@ -21,6 +21,12 @@ export default function Home({}: Props) {
     delaySpeed: 2000,
     loop: true,
   });
+
+  const [CarSolution, count1] = useTypewriter({
+    words: ["Car Solution"],
+    delaySpeed: 2000,
+    loop: true,
+  });
   // carousal settings Start
   const settings = {
     infinite: true,
@@ -28,7 +34,7 @@ export default function Home({}: Props) {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    autoplay: true,
+    autoplay: false,
   };
   const settings_001 = {
     dots: false,
@@ -165,37 +171,10 @@ export default function Home({}: Props) {
               alt="Hero Image"
               style={{ backgroundSize: "cover" }}
             />
-            {/* <div className="container" >
-              <div className="row">
-                <div className="col">
-                  <motion.div initial={{ opacity: 0, translateY: -100 }}
-                    animate={{ opacity: 1, translateY: 0 }}
-                    transition={{ duration: 2 }} className="hero-style3" style={{ position: "absolute", zIndex: 2, top: '30%', left: '30%' }}><span className="hero-subtitle" data-ani="slideindown"
-                      data-ani-delay="0.2s">Non Stop Car Servicing Center</span>
-                    <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.3s">Get Your Amazing</h1>
-                    <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.4s">Car Solution</h1>
-                    <p className="hero-text" data-ani="slideindown" data-ani-delay="0.5s">Take payments online with
-                      a scalable platform that grows with your perfect business.</p><a href="Contact"
-                        className="as-btn style3" data-ani="slideindown" data-ani-delay="0.6s">Get A Quote</a>
-                  </motion.div>
-                </div>
-              </div>
-            </div> */}
             <div className="container">
               <div className="row">
                 <div className="col-lg-12">
-                  <motion.div
-                    initial={{
-                      opacity: 0,
-                      translateY: -600,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      translateY: 0,
-                    }}
-                    transition={{
-                      duration: 2,
-                    }}
+                  <div
                     className="infetech-banner-content"
                     style={{ marginTop: "-620px" }}
                   >
@@ -224,14 +203,7 @@ export default function Home({}: Props) {
                         marginBottom: "20px",
                       }}
                     >
-                      <Typewriter
-                        words={["Car Solution"]}
-                        cursor
-                        cursorStyle="_"
-                        typeSpeed={70}
-                        deleteSpeed={50}
-                        delaySpeed={1000}
-                      />
+                      {CarSolution}
                     </h1>
                     <p
                       className="hero-text"
@@ -257,7 +229,7 @@ export default function Home({}: Props) {
                       src="assets/images/banner-arrow.png"
                       alt=""
                     />
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -272,10 +244,7 @@ export default function Home({}: Props) {
             <div className="container">
               <div className="row">
                 <div className="col">
-                  <motion.div
-                    initial={{ opacity: 0, translateY: -100 }}
-                    animate={{ opacity: 1, translateY: 0 }}
-                    transition={{ duration: 2 }}
+                  <div
                     className="hero-style3"
                     style={{
                       position: "absolute",
@@ -322,7 +291,7 @@ export default function Home({}: Props) {
                     >
                       Get A Quote
                     </a>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -337,18 +306,7 @@ export default function Home({}: Props) {
             <div className="container">
               <div className="row">
                 <div className="col-lg-12">
-                  <motion.div
-                    initial={{
-                      opacity: 0,
-                      translateY: -600,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      translateY: 0,
-                    }}
-                    transition={{
-                      duration: 2,
-                    }}
+                  <div
                     className="infetech-banner-content"
                     style={{ marginTop: "-620px" }}
                   >
@@ -403,7 +361,7 @@ export default function Home({}: Props) {
                       src="assets/images/banner-arrow.png"
                       alt=""
                     />
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </div>

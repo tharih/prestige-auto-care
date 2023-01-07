@@ -234,7 +234,7 @@ const Servicedetails = (props: Props) => {
                     <span className="download-media_text">Download</span>
                   </div>
                   <a href="about.html" className="download-media_btn">
-                    <i className="far fa-arrow-right" />
+                    <i className="fa fa-arrow-right" />
                   </a>
                 </div>
                 <div className="download-media">
@@ -246,7 +246,7 @@ const Servicedetails = (props: Props) => {
                     <span className="download-media_text">Download</span>
                   </div>
                   <a href="about.html" className="download-media_btn">
-                    <i className="far fa-arrow-right" />
+                    <i className="fa fa-arrow-right" />
                   </a>
                 </div>
               </div>

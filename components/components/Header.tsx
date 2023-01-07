@@ -34,7 +34,7 @@ const Header = (props: Props) => {
       >
         <div className="sidemenu-content">
           <button onClick={handleCloseCart} className="closeButton sideMenuCls">
-            <i className="far fa-times" />
+            <i className="fa fa-times" />
           </button>
           <div className="widget woocommerce widget_shopping_cart">
             <h3 className="widget_title">Shopping cart</h3>
@@ -42,7 +42,7 @@ const Header = (props: Props) => {
               <ul className="woocommerce-mini-cart cart_list product_list_widget">
                 <li className="woocommerce-mini-cart-item mini_cart_item">
                   <a href="#" className="remove remove_from_cart_button">
-                    <i className="far fa-times" />
+                    <i className="fa fa-times" />
                   </a>{" "}
                   <a href="#">
                     <img src="assets/img/cart/cart_1_1.jpg" alt="Cart Image" />
@@ -60,7 +60,7 @@ const Header = (props: Props) => {
                 </li>
                 <li className="woocommerce-mini-cart-item mini_cart_item">
                   <a href="#" className="remove remove_from_cart_button">
-                    <i className="far fa-times" />
+                    <i className="fa fa-times" />
                   </a>{" "}
                   <a href="#">
                     <img src="assets/img/cart/cart_1_2.jpg" alt="Cart Image" />
@@ -78,7 +78,7 @@ const Header = (props: Props) => {
                 </li>
                 <li className="woocommerce-mini-cart-item mini_cart_item">
                   <a href="#" className="remove remove_from_cart_button">
-                    <i className="far fa-times" />
+                    <i className="fa fa-times" />
                   </a>{" "}
                   <a href="#">
                     <img src="assets/img/cart/cart_1_3.jpg" alt="Cart Image" />
@@ -96,7 +96,7 @@ const Header = (props: Props) => {
                 </li>
                 <li className="woocommerce-mini-cart-item mini_cart_item">
                   <a href="#" className="remove remove_from_cart_button">
-                    <i className="far fa-times" />
+                    <i className="fa fa-times" />
                   </a>{" "}
                   <a href="#">
                     <img src="assets/img/cart/cart_1_4.jpg" alt="Cart Image" />
@@ -114,7 +114,7 @@ const Header = (props: Props) => {
                 </li>
                 <li className="woocommerce-mini-cart-item mini_cart_item">
                   <a href="#" className="remove remove_from_cart_button">
-                    <i className="far fa-times" />
+                    <i className="fa fa-times" />
                   </a>{" "}
                   <a href="#">
                     <img src="assets/img/cart/cart_1_5.jpg" alt="Cart Image" />

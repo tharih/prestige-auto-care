@@ -35,7 +35,7 @@ export default function Home({}: Props) {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    autoplay: false,
+    autoplay: true,
   };
   const settings_001 = {
     dots: false,

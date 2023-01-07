@@ -6,6 +6,7 @@ import styles from "./Header.module.css";
 import { menuItems } from "../../data/menuItems";
 import SideBarItems from "./SideBarItems";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { useTypewriter, Cursor, Typewriter } from "react-simple-typewriter";
 
 type Props = {};
 
@@ -190,7 +191,13 @@ const Header = (props: Props) => {
               <div className="row justify-content-center justify-content-md-between align-items-center">
                 <div className="col-auto">
                   <p className="header-notice d-none d-lg-block">
-                    Welcome To Prestige Auto Care
+                    <Typewriter
+                      words={["Welcome To Prestige Auto Care"]}
+                      cursorStyle="|"
+                      cursor
+                      loop={true}
+                      delaySpeed={2000}
+                    />
                   </p>
                 </div>
                 <div className="col-auto">

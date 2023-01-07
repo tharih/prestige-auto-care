@@ -169,7 +169,7 @@ const Footer = (props: Props) => {
       </div>
     </footer>
     <a href="#" className="scrollToTop scroll-btn">
-      <i className="far fa-arrow-up" />
+      <i className="fa fa-arrow-up" />
     </a>
   </>
   

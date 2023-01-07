@@ -82,7 +82,7 @@ const Contact = (props: Props) => {
                                         </div>
                                         <div className="contact-box_content">
                                             <div className="contact-box_icon">
-                                                <i className="far fa-headset" />
+                                                <i className="fa fa-headset" />
                                             </div>
                                             <div className="contact-box_info">
                                                 <p className="contact-box_text">Call Us 24/7</p>
@@ -103,7 +103,7 @@ const Contact = (props: Props) => {
                                         </div>
                                         <div className="contact-box_content">
                                             <div className="contact-box_icon">
-                                                <i className="far fa-envelope-open-text" />
+                                                <i className="fa fa-envelope-open-text" />
                                             </div>
                                             <div className="contact-box_info">
                                                 <p className="contact-box_text">Make A Quote</p>
@@ -124,7 +124,7 @@ const Contact = (props: Props) => {
                                         </div>
                                         <div className="contact-box_content">
                                             <div className="contact-box_icon">
-                                                <i className="far fa-map-location-dot" />
+                                                <i className="fa fa-map-location-dot" />
                                             </div>
                                             <div className="contact-box_info">
                                                 <p className="contact-box_text">Service Station</p>
@@ -152,7 +152,7 @@ const Contact = (props: Props) => {
                 </div>
                 <div className="contact-box_content">
                   <div className="contact-box_icon">
-                    <i className="far fa-headset" />
+                    <i className="fa fa-headset" />
                   </div>
                   <div className="contact-box_info">
                     <p className="contact-box_text">Call Us 24/7</p>
@@ -173,7 +173,7 @@ const Contact = (props: Props) => {
                 </div>
                 <div className="contact-box_content">
                   <div className="contact-box_icon">
-                    <i className="far fa-envelope-open-text" />
+                    <i className="fa fa-envelope-open-text" />
                   </div>
                   <div className="contact-box_info">
                     <p className="contact-box_text">Make A Quote</p>
@@ -194,7 +194,7 @@ const Contact = (props: Props) => {
                 </div>
                 <div className="contact-box_content">
                   <div className="contact-box_icon">
-                    <i className="far fa-map-location-dot" />
+                    <i className="fa fa-map-location-dot" />
                   </div>
                   <div className="contact-box_info">
                     <p className="contact-box_text">Service Station</p>
@@ -222,7 +222,7 @@ const Contact = (props: Props) => {
                 </div>
                 <div className="contact-box_content">
                   <div className="contact-box_icon">
-                    <i className="far fa-headset" />
+                    <i className="fa fa-headset" />
                   </div>
                   <div className="contact-box_info">
                     <p className="contact-box_text">Call Us 24/7</p>
@@ -243,7 +243,7 @@ const Contact = (props: Props) => {
                 </div>
                 <div className="contact-box_content">
                   <div className="contact-box_icon">
-                    <i className="far fa-envelope-open-text" />
+                    <i className="fa fa-envelope-open-text" />
                   </div>
                   <div className="contact-box_info">
                     <p className="contact-box_text">MAke A Quote</p>
@@ -264,7 +264,7 @@ const Contact = (props: Props) => {
                 </div>
                 <div className="contact-box_content">
                   <div className="contact-box_icon">
-                    <i className="far fa-map-location-dot" />
+                    <i className="fa fa-map-location-dot" />
                   </div>
                   <div className="contact-box_info">
                     <p className="contact-box_text">Service Station</p>

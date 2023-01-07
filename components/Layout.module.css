@@ -1,0 +1,17 @@
+.scrollToTop {
+  position: fixed;
+  right: 60px;
+  bottom: 500px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all ease 0.4s;
+  transition: all ease 0.4s;
+  z-index: 96;
+  background-color: red;
+  pad: 20px;
+}
+.scrollToTop.show {
+  bottom: 60px;
+  opacity: 1;
+  visibility: visible;
+}

@@ -15,7 +15,7 @@ const SideBarItems = ({ item }: Props) => {
         className="menu-item-has-children"
         onClick={() => setShowSubmenu(!showSubmenu)}
       >
-        <a href="#">{item.title}</a>
+        <a href="#">{item.title} </a>
         <ul
           className={`${styles?.subMenu} ${showSubmenu ? styles.active : ""}`}
         >

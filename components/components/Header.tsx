@@ -11,7 +11,7 @@ type Props = {};
 
 const Header = (props: Props) => {
   const [show, setShow] = useState<boolean>(false);
-  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(true);
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   const handleShowCart = () => {
     setShow(true);
   };
@@ -176,11 +176,9 @@ const Header = (props: Props) => {
           </div>
           <div className="as-mobile-menu">
             <ul>
-              {menuItems.map(
-                (item, index) => (
-                  console.log(item), (<SideBarItems item={item} key={index} />)
-                )
-              )}
+              {menuItems.map((item, index) => (
+                <SideBarItems item={item} key={index} />
+              ))}
             </ul>
           </div>
         </div>

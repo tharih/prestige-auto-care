@@ -229,7 +229,7 @@ const Header = (props: Props) => {
                 <div className="col-auto">
                   <div className="logo-style2">
                     <Link href="/">
-                      <img src="assets/img/logo1.png" alt="PrestigeAutoCare" />
+                      <img src="assets/img/PrestigeLogoWhite.png" alt="PrestigeAutoCare" />
                     </Link>
                   </div>
                 </div>

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 import Slider from 'react-slick';
 
@@ -32,7 +33,7 @@ export default function About() {
         <div className="breadcumb-menu-wrap">
           <ul className="breadcumb-menu">
             <li>
-              <a href="/">Home</a>
+              <Link href="/">Home</Link>
             </li>
             <li>About Us</li>
           </ul>
@@ -101,9 +102,9 @@ export default function About() {
                 <span className="about-author_desig">Founder &amp; Ceo</span>
               </div>
             </div>
-            <a href="about.html" className="as-btn">
+            <Link href="about.html" className="as-btn">
               Get More Info
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -116,62 +117,6 @@ export default function About() {
     data-sec-space="margin-bottom"
     data-margin-bottom="225px"
   >
-    {/* <div className="container">
-      <div className="row gy-4">
-        <div className="col-lg-3 col-sm-6">
-          <div
-            className="feature-circle"
-            data-bg-src="assets/img/bg/pattern_bg_6.png"
-          >
-            <div className="progressbar">
-              <div className="circle" data-percent={85}>
-                <div className="circle-num" />
-              </div>
-              <h3 className="feature-circle_title">Quality Service</h3>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-3 col-sm-6">
-          <div
-            className="feature-circle"
-            data-bg-src="assets/img/bg/pattern_bg_6.png"
-          >
-            <div className="progressbar">
-              <div className="circle" data-percent={90}>
-                <div className="circle-num" />
-              </div>
-              <h3 className="feature-circle_title">Skilled Members</h3>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-3 col-sm-6">
-          <div
-            className="feature-circle"
-            data-bg-src="assets/img/bg/pattern_bg_6.png"
-          >
-            <div className="progressbar">
-              <div className="circle" data-percent={95}>
-                <div className="circle-num" />
-              </div>
-              <h3 className="feature-circle_title">Happy Customers</h3>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-3 col-sm-6">
-          <div
-            className="feature-circle"
-            data-bg-src="assets/img/bg/pattern_bg_6.png"
-          >
-            <div className="progressbar">
-              <div className="circle" data-percent={15}>
-                <div className="circle-num" />
-              </div>
-              <h3 className="feature-circle_title">Project Fails</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> */}
   </section>
   <div className="circle-bg space-bottom bg-smoke" />
   <div className="bg-title position-relative overflow-hidden">
@@ -179,12 +124,12 @@ export default function About() {
       <div className="col-xl-6">
         <div className="as-video style1">
           <img src="assets/img/normal/video_2.jpg" alt="Video Image" />{" "}
-          <a
+          <Link
             href="https://www.youtube.com/watch?v=_sI_Ps7JSEk"
             className="play-btn popup-video"
           >
             <i className="fas fa-play" />
-          </a>
+          </Link>
         </div>
       </div>
       <div className="col-xl-6">
@@ -230,190 +175,6 @@ export default function About() {
       <img src="assets/img/shape/shape_2.png" alt="shape" />
     </div>
   </div>
-  {/* <section className="bg-white space position-relative">
-    <div className="container">
-      <div className="title-area text-center">
-        <span className="sub-title">Expert Technician</span>
-        <h2 className="sec-title">Meet Our Experts</h2>
-      </div>
-      <div
-        className="row slider-shadow as-carousel"
-        data-slide-show={3}
-        data-md-slide-show={2}
-        data-arrows="true"
-      >
-      <Slider {...settings_002} className="row slider-shadow as-carousel">
-
-<div className="col-md-6 col-lg-4">
-  <div className="team-box">
-    <div className="team-img">
-      <img src="assets/img/team/team_1_1.jpg" alt="Team" />
-      <div className="team-content">
-        <h3 className="team-title">
-          <a href="team-details.html">Kevin Martin</a>
-        </h3>
-        <span className="team-desig">Engine Expert</span>
-      </div>
-    </div>
-    <div
-      className="as-social"
-      data-bg-src="assets/img/bg/pattern_bg_2.png"
-    >
-      <a target="_blank" href="https://facebook.com/">
-        <i className="fab fa-facebook-f" />
-      </a>{" "}
-      <a target="_blank" href="https://twitter.com/">
-        <i className="fab fa-twitter" />
-      </a>{" "}
-      <a target="_blank" href="https://instagram.com/">
-        <i className="fab fa-instagram" />
-      </a>
-    </div>
-  </div>
-</div>
-<div className="col-md-6 col-lg-4">
-  <div className="team-box">
-    <div className="team-img">
-      <img src="assets/img/team/team_1_2.jpg" alt="Team" />
-      <div className="team-content">
-        <h3 className="team-title">
-          <a href="team-details.html">Michael Daniel</a>
-        </h3>
-        <span className="team-desig">Body Expert</span>
-      </div>
-    </div>
-    <div
-      className="as-social"
-      data-bg-src="assets/img/bg/pattern_bg_2.png"
-    >
-      <a target="_blank" href="https://facebook.com/">
-        <i className="fab fa-facebook-f" />
-      </a>{" "}
-      <a target="_blank" href="https://twitter.com/">
-        <i className="fab fa-twitter" />
-      </a>{" "}
-      <a target="_blank" href="https://instagram.com/">
-        <i className="fab fa-instagram" />
-      </a>
-    </div>
-  </div>
-</div>
-<div className="col-md-6 col-lg-4">
-  <div className="team-box">
-    <div className="team-img">
-      <img src="assets/img/team/team_1_3.jpg" alt="Team" />
-      <div className="team-content">
-        <h3 className="team-title">
-          <a href="team-details.html">Aiden Samuel</a>
-        </h3>
-        <span className="team-desig">Engine Expert</span>
-      </div>
-    </div>
-    <div
-      className="as-social"
-      data-bg-src="assets/img/bg/pattern_bg_2.png"
-    >
-      <a target="_blank" href="https://facebook.com/">
-        <i className="fab fa-facebook-f" />
-      </a>{" "}
-      <a target="_blank" href="https://twitter.com/">
-        <i className="fab fa-twitter" />
-      </a>{" "}
-      <a target="_blank" href="https://instagram.com/">
-        <i className="fab fa-instagram" />
-      </a>
-    </div>
-  </div>
-</div>
-<div className="col-md-6 col-lg-4">
-  <div className="team-box">
-    <div className="team-img">
-      <img src="assets/img/team/team_1_4.jpg" alt="Team" />
-      <div className="team-content">
-        <h3 className="team-title">
-          <a href="team-details.html">Joseph Carter</a>
-        </h3>
-        <span className="team-desig">Body Expert</span>
-      </div>
-    </div>
-    <div
-      className="as-social"
-      data-bg-src="assets/img/bg/pattern_bg_2.png"
-    >
-      <a target="_blank" href="https://facebook.com/">
-        <i className="fab fa-facebook-f" />
-      </a>{" "}
-      <a target="_blank" href="https://twitter.com/">
-        <i className="fab fa-twitter" />
-      </a>{" "}
-      <a target="_blank" href="https://instagram.com/">
-        <i className="fab fa-instagram" />
-      </a>
-    </div>
-  </div>
-</div>
-<div className="col-md-6 col-lg-4">
-  <div className="team-box">
-    <div className="team-img">
-      <img src="assets/img/team/team_1_5.jpg" alt="Team" />
-      <div className="team-content">
-        <h3 className="team-title">
-          <a href="team-details.html">Joseph Carter</a>
-        </h3>
-        <span className="team-desig">Engine Expert</span>
-      </div>
-    </div>
-    <div
-      className="as-social"
-      data-bg-src="assets/img/bg/pattern_bg_2.png"
-    >
-      <a target="_blank" href="https://facebook.com/">
-        <i className="fab fa-facebook-f" />
-      </a>{" "}
-      <a target="_blank" href="https://twitter.com/">
-        <i className="fab fa-twitter" />
-      </a>{" "}
-      <a target="_blank" href="https://instagram.com/">
-        <i className="fab fa-instagram" />
-      </a>
-    </div>
-  </div>
-</div>
-<div className="col-md-6 col-lg-4">
-  <div className="team-box">
-    <div className="team-img">
-      <img src="assets/img/team/team_1_6.jpg" alt="Team" />
-      <div className="team-content">
-        <h3 className="team-title">
-          <a href="team-details.html">Andrew Adrian</a>
-        </h3>
-        <span className="team-desig">Body Expert</span>
-      </div>
-    </div>
-    <div
-      className="as-social"
-      data-bg-src="assets/img/bg/pattern_bg_2.png"
-    >
-      <a target="_blank" href="https://facebook.com/">
-        <i className="fab fa-facebook-f" />
-      </a>{" "}
-      <a target="_blank" href="https://twitter.com/">
-        <i className="fab fa-twitter" />
-      </a>{" "}
-      <a target="_blank" href="https://instagram.com/">
-        <i className="fab fa-instagram" />
-      </a>
-    </div>
-  </div>
-</div>
-</Slider>
-      </div>
-    </div>
-    <div className="body-shape3">
-      <img src="assets/img/shape/shape_3.png" alt="shape" />
-    </div>
-  </section> */}
- 
   <section className="space" style={{backgroundColor:"white"}}>
     <div className="container">
       <div className="title-area text-center">
@@ -427,24 +188,24 @@ export default function About() {
           </div>
           <div className="blog-content">
             <div className="blog-meta">
-              <a href="blog.html">
+              <Link href="blog.html">
                 <i className="fas fa-calendar-alt" />
                 March 15, 2022
-              </a>
-              <a href="blog.html">
+              </Link>
+              <Link href="blog.html">
                 <i className="fas fa-tags" />
                 Test Drive
-              </a>
+              </Link>
             </div>
             <h3 className="blog-title">
-              <a href="blog-details.html">
+              <Link href="blog-details.html">
                 How to Make the Most of Your Test Drive
-              </a>
+              </Link>
             </h3>
-            <a href="blog-details.html" className="link-btn">
+            <Link href="blog-details.html" className="link-btn">
               Read More
               <i className="fas fa-arrow-right" />
-            </a>
+            </Link>
           </div>
         </div>
         <div className="blog-box">
@@ -453,27 +214,27 @@ export default function About() {
           </div>
           <div className="blog-content">
             <div className="blog-meta">
-              <a href="blog.html">
+              <Link href="blog.html">
                 <i className="fas fa-calendar-alt" />
                 March 16, 2022
-              </a>
-              <a href="blog.html">
+              </Link>
+              <Link href="blog.html">
                 <i className="fas fa-tags" />
                 Oil Change
-              </a>
+              </Link>
             </div>
             <h3 className="blog-title">
-              <a href="blog-details.html">
+              <Link href="blog-details.html">
                 How to Jump Start Your Car Maintenance?
-              </a>
+              </Link>
             </h3>
             <p className="blog-text">
               Centric aplications productize before front end vortals visualize.
             </p>
-            <a href="blog-details.html" className="link-btn">
+            <Link href="blog-details.html" className="link-btn">
               Read More
               <i className="fas fa-arrow-right" />
-            </a>
+            </Link>
           </div>
         </div>
         <div className="blog-box">
@@ -482,24 +243,24 @@ export default function About() {
           </div>
           <div className="blog-content">
             <div className="blog-meta">
-              <a href="blog.html">
+              <Link href="blog.html">
                 <i className="fas fa-calendar-alt" />
                 March 17, 2022
-              </a>
-              <a href="blog.html">
+              </Link>
+              <Link href="blog.html">
                 <i className="fas fa-tags" />
                 Car Drive
-              </a>
+              </Link>
             </div>
             <h3 className="blog-title">
-              <a href="blog-details.html">
+              <Link href="blog-details.html">
                 How to Decorate Your Car for Halloween
-              </a>
+              </Link>
             </h3>
-            <a href="blog-details.html" className="link-btn">
+            <Link href="blog-details.html" className="link-btn">
               Read More
               <i className="fas fa-arrow-right" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -524,60 +285,17 @@ export default function About() {
         </div>
         <div className="col-xl-5 col-lg-6">
           <div className="btn-group justify-content-lg-end justify-content-center">
-            <a href="service.html" className="as-btn style3">
+            <Link href="service.html" className="as-btn style3">
               Get Our Service
-            </a>{" "}
-            <a href="contact.html" className="as-btn style2">
+            </Link>{" "}
+            <Link href="contact.html" className="as-btn style2">
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </div>
     </div>
   </section>
-  {/* <div className="space bg-smoke position-relative overflow-hidden">
-    <div className="container">
-      <div className="row justify-content-lg-between justify-content-center align-items-center">
-        <div className="col-lg-6">
-          <div className="title-area text-center text-lg-start">
-            <span className="sub-title">Our Special Clients</span>
-            <h2 className="sec-title">Business Partners</h2>
-          </div>
-        </div>
-        <div className="col-auto">
-          <div className="sec-btn">
-            <a href="contact.html" className="as-btn style5">
-              Contact Us
-            </a>
-          </div>
-        </div>
-      </div>
-      <div
-        className="row as-carousel"
-        data-slide-show={4}
-        data-lg-slide-show={3}
-        data-md-slide-show={2}
-        data-sm-slide-show={2}
-        data-xs-slide-show={1}
-      >
-        <div className="col-auto brand-img2">
-          <img src="assets/img/brand/brand_2_1.png" alt="Brand Logo" />
-        </div>
-        <div className="col-auto brand-img2">
-          <img src="assets/img/brand/brand_2_2.png" alt="Brand Logo" />
-        </div>
-        <div className="col-auto brand-img2">
-          <img src="assets/img/brand/brand_2_3.png" alt="Brand Logo" />
-        </div>
-        <div className="col-auto brand-img2">
-          <img src="assets/img/brand/brand_2_4.png" alt="Brand Logo" />
-        </div>
-      </div>
-    </div>
-    <div className="body-shape3">
-      <img src="assets/img/shape/road_shape_3.png" alt="shape" />
-    </div>
-  </div> */}
 </>
 
   )

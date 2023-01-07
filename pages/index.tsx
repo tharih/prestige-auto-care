@@ -10,6 +10,7 @@ import { url } from "inspector";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTypewriter, Cursor, Typewriter } from "react-simple-typewriter";
+import Link from "next/link";
 // import "jquery-ui-dist/jquery-ui";
 // import  $ from 'jquery';
 
@@ -96,13 +97,13 @@ export default function Home({}: Props) {
                       <span className="rating">1</span> customer rating
                     </span>
                   </div>
-                  <a
+                  <Link
                     href="shop-details.html"
                     className="woocommerce-review-link"
                   >
                     (<span className="count">3</span>
                     customer reviews)
-                  </a>
+                  </Link>
                 </div>
                 <p className="text">
                   Syndicate customized growth strategies prospective human
@@ -143,13 +144,13 @@ export default function Home({}: Props) {
                   </span>{" "}
                   <span className="posted_in">
                     Category:
-                    <a href="shop.html" rel="tag">
+                    <Link href="shop.html" rel="tag">
                       Tires &amp; Wheels
-                    </a>
+                    </Link>
                   </span>{" "}
                   <span>
-                    Tags: <a href="shop.html">automotive parts</a>
-                    <a href="shop.html">wheels</a>
+                    Tags: <Link href="shop.html">automotive parts</Link>
+                    <Link href="shop.html">wheels</Link>
                   </span>
                 </div>
               </div>
@@ -295,14 +296,14 @@ export default function Home({}: Props) {
                       Take payments online with a scalable platform that grows
                       with your perfect business.
                     </p>
-                    <a
+                    <Link
                       href="Contact"
                       className="as-btn style3"
                       data-ani="slideindown"
                       data-ani-delay="0.6s"
                     >
                       Get A Quote
-                    </a>
+                    </Link>
                     <img
                       className="banner-arrow"
                       data-animation="fadeInRight"
@@ -441,11 +442,11 @@ export default function Home({}: Props) {
                 >
                   <span className="service-block_number">Service 01</span>
                   <h3 className="service-block_title">
-                    <a href="Servicedetails">Parts</a>
+                    <Link href="Servicedetails">Parts</Link>
                   </h3>
-                  <a href="Servicedetails" className="as-btn">
+                  <Link href="Servicedetails" className="as-btn">
                     View Service
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -466,11 +467,11 @@ export default function Home({}: Props) {
                 >
                   <span className="service-block_number">Service 02</span>
                   <h3 className="service-block_title">
-                    <a href="Servicedetails">Panel & Paint</a>
+                    <Link href="Servicedetails">Panel & Paint</Link>
                   </h3>
-                  <a href="Servicedetails" className="as-btn">
+                  <Link href="Servicedetails" className="as-btn">
                     View Service
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -491,11 +492,11 @@ export default function Home({}: Props) {
                 >
                   <span className="service-block_number">Service 03</span>
                   <h3 className="service-block_title">
-                    <a href="Servicedetails">Mechanical</a>
+                    <Link href="Servicedetails">Mechanical</Link>
                   </h3>
-                  <a href="Servicedetails" className="as-btn">
+                  <Link href="Servicedetails" className="as-btn">
                     View Service
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -513,11 +514,11 @@ export default function Home({}: Props) {
               >
                 <span className="service-block_number">Service 04</span>
                 <h3 className="service-block_title">
-                  <a href="Servicedetails">Engine Cleaning</a>
+                  <Link href="Servicedetails">Engine Cleaning</Link>
                 </h3>
-                <a href="Servicedetails" className="as-btn">
+                <Link href="Servicedetails" className="as-btn">
                   View Service
-                </a>
+                </Link>
               </div>
             </div>
           </div> */}
@@ -544,12 +545,12 @@ export default function Home({}: Props) {
             </div>
             <div className="col-xl-5 col-lg-6">
               <div className="btn-group justify-content-lg-end justify-content-center">
-                <a href="Services" className="as-btn style3">
+                <Link href="Services" className="as-btn style3">
                   Get Our Service
-                </a>{" "}
-                <a href="Contact" className="as-btn style-play">
+                </Link>{" "}
+                <Link href="Contact" className="as-btn style-play">
                   <i className="fa-solid fa-play" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -657,9 +658,9 @@ export default function Home({}: Props) {
                     </div>
                   </div>
                   <div className="pt-2">
-                    <a href="Contact" className="as-btn">
+                    <Link href="Contact" className="as-btn">
                       Get A Quote
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div
@@ -693,9 +694,9 @@ export default function Home({}: Props) {
                     </div>
                   </div>
                   <div className="pt-2">
-                    <a href="Contact" className="as-btn">
+                    <Link href="Contact" className="as-btn">
                       Get A Quote
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div
@@ -733,9 +734,9 @@ export default function Home({}: Props) {
                     </div>
                   </div>
                   <div className="pt-2">
-                    <a href="Contact" className="as-btn">
+                    <Link href="Contact" className="as-btn">
                       Get A Quote
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -743,201 +744,17 @@ export default function Home({}: Props) {
           </div>
         </div>
       </div>
-
-      {/* <section className="bg-white space" style={{backgroundColor:"white"}}>
-      <div className="container">
-        <div className="title-area text-center">
-          <span className="sub-title">Expert Technician</span>
-          <h2 className="sec-title">Meet Our Experts</h2>
-        </div>
-
-        <Slider {...settings_002} className="row slider-shadow as-carousel">
-
-          <div className="col-md-6 col-lg-4">
-            <div className="team-box">
-              <div className="team-img">
-                <img src="assets/img/team/team_1_1.jpg" alt="Team" />
-                <div className="team-content">
-                  <h3 className="team-title">
-                    <a href="team-details.html">Kevin Martin</a>
-                  </h3>
-                  <span className="team-desig">Engine Expert</span>
-                </div>
-              </div>
-              <div
-                className="as-social"
-                data-bg-src="assets/img/bg/pattern_bg_2.png"
-              >
-                <a target="_blank" href="https://facebook.com/">
-                  <i className="fab fa-facebook-f" />
-                </a>{" "}
-                <a target="_blank" href="https://twitter.com/">
-                  <i className="fab fa-twitter" />
-                </a>{" "}
-                <a target="_blank" href="https://instagram.com/">
-                  <i className="fab fa-instagram" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-4">
-            <div className="team-box">
-              <div className="team-img">
-                <img src="assets/img/team/team_1_2.jpg" alt="Team" />
-                <div className="team-content">
-                  <h3 className="team-title">
-                    <a href="team-details.html">Michael Daniel</a>
-                  </h3>
-                  <span className="team-desig">Body Expert</span>
-                </div>
-              </div>
-              <div
-                className="as-social"
-                data-bg-src="assets/img/bg/pattern_bg_2.png"
-                style={{ backgroundImage: `url('assets/img/bg/pattern_bg_2')`}}
-              >
-                <a target="_blank" href="https://facebook.com/">
-                  <i className="fab fa-facebook-f" />
-                </a>{" "}
-                <a target="_blank" href="https://twitter.com/">
-                  <i className="fab fa-twitter" />
-                </a>{" "}
-                <a target="_blank" href="https://instagram.com/">
-                  <i className="fab fa-instagram" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-4">
-            <div className="team-box">
-              <div className="team-img">
-                <img src="assets/img/team/team_1_3.jpg" alt="Team" />
-                <div className="team-content">
-                  <h3 className="team-title">
-                    <a href="team-details.html">Aiden Samuel</a>
-                  </h3>
-                  <span className="team-desig">Engine Expert</span>
-                </div>
-              </div>
-              <div
-                className="as-social"
-                data-bg-src="assets/img/bg/pattern_bg_2.png"
-              >
-                <a target="_blank" href="https://facebook.com/">
-                  <i className="fab fa-facebook-f" />
-                </a>{" "}
-                <a target="_blank" href="https://twitter.com/">
-                  <i className="fab fa-twitter" />
-                </a>{" "}
-                <a target="_blank" href="https://instagram.com/">
-                  <i className="fab fa-instagram" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-4">
-            <div className="team-box">
-              <div className="team-img">
-                <img src="assets/img/team/team_1_4.jpg" alt="Team" />
-                <div className="team-content">
-                  <h3 className="team-title">
-                    <a href="team-details.html">Joseph Carter</a>
-                  </h3>
-                  <span className="team-desig">Body Expert</span>
-                </div>
-              </div>
-              <div
-                className="as-social"
-                data-bg-src="assets/img/bg/pattern_bg_2.png"
-              >
-                <a target="_blank" href="https://facebook.com/">
-                  <i className="fab fa-facebook-f" />
-                </a>{" "}
-                <a target="_blank" href="https://twitter.com/">
-                  <i className="fab fa-twitter" />
-                </a>{" "}
-                <a target="_blank" href="https://instagram.com/">
-                  <i className="fab fa-instagram" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-4">
-            <div className="team-box">
-              <div className="team-img">
-                <img src="assets/img/team/team_1_5.jpg" alt="Team" />
-                <div className="team-content">
-                  <h3 className="team-title">
-                    <a href="team-details.html">Joseph Carter</a>
-                  </h3>
-                  <span className="team-desig">Engine Expert</span>
-                </div>
-              </div>
-              <div
-                className="as-social"
-                data-bg-src="assets/img/bg/pattern_bg_2.png"
-              >
-                <a target="_blank" href="https://facebook.com/">
-                  <i className="fab fa-facebook-f" />
-                </a>{" "}
-                <a target="_blank" href="https://twitter.com/">
-                  <i className="fab fa-twitter" />
-                </a>{" "}
-                <a target="_blank" href="https://instagram.com/">
-                  <i className="fab fa-instagram" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-4">
-            <div className="team-box">
-              <div className="team-img">
-                <img src="assets/img/team/team_1_6.jpg" alt="Team" />
-                <div className="team-content">
-                  <h3 className="team-title">
-                    <a href="team-details.html">Andrew Adrian</a>
-                  </h3>
-                  <span className="team-desig">Body Expert</span>
-                </div>
-              </div>
-              <div
-                className="as-social"
-                data-bg-src="assets/img/bg/pattern_bg_2.png"
-              >
-                <a target="_blank" href="https://facebook.com/">
-                  <i className="fab fa-facebook-f" />
-                </a>{" "}
-                <a target="_blank" href="https://twitter.com/">
-                  <i className="fab fa-twitter" />
-                </a>{" "}
-                <a target="_blank" href="https://instagram.com/">
-                  <i className="fab fa-instagram" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </Slider>
-        <div
-          className="row slider-shadow as-carousel"
-          data-slide-show={3}
-          data-md-slide-show={2}
-          data-arrows="true"
-        >
-
-        </div>
-      </div>
-    </section> */}
       <div className="bg-title position-relative overflow-hidden">
         <div className="row">
           <div className="col-xl-6">
             <div className="as-video style1">
               <img src="assets/img/normal/video_2.jpg" alt="Video Image" />{" "}
-              <a
+              <Link
                 href="https://www.youtube.com/watch?v=_sI_Ps7JSEk"
                 className="play-btn popup-video"
               >
                 <i className="fas fa-play" />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-xl-6">
@@ -1007,15 +824,15 @@ export default function Home({}: Props) {
                       alt="Product Image"
                     />
                     <div className="actions">
-                      <a href="#QuickView" className="icon-btn popup-content">
+                      <Link href="#QuickView" className="icon-btn popup-content">
                         <i className="far fa-eye" />
-                      </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="cart.html" className="icon-btn">
                         <i className="far fa-cart-plus" />
-                      </a>{" "}
-                      <a href="wishlist.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="wishlist.html" className="icon-btn">
                         <i className="far fa-heart" />
-                      </a>
+                      </Link>
                     </div>
                     <span className="category">Wheel</span>
                   </div>
@@ -1032,7 +849,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car Engine Plug</a>
+                      <Link href="shop-details.html">Car Engine Plug</Link>
                     </h3>
                     <span className="price">
                       $180.85<del>$350.99</del>
@@ -1048,15 +865,15 @@ export default function Home({}: Props) {
                       alt="Product Image"
                     />
                     <div className="actions">
-                      <a href="#QuickView" className="icon-btn popup-content">
+                      <Link href="#QuickView" className="icon-btn popup-content">
                         <i className="far fa-eye" />
-                      </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="cart.html" className="icon-btn">
                         <i className="far fa-cart-plus" />
-                      </a>{" "}
-                      <a href="wishlist.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="wishlist.html" className="icon-btn">
                         <i className="far fa-heart" />
-                      </a>
+                      </Link>
                     </div>
                     <span className="category">Filter</span>
                   </div>
@@ -1073,7 +890,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car Air Filter</a>
+                      <Link href="shop-details.html">Car Air Filter</Link>
                     </h3>
                     <span className="price">$190.85</span>
                   </div>
@@ -1087,15 +904,15 @@ export default function Home({}: Props) {
                       alt="Product Image"
                     />
                     <div className="actions">
-                      <a href="#QuickView" className="icon-btn popup-content">
+                      <Link href="#QuickView" className="icon-btn popup-content">
                         <i className="far fa-eye" />
-                      </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="cart.html" className="icon-btn">
                         <i className="far fa-cart-plus" />
-                      </a>{" "}
-                      <a href="wishlist.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="wishlist.html" className="icon-btn">
                         <i className="far fa-heart" />
-                      </a>
+                      </Link>
                     </div>
                     <span className="category">Plug</span>
                   </div>
@@ -1112,7 +929,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">CSK Red Wheel</a>
+                      <Link href="shop-details.html">CSK Red Wheel</Link>
                     </h3>
                     <span className="price">$160.85</span>
                   </div>
@@ -1126,15 +943,15 @@ export default function Home({}: Props) {
                       alt="Product Image"
                     />
                     <div className="actions">
-                      <a href="#QuickView" className="icon-btn popup-content">
+                      <Link href="#QuickView" className="icon-btn popup-content">
                         <i className="far fa-eye" />
-                      </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="cart.html" className="icon-btn">
                         <i className="far fa-cart-plus" />
-                      </a>{" "}
-                      <a href="wishlist.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="wishlist.html" className="icon-btn">
                         <i className="far fa-heart" />
-                      </a>
+                      </Link>
                     </div>
                     <span className="category">Light</span>
                   </div>
@@ -1151,7 +968,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Cools Led Light</a>
+                      <Link href="shop-details.html">Cools Led Light</Link>
                     </h3>
                     <span className="price">$170.85</span>
                   </div>
@@ -1165,15 +982,15 @@ export default function Home({}: Props) {
                       alt="Product Image"
                     />
                     <div className="actions">
-                      <a href="#QuickView" className="icon-btn popup-content">
+                      <Link href="#QuickView" className="icon-btn popup-content">
                         <i className="far fa-eye" />
-                      </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="cart.html" className="icon-btn">
                         <i className="far fa-cart-plus" />
-                      </a>{" "}
-                      <a href="wishlist.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="wishlist.html" className="icon-btn">
                         <i className="far fa-heart" />
-                      </a>
+                      </Link>
                     </div>
                     <span className="category">Liver</span>
                   </div>
@@ -1190,7 +1007,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Allion Brake Pad</a>
+                      <Link href="shop-details.html">Allion Brake Pad</Link>
                     </h3>
                     <span className="price">$120.85</span>
                   </div>
@@ -1204,15 +1021,15 @@ export default function Home({}: Props) {
                       alt="Product Image"
                     />
                     <div className="actions">
-                      <a href="#QuickView" className="icon-btn popup-content">
+                      <Link href="#QuickView" className="icon-btn popup-content">
                         <i className="far fa-eye" />
-                      </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="cart.html" className="icon-btn">
                         <i className="far fa-cart-plus" />
-                      </a>{" "}
-                      <a href="wishlist.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="wishlist.html" className="icon-btn">
                         <i className="far fa-heart" />
-                      </a>
+                      </Link>
                     </div>
                     <span className="category">Break</span>
                   </div>
@@ -1229,7 +1046,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car USB Ports</a>
+                      <Link href="shop-details.html">Car USB Ports</Link>
                     </h3>
                     <span className="price">$100.85</span>
                   </div>
@@ -1243,15 +1060,15 @@ export default function Home({}: Props) {
                       alt="Product Image"
                     />
                     <div className="actions">
-                      <a href="#QuickView" className="icon-btn popup-content">
+                      <Link href="#QuickView" className="icon-btn popup-content">
                         <i className="far fa-eye" />
-                      </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="cart.html" className="icon-btn">
                         <i className="far fa-cart-plus" />
-                      </a>{" "}
-                      <a href="wishlist.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="wishlist.html" className="icon-btn">
                         <i className="far fa-heart" />
-                      </a>
+                      </Link>
                     </div>
                     <span className="category">Wheel</span>
                   </div>
@@ -1268,7 +1085,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car Engine Solt</a>
+                      <Link href="shop-details.html">Car Engine Solt</Link>
                     </h3>
                     <span className="price">$120.85</span>
                   </div>
@@ -1282,15 +1099,15 @@ export default function Home({}: Props) {
                       alt="Product Image"
                     />
                     <div className="actions">
-                      <a href="#QuickView" className="icon-btn popup-content">
+                      <Link href="#QuickView" className="icon-btn popup-content">
                         <i className="far fa-eye" />
-                      </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="cart.html" className="icon-btn">
                         <i className="far fa-cart-plus" />
-                      </a>{" "}
-                      <a href="wishlist.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="wishlist.html" className="icon-btn">
                         <i className="far fa-heart" />
-                      </a>
+                      </Link>
                     </div>
                     <span className="category">Filter</span>
                   </div>
@@ -1307,7 +1124,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car Oil Filter</a>
+                      <Link href="shop-details.html">Car Oil Filter</Link>
                     </h3>
                     <span className="price">$100.85</span>
                   </div>
@@ -1321,15 +1138,15 @@ export default function Home({}: Props) {
                       alt="Product Image"
                     />
                     <div className="actions">
-                      <a href="#QuickView" className="icon-btn popup-content">
+                      <Link href="#QuickView" className="icon-btn popup-content">
                         <i className="far fa-eye" />
-                      </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="cart.html" className="icon-btn">
                         <i className="far fa-cart-plus" />
-                      </a>{" "}
-                      <a href="wishlist.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="wishlist.html" className="icon-btn">
                         <i className="far fa-heart" />
-                      </a>
+                      </Link>
                     </div>
                     <span className="category">Plug</span>
                   </div>
@@ -1346,7 +1163,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">BMW Brake Liver</a>
+                      <Link href="shop-details.html">BMW Brake Liver</Link>
                     </h3>
                     <span className="price">$120.85</span>
                   </div>
@@ -1360,15 +1177,15 @@ export default function Home({}: Props) {
                       alt="Product Image"
                     />
                     <div className="actions">
-                      <a href="#QuickView" className="icon-btn popup-content">
+                      <Link href="#QuickView" className="icon-btn popup-content">
                         <i className="far fa-eye" />
-                      </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="cart.html" className="icon-btn">
                         <i className="far fa-cart-plus" />
-                      </a>{" "}
-                      <a href="wishlist.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="wishlist.html" className="icon-btn">
                         <i className="far fa-heart" />
-                      </a>
+                      </Link>
                     </div>
                     <span className="category">Light</span>
                   </div>
@@ -1385,7 +1202,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Special Hydraulic</a>
+                      <Link href="shop-details.html">Special Hydraulic</Link>
                     </h3>
                     <span className="price">$100.85</span>
                   </div>
@@ -1399,15 +1216,15 @@ export default function Home({}: Props) {
                       alt="Product Image"
                     />
                     <div className="actions">
-                      <a href="#QuickView" className="icon-btn popup-content">
+                      <Link href="#QuickView" className="icon-btn popup-content">
                         <i className="far fa-eye" />
-                      </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="cart.html" className="icon-btn">
                         <i className="far fa-cart-plus" />
-                      </a>{" "}
-                      <a href="wishlist.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="wishlist.html" className="icon-btn">
                         <i className="far fa-heart" />
-                      </a>
+                      </Link>
                     </div>
                     <span className="category">Liver</span>
                   </div>
@@ -1424,7 +1241,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Audi Wheel Combo</a>
+                      <Link href="shop-details.html">Audi Wheel Combo</Link>
                     </h3>
                     <span className="price">$120.85</span>
                   </div>
@@ -1438,15 +1255,15 @@ export default function Home({}: Props) {
                       alt="Product Image"
                     />
                     <div className="actions">
-                      <a href="#QuickView" className="icon-btn popup-content">
+                      <Link href="#QuickView" className="icon-btn popup-content">
                         <i className="far fa-eye" />
-                      </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="cart.html" className="icon-btn">
                         <i className="far fa-cart-plus" />
-                      </a>{" "}
-                      <a href="wishlist.html" className="icon-btn">
+                      </Link>{" "}
+                      <Link href="wishlist.html" className="icon-btn">
                         <i className="far fa-heart" />
-                      </a>
+                      </Link>
                     </div>
                     <span className="category">Break</span>
                   </div>
@@ -1463,7 +1280,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Fast Aloy Wheel</a>
+                      <Link href="shop-details.html">Fast Aloy Wheel</Link>
                     </h3>
                     <span className="price">$100.85</span>
                   </div>
@@ -1485,9 +1302,9 @@ export default function Home({}: Props) {
               </div>
               <div className="col-auto">
                 <div className="sec-btn">
-                  <a href="Price" className="as-btn style2">
+                  <Link href="Price" className="as-btn style2">
                     See All Plans
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -1600,9 +1417,9 @@ export default function Home({}: Props) {
                         <li>Light Carpet Clean</li>
                       </ul>
                     </div> */}
-                      <a href="Price" className="as-btn">
+                      <Link href="Price" className="as-btn">
                         Purchase Now
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -1825,112 +1642,112 @@ export default function Home({}: Props) {
             <div className="blog-grid">
               <div className="blog-content">
                 <div className="blog-meta">
-                  <a href="blog.html">
+                  <Link href="blog.html">
                     <i className="fas fa-calendar-alt" />
                     March 15, 2022
-                  </a>{" "}
-                  <a href="blog.html">
+                  </Link>{" "}
+                  <Link href="blog.html">
                     <i className="fas fa-tags" />
                     Test Drive
-                  </a>
+                  </Link>
                 </div>
                 <h3 className="blog-title">
-                  <a href="blog-details.html">
+                  <Link href="blog-details.html">
                     How to Make the Most of Your Test Drive
-                  </a>
+                  </Link>
                 </h3>
               </div>
               <div className="blog-img">
                 <img src="assets/img/blog/blog_3_1.jpg" alt="blog image" />
               </div>
-              <a href="blog-details.html" className="blog-btn">
+              <Link href="blog-details.html" className="blog-btn">
                 Read Details
                 <i className="fas fa-arrow-right" />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-md-6 col-xl-4">
             <div className="blog-grid">
               <div className="blog-content">
                 <div className="blog-meta">
-                  <a href="blog.html">
+                  <Link href="blog.html">
                     <i className="fas fa-calendar-alt" />
                     March 16, 2022
-                  </a>{" "}
-                  <a href="blog.html">
+                  </Link>{" "}
+                  <Link href="blog.html">
                     <i className="fas fa-tags" />
                     Oil Change
-                  </a>
+                  </Link>
                 </div>
                 <h3 className="blog-title">
-                  <a href="blog-details.html">
+                  <Link href="blog-details.html">
                     How to Jump Start Your Car Maintenance?
-                  </a>
+                  </Link>
                 </h3>
               </div>
               <div className="blog-img">
                 <img src="assets/img/blog/blog_3_2.jpg" alt="blog image" />
               </div>
-              <a href="blog-details.html" className="blog-btn">
+              <Link href="blog-details.html" className="blog-btn">
                 Read Details
                 <i className="fas fa-arrow-right" />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-md-6 col-xl-4">
             <div className="blog-grid">
               <div className="blog-content">
                 <div className="blog-meta">
-                  <a href="blog.html">
+                  <Link href="blog.html">
                     <i className="fas fa-calendar-alt" />
                     March 17, 2022
-                  </a>{" "}
-                  <a href="blog.html">
+                  </Link>{" "}
+                  <Link href="blog.html">
                     <i className="fas fa-tags" />
                     Car Drive
-                  </a>
+                  </Link>
                 </div>
                 <h3 className="blog-title">
-                  <a href="blog-details.html">
+                  <Link href="blog-details.html">
                     How to Decorate Your Car for Halloween
-                  </a>
+                  </Link>
                 </h3>
               </div>
               <div className="blog-img">
                 <img src="assets/img/blog/blog_3_3.jpg" alt="blog image" />
               </div>
-              <a href="blog-details.html" className="blog-btn">
+              <Link href="blog-details.html" className="blog-btn">
                 Read Details
                 <i className="fas fa-arrow-right" />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-md-6 col-xl-4">
             <div className="blog-grid">
               <div className="blog-content">
                 <div className="blog-meta">
-                  <a href="blog.html">
+                  <Link href="blog.html">
                     <i className="fas fa-calendar-alt" />
                     March 18, 2022
-                  </a>{" "}
-                  <a href="blog.html">
+                  </Link>{" "}
+                  <Link href="blog.html">
                     <i className="fas fa-tags" />
                     Oil Change
-                  </a>
+                  </Link>
                 </div>
                 <h3 className="blog-title">
-                  <a href="blog-details.html">
+                  <Link href="blog-details.html">
                     How to Jump Start Your Car Maintenance?
-                  </a>
+                  </Link>
                 </h3>
               </div>
               <div className="blog-img">
                 <img src="assets/img/blog/blog_3_4.jpg" alt="blog image" />
               </div>
-              <a href="blog-details.html" className="blog-btn">
+              <Link href="blog-details.html" className="blog-btn">
                 Read Details
                 <i className="fas fa-arrow-right" />
-              </a>
+              </Link>
             </div>
           </div>
           </Slider>

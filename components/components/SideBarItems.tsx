@@ -15,7 +15,7 @@ const SideBarItems = ({ item }: Props) => {
         className="menu-item-has-children"
         onClick={() => setShowSubmenu(!showSubmenu)}
       >
-        <a href="#">{item.title} </a>
+        <Link href="#">{item.title} </Link>
         <ul
           className={`${styles?.subMenu} ${showSubmenu ? styles.active : ""}`}
         >
@@ -28,21 +28,6 @@ const SideBarItems = ({ item }: Props) => {
       </li>
     </>
   );
-  // } else {
-  //   return (
-  //     <>
-  //       <li className="menu-item-has-children">
-  //         <Link href="index.html">Home</Link>
-  //       </li>
-  //       <li>
-  //         <Link href="about.html">About</Link>
-  //       </li>
-  //       <li>
-  //         <a href="contact.html">Contact</a>
-  //       </li>
-  //     </>
-  //   );
-  // }
 };
 
 export default SideBarItems;

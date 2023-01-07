@@ -41,13 +41,13 @@ const Header = (props: Props) => {
             <div className="widget_shopping_cart_content">
               <ul className="woocommerce-mini-cart cart_list product_list_widget">
                 <li className="woocommerce-mini-cart-item mini_cart_item">
-                  <a href="#" className="remove remove_from_cart_button">
+                  <Link href="#" className="remove remove_from_cart_button">
                     <i className="far fa-times" />
-                  </a>{" "}
-                  <a href="#">
+                  </Link>{" "}
+                  <Link href="#">
                     <img src="assets/img/cart/cart_1_1.jpg" alt="Cart Image" />
                     Adderall
-                  </a>{" "}
+                  </Link>{" "}
                   <span className="quantity">
                     1 ×{" "}
                     <span className="woocommerce-Price-amount amount">
@@ -59,13 +59,13 @@ const Header = (props: Props) => {
                   </span>
                 </li>
                 <li className="woocommerce-mini-cart-item mini_cart_item">
-                  <a href="#" className="remove remove_from_cart_button">
+                  <Link href="#" className="remove remove_from_cart_button">
                     <i className="far fa-times" />
-                  </a>{" "}
-                  <a href="#">
+                  </Link>{" "}
+                  <Link href="#">
                     <img src="assets/img/cart/cart_1_2.jpg" alt="Cart Image" />
                     Januvia
-                  </a>{" "}
+                  </Link>{" "}
                   <span className="quantity">
                     1 ×{" "}
                     <span className="woocommerce-Price-amount amount">
@@ -77,13 +77,13 @@ const Header = (props: Props) => {
                   </span>
                 </li>
                 <li className="woocommerce-mini-cart-item mini_cart_item">
-                  <a href="#" className="remove remove_from_cart_button">
+                  <Link href="#" className="remove remove_from_cart_button">
                     <i className="far fa-times" />
-                  </a>{" "}
-                  <a href="#">
+                  </Link>{" "}
+                  <Link href="#">
                     <img src="assets/img/cart/cart_1_3.jpg" alt="Cart Image" />
                     Zubsolv
-                  </a>{" "}
+                  </Link>{" "}
                   <span className="quantity">
                     1 ×{" "}
                     <span className="woocommerce-Price-amount amount">
@@ -95,13 +95,13 @@ const Header = (props: Props) => {
                   </span>
                 </li>
                 <li className="woocommerce-mini-cart-item mini_cart_item">
-                  <a href="#" className="remove remove_from_cart_button">
+                  <Link href="#" className="remove remove_from_cart_button">
                     <i className="far fa-times" />
-                  </a>{" "}
-                  <a href="#">
+                  </Link>{" "}
+                  <Link href="#">
                     <img src="assets/img/cart/cart_1_4.jpg" alt="Cart Image" />
                     Invokana
-                  </a>{" "}
+                  </Link>{" "}
                   <span className="quantity">
                     1 ×{" "}
                     <span className="woocommerce-Price-amount amount">
@@ -113,13 +113,13 @@ const Header = (props: Props) => {
                   </span>
                 </li>
                 <li className="woocommerce-mini-cart-item mini_cart_item">
-                  <a href="#" className="remove remove_from_cart_button">
+                  <Link href="#" className="remove remove_from_cart_button">
                     <i className="far fa-times" />
-                  </a>{" "}
-                  <a href="#">
+                  </Link>{" "}
+                  <Link href="#">
                     <img src="assets/img/cart/cart_1_5.jpg" alt="Cart Image" />
                     Sublocade
-                  </a>{" "}
+                  </Link>{" "}
                   <span className="quantity">
                     1 ×{" "}
                     <span className="woocommerce-Price-amount amount">
@@ -139,12 +139,15 @@ const Header = (props: Props) => {
                 </span>
               </p>
               <p className="woocommerce-mini-cart__buttons buttons">
-                <a href="cart.html" className="as-btn wc-forward">
+                <Link href="cart.html" className="as-btn wc-forward">
                   View cart
-                </a>{" "}
-                <a href="checkout.html" className="as-btn checkout wc-forward">
+                </Link>{" "}
+                <Link
+                  href="checkout.html"
+                  className="as-btn checkout wc-forward"
+                >
                   Checkout
-                </a>
+                </Link>
               </p>
             </div>
           </div>
@@ -171,9 +174,9 @@ const Header = (props: Props) => {
             <i className="fal fa-times" />
           </button>
           <div className="mobile-logo">
-            <a href="index.html">
+            <Link href="/">
               <img src="assets/img/logo1.png" alt="Prestige Auto Care" />
-            </a>
+            </Link>
           </div>
           <div className="as-mobile-menu">
             <ul>
@@ -203,18 +206,18 @@ const Header = (props: Props) => {
                 <div className="col-auto">
                   <div className="header-social">
                     <span className="social-title">Follow Us:</span>{" "}
-                    <a href="#">
+                    <Link href="#">
                       <i className="fab fa-facebook-f" />
-                    </a>{" "}
-                    <a href="#">
+                    </Link>{" "}
+                    <Link href="#">
                       <i className="fab fa-twitter" />
-                    </a>{" "}
-                    <a href="#">
+                    </Link>{" "}
+                    <Link href="#">
                       <i className="fab fa-linkedin-in" />
-                    </a>{" "}
-                    <a href="#">
+                    </Link>{" "}
+                    <Link href="#">
                       <i className="fab fa-google-plus-g" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -225,9 +228,9 @@ const Header = (props: Props) => {
               <div className="row align-items-center">
                 <div className="col-auto">
                   <div className="logo-style2">
-                    <a href="index.html">
+                    <Link href="/">
                       <img src="assets/img/logo1.png" alt="PrestigeAutoCare" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="col">
@@ -244,9 +247,9 @@ const Header = (props: Props) => {
                                 Make An Email
                               </span>
                               <div className="header-info_link">
-                                <a href="mailto:prestigeautocare@gmail.com">
+                                <Link href="mailto:prestigeautocare@gmail.com">
                                   prestige@gmail.com
-                                </a>
+                                </Link>
                               </div>
                             </div>
                           </div>
@@ -261,7 +264,9 @@ const Header = (props: Props) => {
                                 Call us 24/7
                               </span>
                               <div className="header-info_link">
-                                <a href="tel:+61478033023">+61 478 033 023</a>
+                                <Link href="tel:+61478033023">
+                                  +61 478 033 023
+                                </Link>
                               </div>
                             </div>
                           </div>
@@ -291,12 +296,12 @@ const Header = (props: Props) => {
                         >
                           <i className="fal fa-search" />
                         </button>{" "}
-                        <a
+                        <Link
                           className="icon-btn d-none d-md-inline-block"
                           href="https://www.google.com/maps/@24.7758848,90.4527872,14z"
                         >
                           <i className="fal fa-map-marker-alt" />
-                        </a>{" "}
+                        </Link>{" "}
                         <button
                           onClick={handleShowMobileMenu}
                           className="as-menu-toggle d-inline-block d-lg-none"
@@ -320,158 +325,36 @@ const Header = (props: Props) => {
                     <nav className="main-menu menu-style1 d-none d-lg-block">
                       <ul>
                         <li className="">
-                          <a href="index.html">Home</a>
-                          {/* <ul className="sub-menu">
-                        <li>
-                          <a href="index.html">
-                            Home One <span className="new-label">New</span>
-                          </a>
+                          <Link href="/">Home</Link>
                         </li>
                         <li>
-                          <a href="index-2.html">Home Two</a>
-                        </li>
-                        <li>
-                          <a href="index-3.html">Home Three</a>
-                        </li>
-                        <li>
-                          <a href="index-4.html">
-                            Home Four <span className="new-label">New</span>
-                          </a>
-                        </li>
-                      </ul> */}
-                        </li>
-                        <li>
-                          <a href="About">About</a>
+                          <Link href="About">About</Link>
                         </li>
                         <li className="">
-                          <a href="Services">Service</a>
-                          {/* <ul className="sub-menu">
-                        <li>
-                          <a href="Service">Service</a>
-                        </li>
-                        <li>
-                          <a href="service-details.html">Service Details</a>
-                        </li>
-                      </ul> */}
+                          <Link href="Services">Service</Link>
                         </li>
                         <li className="">
-                          <a href="Shop">Shop</a>
-                          {/* <ul className="sub-menu">
-                        <li>
-                          <a href="blog.html">Blog</a>
-                        </li>
-                        <li>
-                          <a href="blog-details.html">Blog Details</a>
-                        </li>
-                      </ul> */}
+                          <Link href="Shop">Shop</Link>
                         </li>
                         <li className=" mega-menu-wrap">
-                          <a href="Price">Price</a>
-                          {/* <ul className="mega-menu">
-                        <li>
-                          <a href="shop.html">Pagelist 1</a>
-                          <ul>
-                            <li>
-                              <a href="index.html">Home One</a>
-                            </li>
-                            <li>
-                              <a href="index-2.html">Home Two</a>
-                            </li>
-                            <li>
-                              <a href="index-3.html">Home Three</a>
-                            </li>
-                            <li>
-                              <a href="index-4.html">Home Four</a>
-                            </li>
-                            <li>
-                              <a href="about.html">About Us</a>
-                            </li>
-                            <li>
-                              <a href="team.html">Team</a>
-                            </li>
-                          </ul>
+                          <Link href="Price">Price</Link>
                         </li>
                         <li>
-                          <a href="#">Pagelist 2</a>
-                          <ul>
-                            <li>
-                              <a href="team-details.html">Team Details</a>
-                            </li>
-                            <li>
-                              <a href="appointment.html">Appointment</a>
-                            </li>
-                            <li>
-                              <a href="service.html">Service</a>
-                            </li>
-                            <li>
-                              <a href="service-details.html">Service Details</a>
-                            </li>
-                            <li>
-                              <a href="blog.html">Blog</a>
-                            </li>
-                            <li>
-                              <a href="blog-details.html">Blog Details</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <a href="#">Pagelist 3</a>
-                          <ul>
-                            <li>
-                              <a href="shop.html">Shop</a>
-                            </li>
-                            <li>
-                              <a href="shop-details.html">Shop Details</a>
-                            </li>
-                            <li>
-                              <a href="cart.html">Shopping Cart</a>
-                            </li>
-                            <li>
-                              <a href="checkout.html">Checkout</a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html">Wishlist</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <a href="#">Pagelist 4</a>
-                          <ul>
-                            <li>
-                              <a href="pricing.html">Price</a>
-                            </li>
-                            <li>
-                              <a href="faq.html">Faq</a>
-                            </li>
-                            <li>
-                              <a href="project.html">Project</a>
-                            </li>
-                            <li>
-                              <a href="project-details.html">Project Details</a>
-                            </li>
-                            <li>
-                              <a href="contact.html">Contact Us</a>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul> */}
-                        </li>
-                        <li>
-                          <a href="Contact">Contact</a>
+                          <Link href="Contact">Contact</Link>
                         </li>
                       </ul>
                     </nav>
                   </div>
                   <div className="col-auto">
                     <div className="d-flex align-items-center">
-                      <a href="Contact" className="header-link-btn">
+                      <Link href="Contact" className="header-link-btn">
                         <FaMapMarkerAlt
                           color="#fefefe"
                           size={24}
                           style={{ marginRight: 10 }}
                         />
                         Office Location
-                      </a>{" "}
+                      </Link>{" "}
                       <button
                         onClick={handleShowCart}
                         className="simple-icon ms-4 sideMenuToggler"

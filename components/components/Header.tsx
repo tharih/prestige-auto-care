@@ -175,7 +175,7 @@ const Header = (props: Props) => {
           </button>
           <div className="mobile-logo">
             <Link href="/">
-              <img src="assets/img/logo1.png" alt="Prestige Auto Care" />
+              <img src="assets/img/logo1.png" alt="Prestige Auto Care"  />
             </Link>
           </div>
           <div className="as-mobile-menu">

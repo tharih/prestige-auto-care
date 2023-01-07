@@ -11,14 +11,7 @@ type Props = {};
 
 const Header = (props: Props) => {
   const [show, setShow] = useState<boolean>(false);
-  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
-  // useEffect(() => {
-  //   $(document).ready(() => {
-  //     $(window).on("scroll", () => {
-  //
-  //     });
-  //   });
-  // }, []);
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(true);
   const handleShowCart = () => {
     setShow(true);
   };
@@ -35,12 +28,6 @@ const Header = (props: Props) => {
 
   return (
     <>
-      {/* <div className="preloader">
-    <button className="as-btn style3 preloaderCls">Cancel Preloader</button>
-    <div className="preloader-inner">
-      <span className="loader" />
-    </div>
-  </div> */}
       <div
         className={`sidemenu-wrapper d-none d-lg-block ${show ? "show" : ""}`}
       >

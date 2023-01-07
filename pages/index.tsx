@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
+import stylesIndex from "./index.module.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -25,7 +26,7 @@ export default function Home({}: Props) {
   const [CarSolution, count1] = useTypewriter({
     words: ["Car Solution"],
     delaySpeed: 2000,
-    loop: true,
+    loop: false,
   });
   // carousal settings Start
   const settings = {
@@ -165,43 +166,43 @@ export default function Home({}: Props) {
         style={{ maxHeight: "80vh" }}
       >
         <Slider {...settings}>
-          <div style={{ position: "relative" }}>
-            <img
-              src="/assets/img/bg/hero_bg_3_1.jpg"
-              alt="Hero Image"
-              style={{ backgroundSize: "cover" }}
-            />
+          <div className={stylesIndex.imageBG_01}>
             <div className="container">
               <div className="row">
                 <div className="col-lg-12">
-                  <div
-                    className="infetech-banner-content"
-                    style={{ marginTop: "-620px" }}
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      translateY: -300,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      translateY: 0,
+                    }}
+                    transition={{
+                      duration: 1,
+                    }}
+                    className={stylesIndex.bannerContent}
+                    // style={{ marginTop: "-620px" }}
                   >
                     <span
-                      className="hero-subtitle"
+                      className={stylesIndex.heroSubtitle}
                       data-ani="slideindown"
                       data-ani-delay="0.2s"
                     >
                       Non Stop Car Servicing Center
                     </span>
                     <h1
-                      className="hero-title"
+                      className={stylesIndex.heroTitle}
                       data-ani="slideindown"
                       data-ani-delay="0.3s"
-                      style={{ color: "white", fontSize: "80px" }}
                     >
                       {text}
                     </h1>
                     <h1
-                      className="hero-title"
+                      className={stylesIndex.heroTitle}
                       data-ani="slideindown"
                       data-ani-delay="0.4s"
-                      style={{
-                        color: "white",
-                        fontSize: "80px",
-                        marginBottom: "20px",
-                      }}
                     >
                       {CarSolution}
                     </h1>
@@ -214,126 +215,74 @@ export default function Home({}: Props) {
                       Take payments online with a scalable platform that grows
                       with your perfect business.
                     </p>
-                    <a
+                    <motion.a
+                      initial={{
+                        opacity: 0,
+                        translateY: 300,
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        translateY: -20,
+                      }}
+                      transition={{
+                        duration: 1,
+                      }}
                       href="Contact"
                       className="as-btn style3"
                       data-ani="slideindown"
                       data-ani-delay="0.6s"
                     >
                       Get A Quote
-                    </a>
+                    </motion.a>
                     <img
                       className="banner-arrow"
                       data-animation="fadeInRight"
                       data-delay=".9s"
-                      src="assets/images/banner-arrow.png"
+                      src="/assets/images/banner-arrow.png"
                       alt=""
                     />
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div style={{ position: "relative" }}>
-            <img
-              src="/assets/img/bg/hero_bg_3_2.jpg"
-              alt="Hero Image"
-              style={{ backgroundSize: "cover" }}
-            />
-            <div className="container">
-              <div className="row">
-                <div className="col">
-                  <div
-                    className="hero-style3"
-                    style={{
-                      position: "absolute",
-                      zIndex: 2,
-                      top: "30%",
-                      left: "30%",
-                    }}
-                  >
-                    <span
-                      className="hero-subtitle"
-                      data-ani="slideindown"
-                      data-ani-delay="0.2s"
-                    >
-                      Non Stop Car Servicing Center
-                    </span>
-                    <h1
-                      className="hero-title"
-                      data-ani="slideindown"
-                      data-ani-delay="0.3s"
-                    >
-                      Get Your Amazing
-                    </h1>
-                    <h1
-                      className="hero-title"
-                      data-ani="slideindown"
-                      data-ani-delay="0.4s"
-                    >
-                      Car Solution
-                    </h1>
-
-                    <p
-                      className="hero-text"
-                      data-ani="slideindown"
-                      data-ani-delay="0.5s"
-                    >
-                      Take payments online with a scalable platform that grows
-                      with your perfect business.
-                    </p>
-                    <a
-                      href="Contact"
-                      className="as-btn style3"
-                      data-ani="slideindown"
-                      data-ani-delay="0.6s"
-                    >
-                      Get A Quote
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div style={{ position: "relative" }}>
-            <img
-              src="/assets/img/bg/hero_bg_3_3.jpg"
-              alt="Hero Image"
-              style={{ backgroundSize: "cover" }}
-            />
+          <div className={stylesIndex.imageBG_02}>
             <div className="container">
               <div className="row">
                 <div className="col-lg-12">
-                  <div
-                    className="infetech-banner-content"
-                    style={{ marginTop: "-620px" }}
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      scale: 0,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      scale: [1, 1.1, 1],
+                    }}
+                    transition={{
+                      duration: 1,
+                      ease: "easeInOut",
+                    }}
+                    className={stylesIndex.bannerContent}
                   >
                     <span
-                      className="hero-subtitle"
+                      className={stylesIndex.heroSubtitle}
                       data-ani="slideindown"
                       data-ani-delay="0.2s"
                     >
                       Non Stop Car Servicing Center
                     </span>
                     <h1
-                      className="hero-title"
+                      className={stylesIndex.heroTitle}
                       data-ani="slideindown"
                       data-ani-delay="0.3s"
-                      style={{ color: "white", fontSize: "80px" }}
                     >
-                      Get Your Amazing
+                      Get Your Amazing 02
                     </h1>
                     <h1
-                      className="hero-title"
+                      className={stylesIndex.heroTitle}
                       data-ani="slideindown"
                       data-ani-delay="0.4s"
-                      style={{
-                        color: "white",
-                        fontSize: "80px",
-                        marginBottom: "20px",
-                      }}
                     >
                       Car Solution
                     </h1>
@@ -358,10 +307,90 @@ export default function Home({}: Props) {
                       className="banner-arrow"
                       data-animation="fadeInRight"
                       data-delay=".9s"
-                      src="assets/images/banner-arrow.png"
+                      src="/assets/images/banner-arrow.png"
                       alt=""
                     />
-                  </div>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={stylesIndex.imageBG_03}>
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-12 ">
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      translateY: -300,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      translateY: 0,
+                    }}
+                    transition={{
+                      duration: 1,
+                    }}
+                    className={stylesIndex.bannerContent}
+                    // style={{ marginTop: "-620px" }}
+                  >
+                    <span
+                      className={stylesIndex.heroSubtitle}
+                      data-ani="slideindown"
+                      data-ani-delay="0.2s"
+                    >
+                      Non Stop Car Servicing Center
+                    </span>
+                    <h1
+                      className={stylesIndex.heroTitle}
+                      data-ani="slideindown"
+                      data-ani-delay="0.3s"
+                    >
+                      Get Your Amazing 03
+                    </h1>
+                    <h1
+                      className={stylesIndex.heroTitle}
+                      data-ani="slideindown"
+                      data-ani-delay="0.4s"
+                    >
+                      Car Solution
+                    </h1>
+                    <p
+                      className={stylesIndex.heroText}
+                      data-ani="slideindown"
+                      data-ani-delay="0.5s"
+                      style={{ marginBottom: "50px" }}
+                    >
+                      Take payments online with a scalable platform that grows
+                      with your perfect business.
+                    </p>
+                    <motion.a
+                      initial={{
+                        opacity: 0,
+                        translateY: 300,
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        translateY: -20,
+                      }}
+                      transition={{
+                        duration: 1,
+                      }}
+                      href="Contact"
+                      className="as-btn style3"
+                      data-ani="slideindown"
+                      data-ani-delay="0.6s"
+                    >
+                      Get A Quote
+                    </motion.a>
+                    <img
+                      className="banner-arrow"
+                      data-animation="fadeInRight"
+                      data-delay=".9s"
+                      src="/assets/images/banner-arrow.png"
+                      alt=""
+                    />
+                  </motion.div>
                 </div>
               </div>
             </div>

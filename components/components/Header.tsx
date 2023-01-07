@@ -5,7 +5,7 @@ import Link from "next/link";
 import styles from "./Header.module.css";
 import { menuItems } from "../../data/menuItems";
 import SideBarItems from "./SideBarItems";
-// import "jquery-ui-dist/jquery-ui";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 type Props = {};
 
@@ -458,7 +458,11 @@ const Header = (props: Props) => {
                   <div className="col-auto">
                     <div className="d-flex align-items-center">
                       <a href="Contact" className="header-link-btn">
-                        <i className="far fa-map-marker-alt" />
+                        <FaMapMarkerAlt
+                          color="#fefefe"
+                          size={24}
+                          style={{ marginRight: 10 }}
+                        />
                         Office Location
                       </a>{" "}
                       <button

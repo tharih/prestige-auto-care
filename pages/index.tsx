@@ -1,38 +1,35 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from '@next/font/google';
-import styles from '../styles/Home.module.css';
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "@next/font/google";
+import styles from "../styles/Home.module.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { url } from 'inspector';
-import { useEffect } from 'react';
-import { motion } from "framer-motion"
+import { url } from "inspector";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useTypewriter, Cursor, Typewriter } from "react-simple-typewriter";
 // import "jquery-ui-dist/jquery-ui";
 // import  $ from 'jquery';
 
+type Props = {};
+const inter = Inter({ subsets: ["latin"] });
 
-
-type Props = {$:any,this:any}
-
-const inter = Inter({ subsets: ['latin'] })
-
-
-export default function Home({$}: Props) {
-  
+export default function Home({}: Props) {
+  const [text, count] = useTypewriter({
+    words: ["Get Your Amazing"],
+    delaySpeed: 2000,
+    loop: true,
+  });
+  // carousal settings Start
   const settings = {
-
     infinite: true,
-    speed: 5000,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     autoplay: true,
-
-
-
   };
-
   const settings_001 = {
     dots: false,
     infinite: true,
@@ -44,22 +41,6 @@ export default function Home({$}: Props) {
     centerPadding: "60px",
     autoPlay: true,
   };
-
-  const settings_002 = {
-    dots: false,
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 2,
-    speed: 3000,
-    arrows: false,
-    swipeToSlide: true,
-    centerPadding: "60px",
-    autoplay: true,
-    autoplaySpeed: 3000,
-    rows: 1,
-    slidesPerRow: 1,
-  };
-
   const settings_003 = {
     dots: false,
     slidesToShow: 4,
@@ -67,7 +48,6 @@ export default function Home({$}: Props) {
     speed: 500,
     arrows: false,
   };
-
   const settings_004 = {
     dots: false,
     slidesToShow: 2,
@@ -75,15 +55,7 @@ export default function Home({$}: Props) {
     speed: 500,
     arrows: false,
   };
-
-  const settings_005 = {
-    dots: false,
-    slidesToShow: 3,
-    slidesToScroll: 2,
-    speed: 500,
-    arrows: false,
-  };
-
+  // carousal settings End
   return (
     <>
       <div id="QuickView" className="white-popup mfp-hide">
@@ -112,20 +84,23 @@ export default function Home({$}: Props) {
                     aria-label="Rated 5.00 out of 5"
                   >
                     <span style={{ width: "100%" }}>
-                      Rated <strong className="rating">5.00</strong> out of 5 based
-                      on
+                      Rated <strong className="rating">5.00</strong> out of 5
+                      based on
                       <span className="rating">1</span> customer rating
                     </span>
                   </div>
-                  <a href="shop-details.html" className="woocommerce-review-link">
+                  <a
+                    href="shop-details.html"
+                    className="woocommerce-review-link"
+                  >
                     (<span className="count">3</span>
                     customer reviews)
                   </a>
                 </div>
                 <p className="text">
-                  Syndicate customized growth strategies prospective human capital
-                  leverage other's optimal e-markets without transparent catalysts
-                  for change.
+                  Syndicate customized growth strategies prospective human
+                  capital leverage other's optimal e-markets without transparent
+                  catalysts for change.
                 </p>
                 <div className="checklist style3">
                   <ul>
@@ -179,12 +154,17 @@ export default function Home({$}: Props) {
         </div>
       </div>
 
-
-      <div className="as-hero-wrapper hero-slider-3 as-carousel number-dots" style={{ maxHeight: "80vh" }}>
-      
-        <Slider {...settings} >
+      <div
+        className="as-hero-wrapper hero-slider-3 as-carousel number-dots"
+        style={{ maxHeight: "80vh" }}
+      >
+        <Slider {...settings}>
           <div style={{ position: "relative" }}>
-            <img src="/assets/img/bg/hero_bg_3_1.jpg" alt="Hero Image" style={{ backgroundSize: "cover" }} />
+            <img
+              src="/assets/img/bg/hero_bg_3_1.jpg"
+              alt="Hero Image"
+              style={{ backgroundSize: "cover" }}
+            />
             {/* <div className="container" >
               <div className="row">
                 <div className="col">
@@ -202,38 +182,81 @@ export default function Home({$}: Props) {
               </div>
             </div> */}
             <div className="container">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="infetech-banner-content" style={{marginTop:"-620px"}} >
-                        <span className="hero-subtitle" data-ani="slideindown"
-                      data-ani-delay="0.2s">Non Stop Car Servicing Center</span>
-                        <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.3s" style={{color:"white", fontSize:"80px"}}>Get Your Amazing</h1>
-                    <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.4s" style={{color:"white", fontSize:"80px",marginBottom:"20px"}}>Car Solution</h1>
-                            <p className="hero-text" data-ani="slideindown" data-ani-delay="0.5s" style={{marginBottom:"50px"}}>Take payments online with
-                      a scalable platform that grows with your perfect business.</p><a href="Contact"
-                        className="as-btn style3" data-ani="slideindown" data-ani-delay="0.6s">Get A Quote</a>
-                            <img className="banner-arrow" data-animation="fadeInRight" data-delay=".9s" src="assets/images/banner-arrow.png" alt="" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-
-          <div style={{ position: "relative" }}>
-            <img src="/assets/img/bg/hero_bg_3_2.jpg" alt="Hero Image" style={{ backgroundSize: "cover" }} />
-            <div className="container" >
               <div className="row">
-                <div className="col">
-                  <motion.div initial={{ opacity: 0, translateY: -100 }}
-                    animate={{ opacity: 1, translateY: 0 }}
-                    transition={{ duration: 2 }} className="hero-style3" style={{ position: "absolute", zIndex: 2, top: '30%', left: '30%' }}><span className="hero-subtitle" data-ani="slideindown"
-                      data-ani-delay="0.2s">Non Stop Car Servicing Center</span>
-                    <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.3s">Get Your Amazing</h1>
-                    <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.4s">Car Solution</h1>
-                    
-                    <p className="hero-text" data-ani="slideindown" data-ani-delay="0.5s">Take payments online with
-                      a scalable platform that grows with your perfect business.</p><a href="Contact"
-                        className="as-btn style3" data-ani="slideindown" data-ani-delay="0.6s">Get A Quote</a>
+                <div className="col-lg-12">
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      translateY: -600,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      translateY: 0,
+                    }}
+                    transition={{
+                      duration: 2,
+                    }}
+                    className="infetech-banner-content"
+                    style={{ marginTop: "-620px" }}
+                  >
+                    <span
+                      className="hero-subtitle"
+                      data-ani="slideindown"
+                      data-ani-delay="0.2s"
+                    >
+                      Non Stop Car Servicing Center
+                    </span>
+                    <h1
+                      className="hero-title"
+                      data-ani="slideindown"
+                      data-ani-delay="0.3s"
+                      style={{ color: "white", fontSize: "80px" }}
+                    >
+                      {text}
+                    </h1>
+                    <h1
+                      className="hero-title"
+                      data-ani="slideindown"
+                      data-ani-delay="0.4s"
+                      style={{
+                        color: "white",
+                        fontSize: "80px",
+                        marginBottom: "20px",
+                      }}
+                    >
+                      <Typewriter
+                        words={["Car Solution"]}
+                        cursor
+                        cursorStyle="_"
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={1000}
+                      />
+                    </h1>
+                    <p
+                      className="hero-text"
+                      data-ani="slideindown"
+                      data-ani-delay="0.5s"
+                      style={{ marginBottom: "50px" }}
+                    >
+                      Take payments online with a scalable platform that grows
+                      with your perfect business.
+                    </p>
+                    <a
+                      href="Contact"
+                      className="as-btn style3"
+                      data-ani="slideindown"
+                      data-ani-delay="0.6s"
+                    >
+                      Get A Quote
+                    </a>
+                    <img
+                      className="banner-arrow"
+                      data-animation="fadeInRight"
+                      data-delay=".9s"
+                      src="assets/images/banner-arrow.png"
+                      alt=""
+                    />
                   </motion.div>
                 </div>
               </div>
@@ -241,32 +264,153 @@ export default function Home({$}: Props) {
           </div>
 
           <div style={{ position: "relative" }}>
-            <img src="/assets/img/bg/hero_bg_3_3.jpg" alt="Hero Image" style={{ backgroundSize: "cover" }} />
-            <div className="container" >
+            <img
+              src="/assets/img/bg/hero_bg_3_2.jpg"
+              alt="Hero Image"
+              style={{ backgroundSize: "cover" }}
+            />
+            <div className="container">
               <div className="row">
-              <div className="col-lg-12">
-                        <div className="infetech-banner-content" style={{marginTop:"-620px"}} >
-                        <span className="hero-subtitle" data-ani="slideindown"
-                      data-ani-delay="0.2s">Non Stop Car Servicing Center</span>
-                        <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.3s" style={{color:"white", fontSize:"80px"}}>Get Your Amazing</h1>
-                    <h1 className="hero-title" data-ani="slideindown" data-ani-delay="0.4s" style={{color:"white", fontSize:"80px",marginBottom:"20px"}}>Car Solution</h1>
-                            <p className="hero-text" data-ani="slideindown" data-ani-delay="0.5s" style={{marginBottom:"50px"}}>Take payments online with
-                      a scalable platform that grows with your perfect business.</p><a href="Contact"
-                        className="as-btn style3" data-ani="slideindown" data-ani-delay="0.6s">Get A Quote</a>
-                            <img className="banner-arrow" data-animation="fadeInRight" data-delay=".9s" src="assets/images/banner-arrow.png" alt="" />
-                        </div>
-                    </div>
+                <div className="col">
+                  <motion.div
+                    initial={{ opacity: 0, translateY: -100 }}
+                    animate={{ opacity: 1, translateY: 0 }}
+                    transition={{ duration: 2 }}
+                    className="hero-style3"
+                    style={{
+                      position: "absolute",
+                      zIndex: 2,
+                      top: "30%",
+                      left: "30%",
+                    }}
+                  >
+                    <span
+                      className="hero-subtitle"
+                      data-ani="slideindown"
+                      data-ani-delay="0.2s"
+                    >
+                      Non Stop Car Servicing Center
+                    </span>
+                    <h1
+                      className="hero-title"
+                      data-ani="slideindown"
+                      data-ani-delay="0.3s"
+                    >
+                      Get Your Amazing
+                    </h1>
+                    <h1
+                      className="hero-title"
+                      data-ani="slideindown"
+                      data-ani-delay="0.4s"
+                    >
+                      Car Solution
+                    </h1>
+
+                    <p
+                      className="hero-text"
+                      data-ani="slideindown"
+                      data-ani-delay="0.5s"
+                    >
+                      Take payments online with a scalable platform that grows
+                      with your perfect business.
+                    </p>
+                    <a
+                      href="Contact"
+                      className="as-btn style3"
+                      data-ani="slideindown"
+                      data-ani-delay="0.6s"
+                    >
+                      Get A Quote
+                    </a>
+                  </motion.div>
+                </div>
               </div>
             </div>
           </div>
 
-          
-
-         
-
+          <div style={{ position: "relative" }}>
+            <img
+              src="/assets/img/bg/hero_bg_3_3.jpg"
+              alt="Hero Image"
+              style={{ backgroundSize: "cover" }}
+            />
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-12">
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      translateY: -600,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      translateY: 0,
+                    }}
+                    transition={{
+                      duration: 2,
+                    }}
+                    className="infetech-banner-content"
+                    style={{ marginTop: "-620px" }}
+                  >
+                    <span
+                      className="hero-subtitle"
+                      data-ani="slideindown"
+                      data-ani-delay="0.2s"
+                    >
+                      Non Stop Car Servicing Center
+                    </span>
+                    <h1
+                      className="hero-title"
+                      data-ani="slideindown"
+                      data-ani-delay="0.3s"
+                      style={{ color: "white", fontSize: "80px" }}
+                    >
+                      Get Your Amazing
+                    </h1>
+                    <h1
+                      className="hero-title"
+                      data-ani="slideindown"
+                      data-ani-delay="0.4s"
+                      style={{
+                        color: "white",
+                        fontSize: "80px",
+                        marginBottom: "20px",
+                      }}
+                    >
+                      Car Solution
+                    </h1>
+                    <p
+                      className="hero-text"
+                      data-ani="slideindown"
+                      data-ani-delay="0.5s"
+                      style={{ marginBottom: "50px" }}
+                    >
+                      Take payments online with a scalable platform that grows
+                      with your perfect business.
+                    </p>
+                    <a
+                      href="Contact"
+                      className="as-btn style3"
+                      data-ani="slideindown"
+                      data-ani-delay="0.6s"
+                    >
+                      Get A Quote
+                    </a>
+                    <img
+                      className="banner-arrow"
+                      data-animation="fadeInRight"
+                      data-delay=".9s"
+                      src="assets/images/banner-arrow.png"
+                      alt=""
+                    />
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
         </Slider>
       </div>
-       <div
+      <div
         data-slide-show={1}
         data-md-slide-show={1}
         data-fade="true"
@@ -274,19 +418,12 @@ export default function Home({$}: Props) {
         data-xl-dots="true"
         data-ml-dots="true"
         data-lg-dots="true"
+      ></div>
+
+      <section
+        className="space"
+        style={{ backgroundColor: "white", marginTop: "25px" }}
       >
-      </div>
-
-
-
-
-
-
-
-
-
-
-      <section className="space" style={{ backgroundColor: "white", marginTop:"25px" }}>
         <div className="container">
           <div className="title-area text-center">
             <span className="sub-title">Our Best Service</span>
@@ -311,8 +448,9 @@ export default function Home({$}: Props) {
                 <div
                   className="service-block_content"
                   data-bg-src="assets/img/bg/pattern_bg_7.png"
-                  style={{ backgroundImage: `url('assets/img/bg/pattern_bg_7.png')` }}
-
+                  style={{
+                    backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`,
+                  }}
                 >
                   <span className="service-block_number">Service 01</span>
                   <h3 className="service-block_title">
@@ -335,7 +473,9 @@ export default function Home({$}: Props) {
                 <div
                   className="service-block_content"
                   data-bg-src="assets/img/bg/pattern_bg_7.png"
-                  style={{ backgroundImage: `url('assets/img/bg/pattern_bg_7.png')` }}
+                  style={{
+                    backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`,
+                  }}
                 >
                   <span className="service-block_number">Service 02</span>
                   <h3 className="service-block_title">
@@ -358,7 +498,9 @@ export default function Home({$}: Props) {
                 <div
                   className="service-block_content"
                   data-bg-src="assets/img/bg/pattern_bg_7.png"
-                  style={{ backgroundImage: `url('assets/img/bg/pattern_bg_7.png')` }}
+                  style={{
+                    backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`,
+                  }}
                 >
                   <span className="service-block_number">Service 03</span>
                   <h3 className="service-block_title">
@@ -401,9 +543,9 @@ export default function Home({$}: Props) {
         data-overlay="title"
         data-opacity={7}
         style={{ backgroundImage: `url('assets/img/bg/cta_bg_1.jpg')` }}
-      //  style={{backgroundImage:url("assets/img/bg/cta_bg_1.jpg")}}
+        //  style={{backgroundImage:url("assets/img/bg/cta_bg_1.jpg")}}
       >
-        <div className="container" >
+        <div className="container">
           <div className="row align-items-center">
             <div className="col-xl-7 col-lg-6 mb-5 mb-lg-0">
               <div className="title-area mb-0 text-lg-start text-center">
@@ -426,7 +568,10 @@ export default function Home({$}: Props) {
           </div>
         </div>
       </section>
-      <div className="space position-relative overflow-hidden" style={{ backgroundColor: "white" }}>
+      <div
+        className="space position-relative overflow-hidden"
+        style={{ backgroundColor: "white" }}
+      >
         <div className="bg-shape1" />
         <div className="container">
           <div className="row flex-row-reverse">
@@ -499,7 +644,10 @@ export default function Home({$}: Props) {
                   aria-labelledby="nav-one-tab"
                 >
                   <p className="mb-35">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, sapiente nisi magni rem dolore voluptates vero, neque alias fugit nulla praesentium exercitationem eos totam, consequuntur tenetur quasi esse eveniet sequi?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Minus, sapiente nisi magni rem dolore voluptates vero, neque
+                    alias fugit nulla praesentium exercitationem eos totam,
+                    consequuntur tenetur quasi esse eveniet sequi?
                   </p>
                   <div className="pt-40">
                     <div className="about-progress">
@@ -516,7 +664,9 @@ export default function Home({$}: Props) {
                           <div className="progress-value">85%</div>
                         </div>
                       </div>
-                      <h3 className="about-progress_title">Engine Diagnostics</h3>
+                      <h3 className="about-progress_title">
+                        Engine Diagnostics
+                      </h3>
                     </div>
                   </div>
                   <div className="pt-2">
@@ -532,7 +682,10 @@ export default function Home({$}: Props) {
                   aria-labelledby="nav-two-tab"
                 >
                   <p className="mb-35">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem rerum nulla eveniet dolorum beatae quia illum, earum qui? Aperiam est debitis hic, blanditiis unde totam repellendus eaque quos officiis architecto!
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Exercitationem rerum nulla eveniet dolorum beatae quia
+                    illum, earum qui? Aperiam est debitis hic, blanditiis unde
+                    totam repellendus eaque quos officiis architecto!
                   </p>
                   <div className="pt-40">
                     <div className="about-progress">
@@ -565,7 +718,10 @@ export default function Home({$}: Props) {
                   aria-labelledby="nav-three-tab"
                 >
                   <p className="mb-35">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, nostrum sit ratione veritatis praesentium recusandae fugiat ab labore quam nemo earum dolore optio sint, ut cum culpa quaerat aut totam.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Perspiciatis, nostrum sit ratione veritatis praesentium
+                    recusandae fugiat ab labore quam nemo earum dolore optio
+                    sint, ut cum culpa quaerat aut totam.
                   </p>
                   <div className="pt-40">
                     <div className="about-progress">
@@ -574,7 +730,9 @@ export default function Home({$}: Props) {
                           <div className="progress-value">90%</div>
                         </div>
                       </div>
-                      <h3 className="about-progress_title">Build Relationship</h3>
+                      <h3 className="about-progress_title">
+                        Build Relationship
+                      </h3>
                     </div>
                     <div className="about-progress">
                       <div className="progress">
@@ -806,8 +964,8 @@ export default function Home({$}: Props) {
                 <div className="feature-media_content">
                   <h3 className="feature-media_title">24/7 Work Process</h3>
                   <p className="feature-media_text">
-                    Intrinsicly fashion enterprise manuftured products after open
-                    source e-service engage transparent channels.
+                    Intrinsicly fashion enterprise manuftured products after
+                    open source e-service engage transparent channels.
                   </p>
                 </div>
               </div>
@@ -816,8 +974,8 @@ export default function Home({$}: Props) {
                 <div className="feature-media_content">
                   <h3 className="feature-media_title">Expert Team Memebers</h3>
                   <p className="feature-media_text">
-                    Intrinsicly fashion enterprise manuftured products after open
-                    source e-service engage transparent channels.
+                    Intrinsicly fashion enterprise manuftured products after
+                    open source e-service engage transparent channels.
                   </p>
                 </div>
               </div>
@@ -826,8 +984,8 @@ export default function Home({$}: Props) {
                 <div className="feature-media_content">
                   <h3 className="feature-media_title">Quality Time Delivery</h3>
                   <p className="feature-media_text">
-                    Intrinsicly fashion enterprise manuftured products after open
-                    source e-service engage transparent channels.
+                    Intrinsicly fashion enterprise manuftured products after
+                    open source e-service engage transparent channels.
                   </p>
                 </div>
               </div>
@@ -854,7 +1012,6 @@ export default function Home({$}: Props) {
             data-arrows="true"
           >
             <Slider {...settings_003} className="row as-carousel">
-
               <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="as-product">
                   <div className="product-img">
@@ -882,8 +1039,8 @@ export default function Home({$}: Props) {
                       aria-label="Rated 5.00 out of 5"
                     >
                       <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span>
+                        Rated <strong className="rating">5.00</strong> out of 5
+                        based on <span className="rating">1</span>
                         customer rating
                       </span>
                     </div>
@@ -923,8 +1080,8 @@ export default function Home({$}: Props) {
                       aria-label="Rated 5.00 out of 5"
                     >
                       <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span>
+                        Rated <strong className="rating">5.00</strong> out of 5
+                        based on <span className="rating">1</span>
                         customer rating
                       </span>
                     </div>
@@ -962,8 +1119,8 @@ export default function Home({$}: Props) {
                       aria-label="Rated 5.00 out of 5"
                     >
                       <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span>
+                        Rated <strong className="rating">5.00</strong> out of 5
+                        based on <span className="rating">1</span>
                         customer rating
                       </span>
                     </div>
@@ -1001,8 +1158,8 @@ export default function Home({$}: Props) {
                       aria-label="Rated 5.00 out of 5"
                     >
                       <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span>
+                        Rated <strong className="rating">5.00</strong> out of 5
+                        based on <span className="rating">1</span>
                         customer rating
                       </span>
                     </div>
@@ -1040,8 +1197,8 @@ export default function Home({$}: Props) {
                       aria-label="Rated 5.00 out of 5"
                     >
                       <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span>
+                        Rated <strong className="rating">5.00</strong> out of 5
+                        based on <span className="rating">1</span>
                         customer rating
                       </span>
                     </div>
@@ -1079,8 +1236,8 @@ export default function Home({$}: Props) {
                       aria-label="Rated 5.00 out of 5"
                     >
                       <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span>
+                        Rated <strong className="rating">5.00</strong> out of 5
+                        based on <span className="rating">1</span>
                         customer rating
                       </span>
                     </div>
@@ -1118,8 +1275,8 @@ export default function Home({$}: Props) {
                       aria-label="Rated 5.00 out of 5"
                     >
                       <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span>
+                        Rated <strong className="rating">5.00</strong> out of 5
+                        based on <span className="rating">1</span>
                         customer rating
                       </span>
                     </div>
@@ -1157,8 +1314,8 @@ export default function Home({$}: Props) {
                       aria-label="Rated 5.00 out of 5"
                     >
                       <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span>
+                        Rated <strong className="rating">5.00</strong> out of 5
+                        based on <span className="rating">1</span>
                         customer rating
                       </span>
                     </div>
@@ -1196,8 +1353,8 @@ export default function Home({$}: Props) {
                       aria-label="Rated 5.00 out of 5"
                     >
                       <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span>
+                        Rated <strong className="rating">5.00</strong> out of 5
+                        based on <span className="rating">1</span>
                         customer rating
                       </span>
                     </div>
@@ -1235,8 +1392,8 @@ export default function Home({$}: Props) {
                       aria-label="Rated 5.00 out of 5"
                     >
                       <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span>
+                        Rated <strong className="rating">5.00</strong> out of 5
+                        based on <span className="rating">1</span>
                         customer rating
                       </span>
                     </div>
@@ -1274,8 +1431,8 @@ export default function Home({$}: Props) {
                       aria-label="Rated 5.00 out of 5"
                     >
                       <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span>
+                        Rated <strong className="rating">5.00</strong> out of 5
+                        based on <span className="rating">1</span>
                         customer rating
                       </span>
                     </div>
@@ -1313,8 +1470,8 @@ export default function Home({$}: Props) {
                       aria-label="Rated 5.00 out of 5"
                     >
                       <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span>
+                        Rated <strong className="rating">5.00</strong> out of 5
+                        based on <span className="rating">1</span>
                         customer rating
                       </span>
                     </div>
@@ -1352,7 +1509,10 @@ export default function Home({$}: Props) {
                 <div className="price-box-wrap">
                   <div className="price-box">
                     <div className="price-box_img">
-                      <img src="assets/img/price/price_1_1.jpg" alt="price image" />
+                      <img
+                        src="assets/img/price/price_1_1.jpg"
+                        alt="price image"
+                      />
                     </div>
                     <div className="price-box_content">
                       <div className="price-box_header">
@@ -1361,17 +1521,28 @@ export default function Home({$}: Props) {
                       </div>
                       <div className="price-box_list">
                         <ul>
-                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
-                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
-                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
-                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
+                          <li style={{ color: "black" }}>
+                            Rims &amp; Tire Change
+                          </li>
+                          <li style={{ color: "black" }}>
+                            Rims &amp; Tire Change
+                          </li>
+                          <li style={{ color: "black" }}>
+                            Rims &amp; Tire Change
+                          </li>
+                          <li style={{ color: "black" }}>
+                            Rims &amp; Tire Change
+                          </li>
                         </ul>
                       </div>
                     </div>
                   </div>
                   <div className="price-box">
                     <div className="price-box_img">
-                      <img src="assets/img/price/price_1_2.jpg" alt="price image" />
+                      <img
+                        src="assets/img/price/price_1_2.jpg"
+                        alt="price image"
+                      />
                     </div>
                     <div className="price-box_content">
                       <div className="price-box_header">
@@ -1380,10 +1551,18 @@ export default function Home({$}: Props) {
                       </div>
                       <div className="price-box_list">
                         <ul>
-                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
-                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
-                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
-                          <li style={{color:"black"}}>Rims &amp; Tire Change</li>
+                          <li style={{ color: "black" }}>
+                            Rims &amp; Tire Change
+                          </li>
+                          <li style={{ color: "black" }}>
+                            Rims &amp; Tire Change
+                          </li>
+                          <li style={{ color: "black" }}>
+                            Rims &amp; Tire Change
+                          </li>
+                          <li style={{ color: "black" }}>
+                            Rims &amp; Tire Change
+                          </li>
                         </ul>
                       </div>
                     </div>
@@ -1443,7 +1622,7 @@ export default function Home({$}: Props) {
               </div>
             </div>
           </div>
-          <div className="body-shape7" >
+          <div className="body-shape7">
             <img src="assets/img/shape/tier_shape_2.png" alt="shape" />
           </div>
         </div>
@@ -1458,7 +1637,10 @@ export default function Home({$}: Props) {
             <div className="col-md-6 col-lg-3 process-box-wrap">
               <div className="process-box">
                 <div className="process-box_icon">
-                  <img src="assets/img/icon/process_1_1.svg" alt="service image" />
+                  <img
+                    src="assets/img/icon/process_1_1.svg"
+                    alt="service image"
+                  />
                 </div>
                 <h3 className="process-box_title">Identify Issues</h3>
                 <p className="process-box_text">
@@ -1470,7 +1652,10 @@ export default function Home({$}: Props) {
             <div className="col-md-6 col-lg-3 process-box-wrap">
               <div className="process-box">
                 <div className="process-box_icon">
-                  <img src="assets/img/icon/process_1_2.svg" alt="service image" />
+                  <img
+                    src="assets/img/icon/process_1_2.svg"
+                    alt="service image"
+                  />
                 </div>
                 <h3 className="process-box_title">Prepare Solution</h3>
                 <p className="process-box_text">
@@ -1482,7 +1667,10 @@ export default function Home({$}: Props) {
             <div className="col-md-6 col-lg-3 process-box-wrap">
               <div className="process-box">
                 <div className="process-box_icon">
-                  <img src="assets/img/icon/process_1_3.svg" alt="service image" />
+                  <img
+                    src="assets/img/icon/process_1_3.svg"
+                    alt="service image"
+                  />
                 </div>
                 <h3 className="process-box_title">Working On This</h3>
                 <p className="process-box_text">
@@ -1494,7 +1682,10 @@ export default function Home({$}: Props) {
             <div className="col-md-6 col-lg-3 process-box-wrap">
               <div className="process-box">
                 <div className="process-box_icon">
-                  <img src="assets/img/icon/process_1_4.svg" alt="service image" />
+                  <img
+                    src="assets/img/icon/process_1_4.svg"
+                    alt="service image"
+                  />
                 </div>
                 <h3 className="process-box_title">Deliver On Hand</h3>
                 <p className="process-box_text">
@@ -1524,8 +1715,10 @@ export default function Home({$}: Props) {
           // data-sm-dots="true"
           // data-xs-dots="true"
           >
-
-            <Slider {...settings_004} className="row as-carousel" data-slide-show={2}
+            <Slider
+              {...settings_004}
+              className="row as-carousel"
+              data-slide-show={2}
               data-md-slide-show={1}
               data-dots="true"
               data-xl-dots="true"
@@ -1533,13 +1726,16 @@ export default function Home({$}: Props) {
               data-lg-dots="true"
               data-md-dots="true"
               data-sm-dots="true"
-              data-xs-dots="true">
-
+              data-xs-dots="true"
+            >
               <div className="col-md-6 col-lg-4">
                 <div className="testi-grid">
                   <div className="testi-grid_profile">
                     <div className="testi-grid_img">
-                      <img src="assets/img/testimonial/testi_3_1.jpg" alt="Avater" />
+                      <img
+                        src="assets/img/testimonial/testi_3_1.jpg"
+                        alt="Avater"
+                      />
                       <div className="testi-grid_icon">
                         <i className="fas fa-quote-right" />
                       </div>
@@ -1563,7 +1759,10 @@ export default function Home({$}: Props) {
                 <div className="testi-grid">
                   <div className="testi-grid_profile">
                     <div className="testi-grid_img">
-                      <img src="assets/img/testimonial/testi_3_2.jpg" alt="Avater" />
+                      <img
+                        src="assets/img/testimonial/testi_3_2.jpg"
+                        alt="Avater"
+                      />
                       <div className="testi-grid_icon">
                         <i className="fas fa-quote-right" />
                       </div>
@@ -1587,7 +1786,10 @@ export default function Home({$}: Props) {
                 <div className="testi-grid">
                   <div className="testi-grid_profile">
                     <div className="testi-grid_img">
-                      <img src="assets/img/testimonial/testi_3_3.jpg" alt="Avater" />
+                      <img
+                        src="assets/img/testimonial/testi_3_3.jpg"
+                        alt="Avater"
+                      />
                       <div className="testi-grid_icon">
                         <i className="fas fa-quote-right" />
                       </div>
@@ -1749,7 +1951,5 @@ export default function Home({$}: Props) {
       </div>
     </section> */}
     </>
-
-
-  )
+  );
 }

@@ -825,13 +825,13 @@ export default function Home({}: Props) {
                     />
                     <div className="actions">
                       <a href="#QuickView" className="icon-btn popup-content">
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </a>{" "}
                       <a href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </a>
                     </div>
                     <span className="category">Wheel</span>
@@ -866,13 +866,13 @@ export default function Home({}: Props) {
                     />
                     <div className="actions">
                       <a href="#QuickView" className="icon-btn popup-content">
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </a>{" "}
                       <a href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </a>
                     </div>
                     <span className="category">Filter</span>
@@ -905,13 +905,13 @@ export default function Home({}: Props) {
                     />
                     <div className="actions">
                       <a href="#QuickView" className="icon-btn popup-content">
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </a>{" "}
                       <a href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </a>
                     </div>
                     <span className="category">Plug</span>
@@ -944,13 +944,13 @@ export default function Home({}: Props) {
                     />
                     <div className="actions">
                       <a href="#QuickView" className="icon-btn popup-content">
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </a>{" "}
                       <a href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </a>
                     </div>
                     <span className="category">Light</span>
@@ -983,13 +983,13 @@ export default function Home({}: Props) {
                     />
                     <div className="actions">
                       <a href="#QuickView" className="icon-btn popup-content">
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </a>{" "}
                       <a href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </a>
                     </div>
                     <span className="category">Liver</span>
@@ -1022,13 +1022,13 @@ export default function Home({}: Props) {
                     />
                     <div className="actions">
                       <a href="#QuickView" className="icon-btn popup-content">
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </a>{" "}
                       <a href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </a>
                     </div>
                     <span className="category">Break</span>
@@ -1061,13 +1061,13 @@ export default function Home({}: Props) {
                     />
                     <div className="actions">
                       <a href="#QuickView" className="icon-btn popup-content">
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </a>{" "}
                       <a href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </a>
                     </div>
                     <span className="category">Wheel</span>
@@ -1100,13 +1100,13 @@ export default function Home({}: Props) {
                     />
                     <div className="actions">
                       <a href="#QuickView" className="icon-btn popup-content">
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </a>{" "}
                       <a href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </a>
                     </div>
                     <span className="category">Filter</span>
@@ -1139,13 +1139,13 @@ export default function Home({}: Props) {
                     />
                     <div className="actions">
                       <a href="#QuickView" className="icon-btn popup-content">
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </a>{" "}
                       <a href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </a>
                     </div>
                     <span className="category">Plug</span>
@@ -1178,13 +1178,13 @@ export default function Home({}: Props) {
                     />
                     <div className="actions">
                       <a href="#QuickView" className="icon-btn popup-content">
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </a>{" "}
                       <a href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </a>
                     </div>
                     <span className="category">Light</span>
@@ -1217,13 +1217,13 @@ export default function Home({}: Props) {
                     />
                     <div className="actions">
                       <a href="#QuickView" className="icon-btn popup-content">
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </a>{" "}
                       <a href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </a>
                     </div>
                     <span className="category">Liver</span>
@@ -1256,13 +1256,13 @@ export default function Home({}: Props) {
                     />
                     <div className="actions">
                       <a href="#QuickView" className="icon-btn popup-content">
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </a>{" "}
                       <a href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </a>
                     </div>
                     <span className="category">Break</span>

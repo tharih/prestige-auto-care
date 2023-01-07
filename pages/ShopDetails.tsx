@@ -70,10 +70,10 @@ const ShopDetails = (props: Props) => {
                       title="Qty"
                     />{" "}
                     <button className="quantity-plus qty-btn">
-                      <i className="far fa-chevron-up" />
+                      <i className="fa fa-chevron-up" />
                     </button>{" "}
                     <button className="quantity-minus qty-btn">
-                      <i className="far fa-chevron-down" />
+                      <i className="fa fa-chevron-down" />
                     </button>
                   </div>
                   <button className="as-btn">Add to Cart</button>
@@ -190,10 +190,10 @@ const ShopDetails = (props: Props) => {
                       title="Qty"
                     />{" "}
                     <button className="quantity-plus qty-btn">
-                      <i className="far fa-chevron-up" />
+                      <i className="fa fa-chevron-up" />
                     </button>{" "}
                     <button className="quantity-minus qty-btn">
-                      <i className="far fa-chevron-down" />
+                      <i className="fa fa-chevron-down" />
                     </button>
                   </div>
                   <button className="as-btn">Add to Cart</button>
@@ -433,7 +433,7 @@ const ShopDetails = (props: Props) => {
                         className="form-control"
                         defaultValue={""}
                       />{" "}
-                      <i className="text-title far fa-pencil-alt" />
+                      <i className="text-title fa fa-pencil-alt" />
                     </div>
                     <div className="col-md-6 form-group">
                       <input
@@ -441,7 +441,7 @@ const ShopDetails = (props: Props) => {
                         placeholder="Your Name"
                         className="form-control"
                       />{" "}
-                      <i className="text-title far fa-user" />
+                      <i className="text-title fa fa-user" />
                     </div>
                     <div className="col-md-6 form-group">
                       <input
@@ -449,7 +449,7 @@ const ShopDetails = (props: Props) => {
                         placeholder="Your Email"
                         className="form-control"
                       />{" "}
-                      <i className="text-title far fa-envelope" />
+                      <i className="text-title fa fa-envelope" />
                     </div>
                     <div className="col-12 form-group">
                       <input
@@ -496,13 +496,13 @@ const ShopDetails = (props: Props) => {
                         href="#QuickView"
                         className="icon-btn popup-content"
                       >
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </Link>{" "}
                       <Link href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </Link>{" "}
                       <Link href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </Link>
                     </div>
                     <span className="category">Wheel</span>
@@ -540,13 +540,13 @@ const ShopDetails = (props: Props) => {
                         href="#QuickView"
                         className="icon-btn popup-content"
                       >
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </Link>{" "}
                       <Link href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </Link>{" "}
                       <Link href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </Link>
                     </div>
                     <span className="category">Filter</span>
@@ -582,13 +582,13 @@ const ShopDetails = (props: Props) => {
                         href="#QuickView"
                         className="icon-btn popup-content"
                       >
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </Link>{" "}
                       <Link href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </Link>{" "}
                       <Link href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </Link>
                     </div>
                     <span className="category">Plug</span>
@@ -624,13 +624,13 @@ const ShopDetails = (props: Props) => {
                         href="#QuickView"
                         className="icon-btn popup-content"
                       >
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </Link>{" "}
                       <Link href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </Link>{" "}
                       <Link href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </Link>
                     </div>
                     <span className="category">Light</span>
@@ -666,13 +666,13 @@ const ShopDetails = (props: Props) => {
                         href="#QuickView"
                         className="icon-btn popup-content"
                       >
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </Link>{" "}
                       <Link href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </Link>{" "}
                       <Link href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </Link>
                     </div>
                     <span className="category">Liver</span>
@@ -708,13 +708,13 @@ const ShopDetails = (props: Props) => {
                         href="#QuickView"
                         className="icon-btn popup-content"
                       >
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </Link>{" "}
                       <Link href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </Link>{" "}
                       <Link href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </Link>
                     </div>
                     <span className="category">Break</span>
@@ -750,13 +750,13 @@ const ShopDetails = (props: Props) => {
                         href="#QuickView"
                         className="icon-btn popup-content"
                       >
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </Link>{" "}
                       <Link href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </Link>{" "}
                       <Link href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </Link>
                     </div>
                     <span className="category">Wheel</span>
@@ -792,13 +792,13 @@ const ShopDetails = (props: Props) => {
                         href="#QuickView"
                         className="icon-btn popup-content"
                       >
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </Link>{" "}
                       <Link href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </Link>{" "}
                       <Link href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </Link>
                     </div>
                     <span className="category">Filter</span>
@@ -834,13 +834,13 @@ const ShopDetails = (props: Props) => {
                         href="#QuickView"
                         className="icon-btn popup-content"
                       >
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </Link>{" "}
                       <Link href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </Link>{" "}
                       <Link href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </Link>
                     </div>
                     <span className="category">Plug</span>
@@ -876,13 +876,13 @@ const ShopDetails = (props: Props) => {
                         href="#QuickView"
                         className="icon-btn popup-content"
                       >
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </Link>{" "}
                       <Link href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </Link>{" "}
                       <Link href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </Link>
                     </div>
                     <span className="category">Light</span>
@@ -918,13 +918,13 @@ const ShopDetails = (props: Props) => {
                         href="#QuickView"
                         className="icon-btn popup-content"
                       >
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </Link>{" "}
                       <Link href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </Link>{" "}
                       <Link href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </Link>
                     </div>
                     <span className="category">Liver</span>
@@ -960,13 +960,13 @@ const ShopDetails = (props: Props) => {
                         href="#QuickView"
                         className="icon-btn popup-content"
                       >
-                        <i className="far fa-eye" />
+                        <i className="fa fa-eye" />
                       </Link>{" "}
                       <Link href="cart.html" className="icon-btn">
-                        <i className="far fa-cart-plus" />
+                        <i className="fa fa-cart-plus" />
                       </Link>{" "}
                       <Link href="wishlist.html" className="icon-btn">
-                        <i className="far fa-heart" />
+                        <i className="fa fa-heart" />
                       </Link>
                     </div>
                     <span className="category">Break</span>

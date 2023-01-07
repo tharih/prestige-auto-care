@@ -34,7 +34,7 @@ const Header = (props: Props) => {
       >
         <div className="sidemenu-content">
           <button onClick={handleCloseCart} className="closeButton sideMenuCls">
-            <i className="far fa-times" />
+            <i className="fa fa-times" />
           </button>
           <div className="widget woocommerce widget_shopping_cart">
             <h3 className="widget_title">Shopping cart</h3>

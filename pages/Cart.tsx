@@ -257,7 +257,7 @@ const Cart = (props: Props) => {
                         id="flat_rate"
                         name="shipping_method"
                         className="shipping_method"
-                        defaultChecked="checked"
+                        
                       />{" "}
                       <label htmlFor="flat_rate">Flat rate</label>
                     </li>
@@ -274,7 +274,7 @@ const Cart = (props: Props) => {
                         <select className="form-select">
                           <option value="AR">Argentina</option>
                           <option value="AM">Armenia</option>
-                          <option value="BD" selected="selected">
+                          <option value="BD" >
                             Bangladesh
                           </option>
                         </select>

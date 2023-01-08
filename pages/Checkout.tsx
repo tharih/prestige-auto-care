@@ -191,7 +191,7 @@ const Checkout = (props: Props) => {
                 type="checkbox"
                 name="ship_to_different_address"
                 defaultValue={1}
-                defaultChecked="checked"
+               
               />{" "}
               <label htmlFor="ship-to-different-address-checkbox">
                 Ship to a different address? <span className="checkmark" />
@@ -382,7 +382,7 @@ const Checkout = (props: Props) => {
                 className="input-radio"
                 name="payment_method"
                 defaultValue="bacs"
-                defaultChecked="checked"
+                
               />{" "}
               <label htmlFor="payment_method_bacs">Direct bank transfer</label>
               <div className="payment_box payment_method_bacs">

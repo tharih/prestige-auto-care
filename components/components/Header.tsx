@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import $ from "jquery";
 import { AiOutlinePlus } from "react-icons/ai";
 import Link from "next/link";
@@ -6,13 +6,16 @@ import styles from "./Header.module.css";
 import { menuItems } from "../../data/menuItems";
 import SideBarItems from "./SideBarItems";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { useTypewriter, Cursor, Typewriter } from "react-simple-typewriter";
+import { Typewriter } from "react-simple-typewriter";
+import { WhatsAppWidget } from "react-whatsapp-widget";
+import "react-whatsapp-widget/dist/index.css";
 
 type Props = {};
 
 const Header = (props: Props) => {
   const [show, setShow] = useState<boolean>(false);
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const handleShowCart = () => {
     setShow(true);
   };
@@ -26,6 +29,10 @@ const Header = (props: Props) => {
   const handleCloseMobileMenu = () => {
     setShowMobileMenu(false);
   };
+
+  useEffect(() => {
+    setLoading(true);
+  }, [loading]);
 
   return (
     <>
@@ -142,10 +149,7 @@ const Header = (props: Props) => {
                 <Link href="Cart" className="as-btn wc-forward">
                   View cart
                 </Link>{" "}
-                <Link
-                  href="Checkout"
-                  className="as-btn checkout wc-forward"
-                >
+                <Link href="Checkout" className="as-btn checkout wc-forward">
                   Checkout
                 </Link>
               </p>
@@ -175,7 +179,7 @@ const Header = (props: Props) => {
           </button>
           <div className="mobile-logo">
             <Link href="/">
-              <img src="assets/img/logo1.png" alt="Prestige Auto Care"  />
+              <img src="assets/img/logo1.png" alt="Prestige Auto Care" />
             </Link>
           </div>
           <div className="as-mobile-menu">
@@ -189,6 +193,15 @@ const Header = (props: Props) => {
       </div>
       <header className="as-header header-layout3">
         <div className="header-top-area">
+          {loading && (
+            <WhatsAppWidget
+              className={styles._3twZq}
+              open={true}
+              message="Hello!What can we do for you?"
+              phoneNumber="+94768679313"
+              sendButton="Send Message"
+            />
+          )}
           <div className="header-top">
             <div className="container">
               <div className="row justify-content-center justify-content-md-between align-items-center">
@@ -229,7 +242,10 @@ const Header = (props: Props) => {
                 <div className="col-auto">
                   <div className="logo-style2">
                     <Link href="/">
-                      <img src="assets/img/PrestigeLogoWhite.png" alt="PrestigeAutoCare" />
+                      <img
+                        src="assets/img/PrestigeLogoWhite.png"
+                        alt="PrestigeAutoCare"
+                      />
                     </Link>
                   </div>
                 </div>

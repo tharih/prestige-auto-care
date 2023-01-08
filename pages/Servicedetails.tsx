@@ -252,7 +252,7 @@ const Servicedetails = (props: Props) => {
                 </div>
               </div>
             </div>
-            <div
+            {/* <div
               className="widget widget_offer"
               data-bg-src="assets/img/bg/widget_bg_1.jpg"
             >
@@ -275,7 +275,7 @@ const Servicedetails = (props: Props) => {
                   Get A Quote
                 </Link>
               </div>
-            </div>
+            </div> */}
           </aside>
         </div>
       </div>

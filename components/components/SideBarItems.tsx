@@ -15,8 +15,8 @@ const SideBarItems = ({ item }: Props) => {
         className="menu-item-has-children"
         onClick={() => setShowSubmenu(!showSubmenu)}
       >
-        <Link href="#">{item.title} </Link>
-        <ul
+        <Link href={item.name}>{item.title} </Link>
+        {/* <ul
           className={`${styles?.subMenu} ${showSubmenu ? styles.active : ""}`}
         >
           {item.subMenu?.map((sub: any, index: number) => (
@@ -24,7 +24,7 @@ const SideBarItems = ({ item }: Props) => {
               <Link href="#">{sub.title}</Link>
             </li>
           ))}
-        </ul>
+        </ul> */}
       </li>
     </>
   );

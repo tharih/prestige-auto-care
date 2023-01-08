@@ -3523,7 +3523,7 @@ a.text-theme:hover,
 .footer-widget.widget_archive a:before,
 .footer-widget.widget_categories a:before,
 .footer-widget.widget_nav_menu a:before {
-  content: "\f356";
+  /* content: "\f356"; */
   font-weight: 900;
   left: 0;
   top: 0;

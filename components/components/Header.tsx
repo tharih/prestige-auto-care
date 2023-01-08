@@ -139,11 +139,11 @@ const Header = (props: Props) => {
                 </span>
               </p>
               <p className="woocommerce-mini-cart__buttons buttons">
-                <Link href="cart.html" className="as-btn wc-forward">
+                <Link href="Cart" className="as-btn wc-forward">
                   View cart
                 </Link>{" "}
                 <Link
-                  href="checkout.html"
+                  href="Checkout"
                   className="as-btn checkout wc-forward"
                 >
                   Checkout

@@ -64,3 +64,122 @@
     text-align: center;
   }
 }
+
+.pcspace,
+.pcspace-top {
+  padding-top: var(--section-space);
+}
+.pcspace,
+.pcspace-bottom {
+  padding-bottom: var(--section-space);
+}
+.pcspace-extra,
+.pcspace-extra-top {
+  padding-top: calc(var(--section-space) - 30px);
+}
+.pcspace-extra,
+.pcspace-extra-bottom {
+  padding-bottom: calc(var(--section-space) - 30px);
+}
+.pcspace-extra2,
+.pcspace-extra2-top {
+  padding-top: calc(var(--section-space) - 40px);
+}
+.pcspace-extra2,
+.pcspace-extra2-bottom {
+  padding-bottom: calc(var(--section-space) - 40px);
+}
+@media (max-width: 991px) {
+  .pcspace,
+  .pcspace-top {
+    padding-top: var(--section-space-mobile);
+    display: none;
+  }
+  .pcspace,
+  .pcspace-bottom {
+    padding-bottom: var(--section-space-mobile);
+  }
+  .pcspace-extra,
+  .pcspace-extra-top {
+    padding-top: calc(var(--section-space-mobile) - 30px);
+  }
+  .pcspace-extra,
+  .pcspace-extra-bottom {
+    padding-bottom: calc(var(--section-space-mobile) - 30px);
+  }
+  .pcspace-top-md-none {
+    padding-top: 0;
+  }
+  .pcspace-extra2,
+  .pcspace-extra2-top {
+    padding-top: 70px;
+  }
+  .pcspace-extra2,
+  .pcspace-extra2-bottom {
+    padding-bottom: 70px;
+  }
+}
+
+.mobilespace,
+.mobilespace-top {
+  padding-top: var(--section-space);
+  
+}
+.mobilespace,
+.mobilespace-bottom {
+  padding-bottom: var(--section-space);
+}
+.mobilespace-extra,
+.mobilespace-extra-top {
+  padding-top: calc(var(--section-space) - 30px);
+}
+.mobilespace-extra,
+.mobilespace-extra-bottom {
+  padding-bottom: calc(var(--section-space) - 30px);
+}
+.mobilespace-extra2,
+.mobilespace-extra2-top {
+  padding-top: calc(var(--section-space) - 40px);
+}
+.mobilespace-extra2,
+.mobilespace-extra2-bottom {
+  padding-bottom: calc(var(--section-space) - 40px);
+}
+@media (min-width: 992px) {
+  .mobilespace,
+  .mobilespace-top {
+    padding-top: var(--section-space-mobile);
+    display: none;
+  }
+}
+@media (max-width: 991px) {
+  .mobilespace,
+  .mobilespace-top {
+    padding-top: var(--section-space-mobile);
+    
+  }
+  .mobilespace,
+  .mobilespace-bottom {
+    padding-bottom: var(--section-space-mobile);
+  }
+  .mobilespace-extra,
+  .mobilespace-extra-top {
+    padding-top: calc(var(--section-space-mobile) - 30px);
+  }
+  .mobilespace-extra,
+  .mobilespace-extra-bottom {
+    padding-bottom: calc(var(--section-space-mobile) - 30px);
+  }
+  .mobilespace-top-md-none {
+    padding-top: 0;
+  }
+  .mobilespace-extra2,
+  .mobilespace-extra2-top {
+    padding-top: 70px;
+  }
+  .mobilespace-extra2,
+  .mobilespace-extra2-bottom {
+    padding-bottom: 70px;
+  }
+}
+

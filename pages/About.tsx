@@ -1,11 +1,15 @@
 import Link from 'next/link';
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet';
+import { AiOutlineClose } from 'react-icons/ai';
 import Slider from 'react-slick';
+import stylesIndex from "./index.module.css";
 
 type Props = {}
 
 export default function About() {
+  const [showVideoPlayer, setShowVideoPlayer] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
     const settings_002 = {
         dots: false,
         infinite: true,
@@ -19,6 +23,12 @@ export default function About() {
         autoplaySpeed: 3000,
         rows: 1,
         slidesPerRow: 1,
+      };
+      const handleShowVideoPlayer = () => {
+        setShowVideoPlayer(true);
+      };
+      const handleCloseVideoPlayer = () => {
+        setShowVideoPlayer(false);
       };
   return (
     <>
@@ -128,18 +138,40 @@ export default function About() {
   >
   </section>
   <div className="circle-bg space-bottom bg-smoke" />
-  <div className="bg-title position-relative overflow-hidden">
+   <div className="bg-title position-relative overflow-hidden">
     <div className="row">
       <div className="col-xl-6">
-        <div className="as-video style1">
-          <img src="assets/img/prestige/1.jpg" alt="Video Image" />{" "}
-          <Link
-            href="assets/img/prestige/26.mp4"
-            className="play-btn popup-video"
-          >
-            <i className="fas fa-play" />
-          </Link>
-        </div>
+      <div className="as-video style1">
+              {showVideoPlayer && (
+                <div
+                  className={`${stylesIndex.videoPlayerBG} ${
+                    showVideoPlayer ? stylesIndex.videPlayerShow : ""
+                  }`}
+                >
+                  <div className={stylesIndex.CloseIcon}>
+                    <AiOutlineClose onClick={handleCloseVideoPlayer} />
+                  </div>
+                  <div className={stylesIndex.videoPlayer}>
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src="https://www.youtube.com/embed/vlDOjTaaEdA"
+                      title="YouTube video player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      frameBorder="0"
+                    ></iframe>
+                  </div>
+                </div>
+              )}
+              <img src="assets/img/prestige/1.jpg" alt="Video Image" />
+              <div
+                className="play-btn popup-video"
+                onClick={handleShowVideoPlayer}
+              >
+                <i className="fas fa-play" />
+              </div>
+            </div>
       </div>
       <div className="col-xl-6">
         <div className="feature-media-wrap space">

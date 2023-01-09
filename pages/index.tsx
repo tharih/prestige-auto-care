@@ -598,7 +598,7 @@ export default function Home({}: Props) {
             <div className="col-xl-6">
               <div className="img-box-3">
                 <div className="img1">
-                  <img src="assets/img/normal/about_4_1.jpg" alt="About" />
+                  <img src="assets/img/prestige/29.jpg" alt="About" />
                 </div>
                 <div className="img2">
                   <div className="as-experience style3">

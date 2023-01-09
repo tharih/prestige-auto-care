@@ -9,7 +9,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 import { WhatsAppWidget } from "react-whatsapp-widget";
 import "react-whatsapp-widget/dist/index.css";
-
+import { FloatingWhatsApp } from "react-floating-whatsapp";
 type Props = {};
 
 const Header = (props: Props) => {
@@ -31,7 +31,9 @@ const Header = (props: Props) => {
   };
 
   useEffect(() => {
-    setLoading(true);
+    setTimeout(() => {
+      setLoading(true);
+    }, 5000);
   }, [loading]);
 
   return (
@@ -194,13 +196,26 @@ const Header = (props: Props) => {
       <header className="as-header header-layout3">
         <div className="header-top-area">
           {loading && (
-            <WhatsAppWidget
-              className={styles._3twZq}
-              open={true}
-              message="Hello!What can we do for you?"
-              phoneNumber="+94768679313"
-              sendButton="Send Message"
-            />
+            <>
+              {/* <WhatsAppWidget
+                class=""
+                message="Hello!What can we do for you?"
+                phoneNumber="+94768679313"
+                sendButton="Send Message"
+              /> */}
+              <FloatingWhatsApp
+                style={{
+                  backgroundColor: "#f5222d",
+                }}
+                allowClickAway
+                buttonStyle={{ backgroundColor: "#f5222d", bottom: "50%" }}
+                darkMode
+                notificationSound
+                phoneNumber={"+94768679313"}
+                accountName={"Prestige Auto Care"}
+                avatar="assets/img/PrestigeLogoWhite.png"
+              />
+            </>
           )}
           <div className="header-top">
             <div className="container">

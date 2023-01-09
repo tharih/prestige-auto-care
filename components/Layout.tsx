@@ -13,10 +13,8 @@ const Layout = ({ children }: Props) => {
   const scrollTop = () => {
     if (window.scrollY > 100) {
       setShowScrollBtn(true);
-      console.log(showScrollBtn);
     } else {
       setShowScrollBtn(false);
-      console.log(showScrollBtn);
     }
   };
   useEffect(() => {

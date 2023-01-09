@@ -11,13 +11,15 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTypewriter, Cursor, Typewriter } from "react-simple-typewriter";
 import Link from "next/link";
-// import "jquery-ui-dist/jquery-ui";
-// import  $ from 'jquery';
-
+import { AiOutlineClose } from "react-icons/ai";
+import ReactPlayer from "react-player";
+import { Helmet } from "react-helmet";
 type Props = {};
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({}: Props) {
+  const [showVideoPlayer, setShowVideoPlayer] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [text, count] = useTypewriter({
     words: ["Get Your Amazing"],
     delaySpeed: 2000,
@@ -62,6 +64,23 @@ export default function Home({}: Props) {
     slidesToScroll: 1,
     speed: 500,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   const settings_005 = {
     dots: false,
@@ -71,8 +90,23 @@ export default function Home({}: Props) {
     arrows: false,
   };
   // carousal settings End
+
+  const handleShowVideoPlayer = () => {
+    setShowVideoPlayer(true);
+  };
+  const handleCloseVideoPlayer = () => {
+    setShowVideoPlayer(false);
+  };
   return (
     <>
+      <Helmet>
+                        
+        <meta charSet="utf-8" />
+                        <title>Home</title>
+        <meta name="description" content="Get your amazing Car Solutions Prestige Auto care" />
+                        
+                    
+      </Helmet>
       <div id="QuickView" className="white-popup mfp-hide">
         <div className="container bg-white">
           <div className="row gx-60">
@@ -435,10 +469,7 @@ export default function Home({}: Props) {
             <div className="col-md-6 col-lg-4">
               <div className="service-block">
                 <div className="service-block_img">
-                  <img
-                    src="assets/img/prestige/24.jpg"
-                    alt="service image"
-                  />
+                  <img src="assets/img/prestige/24.jpg" alt="service image" />
                 </div>
                 <div
                   className="service-block_content"
@@ -460,10 +491,7 @@ export default function Home({}: Props) {
             <div className="col-md-6 col-lg-4">
               <div className="service-block">
                 <div className="service-block_img">
-                  <img
-                    src="assets/img/prestige/17.jpg"
-                    alt="service image"
-                  />
+                  <img src="assets/img/prestige/17.jpg" alt="service image" />
                 </div>
                 <div
                   className="service-block_content"
@@ -485,10 +513,7 @@ export default function Home({}: Props) {
             <div className="col-md-6 col-lg-4">
               <div className="service-block">
                 <div className="service-block_img">
-                  <img
-                    src="assets/img/prestige/6.jpg"
-                    alt="service image"
-                  />
+                  <img src="assets/img/prestige/6.jpg" alt="service image" />
                 </div>
                 <div
                   className="service-block_content"
@@ -659,9 +684,7 @@ export default function Home({}: Props) {
                           <div className="progress-value">85%</div>
                         </div>
                       </div>
-                      <h3 className="about-progress_title">
-                        Panel & Paint
-                      </h3>
+                      <h3 className="about-progress_title">Panel & Paint</h3>
                     </div>
                   </div>
                   <div className="pt-2">
@@ -755,13 +778,35 @@ export default function Home({}: Props) {
         <div className="row">
           <div className="col-xl-6">
             <div className="as-video style1">
-              <img src="assets/img/prestige/1.jpg" alt="Video Image" />{" "}
-              <Link
-                href="assets/img/prestige/26.mp4"
+              {showVideoPlayer && (
+                <div
+                  className={`${stylesIndex.videoPlayerBG} ${
+                    showVideoPlayer ? stylesIndex.videPlayerShow : ""
+                  }`}
+                >
+                  <div className={stylesIndex.CloseIcon}>
+                    <AiOutlineClose onClick={handleCloseVideoPlayer} />
+                  </div>
+                  <div className={stylesIndex.videoPlayer}>
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src="https://www.youtube.com/embed/vlDOjTaaEdA"
+                      title="YouTube video player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      frameBorder="0"
+                    ></iframe>
+                  </div>
+                </div>
+              )}
+              <img src="assets/img/prestige/1.jpg" alt="Video Image" />
+              <div
                 className="play-btn popup-video"
+                onClick={handleShowVideoPlayer}
               >
                 <i className="fas fa-play" />
-              </Link>
+              </div>
             </div>
           </div>
           <div className="col-xl-6">
@@ -807,7 +852,10 @@ export default function Home({}: Props) {
           <img src="assets/img/shape/shape_2.png" alt="shape" />
         </div>
       </div>
-      <section className={stylesIndex.pcspace} style={{ backgroundColor: "white" }}>
+      <section
+        className={stylesIndex.pcspace}
+        style={{ backgroundColor: "white" }}
+      >
         <div className="container">
           <div className="title-area text-center">
             <span className="sub-title">Popular Products</span>
@@ -1298,9 +1346,11 @@ export default function Home({}: Props) {
         </div>
       </section>
 
-
       {/* Mobile view  */}
-      <section className={stylesIndex.mobilespace} style={{ backgroundColor: "white" }}>
+      <section
+        className={stylesIndex.mobilespace}
+        style={{ backgroundColor: "white" }}
+      >
         <div className="container">
           <div className="title-area text-center">
             <span className="sub-title">Popular Products</span>
@@ -1791,7 +1841,6 @@ export default function Home({}: Props) {
         </div>
       </section>
 
-
       <section className="" style={{ backgroundColor: "white" }}>
         <div className="as-container3 space bg-title position-relative">
           <div className="container">
@@ -1815,10 +1864,7 @@ export default function Home({}: Props) {
                 <div className="price-box-wrap">
                   <div className="price-box">
                     <div className="price-box_img">
-                      <img
-                        src="assets/img/prestige/28.jpg"
-                        alt="price image"
-                      />
+                      <img src="assets/img/prestige/28.jpg" alt="price image" />
                     </div>
                     <div className="price-box_content">
                       <div className="price-box_header">
@@ -1873,7 +1919,6 @@ export default function Home({}: Props) {
                       </div>
                     </div>
                   </div>
-                 
                 </div>
               </div>
               <div className="col-xl-4">
@@ -1892,7 +1937,6 @@ export default function Home({}: Props) {
                       <i className="fal fa-truck-pickup" />
                     </div>
                     <div className="price-card_content">
-                     
                       <Link href="Price" className="as-btn">
                         Purchase Now
                       </Link>
@@ -1999,7 +2043,7 @@ export default function Home({}: Props) {
           >
             <Slider
               {...settings_004}
-              className="row as-carousel"
+              className=""
               data-slide-show={2}
               data-md-slide-show={1}
               data-dots="true"
@@ -2098,7 +2142,7 @@ export default function Home({}: Props) {
           <img src="assets/img/shape/road_shape_1.png" alt="shape" />
         </div>
       </section>
-      
+
       {/* <section className="space blog-sec" style={{backgroundColor:"white"}}>
       <div className="container">
         <div className="title-area text-center">

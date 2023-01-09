@@ -24,7 +24,6 @@
   object-fit: cover;
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 .bannerContent {
   display: flex;
@@ -41,6 +40,86 @@
   font-style: italic;
   color: white;
 }
+.videoPlayerBG {
+  z-index: 999;
+  width: 100%;
+  height: 0px;
+  overflow: hidden;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: (translate(-50%, -50%));
+  background-color: black;
+  padding: 20px;
+  background-color: #fff;
+  display: flex;
+  justify-items: center;
+  transition: all 2s ease-in-out;
+  -webkit-transition: all ease 0.8s;
+  transition-delay: 1s;
+  visibility: hidden;
+  opacity: 0;
+}
+.videoPlayer {
+  flex: 1;
+}
+.videPlayerShow {
+  height: 500px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.CloseIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  background-color: #f5222d;
+  border-radius: 100px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+.CloseIcon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background-color: #ea6e74;
+  z-index: -1;
+  border-radius: 100px;
+  animation: circles 2s infinite;
+}
+@keyframes circles {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 1;
+  }
+  30% {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+  }
+  50% {
+    width: 35px;
+    height: 35px;
+    opacity: 1;
+  }
+  100% {
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+  }
+}
 @media screen and (max-width: 768px) {
   .bannerContent {
     display: flex;
@@ -54,6 +133,14 @@
   }
   .heroText {
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .videoPlayerBG {
+    top: 10%;
+    left: 0%;
+    height: 300px;
   }
 }
 @media screen and (max-width: 467px) {
@@ -130,7 +217,6 @@
 .mobilespace,
 .mobilespace-top {
   padding-top: var(--section-space);
-  
 }
 .mobilespace,
 .mobilespace-bottom {
@@ -163,7 +249,6 @@
   .mobilespace,
   .mobilespace-top {
     padding-top: var(--section-space-mobile);
-    
   }
   .mobilespace,
   .mobilespace-bottom {
@@ -189,4 +274,3 @@
     padding-bottom: 70px;
   }
 }
-

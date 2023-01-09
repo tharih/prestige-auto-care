@@ -1,11 +1,20 @@
 import Link from "next/link";
 import React from "react";
+import { Helmet } from "react-helmet";
 
 type Props = {};
 
 export default function Services({}: Props) {
   return (
     <>
+     <Helmet>
+                        
+        <meta charSet="utf-8" />
+                        <title>Home</title>
+        <meta name="description" content="Get your amazing Car Solutions Prestige Auto care" />
+                        
+                    
+      </Helmet>
       <div
         className="breadcumb-wrapper"
         data-bg-src="assets/img/breadcumb/breadcumb-bg.jpg"

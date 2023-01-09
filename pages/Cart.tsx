@@ -1,10 +1,19 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 type Props = {}
 
 const Cart = (props: Props) => {
   return (
     <>
+     <Helmet>
+                        
+        <meta charSet="utf-8" />
+                        <title>Home</title>
+        <meta name="description" content="Get your amazing Car Solutions Prestige Auto care" />
+                        
+                    
+      </Helmet>
   <div
     className="breadcumb-wrapper"
     style={{ backgroundImage: `url('assets/img/bg/cta_bg_1.jpg')`}}

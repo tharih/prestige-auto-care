@@ -1,11 +1,20 @@
 import Link from "next/link";
 import React from "react";
+import { Helmet } from "react-helmet";
 
 type Props = {};
 
 const ShopDetails = (props: Props) => {
   return (
     <>
+     <Helmet>
+                        
+        <meta charSet="utf-8" />
+                        <title>Home</title>
+        <meta name="description" content="Get your amazing Car Solutions Prestige Auto care" />
+                        
+                    
+      </Helmet>
       <div id="QuickView" className="white-popup mfp-hide">
         <div className="container bg-white">
           <div className="row gx-60">

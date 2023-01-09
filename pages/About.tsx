@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react'
+import { Helmet } from 'react-helmet';
 import Slider from 'react-slick';
 
 type Props = {}
@@ -21,6 +22,14 @@ export default function About() {
       };
   return (
     <>
+     <Helmet>
+                        
+        <meta charSet="utf-8" />
+                        <title>Home</title>
+        <meta name="description" content="Get your amazing Car Solutions Prestige Auto care" />
+                        
+                    
+      </Helmet>
   <div
     className="breadcumb-wrapper"
     data-bg-src=""

@@ -140,14 +140,14 @@ const Footer = (props: Props) => {
             <div className="row justify-content-between align-items-center">
               <div className="col-lg-8 text-center text-lg-start">
                 <p className="copyright-text">
-                  Powered By <i className="fal fa-copyright" /> 2023{" "}
+                Copyright <i className="fal fa-copyright" /> 2023{" "}
                   <Link
                     className="text-white"
                     href="#"
                   >
-                    Brilhante Group
+                    Prestige-Auto-Care
                   </Link>
-                  . All Rights Reserved.
+                  | Powered by Brilhante Group
                 </p>
               </div>
               <div className="col-auto d-none d-lg-block">

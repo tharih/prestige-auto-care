@@ -34,10 +34,10 @@ export const menuItems = [
       // },
     // ],
   },
-  {
-    title: "Price",
-    name:"Price"
-  },
+  // {
+  //   title: "Price",
+  //   name:"Price"
+  // },
   {
     title: "Contact",
     name:"Contact"

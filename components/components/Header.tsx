@@ -352,9 +352,9 @@ const Header = (props: Props) => {
                         <li className="">
                           <Link href="Shop">Shop</Link>
                         </li>
-                        <li className=" mega-menu-wrap">
+                        {/* <li className=" mega-menu-wrap">
                           <Link href="Price">Price</Link>
-                        </li>
+                        </li> */}
                         <li>
                           <Link href="Contact">Contact</Link>
                         </li>

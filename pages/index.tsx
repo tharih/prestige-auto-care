@@ -1843,7 +1843,7 @@ export default function Home({}: Props) {
         </div>
       </section>
 
-      <section className="" style={{ backgroundColor: "white" }}>
+      {/* <section className="" style={{ backgroundColor: "white" }}>
         <div className="as-container3 space bg-title position-relative">
           <div className="container">
             <div className="row justify-content-lg-between justify-content-center align-items-center">
@@ -1952,7 +1952,7 @@ export default function Home({}: Props) {
             <img src="assets/img/shape/tier_shape_2.png" alt="shape" />
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="space" style={{ backgroundColor: "white" }}>
         <div className="container">

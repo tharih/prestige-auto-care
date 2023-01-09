@@ -436,7 +436,7 @@ export default function Home({}: Props) {
               <div className="service-block">
                 <div className="service-block_img">
                   <img
-                    src="assets/img/service/service_4_1.jpg"
+                    src="assets/img/prestige/24.jpg"
                     alt="service image"
                   />
                 </div>
@@ -461,7 +461,7 @@ export default function Home({}: Props) {
               <div className="service-block">
                 <div className="service-block_img">
                   <img
-                    src="assets/img/service/service_4_2.jpg"
+                    src="assets/img/prestige/17.jpg"
                     alt="service image"
                   />
                 </div>
@@ -486,7 +486,7 @@ export default function Home({}: Props) {
               <div className="service-block">
                 <div className="service-block_img">
                   <img
-                    src="assets/img/service/service_4_3.jpg"
+                    src="assets/img/prestige/6.jpg"
                     alt="service image"
                   />
                 </div>
@@ -582,7 +582,7 @@ export default function Home({}: Props) {
                     </h3>
                     <h4 className="experience-text">Years Of Experience</h4>
                   </div>
-                  <img src="assets/img/normal/about_4_2.jpg" alt="About" />
+                  <img src="assets/img/prestige/7.jpg" alt="About" />
                 </div>
               </div>
             </div>
@@ -651,7 +651,7 @@ export default function Home({}: Props) {
                           <div className="progress-value">90%</div>
                         </div>
                       </div>
-                      <h3 className="about-progress_title">Engine Solution</h3>
+                      <h3 className="about-progress_title">Mechanical</h3>
                     </div>
                     <div className="about-progress">
                       <div className="progress">
@@ -660,7 +660,7 @@ export default function Home({}: Props) {
                         </div>
                       </div>
                       <h3 className="about-progress_title">
-                        Engine Diagnostics
+                        Panel & Paint
                       </h3>
                     </div>
                   </div>
@@ -755,9 +755,9 @@ export default function Home({}: Props) {
         <div className="row">
           <div className="col-xl-6">
             <div className="as-video style1">
-              <img src="assets/img/normal/video_2.jpg" alt="Video Image" />{" "}
+              <img src="assets/img/prestige/1.jpg" alt="Video Image" />{" "}
               <Link
-                href="https://www.youtube.com/watch?v=_sI_Ps7JSEk"
+                href="assets/img/prestige/26.mp4"
                 className="play-btn popup-video"
               >
                 <i className="fas fa-play" />
@@ -1816,7 +1816,7 @@ export default function Home({}: Props) {
                   <div className="price-box">
                     <div className="price-box_img">
                       <img
-                        src="assets/img/price/price_1_1.jpg"
+                        src="assets/img/prestige/28.jpg"
                         alt="price image"
                       />
                     </div>
@@ -1873,25 +1873,7 @@ export default function Home({}: Props) {
                       </div>
                     </div>
                   </div>
-                  {/* <div className="price-box">
-                  <div className="price-box_img">
-                    <img src="assets/img/price/price_1_3.jpg" alt="price image" />
-                  </div>
-                  <div className="price-box_content">
-                    <div className="price-box_header">
-                      <h3 className="price-box_title">Wheel Servicing</h3>
-                      <h4 className="price-box_price">$299.00</h4>
-                    </div>
-                    <div className="price-box_list">
-                      <ul>
-                        <li>Rims &amp; Tire Change</li>
-                        <li>Rims &amp; Tire Change</li>
-                        <li>Rims &amp; Tire Change</li>
-                        <li>Rims &amp; Tire Change</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div> */}
+                 
                 </div>
               </div>
               <div className="col-xl-4">
@@ -1910,15 +1892,7 @@ export default function Home({}: Props) {
                       <i className="fal fa-truck-pickup" />
                     </div>
                     <div className="price-card_content">
-                      {/* <div className="checklist">
-                      <ul>
-                        <li>Rims &amp; Tire Change</li>
-                        <li>Interior Cleaning</li>
-                        <li>Wipe all Surfaces</li>
-                        <li>Leather Clean &amp; Dry</li>
-                        <li>Light Carpet Clean</li>
-                      </ul>
-                    </div> */}
+                     
                       <Link href="Price" className="as-btn">
                         Purchase Now
                       </Link>
@@ -2005,7 +1979,7 @@ export default function Home({}: Props) {
         </div>
       </section>
 
-      {/* <section className="position-relative bg-smoke space-top space-extra-bottom">
+      <section className="position-relative bg-smoke space-top space-extra-bottom">
         <div className="container">
           <div className="title-area text-center">
             <span className="sub-title">Our Happy Customers</span>
@@ -2123,7 +2097,7 @@ export default function Home({}: Props) {
         <div className="body-shape1">
           <img src="assets/img/shape/road_shape_1.png" alt="shape" />
         </div>
-      </section> */}
+      </section>
       
       {/* <section className="space blog-sec" style={{backgroundColor:"white"}}>
       <div className="container">

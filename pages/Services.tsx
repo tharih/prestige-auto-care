@@ -34,7 +34,7 @@ export default function Services({}: Props) {
               <div className="service-grid">
                 <div className="service-grid_img">
                   <img
-                    src="assets/img/service/service_3_1.jpg"
+                    src="assets/img/prestige/24.jpg"
                     alt="service image"
                   />
                 </div>
@@ -56,7 +56,7 @@ export default function Services({}: Props) {
               <div className="service-grid">
                 <div className="service-grid_img">
                   <img
-                    src="assets/img/service/service_3_2.jpg"
+                    src="assets/img/prestige/20.jpg"
                     alt="service image"
                   />
                 </div>
@@ -78,7 +78,7 @@ export default function Services({}: Props) {
               <div className="service-grid">
                 <div className="service-grid_img">
                   <img
-                    src="assets/img/service/service_3_3.jpg"
+                    src="assets/img/prestige/6.jpg"
                     alt="service image"
                   />
                 </div>

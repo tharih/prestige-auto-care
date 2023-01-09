@@ -123,9 +123,9 @@ export default function About() {
     <div className="row">
       <div className="col-xl-6">
         <div className="as-video style1">
-          <img src="assets/img/normal/video_2.jpg" alt="Video Image" />{" "}
+          <img src="assets/img/prestige/1.jpg" alt="Video Image" />{" "}
           <Link
-            href="https://www.youtube.com/watch?v=_sI_Ps7JSEk"
+            href="assets/img/prestige/26.mp4"
             className="play-btn popup-video"
           >
             <i className="fas fa-play" />

@@ -32,22 +32,22 @@ const Footer = (props: Props) => {
                   <div className="menu-all-pages-container">
                     <ul className="menu">
                       <li>
-                        <Link href="about.html">About Company</Link>
+                        <Link href="About">About Company</Link>
                       </li>
                       <li>
-                        <Link href="project.html">Work Gallery</Link>
+                        <Link href="#">Work Gallery</Link>
                       </li>
                       <li>
-                        <Link href="service.html">Client Feedback</Link>
+                        <Link href="#">Client Feedback</Link>
                       </li>
                       <li>
-                        <Link href="service.html">Our Services</Link>
+                        <Link href="Services">Our Services</Link>
                       </li>
                       <li>
-                        <Link href="team.html">Our Team</Link>
+                        <Link href="#">Our Team</Link>
                       </li>
                       <li>
-                        <Link href="contact.html">Contact Us</Link>
+                        <Link href="Contact">Contact Us</Link>
                       </li>
                     </ul>
                   </div>
@@ -59,7 +59,7 @@ const Footer = (props: Props) => {
                   <div className="recent-post-wrap">
                     <div className="recent-post">
                       <div className="media-img">
-                        <Link href="blog-details.html">
+                        <Link href="#">
                           <img
                             src="assets/img/blog/recent-post-1-2.jpg"
                             alt="Blog Image"
@@ -85,7 +85,7 @@ const Footer = (props: Props) => {
                     </div>
                     <div className="recent-post">
                       <div className="media-img">
-                        <Link href="blog-details.html">
+                        <Link href="#">
                           <img
                             src="assets/img/blog/recent-post-1-3.jpg"
                             alt="Blog Image"
@@ -140,12 +140,12 @@ const Footer = (props: Props) => {
             <div className="row justify-content-between align-items-center">
               <div className="col-lg-8 text-center text-lg-start">
                 <p className="copyright-text">
-                  Copyright <i className="fal fa-copyright" /> 2023{" "}
+                  Powered By <i className="fal fa-copyright" /> 2023{" "}
                   <Link
                     className="text-white"
-                    href="https://radiant-spark-technology-1uo8.vercel.app/"
+                    href="#"
                   >
-                    Radiant Spark Technology
+                    Brilhante Group
                   </Link>
                   . All Rights Reserved.
                 </p>

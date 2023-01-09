@@ -260,7 +260,7 @@ const Header = (props: Props) => {
                             </div>
                             <div className="media-body">
                               <span className="header-info_label">
-                                Make An Email
+                                Email Us
                               </span>
                               <div className="header-info_link">
                                 <Link href="mailto:prestigeautocare@gmail.com">

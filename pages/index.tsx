@@ -1954,6 +1954,37 @@ export default function Home({}: Props) {
         </div>
       </section> */}
 
+<section
+        className="space"
+        data-overlay="title"
+        data-opacity={7}
+        style={{ backgroundImage: `url('assets/img/bg/cta_bg_1.jpg')` }}
+        //  style={{backgroundImage:url("assets/img/bg/cta_bg_1.jpg")}}
+      >
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-xl-7 col-lg-6 mb-5 mb-lg-0">
+              <div className="title-area mb-0 text-lg-start text-center">
+                <span className="sub-title text-white">Get Our Products</span>
+                <h2 className="sec-title text-white">
+                  Get Premium Auto Parts Feel Free To Contact Us.
+                </h2>
+              </div>
+            </div>
+            <div className="col-xl-5 col-lg-6">
+              <div className="btn-group justify-content-lg-end justify-content-center">
+                <Link href="Shop" className="as-btn style3">
+                  Get Our Products
+                </Link>{" "}
+                <Link href="Shop" className="as-btn style-play">
+                  <i className="fa-solid fa-play" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="space" style={{ backgroundColor: "white" }}>
         <div className="container">
           <div className="title-area text-center">

@@ -61,9 +61,10 @@ export default function Home({}: Props) {
   const settings_004 = {
     dots: false,
     slidesToShow: 2,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     speed: 500,
     arrows: false,
+    autoPlay: true,
     responsive: [
       {
         breakpoint: 767,
@@ -269,12 +270,12 @@ export default function Home({}: Props) {
                       transition={{
                         duration: 1,
                       }}
-                      href="Contact"
+                      href="Appointment"
                       className="as-btn style3"
                       data-ani="slideindown"
                       data-ani-delay="0.6s"
                     >
-                      Get A Quote
+                      Make An Appointment
                     </motion.a>
                     <img
                       className="banner-arrow"
@@ -338,12 +339,12 @@ export default function Home({}: Props) {
                       with your perfect business.
                     </p>
                     <Link
-                      href="Contact"
+                      href="Appointment"
                       className="as-btn style3"
                       data-ani="slideindown"
                       data-ani-delay="0.6s"
                     >
-                      Get A Quote
+                      Make An Appointment
                     </Link>
                     <img
                       className="banner-arrow"
@@ -418,12 +419,12 @@ export default function Home({}: Props) {
                       transition={{
                         duration: 1,
                       }}
-                      href="Contact"
+                      href="Appointment"
                       className="as-btn style3"
                       data-ani="slideindown"
                       data-ani-delay="0.6s"
                     >
-                      Get A Quote
+                      Make An Appointment
                     </motion.a>
                     <img
                       className="banner-arrow"
@@ -478,12 +479,12 @@ export default function Home({}: Props) {
                     backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`,
                   }}
                 >
-                  <span className="service-block_number">Service 01</span>
+                  {/* <span className="service-block_number">Service 01</span> */}
                   <h3 className="service-block_title">
-                    <Link href="Servicedetails">Parts</Link>
+                    <Link href="Shop">Parts</Link>
                   </h3>
-                  <Link href="Servicedetails" className="as-btn">
-                    View Service
+                  <Link href="Shop" className="as-btn">
+                    View Shop
                   </Link>
                 </div>
               </div>
@@ -500,7 +501,7 @@ export default function Home({}: Props) {
                     backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`,
                   }}
                 >
-                  <span className="service-block_number">Service 02</span>
+                  {/* <span className="service-block_number">Service 02</span> */}
                   <h3 className="service-block_title">
                     <Link href="Servicedetails">Panel & Paint</Link>
                   </h3>
@@ -522,7 +523,7 @@ export default function Home({}: Props) {
                     backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`,
                   }}
                 >
-                  <span className="service-block_number">Service 03</span>
+                  {/* <span className="service-block_number">Service 03</span> */}
                   <h3 className="service-block_title">
                     <Link href="Servicedetails">Mechanical</Link>
                   </h3>
@@ -628,6 +629,7 @@ export default function Home({}: Props) {
                   role="tab"
                   aria-controls="nav-one"
                   aria-selected="true"
+                  
                 >
                   About Us
                 </button>{" "}
@@ -688,8 +690,8 @@ export default function Home({}: Props) {
                     </div>
                   </div>
                   <div className="pt-2">
-                    <Link href="Contact" className="as-btn">
-                      Get A Quote
+                    <Link href="Appointment" className="as-btn">
+                      Make An Appointment
                     </Link>
                   </div>
                 </div>
@@ -882,7 +884,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -923,7 +925,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -962,7 +964,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1001,7 +1003,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1040,7 +1042,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1079,7 +1081,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1118,7 +1120,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1157,7 +1159,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1196,7 +1198,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1235,7 +1237,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1274,7 +1276,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1313,7 +1315,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1377,7 +1379,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1418,7 +1420,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1457,7 +1459,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1496,7 +1498,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1535,7 +1537,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1574,7 +1576,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1613,7 +1615,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1652,7 +1654,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1691,7 +1693,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1730,7 +1732,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1769,7 +1771,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1808,7 +1810,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">

@@ -35,17 +35,17 @@ const Footer = (props: Props) => {
                         <Link href="About">About Company</Link>
                       </li>
                       <li>
-                        <Link href="#">Work Gallery</Link>
+                        <Link href="Gallery">Work Gallery</Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <Link href="#">Client Feedback</Link>
-                      </li>
+                      </li> */}
                       <li>
                         <Link href="Services">Our Services</Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <Link href="#">Our Team</Link>
-                      </li>
+                      </li> */}
                       <li>
                         <Link href="Contact">Contact Us</Link>
                       </li>
@@ -70,7 +70,7 @@ const Footer = (props: Props) => {
                         <div className="recent-post-meta">
                           <Link href="blog.html">
                             <i className="fal fa-clock" />
-                            15th April, 2022
+                            6th January, 2023
                           </Link>
                         </div>
                         <h4 className="post-title">
@@ -96,7 +96,7 @@ const Footer = (props: Props) => {
                         <div className="recent-post-meta">
                           <Link href="blog.html">
                             <i className="fal fa-clock" />
-                            15th April, 2022
+                            6th January, 2023
                           </Link>
                         </div>
                         <h4 className="post-title">
@@ -144,10 +144,17 @@ const Footer = (props: Props) => {
                   <Link
                     className="text-white"
                     href="#"
-                  >
-                    Prestige-Auto-Care
+                    >
+                    Prestige-Auto-Care 
                   </Link>
-                  | Powered by Brilhante Group
+                    | Powered by
+                  <Link
+                    className="text-white"
+                    href="#"
+                    >
+                    Brilhante Group
+                  </Link>
+                   
                 </p>
               </div>
               <div className="col-auto d-none d-lg-block">

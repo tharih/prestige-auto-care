@@ -306,15 +306,15 @@ const Header = (props: Props) => {
                     </div>
                     <div className="col-auto">
                       <div className="header-button">
-                        <button
+                        {/* <button
                           type="button"
                           className="icon-btn searchBoxToggler"
                         >
                           <i className="fal fa-search" />
-                        </button>{" "}
+                        </button>{" "} */}
                         <Link
                           className="icon-btn d-none d-md-inline-block"
-                          href="https://www.google.com/maps/@24.7758848,90.4527872,14z"
+                          href="https://goo.gl/maps/5BEL8ygWqYBDy6Bq7"
                         >
                           <i className="fal fa-map-marker-alt" />
                         </Link>{" "}

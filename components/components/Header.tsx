@@ -309,7 +309,7 @@ const Header = (props: Props) => {
                             </div>
                             <div className="media-body">
                               <span className="header-info_label">
-                                Office Hours
+                                Open Hours
                               </span>
                               <div className="header-info_link">
                                 <span>Mon-Sat 8am -6pm</span>
@@ -329,10 +329,16 @@ const Header = (props: Props) => {
                         </button>{" "} */}
                         <Link
                           className="icon-btn d-none d-md-inline-block"
+                          href="Login"
+                        >
+                          <i className="fal fa-user" />
+                        </Link>{" "}
+                        {/* <Link
+                          className="icon-btn d-none d-md-inline-block"
                           href="https://goo.gl/maps/5BEL8ygWqYBDy6Bq7"
                         >
                           <i className="fal fa-map-marker-alt" />
-                        </Link>{" "}
+                        </Link>{" "} */}
                         <button
                           onClick={handleShowMobileMenu}
                           className="as-menu-toggle d-inline-block d-lg-none"
@@ -378,7 +384,7 @@ const Header = (props: Props) => {
                   </div>
                   <div className="col-auto">
                     <div className="d-flex align-items-center">
-                      <Link href="Contact" className="header-link-btn">
+                      <Link href="https://goo.gl/maps/5BEL8ygWqYBDy6Bq7" className="header-link-btn">
                         <FaMapMarkerAlt
                           color="#fefefe"
                           size={24}

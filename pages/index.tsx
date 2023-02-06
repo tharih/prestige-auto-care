@@ -666,10 +666,7 @@ export default function Home({}: Props) {
                   aria-labelledby="nav-one-tab"
                 >
                   <p className="mb-35">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Minus, sapiente nisi magni rem dolore voluptates vero, neque
-                    alias fugit nulla praesentium exercitationem eos totam,
-                    consequuntur tenetur quasi esse eveniet sequi?
+                    "We're an independent auto body shop located in Rocklea Queensland. We are specialised in any medium to large body repairs with high quality for a reasonable price."
                   </p>
                   <div className="pt-40">
                     <div className="about-progress">

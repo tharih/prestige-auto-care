@@ -333,12 +333,12 @@ const Header = (props: Props) => {
                         >
                           <i className="fal fa-user" />
                         </Link>{" "}
-                        {/* <Link
+                        <Link
                           className="icon-btn d-none d-md-inline-block"
                           href="https://goo.gl/maps/5BEL8ygWqYBDy6Bq7"
                         >
-                          <i className="fal fa-map-marker-alt" />
-                        </Link>{" "} */}
+                          <i className="fal fa-building" />
+                        </Link>{" "}
                         <button
                           onClick={handleShowMobileMenu}
                           className="as-menu-toggle d-inline-block d-lg-none"

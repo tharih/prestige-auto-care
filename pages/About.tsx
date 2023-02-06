@@ -93,11 +93,7 @@ export default function About() {
             </h2>
           </div>
           <p className="text-md-start text-center mt-n2 mb-30">
-            Conveniently impact platforms for business systems. coordinate
-            functional are testing procedures before diverse testing procedures.
-            Distinctively integrate is worldwide human capital rather than
-            market propriately implement covalent channels after progressive
-            vortals predominate...
+          "We're an independent auto body shop located in Rocklea Queensland. We are specialised in any medium to large body repairs with high quality for a reasonable price."
           </p>
           <div className="checklist style2 about-checklist">
             <ul>

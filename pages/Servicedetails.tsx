@@ -1,10 +1,20 @@
+import Link from 'next/link'
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 type Props = {}
 
 const Servicedetails = (props: Props) => {
   return (
     <>
+     <Helmet>
+                        
+        <meta charSet="utf-8" />
+                        <title>Home</title>
+        <meta name="description" content="Get your amazing Car Solutions Prestige Auto care" />
+                        
+                    
+      </Helmet>
   <div
     className="breadcumb-wrapper"
     data-bg-src="assets/img/breadcumb/breadcumb-bg.jpg"
@@ -16,7 +26,7 @@ const Servicedetails = (props: Props) => {
         <div className="breadcumb-menu-wrap">
           <ul className="breadcumb-menu">
             <li>
-              <a href="index.html">Home</a>
+              <Link href="index.html">Home</Link>
             </li>
             <li>Service Details</li>
           </ul>
@@ -206,19 +216,19 @@ const Servicedetails = (props: Props) => {
               <h3 className="widget_title">Categories</h3>
               <ul>
                 <li>
-                  <a href="blog.html">Car Repair</a>
+                  <Link href="blog.html">Car Repair</Link>
                 </li>
                 <li>
-                  <a href="blog.html">Engine Repair</a>
+                  <Link href="blog.html">Engine Repair</Link>
                 </li>
                 <li>
-                  <a href="blog.html">Tyer Change</a>
+                  <Link href="blog.html">Tyer Change</Link>
                 </li>
                 <li>
-                  <a href="blog.html">Oil Change</a>
+                  <Link href="blog.html">Oil Change</Link>
                 </li>
                 <li>
-                  <a href="blog.html">Battery Charge</a>
+                  <Link href="blog.html">Battery Charge</Link>
                 </li>
               </ul>
             </div>
@@ -233,9 +243,9 @@ const Servicedetails = (props: Props) => {
                     <h5 className="download-media_title">Our Brochures</h5>
                     <span className="download-media_text">Download</span>
                   </div>
-                  <a href="about.html" className="download-media_btn">
-                    <i className="far fa-arrow-right" />
-                  </a>
+                  <Link href="about.html" className="download-media_btn">
+                    <i className="fa fa-arrow-right" />
+                  </Link>
                 </div>
                 <div className="download-media">
                   <div className="download-media_icon">
@@ -245,13 +255,13 @@ const Servicedetails = (props: Props) => {
                     <h5 className="download-media_title">Company Details</h5>
                     <span className="download-media_text">Download</span>
                   </div>
-                  <a href="about.html" className="download-media_btn">
-                    <i className="far fa-arrow-right" />
-                  </a>
+                  <Link href="about.html" className="download-media_btn">
+                    <i className="fa fa-arrow-right" />
+                  </Link>
                 </div>
               </div>
             </div>
-            <div
+            {/* <div
               className="widget widget_offer"
               data-bg-src="assets/img/bg/widget_bg_1.jpg"
             >
@@ -270,11 +280,11 @@ const Servicedetails = (props: Props) => {
                     Save up to <span className="text-theme">60% off</span>
                   </p>
                 </div>
-                <a href="contact.html" className="as-btn">
+                <Link href="contact.html" className="as-btn">
                   Get A Quote
-                </a>
+                </Link>
               </div>
-            </div>
+            </div> */}
           </aside>
         </div>
       </div>

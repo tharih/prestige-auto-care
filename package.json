@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@next/font": "13.1.1",
+    "@portabletext/react": "^2.0.1",
+   
+  
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
@@ -18,19 +21,29 @@
     "framer-motion": "^8.1.8",
     "jquery": "^3.6.3",
     "next": "13.1.1",
+    
+    "next-videos": "1.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-floating-whatsapp": "^5.0.8",
+    "react-helmet": "^6.1.0",
+    "react-messenger-customer-chat": "^0.8.0",
+    "react-player": "^2.11.0",
     "react-simple-typewriter": "^5.0.1",
     "react-slick": "^0.29.0",
-    "react-whatsapp-widget": "^2.1.0",
+    
     "slick-carousel": "^1.8.1",
+    "styled-components": "^5.2.0",
     "typescript": "4.9.4"
   },
   "devDependencies": {
+   
     "@types/jquery": "^3.5.16",
+    "@types/react-helmet": "^6.1.6",
     "@types/react-slick": "^0.23.10",
     "jquery": "^3.6.3",
     "jquery-ui-dist": "^1.13.2",
-    "react-icons": "^4.7.1"
+    "react-icons": "^4.7.1",
+    "react-whatsapp-widget": "^2.1.0"
   }
 }

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import About from "../pages/About";
 import Footer from "./components/Footer";
@@ -12,10 +13,8 @@ const Layout = ({ children }: Props) => {
   const scrollTop = () => {
     if (window.scrollY > 100) {
       setShowScrollBtn(true);
-      console.log(showScrollBtn);
     } else {
       setShowScrollBtn(false);
-      console.log(showScrollBtn);
     }
   };
   useEffect(() => {
@@ -27,14 +26,14 @@ const Layout = ({ children }: Props) => {
       <Header />
       {children}
       <Footer />
-      <a
+      <Link
         href="#"
         className={`${stylesLayout.scrollToTop} active  scroll-btn ${
           showScrollBtn ? stylesLayout.show : ""
         }`}
       >
         <i className="fa fa-angle-up" />
-      </a>
+      </Link>
     </>
   );
 };

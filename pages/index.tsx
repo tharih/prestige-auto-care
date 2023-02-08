@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
+import stylesIndex from "./index.module.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,13 +10,16 @@ import { url } from "inspector";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTypewriter, Cursor, Typewriter } from "react-simple-typewriter";
-// import "jquery-ui-dist/jquery-ui";
-// import  $ from 'jquery';
-
+import Link from "next/link";
+import { AiOutlineClose } from "react-icons/ai";
+import ReactPlayer from "react-player";
+import { Helmet } from "react-helmet";
 type Props = {};
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({}: Props) {
+  const [showVideoPlayer, setShowVideoPlayer] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [text, count] = useTypewriter({
     words: ["Get Your Amazing"],
     delaySpeed: 2000,
@@ -25,7 +29,7 @@ export default function Home({}: Props) {
   const [CarSolution, count1] = useTypewriter({
     words: ["Car Solution"],
     delaySpeed: 2000,
-    loop: true,
+    loop: false,
   });
   // carousal settings Start
   const settings = {
@@ -34,7 +38,7 @@ export default function Home({}: Props) {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    autoplay: false,
+    autoplay: true,
   };
   const settings_001 = {
     dots: false,
@@ -54,24 +58,56 @@ export default function Home({}: Props) {
     speed: 500,
     arrows: false,
   };
-
-  const settings_006 = {
+  const settings_004 = {
+    dots: false,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    speed: 500,
+    arrows: false,
+    autoPlay: true,
+    responsive: [
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+  const settings_005 = {
     dots: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     speed: 500,
     arrows: false,
   };
-  const settings_004 = {
-    dots: false,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    speed: 500,
-    arrows: false,
-  };
   // carousal settings End
+
+  const handleShowVideoPlayer = () => {
+    setShowVideoPlayer(true);
+  };
+  const handleCloseVideoPlayer = () => {
+    setShowVideoPlayer(false);
+  };
   return (
     <>
+      <Helmet>
+                        
+        <meta charSet="utf-8" />
+                        <title>Home</title>
+        <meta name="description" content="Get your amazing Car Solutions Prestige Auto care" />
+                        
+                    
+      </Helmet>
       <div id="QuickView" className="white-popup mfp-hide">
         <div className="container bg-white">
           <div className="row gx-60">
@@ -103,13 +139,13 @@ export default function Home({}: Props) {
                       <span className="rating">1</span> customer rating
                     </span>
                   </div>
-                  <a
+                  <Link
                     href="shop-details.html"
                     className="woocommerce-review-link"
                   >
                     (<span className="count">3</span>
                     customer reviews)
-                  </a>
+                  </Link>
                 </div>
                 <p className="text">
                   Syndicate customized growth strategies prospective human
@@ -150,13 +186,13 @@ export default function Home({}: Props) {
                   </span>{" "}
                   <span className="posted_in">
                     Category:
-                    <a href="shop.html" rel="tag">
+                    <Link href="shop.html" rel="tag">
                       Tires &amp; Wheels
-                    </a>
+                    </Link>
                   </span>{" "}
                   <span>
-                    Tags: <a href="shop.html">automotive parts</a>
-                    <a href="shop.html">wheels</a>
+                    Tags: <Link href="shop.html">automotive parts</Link>
+                    <Link href="shop.html">wheels</Link>
                   </span>
                 </div>
               </div>
@@ -167,230 +203,49 @@ export default function Home({}: Props) {
           </button>
         </div>
       </div>
+
       <div
-  className="as-hero-wrapper hero-slider-1 as-carousel"
-  data-slide-show={1}
-  data-md-slide-show={1}
-  data-fade="true"
-  data-arrows="true"
-  data-xl-arrows="true"
->
-<Slider {...settings}>
-
-  <div className="as-hero-slide">
-    <div className="as-hero-bg" data-bg-src="assets/img/bg/hero_bg_1_1.jpg">
-      <img src="" alt="Hero Image" />
-    </div>
-    <div className="container">
-      <div className="row">
-        <div className="col">
-          <div className="hero-style1">
-            <div className="hero-meta">
-              <span data-ani="slideindown" data-ani-delay="0.1s">
-                Car
-              </span>{" "}
-              <span data-ani="slideindown" data-ani-delay="0.2s">
-                Repair
-              </span>{" "}
-              <span data-ani="slideindown" data-ani-delay="0.3s">
-                Center
-              </span>
-            </div>
-            <h1
-              className="hero-title"
-              data-ani="slideinleft"
-              data-ani-delay="0.4s"
-            >
-              Best Affordable Car Repair
-            </h1>
-            <h1
-              className="hero-title"
-              data-ani="slideinleft"
-              data-ani-delay="0.6s"
-            >
-              Service Center
-            </h1>
-            <div className="btn-group">
-              <a
-                href="about.html"
-                className="as-btn style3"
-                data-ani="slideinup"
-                data-ani-delay="0.5s"
-              >
-                About Us
-              </a>{" "}
-              <a
-                href="project.html"
-                className="as-btn style2"
-                data-ani="slideinup"
-                data-ani-delay="0.6s"
-              >
-                Latest Projects
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div className="as-hero-slide">
-    <div className="as-hero-bg" data-bg-src="assets/img/bg/hero_bg_1_2.jpg">
-      <img src="" alt="Hero Image" />
-    </div>
-    <div className="container">
-      <div className="row">
-        <div className="col-xl-8 col-lg-10">
-          <div className="hero-style1">
-            <div className="hero-meta">
-              <span data-ani="slideindown" data-ani-delay="0.1s">
-                Care
-              </span>{" "}
-              <span data-ani="slideindown" data-ani-delay="0.2s">
-                Repair
-              </span>{" "}
-              <span data-ani="slideindown" data-ani-delay="0.3s">
-                Center
-              </span>
-            </div>
-            <h1
-              className="hero-title"
-              data-ani="slideinleft"
-              data-ani-delay="0.4s"
-            >
-              Professional Car
-            </h1>
-            <h1
-              className="hero-title"
-              data-ani="slideinleft"
-              data-ani-delay="0.6s"
-            >
-              Service Provided
-            </h1>
-            <div className="btn-group">
-              <a
-                href="about.html"
-                className="as-btn style3"
-                data-ani="slideinup"
-                data-ani-delay="0.5s"
-              >
-                About Us
-              </a>{" "}
-              <a
-                href="project.html"
-                className="as-btn style2"
-                data-ani="slideinup"
-                data-ani-delay="0.6s"
-              >
-                Latest Projects
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div className="as-hero-slide">
-    <div className="as-hero-bg" data-bg-src="assets/img/bg/hero_bg_1_3.jpg">
-      <img src="" alt="Hero Image" />
-    </div>
-    <div className="container">
-      <div className="row">
-        <div className="col-xl-8 col-lg-10">
-          <div className="hero-style1">
-            <div className="hero-meta">
-              <span data-ani="slideindown" data-ani-delay="0.1s">
-                Car
-              </span>{" "}
-              <span data-ani="slideindown" data-ani-delay="0.2s">
-                Fixing
-              </span>{" "}
-              <span data-ani="slideindown" data-ani-delay="0.3s">
-                Center
-              </span>
-            </div>
-            <h1
-              className="hero-title"
-              data-ani="slideinleft"
-              data-ani-delay="0.4s"
-            >
-              Fasted Service Within
-            </h1>
-            <h1
-              className="hero-title"
-              data-ani="slideinleft"
-              data-ani-delay="0.6s"
-            >
-              Short Time Care
-            </h1>
-            <div className="btn-group">
-              <a
-                href="about.html"
-                className="as-btn style3"
-                data-ani="slideinup"
-                data-ani-delay="0.5s"
-              >
-                About Us
-              </a>{" "}
-              <a
-                href="project.html"
-                className="as-btn style2"
-                data-ani="slideinup"
-                data-ani-delay="0.6s"
-              >
-                Latest Projects
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</Slider>
-</div>
-
-
-      {/* <div
         className="as-hero-wrapper hero-slider-3 as-carousel number-dots"
         style={{ maxHeight: "80vh" }}
       >
         <Slider {...settings}>
-          <div style={{ position: "relative" }}>
-            <img
-              src="/assets/img/bg/hero_bg_3_1.jpg"
-              alt="Hero Image"
-              style={{ backgroundSize: "cover" }}
-            />
+          <div className={stylesIndex.imageBG_01}>
             <div className="container">
               <div className="row">
                 <div className="col-lg-12">
-                  <div
-                    className="infetech-banner-content"
-                    style={{ marginTop: "-620px" }}
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      translateY: -300,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      translateY: 0,
+                    }}
+                    transition={{
+                      duration: 1,
+                    }}
+                    className={stylesIndex.bannerContent}
+                    // style={{ marginTop: "-620px" }}
                   >
                     <span
-                      className="hero-subtitle"
+                      className={stylesIndex.heroSubtitle}
                       data-ani="slideindown"
                       data-ani-delay="0.2s"
                     >
                       Non Stop Car Servicing Center
                     </span>
                     <h1
-                      className="hero-title"
+                      className={stylesIndex.heroTitle}
                       data-ani="slideindown"
                       data-ani-delay="0.3s"
-                      style={{ color: "white", fontSize: "80px" }}
                     >
                       {text}
                     </h1>
                     <h1
-                      className="hero-title"
+                      className={stylesIndex.heroTitle}
                       data-ani="slideindown"
                       data-ani-delay="0.4s"
-                      style={{
-                        color: "white",
-                        fontSize: "80px",
-                        marginBottom: "20px",
-                      }}
                     >
                       {CarSolution}
                     </h1>
@@ -403,66 +258,76 @@ export default function Home({}: Props) {
                       Take payments online with a scalable platform that grows
                       with your perfect business.
                     </p>
-                    <a
-                      href="Contact"
+                    <motion.a
+                      initial={{
+                        opacity: 0,
+                        translateY: 300,
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        translateY: -20,
+                      }}
+                      transition={{
+                        duration: 1,
+                      }}
+                      href="Appointment"
                       className="as-btn style3"
                       data-ani="slideindown"
                       data-ani-delay="0.6s"
                     >
-                      Get A Quote
-                    </a>
+                      Make An Appointment
+                    </motion.a>
                     <img
                       className="banner-arrow"
                       data-animation="fadeInRight"
                       data-delay=".9s"
-                      src="assets/images/banner-arrow.png"
+                      src="/assets/images/banner-arrow.png"
                       alt=""
                     />
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div style={{ position: "relative" }}>
-            <img
-              src="/assets/img/bg/hero_bg_3_2.jpg"
-              alt="Hero Image"
-              style={{ backgroundSize: "cover" }}
-            />
+          <div className={stylesIndex.imageBG_02}>
             <div className="container">
               <div className="row">
                 <div className="col-lg-12">
-                  <div
-                    className="infetech-banner-content"
-                    style={{ marginTop: "-620px" }}
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      scale: 0,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      scale: [1, 1.1, 1],
+                    }}
+                    transition={{
+                      duration: 1,
+                      ease: "easeInOut",
+                    }}
+                    className={stylesIndex.bannerContent}
                   >
                     <span
-                      className="hero-subtitle"
+                      className={stylesIndex.heroSubtitle}
                       data-ani="slideindown"
                       data-ani-delay="0.2s"
                     >
                       Non Stop Car Servicing Center
                     </span>
                     <h1
-                      className="hero-title"
+                      className={stylesIndex.heroTitle}
                       data-ani="slideindown"
                       data-ani-delay="0.3s"
-                      style={{ color: "white", fontSize: "80px" }}
                     >
-                      {text}
+                      Get Your Amazing 02
                     </h1>
                     <h1
-                      className="hero-title"
+                      className={stylesIndex.heroTitle}
                       data-ani="slideindown"
                       data-ani-delay="0.4s"
-                      style={{
-                        color: "white",
-                        fontSize: "80px",
-                        marginBottom: "20px",
-                      }}
                     >
-                      {CarSolution}
+                      Car Solution
                     </h1>
                     <p
                       className="hero-text"
@@ -473,69 +338,68 @@ export default function Home({}: Props) {
                       Take payments online with a scalable platform that grows
                       with your perfect business.
                     </p>
-                    <a
-                      href="Contact"
+                    <Link
+                      href="Appointment"
                       className="as-btn style3"
                       data-ani="slideindown"
                       data-ani-delay="0.6s"
                     >
-                      Get A Quote
-                    </a>
+                      Make An Appointment
+                    </Link>
                     <img
                       className="banner-arrow"
                       data-animation="fadeInRight"
                       data-delay=".9s"
-                      src="assets/images/banner-arrow.png"
+                      src="/assets/images/banner-arrow.png"
                       alt=""
                     />
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div style={{ position: "relative" }}>
-            <img
-              src="/assets/img/bg/hero_bg_3_3.jpg"
-              alt="Hero Image"
-              style={{ backgroundSize: "cover" }}
-            />
+          <div className={stylesIndex.imageBG_03}>
             <div className="container">
               <div className="row">
-                <div className="col-lg-12">
-                  <div
-                    className="infetech-banner-content"
-                    style={{ marginTop: "-620px" }}
+                <div className="col-lg-12 ">
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      translateY: -300,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      translateY: 0,
+                    }}
+                    transition={{
+                      duration: 1,
+                    }}
+                    className={stylesIndex.bannerContent}
+                    // style={{ marginTop: "-620px" }}
                   >
                     <span
-                      className="hero-subtitle"
+                      className={stylesIndex.heroSubtitle}
                       data-ani="slideindown"
                       data-ani-delay="0.2s"
                     >
                       Non Stop Car Servicing Center
                     </span>
                     <h1
-                      className="hero-title"
+                      className={stylesIndex.heroTitle}
                       data-ani="slideindown"
                       data-ani-delay="0.3s"
-                      style={{ color: "white", fontSize: "80px" }}
                     >
-                      {text}
+                      Get Your Amazing 03
                     </h1>
                     <h1
-                      className="hero-title"
+                      className={stylesIndex.heroTitle}
                       data-ani="slideindown"
                       data-ani-delay="0.4s"
-                      style={{
-                        color: "white",
-                        fontSize: "80px",
-                        marginBottom: "20px",
-                      }}
                     >
-                      {CarSolution}
+                      Car Solution
                     </h1>
                     <p
-                      className="hero-text"
+                      className={stylesIndex.heroText}
                       data-ani="slideindown"
                       data-ani-delay="0.5s"
                       style={{ marginBottom: "50px" }}
@@ -543,22 +407,33 @@ export default function Home({}: Props) {
                       Take payments online with a scalable platform that grows
                       with your perfect business.
                     </p>
-                    <a
-                      href="Contact"
+                    <motion.a
+                      initial={{
+                        opacity: 0,
+                        translateY: 300,
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        translateY: -20,
+                      }}
+                      transition={{
+                        duration: 1,
+                      }}
+                      href="Appointment"
                       className="as-btn style3"
                       data-ani="slideindown"
                       data-ani-delay="0.6s"
                     >
-                      Get A Quote
-                    </a>
+                      Make An Appointment
+                    </motion.a>
                     <img
                       className="banner-arrow"
                       data-animation="fadeInRight"
                       data-delay=".9s"
-                      src="assets/images/banner-arrow.png"
+                      src="/assets/images/banner-arrow.png"
                       alt=""
                     />
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
@@ -573,7 +448,7 @@ export default function Home({}: Props) {
         data-xl-dots="true"
         data-ml-dots="true"
         data-lg-dots="true"
-      ></div> */}
+      ></div>
 
       <section
         className="space"
@@ -595,10 +470,7 @@ export default function Home({}: Props) {
             <div className="col-md-6 col-lg-4">
               <div className="service-block">
                 <div className="service-block_img">
-                  <img
-                    src="assets/img/service/service_4_1.jpg"
-                    alt="service image"
-                  />
+                  <img src="assets/img/prestige/24.jpg" alt="service image" />
                 </div>
                 <div
                   className="service-block_content"
@@ -607,23 +479,20 @@ export default function Home({}: Props) {
                     backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`,
                   }}
                 >
-                  <span className="service-block_number">Service 01</span>
+                  {/* <span className="service-block_number">Service 01</span> */}
                   <h3 className="service-block_title">
-                    <a href="Servicedetails">Parts</a>
+                    <Link href="Shop">Parts</Link>
                   </h3>
-                  <a href="Servicedetails" className="as-btn">
-                    View Service
-                  </a>
+                  <Link href="Shop" className="as-btn">
+                    View Shop
+                  </Link>
                 </div>
               </div>
             </div>
             <div className="col-md-6 col-lg-4">
               <div className="service-block">
                 <div className="service-block_img">
-                  <img
-                    src="assets/img/service/service_4_2.jpg"
-                    alt="service image"
-                  />
+                  <img src="assets/img/prestige/17.jpg" alt="service image" />
                 </div>
                 <div
                   className="service-block_content"
@@ -632,23 +501,20 @@ export default function Home({}: Props) {
                     backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`,
                   }}
                 >
-                  <span className="service-block_number">Service 02</span>
+                  {/* <span className="service-block_number">Service 02</span> */}
                   <h3 className="service-block_title">
-                    <a href="Servicedetails">Panel & Paint</a>
+                    <Link href="Servicedetails">Panel & Paint</Link>
                   </h3>
-                  <a href="Servicedetails" className="as-btn">
+                  <Link href="Servicedetails" className="as-btn">
                     View Service
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
             <div className="col-md-6 col-lg-4">
               <div className="service-block">
                 <div className="service-block_img">
-                  <img
-                    src="assets/img/service/service_4_3.jpg"
-                    alt="service image"
-                  />
+                  <img src="assets/img/prestige/6.jpg" alt="service image" />
                 </div>
                 <div
                   className="service-block_content"
@@ -657,13 +523,13 @@ export default function Home({}: Props) {
                     backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`,
                   }}
                 >
-                  <span className="service-block_number">Service 03</span>
+                  {/* <span className="service-block_number">Service 03</span> */}
                   <h3 className="service-block_title">
-                    <a href="Servicedetails">Mechanical</a>
+                    <Link href="Servicedetails">Mechanical</Link>
                   </h3>
-                  <a href="Servicedetails" className="as-btn">
+                  <Link href="Servicedetails" className="as-btn">
                     View Service
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -681,11 +547,11 @@ export default function Home({}: Props) {
               >
                 <span className="service-block_number">Service 04</span>
                 <h3 className="service-block_title">
-                  <a href="Servicedetails">Engine Cleaning</a>
+                  <Link href="Servicedetails">Engine Cleaning</Link>
                 </h3>
-                <a href="Servicedetails" className="as-btn">
+                <Link href="Servicedetails" className="as-btn">
                   View Service
-                </a>
+                </Link>
               </div>
             </div>
           </div> */}
@@ -712,12 +578,12 @@ export default function Home({}: Props) {
             </div>
             <div className="col-xl-5 col-lg-6">
               <div className="btn-group justify-content-lg-end justify-content-center">
-                <a href="Services" className="as-btn style3">
+                <Link href="Services" className="as-btn style3">
                   Get Our Service
-                </a>{" "}
-                <a href="Contact" className="as-btn style-play">
+                </Link>{" "}
+                <Link href="Contact" className="as-btn style-play">
                   <i className="fa-solid fa-play" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -733,7 +599,7 @@ export default function Home({}: Props) {
             <div className="col-xl-6">
               <div className="img-box-3">
                 <div className="img1">
-                  <img src="assets/img/normal/about_4_1.jpg" alt="About" />
+                  <img src="assets/img/prestige/29.jpg" alt="About" />
                 </div>
                 <div className="img2">
                   <div className="as-experience style3">
@@ -742,7 +608,7 @@ export default function Home({}: Props) {
                     </h3>
                     <h4 className="experience-text">Years Of Experience</h4>
                   </div>
-                  <img src="assets/img/normal/about_4_2.jpg" alt="About" />
+                  <img src="assets/img/prestige/7.jpg" alt="About" />
                 </div>
               </div>
             </div>
@@ -763,6 +629,7 @@ export default function Home({}: Props) {
                   role="tab"
                   aria-controls="nav-one"
                   aria-selected="true"
+                  
                 >
                   About Us
                 </button>{" "}
@@ -799,10 +666,7 @@ export default function Home({}: Props) {
                   aria-labelledby="nav-one-tab"
                 >
                   <p className="mb-35">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Minus, sapiente nisi magni rem dolore voluptates vero, neque
-                    alias fugit nulla praesentium exercitationem eos totam,
-                    consequuntur tenetur quasi esse eveniet sequi?
+                    "We're an independent auto body shop located in Rocklea Queensland. We are specialised in any medium to large body repairs with high quality for a reasonable price."
                   </p>
                   <div className="pt-40">
                     <div className="about-progress">
@@ -811,7 +675,7 @@ export default function Home({}: Props) {
                           <div className="progress-value">90%</div>
                         </div>
                       </div>
-                      <h3 className="about-progress_title">Engine Solution</h3>
+                      <h3 className="about-progress_title">Mechanical</h3>
                     </div>
                     <div className="about-progress">
                       <div className="progress">
@@ -819,15 +683,13 @@ export default function Home({}: Props) {
                           <div className="progress-value">85%</div>
                         </div>
                       </div>
-                      <h3 className="about-progress_title">
-                        Engine Diagnostics
-                      </h3>
+                      <h3 className="about-progress_title">Panel & Paint</h3>
                     </div>
                   </div>
                   <div className="pt-2">
-                    <a href="Contact" className="as-btn">
-                      Get A Quote
-                    </a>
+                    <Link href="Appointment" className="as-btn">
+                      Make An Appointment
+                    </Link>
                   </div>
                 </div>
                 <div
@@ -861,9 +723,9 @@ export default function Home({}: Props) {
                     </div>
                   </div>
                   <div className="pt-2">
-                    <a href="Contact" className="as-btn">
+                    <Link href="Contact" className="as-btn">
                       Get A Quote
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div
@@ -901,9 +763,9 @@ export default function Home({}: Props) {
                     </div>
                   </div>
                   <div className="pt-2">
-                    <a href="Contact" className="as-btn">
+                    <Link href="Contact" className="as-btn">
                       Get A Quote
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -911,201 +773,39 @@ export default function Home({}: Props) {
           </div>
         </div>
       </div>
-
-      {/* <section className="bg-white space" style={{backgroundColor:"white"}}>
-      <div className="container">
-        <div className="title-area text-center">
-          <span className="sub-title">Expert Technician</span>
-          <h2 className="sec-title">Meet Our Experts</h2>
-        </div>
-
-        <Slider {...settings_002} className="row slider-shadow as-carousel">
-
-          <div className="col-md-6 col-lg-4">
-            <div className="team-box">
-              <div className="team-img">
-                <img src="assets/img/team/team_1_1.jpg" alt="Team" />
-                <div className="team-content">
-                  <h3 className="team-title">
-                    <a href="team-details.html">Kevin Martin</a>
-                  </h3>
-                  <span className="team-desig">Engine Expert</span>
-                </div>
-              </div>
-              <div
-                className="as-social"
-                data-bg-src="assets/img/bg/pattern_bg_2.png"
-              >
-                <a target="_blank" href="https://facebook.com/">
-                  <i className="fab fa-facebook-f" />
-                </a>{" "}
-                <a target="_blank" href="https://twitter.com/">
-                  <i className="fab fa-twitter" />
-                </a>{" "}
-                <a target="_blank" href="https://instagram.com/">
-                  <i className="fab fa-instagram" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-4">
-            <div className="team-box">
-              <div className="team-img">
-                <img src="assets/img/team/team_1_2.jpg" alt="Team" />
-                <div className="team-content">
-                  <h3 className="team-title">
-                    <a href="team-details.html">Michael Daniel</a>
-                  </h3>
-                  <span className="team-desig">Body Expert</span>
-                </div>
-              </div>
-              <div
-                className="as-social"
-                data-bg-src="assets/img/bg/pattern_bg_2.png"
-                style={{ backgroundImage: `url('assets/img/bg/pattern_bg_2')`}}
-              >
-                <a target="_blank" href="https://facebook.com/">
-                  <i className="fab fa-facebook-f" />
-                </a>{" "}
-                <a target="_blank" href="https://twitter.com/">
-                  <i className="fab fa-twitter" />
-                </a>{" "}
-                <a target="_blank" href="https://instagram.com/">
-                  <i className="fab fa-instagram" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-4">
-            <div className="team-box">
-              <div className="team-img">
-                <img src="assets/img/team/team_1_3.jpg" alt="Team" />
-                <div className="team-content">
-                  <h3 className="team-title">
-                    <a href="team-details.html">Aiden Samuel</a>
-                  </h3>
-                  <span className="team-desig">Engine Expert</span>
-                </div>
-              </div>
-              <div
-                className="as-social"
-                data-bg-src="assets/img/bg/pattern_bg_2.png"
-              >
-                <a target="_blank" href="https://facebook.com/">
-                  <i className="fab fa-facebook-f" />
-                </a>{" "}
-                <a target="_blank" href="https://twitter.com/">
-                  <i className="fab fa-twitter" />
-                </a>{" "}
-                <a target="_blank" href="https://instagram.com/">
-                  <i className="fab fa-instagram" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-4">
-            <div className="team-box">
-              <div className="team-img">
-                <img src="assets/img/team/team_1_4.jpg" alt="Team" />
-                <div className="team-content">
-                  <h3 className="team-title">
-                    <a href="team-details.html">Joseph Carter</a>
-                  </h3>
-                  <span className="team-desig">Body Expert</span>
-                </div>
-              </div>
-              <div
-                className="as-social"
-                data-bg-src="assets/img/bg/pattern_bg_2.png"
-              >
-                <a target="_blank" href="https://facebook.com/">
-                  <i className="fab fa-facebook-f" />
-                </a>{" "}
-                <a target="_blank" href="https://twitter.com/">
-                  <i className="fab fa-twitter" />
-                </a>{" "}
-                <a target="_blank" href="https://instagram.com/">
-                  <i className="fab fa-instagram" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-4">
-            <div className="team-box">
-              <div className="team-img">
-                <img src="assets/img/team/team_1_5.jpg" alt="Team" />
-                <div className="team-content">
-                  <h3 className="team-title">
-                    <a href="team-details.html">Joseph Carter</a>
-                  </h3>
-                  <span className="team-desig">Engine Expert</span>
-                </div>
-              </div>
-              <div
-                className="as-social"
-                data-bg-src="assets/img/bg/pattern_bg_2.png"
-              >
-                <a target="_blank" href="https://facebook.com/">
-                  <i className="fab fa-facebook-f" />
-                </a>{" "}
-                <a target="_blank" href="https://twitter.com/">
-                  <i className="fab fa-twitter" />
-                </a>{" "}
-                <a target="_blank" href="https://instagram.com/">
-                  <i className="fab fa-instagram" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-4">
-            <div className="team-box">
-              <div className="team-img">
-                <img src="assets/img/team/team_1_6.jpg" alt="Team" />
-                <div className="team-content">
-                  <h3 className="team-title">
-                    <a href="team-details.html">Andrew Adrian</a>
-                  </h3>
-                  <span className="team-desig">Body Expert</span>
-                </div>
-              </div>
-              <div
-                className="as-social"
-                data-bg-src="assets/img/bg/pattern_bg_2.png"
-              >
-                <a target="_blank" href="https://facebook.com/">
-                  <i className="fab fa-facebook-f" />
-                </a>{" "}
-                <a target="_blank" href="https://twitter.com/">
-                  <i className="fab fa-twitter" />
-                </a>{" "}
-                <a target="_blank" href="https://instagram.com/">
-                  <i className="fab fa-instagram" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </Slider>
-        <div
-          className="row slider-shadow as-carousel"
-          data-slide-show={3}
-          data-md-slide-show={2}
-          data-arrows="true"
-        >
-
-        </div>
-      </div>
-    </section> */}
       <div className="bg-title position-relative overflow-hidden">
         <div className="row">
           <div className="col-xl-6">
             <div className="as-video style1">
-              <img src="assets/img/normal/video_2.jpg" alt="Video Image" />{" "}
-              <a
-                href="https://www.youtube.com/watch?v=_sI_Ps7JSEk"
+              {showVideoPlayer && (
+                <div
+                  className={`${stylesIndex.videoPlayerBG} ${
+                    showVideoPlayer ? stylesIndex.videPlayerShow : ""
+                  }`}
+                >
+                  <div className={stylesIndex.CloseIcon}>
+                    <AiOutlineClose onClick={handleCloseVideoPlayer} />
+                  </div>
+                  <div className={stylesIndex.videoPlayer}>
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src="https://www.youtube.com/embed/vlDOjTaaEdA"
+                      title="YouTube video player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      frameBorder="0"
+                    ></iframe>
+                  </div>
+                </div>
+              )}
+              <img src="assets/img/prestige/1.jpg" alt="Video Image" />
+              <div
                 className="play-btn popup-video"
+                onClick={handleShowVideoPlayer}
               >
                 <i className="fas fa-play" />
-              </a>
+              </div>
             </div>
           </div>
           <div className="col-xl-6">
@@ -1151,8 +851,10 @@ export default function Home({}: Props) {
           <img src="assets/img/shape/shape_2.png" alt="shape" />
         </div>
       </div>
-
-      <section className="products space" style={{ backgroundColor: "white" }}>
+      <section
+        className={stylesIndex.pcspace}
+        style={{ backgroundColor: "white" }}
+      >
         <div className="container">
           <div className="title-area text-center">
             <span className="sub-title">Popular Products</span>
@@ -1179,7 +881,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1201,7 +903,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car Engine Plug</a>
+                      <Link href="shop-details.html">Car Engine Plug</Link>
                     </h3>
                     <span className="price">
                       $180.85<del>$350.99</del>
@@ -1220,7 +922,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1242,7 +944,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car Air Filter</a>
+                      <Link href="shop-details.html">Car Air Filter</Link>
                     </h3>
                     <span className="price">$190.85</span>
                   </div>
@@ -1259,7 +961,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1281,7 +983,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">CSK Red Wheel</a>
+                      <Link href="shop-details.html">CSK Red Wheel</Link>
                     </h3>
                     <span className="price">$160.85</span>
                   </div>
@@ -1298,7 +1000,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1320,7 +1022,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Cools Led Light</a>
+                      <Link href="shop-details.html">Cools Led Light</Link>
                     </h3>
                     <span className="price">$170.85</span>
                   </div>
@@ -1337,7 +1039,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1359,7 +1061,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Allion Brake Pad</a>
+                      <Link href="shop-details.html">Allion Brake Pad</Link>
                     </h3>
                     <span className="price">$120.85</span>
                   </div>
@@ -1376,7 +1078,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1398,7 +1100,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car USB Ports</a>
+                      <Link href="shop-details.html">Car USB Ports</Link>
                     </h3>
                     <span className="price">$100.85</span>
                   </div>
@@ -1415,7 +1117,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1437,7 +1139,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car Engine Solt</a>
+                      <Link href="shop-details.html">Car Engine Solt</Link>
                     </h3>
                     <span className="price">$120.85</span>
                   </div>
@@ -1454,7 +1156,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1476,7 +1178,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car Oil Filter</a>
+                      <Link href="shop-details.html">Car Oil Filter</Link>
                     </h3>
                     <span className="price">$100.85</span>
                   </div>
@@ -1493,7 +1195,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1515,7 +1217,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">BMW Brake Liver</a>
+                      <Link href="shop-details.html">BMW Brake Liver</Link>
                     </h3>
                     <span className="price">$120.85</span>
                   </div>
@@ -1532,7 +1234,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1554,7 +1256,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Special Hydraulic</a>
+                      <Link href="shop-details.html">Special Hydraulic</Link>
                     </h3>
                     <span className="price">$100.85</span>
                   </div>
@@ -1571,7 +1273,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1593,7 +1295,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Audi Wheel Combo</a>
+                      <Link href="shop-details.html">Audi Wheel Combo</Link>
                     </h3>
                     <span className="price">$120.85</span>
                   </div>
@@ -1610,7 +1312,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1632,7 +1334,7 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Fast Aloy Wheel</a>
+                      <Link href="shop-details.html">Fast Aloy Wheel</Link>
                     </h3>
                     <span className="price">$100.85</span>
                   </div>
@@ -1643,9 +1345,11 @@ export default function Home({}: Props) {
         </div>
       </section>
 
-      {/* mobile view */}
-
-      {/* <section className="space" style={{ backgroundColor: "white" }}>
+      {/* Mobile view  */}
+      <section
+        className={stylesIndex.mobilespace}
+        style={{ backgroundColor: "white" }}
+      >
         <div className="container">
           <div className="title-area text-center">
             <span className="sub-title">Popular Products</span>
@@ -1660,7 +1364,7 @@ export default function Home({}: Props) {
             data-xs-slide-show={1}
             data-arrows="true"
           >
-            <Slider {...settings_006} className="row as-carousel">
+            <Slider {...settings_005} className="row as-carousel">
               <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="as-product">
                   <div className="product-img">
@@ -1672,7 +1376,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1694,15 +1398,15 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car Engine Plug</a>
+                      <Link href="shop-details.html">Car Engine Plug</Link>
                     </h3>
                     <span className="price">
                       $180.85<del>$350.99</del>
                     </span>
                   </div>
                 </div>
-              
-              
+              </div>
+              <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="as-product">
                   <div className="product-img">
                     <img
@@ -1713,7 +1417,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1735,13 +1439,13 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car Air Filter</a>
+                      <Link href="shop-details.html">Car Air Filter</Link>
                     </h3>
                     <span className="price">$190.85</span>
                   </div>
                 </div>
-            
-             
+              </div>
+              <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="as-product">
                   <div className="product-img">
                     <img
@@ -1752,7 +1456,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1774,13 +1478,13 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">CSK Red Wheel</a>
+                      <Link href="shop-details.html">CSK Red Wheel</Link>
                     </h3>
                     <span className="price">$160.85</span>
                   </div>
                 </div>
-            
-             
+              </div>
+              <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="as-product">
                   <div className="product-img">
                     <img
@@ -1791,7 +1495,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1813,13 +1517,13 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Cools Led Light</a>
+                      <Link href="shop-details.html">Cools Led Light</Link>
                     </h3>
                     <span className="price">$170.85</span>
                   </div>
                 </div>
-           
-              
+              </div>
+              <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="as-product">
                   <div className="product-img">
                     <img
@@ -1830,7 +1534,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1852,13 +1556,13 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Allion Brake Pad</a>
+                      <Link href="shop-details.html">Allion Brake Pad</Link>
                     </h3>
                     <span className="price">$120.85</span>
                   </div>
                 </div>
-           
-            
+              </div>
+              <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="as-product">
                   <div className="product-img">
                     <img
@@ -1869,7 +1573,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1891,13 +1595,13 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car USB Ports</a>
+                      <Link href="shop-details.html">Car USB Ports</Link>
                     </h3>
                     <span className="price">$100.85</span>
                   </div>
                 </div>
-           
-             
+              </div>
+              <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="as-product">
                   <div className="product-img">
                     <img
@@ -1908,7 +1612,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1930,13 +1634,13 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car Engine Solt</a>
+                      <Link href="shop-details.html">Car Engine Solt</Link>
                     </h3>
                     <span className="price">$120.85</span>
                   </div>
                 </div>
-         
-              
+              </div>
+              <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="as-product">
                   <div className="product-img">
                     <img
@@ -1947,7 +1651,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -1969,13 +1673,13 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Car Oil Filter</a>
+                      <Link href="shop-details.html">Car Oil Filter</Link>
                     </h3>
                     <span className="price">$100.85</span>
                   </div>
                 </div>
-          
-             
+              </div>
+              <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="as-product">
                   <div className="product-img">
                     <img
@@ -1986,7 +1690,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -2008,13 +1712,13 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">BMW Brake Liver</a>
+                      <Link href="shop-details.html">BMW Brake Liver</Link>
                     </h3>
                     <span className="price">$120.85</span>
                   </div>
                 </div>
-             
-             
+              </div>
+              <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="as-product">
                   <div className="product-img">
                     <img
@@ -2025,7 +1729,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -2047,12 +1751,13 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Special Hydraulic</a>
+                      <Link href="shop-details.html">Special Hydraulic</Link>
                     </h3>
                     <span className="price">$100.85</span>
                   </div>
                 </div>
-              
+              </div>
+              <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="as-product">
                   <div className="product-img">
                     <img
@@ -2063,7 +1768,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -2085,12 +1790,13 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Audi Wheel Combo</a>
+                      <Link href="shop-details.html">Audi Wheel Combo</Link>
                     </h3>
                     <span className="price">$120.85</span>
                   </div>
                 </div>
-              
+              </div>
+              <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="as-product">
                   <div className="product-img">
                     <img
@@ -2101,7 +1807,7 @@ export default function Home({}: Props) {
                       <a href="#QuickView" className="icon-btn popup-content">
                         <i className="fa fa-eye" />
                       </a>{" "}
-                      <a href="cart.html" className="icon-btn">
+                      <a href="Cart" className="icon-btn">
                         <i className="fa fa-cart-plus" />
                       </a>{" "}
                       <a href="wishlist.html" className="icon-btn">
@@ -2123,17 +1829,18 @@ export default function Home({}: Props) {
                       </span>
                     </div>
                     <h3 className="product-title">
-                      <a href="shop-details.html">Fast Aloy Wheel</a>
+                      <Link href="shop-details.html">Fast Aloy Wheel</Link>
                     </h3>
                     <span className="price">$100.85</span>
                   </div>
                 </div>
-             </div>
+              </div>
             </Slider>
           </div>
         </div>
-      </section> */}
-      <section className="" style={{ backgroundColor: "white" }}>
+      </section>
+
+      {/* <section className="" style={{ backgroundColor: "white" }}>
         <div className="as-container3 space bg-title position-relative">
           <div className="container">
             <div className="row justify-content-lg-between justify-content-center align-items-center">
@@ -2145,9 +1852,9 @@ export default function Home({}: Props) {
               </div>
               <div className="col-auto">
                 <div className="sec-btn">
-                  <a href="Price" className="as-btn style2">
+                  <Link href="Price" className="as-btn style2">
                     See All Plans
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -2156,10 +1863,7 @@ export default function Home({}: Props) {
                 <div className="price-box-wrap">
                   <div className="price-box">
                     <div className="price-box_img">
-                      <img
-                        src="assets/img/price/price_1_1.jpg"
-                        alt="price image"
-                      />
+                      <img src="assets/img/prestige/28.jpg" alt="price image" />
                     </div>
                     <div className="price-box_content">
                       <div className="price-box_header">
@@ -2214,25 +1918,6 @@ export default function Home({}: Props) {
                       </div>
                     </div>
                   </div>
-                  {/* <div className="price-box">
-                  <div className="price-box_img">
-                    <img src="assets/img/price/price_1_3.jpg" alt="price image" />
-                  </div>
-                  <div className="price-box_content">
-                    <div className="price-box_header">
-                      <h3 className="price-box_title">Wheel Servicing</h3>
-                      <h4 className="price-box_price">$299.00</h4>
-                    </div>
-                    <div className="price-box_list">
-                      <ul>
-                        <li>Rims &amp; Tire Change</li>
-                        <li>Rims &amp; Tire Change</li>
-                        <li>Rims &amp; Tire Change</li>
-                        <li>Rims &amp; Tire Change</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div> */}
                 </div>
               </div>
               <div className="col-xl-4">
@@ -2251,18 +1936,9 @@ export default function Home({}: Props) {
                       <i className="fal fa-truck-pickup" />
                     </div>
                     <div className="price-card_content">
-                      {/* <div className="checklist">
-                      <ul>
-                        <li>Rims &amp; Tire Change</li>
-                        <li>Interior Cleaning</li>
-                        <li>Wipe all Surfaces</li>
-                        <li>Leather Clean &amp; Dry</li>
-                        <li>Light Carpet Clean</li>
-                      </ul>
-                    </div> */}
-                      <a href="Price" className="as-btn">
+                      <Link href="Price" className="as-btn">
                         Purchase Now
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -2273,7 +1949,39 @@ export default function Home({}: Props) {
             <img src="assets/img/shape/tier_shape_2.png" alt="shape" />
           </div>
         </div>
+      </section> */}
+
+<section
+        className="space"
+        data-overlay="title"
+        data-opacity={7}
+        style={{ backgroundImage: `url('assets/img/bg/cta_bg_1.jpg')` }}
+        //  style={{backgroundImage:url("assets/img/bg/cta_bg_1.jpg")}}
+      >
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-xl-7 col-lg-6 mb-5 mb-lg-0">
+              <div className="title-area mb-0 text-lg-start text-center">
+                <span className="sub-title text-white">Get Our Products</span>
+                <h2 className="sec-title text-white">
+                  Get Premium Auto Parts Feel Free To Contact Us.
+                </h2>
+              </div>
+            </div>
+            <div className="col-xl-5 col-lg-6">
+              <div className="btn-group justify-content-lg-end justify-content-center">
+                <Link href="Shop" className="as-btn style3">
+                  Get Our Products
+                </Link>{" "}
+                <Link href="Shop" className="as-btn style-play">
+                  <i className="fa-solid fa-play" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
+
       <section className="space" style={{ backgroundColor: "white" }}>
         <div className="container">
           <div className="title-area text-center">
@@ -2344,6 +2052,7 @@ export default function Home({}: Props) {
           </div>
         </div>
       </section>
+
       <section className="position-relative bg-smoke space-top space-extra-bottom">
         <div className="container">
           <div className="title-area text-center">
@@ -2364,7 +2073,7 @@ export default function Home({}: Props) {
           >
             <Slider
               {...settings_004}
-              className="row as-carousel"
+              className=""
               data-slide-show={2}
               data-md-slide-show={1}
               data-dots="true"
@@ -2463,6 +2172,7 @@ export default function Home({}: Props) {
           <img src="assets/img/shape/road_shape_1.png" alt="shape" />
         </div>
       </section>
+
       {/* <section className="space blog-sec" style={{backgroundColor:"white"}}>
       <div className="container">
         <div className="title-area text-center">
@@ -2485,112 +2195,112 @@ export default function Home({}: Props) {
             <div className="blog-grid">
               <div className="blog-content">
                 <div className="blog-meta">
-                  <a href="blog.html">
+                  <Link href="blog.html">
                     <i className="fas fa-calendar-alt" />
                     March 15, 2022
-                  </a>{" "}
-                  <a href="blog.html">
+                  </Link>{" "}
+                  <Link href="blog.html">
                     <i className="fas fa-tags" />
                     Test Drive
-                  </a>
+                  </Link>
                 </div>
                 <h3 className="blog-title">
-                  <a href="blog-details.html">
+                  <Link href="blog-details.html">
                     How to Make the Most of Your Test Drive
-                  </a>
+                  </Link>
                 </h3>
               </div>
               <div className="blog-img">
                 <img src="assets/img/blog/blog_3_1.jpg" alt="blog image" />
               </div>
-              <a href="blog-details.html" className="blog-btn">
+              <Link href="blog-details.html" className="blog-btn">
                 Read Details
                 <i className="fas fa-arrow-right" />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-md-6 col-xl-4">
             <div className="blog-grid">
               <div className="blog-content">
                 <div className="blog-meta">
-                  <a href="blog.html">
+                  <Link href="blog.html">
                     <i className="fas fa-calendar-alt" />
                     March 16, 2022
-                  </a>{" "}
-                  <a href="blog.html">
+                  </Link>{" "}
+                  <Link href="blog.html">
                     <i className="fas fa-tags" />
                     Oil Change
-                  </a>
+                  </Link>
                 </div>
                 <h3 className="blog-title">
-                  <a href="blog-details.html">
+                  <Link href="blog-details.html">
                     How to Jump Start Your Car Maintenance?
-                  </a>
+                  </Link>
                 </h3>
               </div>
               <div className="blog-img">
                 <img src="assets/img/blog/blog_3_2.jpg" alt="blog image" />
               </div>
-              <a href="blog-details.html" className="blog-btn">
+              <Link href="blog-details.html" className="blog-btn">
                 Read Details
                 <i className="fas fa-arrow-right" />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-md-6 col-xl-4">
             <div className="blog-grid">
               <div className="blog-content">
                 <div className="blog-meta">
-                  <a href="blog.html">
+                  <Link href="blog.html">
                     <i className="fas fa-calendar-alt" />
                     March 17, 2022
-                  </a>{" "}
-                  <a href="blog.html">
+                  </Link>{" "}
+                  <Link href="blog.html">
                     <i className="fas fa-tags" />
                     Car Drive
-                  </a>
+                  </Link>
                 </div>
                 <h3 className="blog-title">
-                  <a href="blog-details.html">
+                  <Link href="blog-details.html">
                     How to Decorate Your Car for Halloween
-                  </a>
+                  </Link>
                 </h3>
               </div>
               <div className="blog-img">
                 <img src="assets/img/blog/blog_3_3.jpg" alt="blog image" />
               </div>
-              <a href="blog-details.html" className="blog-btn">
+              <Link href="blog-details.html" className="blog-btn">
                 Read Details
                 <i className="fas fa-arrow-right" />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-md-6 col-xl-4">
             <div className="blog-grid">
               <div className="blog-content">
                 <div className="blog-meta">
-                  <a href="blog.html">
+                  <Link href="blog.html">
                     <i className="fas fa-calendar-alt" />
                     March 18, 2022
-                  </a>{" "}
-                  <a href="blog.html">
+                  </Link>{" "}
+                  <Link href="blog.html">
                     <i className="fas fa-tags" />
                     Oil Change
-                  </a>
+                  </Link>
                 </div>
                 <h3 className="blog-title">
-                  <a href="blog-details.html">
+                  <Link href="blog-details.html">
                     How to Jump Start Your Car Maintenance?
-                  </a>
+                  </Link>
                 </h3>
               </div>
               <div className="blog-img">
                 <img src="assets/img/blog/blog_3_4.jpg" alt="blog image" />
               </div>
-              <a href="blog-details.html" className="blog-btn">
+              <Link href="blog-details.html" className="blog-btn">
                 Read Details
                 <i className="fas fa-arrow-right" />
-              </a>
+              </Link>
             </div>
           </div>
           </Slider>

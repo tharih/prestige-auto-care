@@ -18,6 +18,11 @@ export default {
             title:'Name',
             type:'string',
         },
+        {
+            name: 'filter',
+            title:'Filter',
+            type:'string',
+        },
         // {
         //     name: 'slug',
         //     title:'Slug',

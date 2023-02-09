@@ -6,7 +6,7 @@ import { client, urlFor } from "../client";
 
 type Props = {};
 
-const Shop = ({ products }: any) => {
+const Shop = ({ products,categories }: any) => {
   {
     console.log(products);
   }
@@ -301,21 +301,24 @@ const Shop = ({ products }: any) => {
                 <div className="widget widget_categories">
                   <h3 className="widget_title">Categories</h3>
                   <ul>
+                {categories.map((category: any, index: any) => (
+
                     <li>
-                      <Link href="blog.html">Car Repair</Link>
+                      <Link href="blog.html">{category.title}</Link>
                     </li>
-                    <li>
+                ))}
+                    {/* <li>
                       <Link href="blog.html">Engine Repair</Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <Link href="blog.html">Tyer Change</Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <Link href="blog.html">Oil Change</Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <Link href="blog.html">Battery Charge</Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
                 <div className="widget widget_price_filter">
@@ -471,8 +474,11 @@ export const getServerSideProps = async () => {
   const query = '*[_type == "product"]';
   const products = await client.fetch(query);
 
+  const categoryQuery = '*[_type == "category"]';
+  const categories = await client.fetch(categoryQuery);
+
   return {
-    props: { products },
+    props: { products,categories },
   };
 };
 

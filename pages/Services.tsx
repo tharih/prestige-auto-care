@@ -1,10 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import { Helmet } from "react-helmet";
+import { client, urlFor } from "../client";
 
 type Props = {};
 
-export default function Services({}: Props) {
+const Services = ({ services }: any) => {
   return (
     <>
      <Helmet>
@@ -39,72 +40,38 @@ export default function Services({}: Props) {
       <section className="bg-smoke space">
         <div className="container">
           <div className="row gy-30">
-            <div className="col-md-6 col-lg-4">
-              <div className="service-grid">
-                <div className="service-grid_img">
-                  <img
-                    src="assets/img/prestige/24.jpg"
-                    alt="service image"
-                  />
-                </div>
-                <div className="service-grid_content">
-                  <h3 className="service-grid_title">
-                    <Link href="Servicedetails">Parts</Link>
-                  </h3>
-                  <p className="service-grid_text">
-                    Unique core competen resource sucking methods of empowerment
-                    disciplinary deliverables after cost effective
-                  </p>
-                  <Link href="Servicedetails" className="as-btn">
-                    View Details
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="service-grid">
-                <div className="service-grid_img">
-                  <img
-                    src="assets/img/prestige/20.jpg"
-                    alt="service image"
-                  />
-                </div>
-                <div className="service-grid_content">
-                  <h3 className="service-grid_title">
-                    <Link href="service-details.html">Panel & Paint</Link>
-                  </h3>
-                  <p className="service-grid_text">
-                    Unique core competen resource sucking methods of empowerment
-                    disciplinary deliverables after cost effective
-                  </p>
-                  <Link href="service-details.html" className="as-btn">
-                    View Details
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="service-grid">
-                <div className="service-grid_img">
-                  <img
-                    src="assets/img/prestige/6.jpg"
-                    alt="service image"
-                  />
-                </div>
-                <div className="service-grid_content">
-                  <h3 className="service-grid_title">
-                    <Link href="service-details.html">Mechanical</Link>
-                  </h3>
-                  <p className="service-grid_text">
-                    Unique core competen resource sucking methods of empowerment
-                    disciplinary deliverables after cost effective
-                  </p>
-                  <Link href="service-details.html" className="as-btn">
-                    View Details
-                  </Link>
-                </div>
-              </div>
-            </div>
+          {services.map((service: any, index: any) => ( 
+             <div className="col-md-6 col-lg-4">
+             <div className="service-grid">
+               <div className="service-grid_img">
+              
+                              <img
+                                src={urlFor(service.image[0]).url()}
+                                alt="Service Image"
+                                style={{
+                                  objectFit: "cover",
+                                  width: "100%",
+                                  height: "100%",
+                                }}
+                              />
+                            </div>
+               
+               <div className="service-grid_content">
+                 <h3 className="service-grid_title">
+                   <Link href="Servicedetails">{service.name}</Link>
+                 </h3>
+                 <p className="service-grid_text">
+                   {service.details}
+                 </p>
+                 <Link href="Servicedetails" className="as-btn">
+                   View Details
+                 </Link>
+               </div>
+             </div>
+           </div>
+          ))}
+           
+            
           </div>
         </div>
       </section>
@@ -166,3 +133,16 @@ export default function Services({}: Props) {
     </>
   );
 }
+
+export const getServerSideProps = async () => {
+  const query = '*[_type == "service"]';
+  const services = await client.fetch(query);
+
+ 
+
+  return {
+    props: { services },
+  };
+};
+
+export default Services;

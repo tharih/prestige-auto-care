@@ -14,10 +14,11 @@ import Link from "next/link";
 import { AiOutlineClose } from "react-icons/ai";
 import ReactPlayer from "react-player";
 import { Helmet } from "react-helmet";
+import { client, urlFor } from "../client";
 type Props = {};
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({}: Props) {
+const Home = ({ services }: any) => {
   const [showVideoPlayer, setShowVideoPlayer] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const [text, count] = useTypewriter({
@@ -465,12 +466,20 @@ export default function Home({}: Props) {
             data-md-slide-show={2}
             data-arrows="true"
           >
-            {/* <Slider {...settings_001} > */}
+            {services.map((service: any, index: any) => (
 
             <div className="col-md-6 col-lg-4">
               <div className="service-block">
                 <div className="service-block_img">
-                  <img src="assets/img/prestige/24.jpg" alt="service image" />
+                <img
+                                src={urlFor(service.image[0]).url()}
+                                alt="Service Image"
+                                style={{
+                                  objectFit: "cover",
+                                  width: "100%",
+                                  height: "100%",
+                                }}
+                              />
                 </div>
                 <div
                   className="service-block_content"
@@ -481,7 +490,7 @@ export default function Home({}: Props) {
                 >
                   {/* <span className="service-block_number">Service 01</span> */}
                   <h3 className="service-block_title">
-                    <Link href="Shop">Parts</Link>
+                    <Link href="Shop">{service.name}</Link>
                   </h3>
                   <Link href="Shop" className="as-btn">
                     View Shop
@@ -489,73 +498,12 @@ export default function Home({}: Props) {
                 </div>
               </div>
             </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="service-block">
-                <div className="service-block_img">
-                  <img src="assets/img/prestige/17.jpg" alt="service image" />
-                </div>
-                <div
-                  className="service-block_content"
-                  data-bg-src="assets/img/bg/pattern_bg_7.png"
-                  style={{
-                    backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`,
-                  }}
-                >
-                  {/* <span className="service-block_number">Service 02</span> */}
-                  <h3 className="service-block_title">
-                    <Link href="Servicedetails">Panel & Paint</Link>
-                  </h3>
-                  <Link href="Servicedetails" className="as-btn">
-                    View Service
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="service-block">
-                <div className="service-block_img">
-                  <img src="assets/img/prestige/6.jpg" alt="service image" />
-                </div>
-                <div
-                  className="service-block_content"
-                  data-bg-src="assets/img/bg/pattern_bg_7.png"
-                  style={{
-                    backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`,
-                  }}
-                >
-                  {/* <span className="service-block_number">Service 03</span> */}
-                  <h3 className="service-block_title">
-                    <Link href="Servicedetails">Mechanical</Link>
-                  </h3>
-                  <Link href="Servicedetails" className="as-btn">
-                    View Service
-                  </Link>
-                </div>
-              </div>
-            </div>
-            {/* <div className="col-md-6 col-lg-4">
-            <div className="service-block">
-              <div className="service-block_img">
-                <img
-                  src="assets/img/service/service_4_4.jpg"
-                  alt="service image"
-                />
-              </div>
-              <div
-                className="service-block_content"
-                data-bg-src="assets/img/bg/pattern_bg_7.png"
-              >
-                <span className="service-block_number">Service 04</span>
-                <h3 className="service-block_title">
-                  <Link href="Servicedetails">Engine Cleaning</Link>
-                </h3>
-                <Link href="Servicedetails" className="as-btn">
-                  View Service
-                </Link>
-              </div>
-            </div>
-          </div> */}
-            {/* </Slider> */}
+            ))}
+            
+
+           
+           
+           
           </div>
         </div>
       </section>
@@ -2310,3 +2258,17 @@ export default function Home({}: Props) {
     </>
   );
 }
+
+
+export const getServerSideProps = async () => {
+  const query = '*[_type == "service"]';
+  const services = await client.fetch(query);
+
+ 
+
+  return {
+    props: { services },
+  };
+};
+
+export default Home;

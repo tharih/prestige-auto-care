@@ -307,18 +307,7 @@ const Shop = ({ products,categories }: any) => {
                       <Link href="blog.html">{category.title}</Link>
                     </li>
                 ))}
-                    {/* <li>
-                      <Link href="blog.html">Engine Repair</Link>
-                    </li> */}
-                    {/* <li>
-                      <Link href="blog.html">Tyer Change</Link>
-                    </li> */}
-                    {/* <li>
-                      <Link href="blog.html">Oil Change</Link>
-                    </li> */}
-                    {/* <li>
-                      <Link href="blog.html">Battery Charge</Link>
-                    </li> */}
+                   
                   </ul>
                 </div>
                 <div className="widget widget_price_filter">

@@ -5,6 +5,7 @@ import author from "./author";
 import slider from "./slider";
 import product from "./product";
 import about from "./about";
+import services from "./services";
 
 export const schemaTypes = [
   post,
@@ -14,4 +15,5 @@ export const schemaTypes = [
   slider,
   product,
   about,
+  services,
 ];

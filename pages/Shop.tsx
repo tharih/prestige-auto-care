@@ -210,10 +210,23 @@ const Shop = ({ products }: any) => {
                       <div key={index} className="col-xl-4 col-sm-6">
                         <div className="as-product">
                           <div className="product-img">
-                            <img
-                              src={urlFor(product.image[0]).url()}
-                              alt="Product Image"
-                            />
+                            <div
+                              style={{
+                                width: 282,
+                                height: 280,
+                                overflow: "hidden",
+                              }}
+                            >
+                              <img
+                                src={urlFor(product.image[0]).url()}
+                                alt="Product Image"
+                                style={{
+                                  objectFit: "cover",
+                                  width: "100%",
+                                  height: "100%",
+                                }}
+                              />
+                            </div>
                             <div className="actions">
                               <a
                                 href="#QuickView"

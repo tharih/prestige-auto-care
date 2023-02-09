@@ -206,8 +206,8 @@ const Shop = ({ products }: any) => {
                   aria-labelledby="tab-shop-grid"
                 >
                   <div className="row gy-40">
-                    {products.map((product: any) => (
-                      <div className="col-xl-4 col-sm-6">
+                    {products.map((product: any, index: any) => (
+                      <div key={index} className="col-xl-4 col-sm-6">
                         <div className="as-product">
                           <div className="product-img">
                             <img

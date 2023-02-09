@@ -100,14 +100,16 @@ const Home = ({ services }: any) => {
     setShowVideoPlayer(false);
   };
   return (
-    <>
+    <div>
       <Helmet>
                         
         <meta charSet="utf-8" />
                         <title>Home</title>
-        <meta name="description" content="Get your amazing Car Solutions Prestige Auto care" />
-                        
-                    
+        <meta
+          name="description"
+          content="Get your amazing Car Solutions Prestige Auto care"
+        />
+                                     
       </Helmet>
       <div id="QuickView" className="white-popup mfp-hide">
         <div className="container bg-white">
@@ -467,43 +469,37 @@ const Home = ({ services }: any) => {
             data-arrows="true"
           >
             {services.map((service: any, index: any) => (
-
-            <div className="col-md-6 col-lg-4">
-              <div className="service-block">
-                <div className="service-block_img">
-                <img
-                                src={urlFor(service.image[0]).url()}
-                                alt="Service Image"
-                                style={{
-                                  objectFit: "cover",
-                                  width: "100%",
-                                  height: "100%",
-                                }}
-                              />
-                </div>
-                <div
-                  className="service-block_content"
-                  data-bg-src="assets/img/bg/pattern_bg_7.png"
-                  style={{
-                    backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`,
-                  }}
-                >
-                  {/* <span className="service-block_number">Service 01</span> */}
-                  <h3 className="service-block_title">
-                    <Link href="Shop">{service.name}</Link>
-                  </h3>
-                  <Link href="Shop" className="as-btn">
-                    View Shop
-                  </Link>
+              <div className="col-md-6 col-lg-4">
+                <div className="service-block">
+                  <div className="service-block_img">
+                    <img
+                      src={urlFor(service.image[0]).url()}
+                      alt="Service Image"
+                      style={{
+                        objectFit: "cover",
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    />
+                  </div>
+                  <div
+                    className="service-block_content"
+                    data-bg-src="assets/img/bg/pattern_bg_7.png"
+                    style={{
+                      backgroundImage: `url('assets/img/bg/pattern_bg_7.png')`,
+                    }}
+                  >
+                    {/* <span className="service-block_number">Service 01</span> */}
+                    <h3 className="service-block_title">
+                      <Link href="Shop">{service.name}</Link>
+                    </h3>
+                    <Link href="Shop" className="as-btn">
+                      View Shop
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
             ))}
-            
-
-           
-           
-           
           </div>
         </div>
       </section>
@@ -577,7 +573,6 @@ const Home = ({ services }: any) => {
                   role="tab"
                   aria-controls="nav-one"
                   aria-selected="true"
-                  
                 >
                   About Us
                 </button>{" "}
@@ -614,7 +609,9 @@ const Home = ({ services }: any) => {
                   aria-labelledby="nav-one-tab"
                 >
                   <p className="mb-35">
-                    "We're an independent auto body shop located in Rocklea Queensland. We are specialised in any medium to large body repairs with high quality for a reasonable price."
+                    "We're an independent auto body shop located in Rocklea
+                    Queensland. We are specialised in any medium to large body
+                    repairs with high quality for a reasonable price."
                   </p>
                   <div className="pt-40">
                     <div className="about-progress">
@@ -1899,7 +1896,7 @@ const Home = ({ services }: any) => {
         </div>
       </section> */}
 
-<section
+      <section
         className="space"
         data-overlay="title"
         data-opacity={7}
@@ -2255,16 +2252,13 @@ const Home = ({ services }: any) => {
         </div>
       </div>
     </section> */}
-    </>
+    </div>
   );
-}
-
+};
 
 export const getServerSideProps = async () => {
   const query = '*[_type == "service"]';
   const services = await client.fetch(query);
-
- 
 
   return {
     props: { services },

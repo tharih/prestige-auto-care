@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 import { AiOutlineClose } from "react-icons/ai";
 import Slider from "react-slick";
 import { client, urlFor } from "../client";
+import { fetchAbout } from "../utils/fetchAbout";
 import { AboutType } from "../utils/type";
 import stylesIndex from "./index.module.css";
 
@@ -39,7 +40,7 @@ export default function About({ about }: Props) {
     setShowVideoPlayer(false);
   };
   return (
-    <>
+    <div>
       <Helmet>
                         
         <meta charSet="utf-8" />
@@ -170,7 +171,10 @@ export default function About({ about }: Props) {
                   </div>
                 </div>
               )}
-              <img src="assets/img/prestige/1.jpg" alt="Video Image" />
+              <img
+                src={urlFor(about[0].choose_image).url()}
+                alt="Video Image"
+              />
               <div
                 className="play-btn popup-video"
                 onClick={handleShowVideoPlayer}
@@ -185,36 +189,18 @@ export default function About({ about }: Props) {
                 <span className="sub-title">About Our Company</span>
                 <h2 className="sec-title text-white">Why Choose Us?</h2>
               </div>
-              <div className="feature-media">
-                <div className="feature-media_num">01</div>
-                <div className="feature-media_content">
-                  <h3 className="feature-media_title">24/7 Work Process</h3>
-                  <p className="feature-media_text">
-                    Intrinsicly fashion enterprise manuftured products after
-                    open source e-service engage transparent channels.
-                  </p>
-                </div>
-              </div>
-              <div className="feature-media">
-                <div className="feature-media_num">02</div>
-                <div className="feature-media_content">
-                  <h3 className="feature-media_title">Expert Team Memebers</h3>
-                  <p className="feature-media_text">
-                    Intrinsicly fashion enterprise manuftured products after
-                    open source e-service engage transparent channels.
-                  </p>
-                </div>
-              </div>
-              <div className="feature-media">
-                <div className="feature-media_num">03</div>
-                <div className="feature-media_content">
-                  <h3 className="feature-media_title">Quality Time Delivery</h3>
-                  <p className="feature-media_text">
-                    Intrinsicly fashion enterprise manuftured products after
-                    open source e-service engage transparent channels.
-                  </p>
-                </div>
-              </div>
+
+              {about.map((data: any, index: any) =>
+                data.whyChooseUs.map((item: any, key: any) => (
+                  <div key={key} className="feature-media">
+                    <div className="feature-media_num">{Number(key) + 1}</div>
+                    <div className="feature-media_content">
+                      <h3 className="feature-media_title">{item.mainTitle}</h3>
+                      <p className="feature-media_text">{item.description}</p>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>
@@ -344,13 +330,12 @@ export default function About({ about }: Props) {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
 export const getStaticProps = async () => {
-  const query = '*[_type == "about"]';
-  const about: AboutType[] = await client.fetch(query);
+  const about: AboutType[] = await fetchAbout();
 
   return {
     props: {

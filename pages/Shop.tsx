@@ -3,19 +3,21 @@ import Link from "next/link";
 import React from "react";
 import { Helmet } from "react-helmet";
 import { client, urlFor } from "../client";
+import { fetchCategory } from "../utils/fetchCategory";
+import { fetchProducts } from "../utils/fetchProduct";
 
 type Props = {};
 
-const Shop = ({ products,categories }: any) => {
+const Shop = ({ products, categories }: any) => {
   {
     console.log(products);
   }
   return (
-    <>
+    <div>
       <Helmet>
                         
         <meta charSet="utf-8" />
-                        <title>Home</title>
+                        <title>Shop </title>
         <meta
           name="description"
           content="Get your amazing Car Solutions Prestige Auto care"
@@ -127,7 +129,7 @@ const Shop = ({ products,categories }: any) => {
             <div className="breadcumb-menu-wrap">
               <ul className="breadcumb-menu">
                 <li>
-                  <Link href="index.html">Home</Link>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>Our Products</li>
               </ul>
@@ -208,62 +210,64 @@ const Shop = ({ products,categories }: any) => {
                   <div className="row gy-40">
                     {products.map((product: any, index: any) => (
                       <div key={index} className="col-xl-4 col-sm-6">
-                        <div className="as-product">
-                          <div className="product-img">
-                            <div
-                              style={{
-                                width: 282,
-                                height: 280,
-                                overflow: "hidden",
-                              }}
-                            >
-                              <img
-                                src={urlFor(product.image[0]).url()}
-                                alt="Product Image"
+                        <Link href={`/product/${product.slug.current}`}>
+                          <div className="as-product">
+                            <div className="product-img">
+                              <div
                                 style={{
-                                  objectFit: "cover",
-                                  width: "100%",
-                                  height: "100%",
+                                  width: 282,
+                                  height: 280,
+                                  overflow: "hidden",
                                 }}
-                              />
-                            </div>
-                            <div className="actions">
-                              <a
-                                href="#QuickView"
-                                className="icon-btn popup-content"
                               >
-                                <i className="fa fa-eye" />
-                              </a>{" "}
-                              <a href="cart.html" className="icon-btn">
-                                <i className="fa fa-cart-plus" />
-                              </a>{" "}
-                              <a href="wishlist.html" className="icon-btn">
-                                <i className="fa fa-heart" />
-                              </a>
+                                <img
+                                  src={urlFor(product.image[0]).url()}
+                                  alt="Product Image"
+                                  style={{
+                                    objectFit: "cover",
+                                    width: "100%",
+                                    height: "100%",
+                                  }}
+                                />
+                              </div>
+                              <div className="actions">
+                                <a
+                                  href="#QuickView"
+                                  className="icon-btn popup-content"
+                                >
+                                  <i className="fa fa-eye" />
+                                </a>{" "}
+                                <a href="cart.html" className="icon-btn">
+                                  <i className="fa fa-cart-plus" />
+                                </a>{" "}
+                                <a href="wishlist.html" className="icon-btn">
+                                  <i className="fa fa-heart" />
+                                </a>
+                              </div>
+                              <span className="category">{product.filter}</span>
                             </div>
-                            <span className="category">{product.filter}</span>
-                          </div>
-                          <div className="product-content">
-                            <div
-                              className="star-rating"
-                              role="img"
-                              aria-label="Rated 5.00 out of 5"
-                            >
-                              <span>
-                                Rated <strong className="rating">5.00</strong>{" "}
-                                out of 5 based on{" "}
-                                <span className="rating">1</span> customer
-                                rating
-                              </span>
+                            <div className="product-content">
+                              <div
+                                className="star-rating"
+                                role="img"
+                                aria-label="Rated 5.00 out of 5"
+                              >
+                                <span>
+                                  Rated <strong className="rating">5.00</strong>{" "}
+                                  out of 5 based on{" "}
+                                  <span className="rating">1</span> customer
+                                  rating
+                                </span>
+                              </div>
+                              <h3 className="product-title">
+                                <Link href="shop-details.html">
+                                  {product.name}
+                                </Link>
+                              </h3>
+                              <span className="price">AUD{product.price}</span>
                             </div>
-                            <h3 className="product-title">
-                              <Link href="shop-details.html">
-                                {product.name}
-                              </Link>
-                            </h3>
-                            <span className="price">AUD{product.price}</span>
                           </div>
-                        </div>
+                        </Link>
                       </div>
                     ))}
                   </div>
@@ -301,13 +305,11 @@ const Shop = ({ products,categories }: any) => {
                 <div className="widget widget_categories">
                   <h3 className="widget_title">Categories</h3>
                   <ul>
-                {categories.map((category: any, index: any) => (
-
-                    <li>
-                      <Link href="blog.html">{category.title}</Link>
-                    </li>
-                ))}
-                   
+                    {categories.map((category: any, index: any) => (
+                      <li>
+                        <Link href="blog.html">{category.title}</Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="widget widget_price_filter">
@@ -455,19 +457,17 @@ const Shop = ({ products,categories }: any) => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
-export const getServerSideProps = async () => {
-  const query = '*[_type == "product"]';
-  const products = await client.fetch(query);
-
-  const categoryQuery = '*[_type == "category"]';
-  const categories = await client.fetch(categoryQuery);
+export const getStaticProps = async () => {
+  const products = await fetchProducts();
+  const categories = await fetchCategory();
 
   return {
-    props: { products,categories },
+    props: { products, categories },
+    revalidate: 10,
   };
 };
 

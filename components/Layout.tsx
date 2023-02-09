@@ -22,7 +22,7 @@ const Layout = ({ children }: Props) => {
   }, []);
 
   return (
-    <>
+    <div>
       <Header />
       {children}
       <Footer />
@@ -34,7 +34,7 @@ const Layout = ({ children }: Props) => {
       >
         <i className="fa fa-angle-up" />
       </Link>
-    </>
+    </div>
   );
 };
 

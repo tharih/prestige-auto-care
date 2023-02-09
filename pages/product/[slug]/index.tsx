@@ -1,5 +1,9 @@
-import { useRouter } from "next/router";
+import { NextRouter, useRouter } from "next/router";
 
+type Props = {
+  router: NextRouter;
+  slug: string;
+};
 const Product = () => {
   const router = useRouter();
   const { slug } = router.query;

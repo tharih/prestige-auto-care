@@ -19,8 +19,8 @@ export default {
             type:'string',
         },
         {
-            name: 'filter',
-            title:'Filter',
+            name: 'category',
+            title:'Category',
             type:'string',
         },
         // {

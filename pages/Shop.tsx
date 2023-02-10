@@ -1,17 +1,22 @@
-import { log } from "console";
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { client, urlFor } from "../client";
+import { useDataContext } from "../context/store";
 import { fetchCategory } from "../utils/fetchCategory";
 import { fetchProducts } from "../utils/fetchProduct";
 
 type Props = {};
 
 const Shop = ({ products, categories }: any) => {
-  {
-    console.log(products);
-  }
+  // @ts-ignore
+  const { productsArr, setProductsArr } = useDataContext();
+
+  useEffect(() => {
+    setProductsArr(products);
+  }, []);
+
   return (
     <div>
       <Helmet>
@@ -306,7 +311,7 @@ const Shop = ({ products, categories }: any) => {
                   <h3 className="widget_title">Categories</h3>
                   <ul>
                     {categories.map((category: any, index: any) => (
-                      <li>
+                      <li key={index}>
                         <Link href="blog.html">{category.title}</Link>
                       </li>
                     ))}

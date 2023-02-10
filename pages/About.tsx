@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 import { AiOutlineClose } from "react-icons/ai";
 import Slider from "react-slick";
 import { client, urlFor } from "../client";
+import { useDataContext } from "../context/store";
 import { fetchAbout } from "../utils/fetchAbout";
 import { AboutType } from "../utils/type";
 import stylesIndex from "./index.module.css";
@@ -15,7 +16,8 @@ type Props = {
 };
 
 export default function About({ about }: Props) {
-  console.log(about);
+  // @ts-ignore
+  const { aboutArr, setAboutArr } = useDataContext();
 
   const [showVideoPlayer, setShowVideoPlayer] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);

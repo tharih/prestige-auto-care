@@ -4,7 +4,6 @@ import About from "../pages/About";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import stylesLayout from "./Layout.module.css";
-import { DataProvider } from "../context/store";
 type Props = {
   children: any;
 };
@@ -23,7 +22,7 @@ const Layout = ({ children }: Props) => {
   }, []);
 
   return (
-    <DataProvider>
+    <div>
       <Header />
       {children}
       <Footer />
@@ -35,7 +34,7 @@ const Layout = ({ children }: Props) => {
       >
         <i className="fa fa-angle-up" />
       </Link>
-    </DataProvider>
+    </div>
   );
 };
 

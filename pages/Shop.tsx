@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { client, urlFor } from "../client";
+import Layout from "../components/Layout";
 import { useDataContext } from "../context/store";
 import { fetchCategory } from "../utils/fetchCategory";
 import { fetchProducts } from "../utils/fetchProduct";
@@ -18,7 +19,7 @@ const Shop = ({ products, categories }: any) => {
   }, []);
 
   return (
-    <div>
+    <Layout>
       <Helmet>
                         
         <meta charSet="utf-8" />
@@ -462,7 +463,7 @@ const Shop = ({ products, categories }: any) => {
           </div>
         </div>
       </section>
-    </div>
+    </Layout>
   );
 };
 

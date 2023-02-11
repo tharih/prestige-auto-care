@@ -1,19 +1,22 @@
 import Link from "next/link";
 import React from "react";
 import { Helmet } from "react-helmet";
+import Layout from "../components/Layout";
 
 type Props = {};
 
 const Contact = (props: Props) => {
   return (
-    <>
-     <Helmet>
+    <Layout>
+      <Helmet>
                         
         <meta charSet="utf-8" />
                         <title>Home</title>
-        <meta name="description" content="Get your amazing Car Solutions Prestige Auto care" />
-                        
-                    
+        <meta
+          name="description"
+          content="Get your amazing Car Solutions Prestige Auto care"
+        />
+                                     
       </Helmet>
       <div
         className="breadcumb-wrapper"
@@ -211,7 +214,7 @@ const Contact = (props: Props) => {
           loading="lazy"
         ></iframe>
       </div>
-    </>
+    </Layout>
   );
 };
 

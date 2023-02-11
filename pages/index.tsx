@@ -14,6 +14,7 @@ import AboutCompanyComponent from "../components/home/AboutCompanyComponent";
 import LatestProducts from "../components/home/LatestProducts";
 import WorkProcess from "../components/home/WorkProcess";
 import Testimonials from "../components/home/Testimonials";
+import Layout from "../components/Layout";
 
 type Props = {
   services: [];
@@ -63,7 +64,7 @@ const Home = ({ services, about }: Props) => {
   };
   // carousal settings End
   return (
-    <div>
+    <Layout>
       <Helmet>
                         
         <meta charSet="utf-8" />
@@ -82,7 +83,7 @@ const Home = ({ services, about }: Props) => {
       <GetPremiumParts />
       <WorkProcess />
       <Testimonials settings_004={settings_004} />
-    </div>
+    </Layout>
   );
 };
 

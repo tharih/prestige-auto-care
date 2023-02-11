@@ -9,6 +9,7 @@ import Slider from "react-slick";
 import { client, urlFor } from "../client";
 import GetPremiumParts from "../components/about/GetPremiumParts";
 import WhyChooseUs from "../components/about/WhyChooseUs";
+import Layout from "../components/Layout";
 import { useDataContext } from "../context/store";
 import { fetchAbout } from "../utils/fetchAbout";
 import { AboutType } from "../utils/type";
@@ -45,7 +46,7 @@ export default function About({ about }: Props) {
     setShowVideoPlayer(false);
   };
   return (
-    <div>
+    <Layout>
       <Helmet>
                         
         <meta charSet="utf-8" />
@@ -244,7 +245,7 @@ export default function About({ about }: Props) {
         </div>
       </section>
       <GetPremiumParts />
-    </div>
+    </Layout>
   );
 }
 

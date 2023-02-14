@@ -88,7 +88,7 @@ const Home = ({ services, about }: Props) => {
 };
 
 export const getStaticProps = async () => {
-  const services = await fetchService();
+  const services: any[] = await fetchService();
   const about: AboutType[] = await fetchAbout();
   return {
     props: { services, about },

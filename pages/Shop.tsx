@@ -1,22 +1,17 @@
-"use client";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { client, urlFor } from "../client";
 import Layout from "../components/Layout";
-import { useDataContext } from "../context/store";
 import { fetchCategory } from "../utils/fetchCategory";
 import { fetchProducts } from "../utils/fetchProduct";
 
 type Props = {};
 
 const Shop = ({ products, categories }: any) => {
-  // @ts-ignore
-  const { productsArr, setProductsArr } = useDataContext();
-
-  useEffect(() => {
-    setProductsArr(products);
-  }, []);
+  const [setProducts, setSetProducts] = useState(products);
+  const router = useRouter();
 
   return (
     <Layout>
@@ -30,99 +25,7 @@ const Shop = ({ products, categories }: any) => {
         />
                                      
       </Helmet>
-      {/* <div id="QuickView" className="white-popup mfp-hide" >
-      <div className="container bg-white">
-        <div className="row gx-60">
-          <div className="col-lg-6">
-            
-            <div className="product-big-img">
-              <div className="img">
-                 
-                
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-6 align-self-center">
-            <div className="product-about">
-              <p className="price">
-              {products?.map((product:any) => product.price)} <del>$350.99</del>
-              </p>
-              <h2 className="product-title">{products?.map((product:any) => product.name)}</h2>
-              <div className="product-rating">
-                <div
-                  className="star-rating"
-                  role="img"
-                  aria-label="Rated 5.00 out of 5"
-                >
-                  <span style={{ width: "100%" }}>
-                    Rated <strong className="rating">5.00</strong> out of 5 based
-                    on
-                    <span className="rating">1</span> customer rating
-                  </span>
-                </div>
-                <Link href="shop-details.html" className="woocommerce-review-link">
-                  (<span className="count">3</span>
-                  customer reviews)
-                </Link>
-              </div>
-              <p className="text">
-                Syndicate customized growth strategies prospective human capital
-                leverage other's optimal e-markets without transparent catalysts
-                for change.
-              </p>
-              <div className="checklist style3">
-                <ul>
-                  <li>Lifetime structural, one year face finish warranty</li>
-                  <li>Mapped from “Center Caps” under ” tment” tab</li>
-                  <li>Fully copatible with OEM equimpent</li>
-                </ul>
-              </div>
-              <div className="actions">
-                <div className="quantity">
-                  <input
-                    type="number"
-                    className="qty-input"
-                    step={1}
-                    min={1}
-                    max={100}
-                    name="quantity"
-                    defaultValue={1}
-                    title="Qty"
-                  />{" "}
-                  <button className="quantity-plus qty-btn">
-                    <i className="fa fa-chevron-up" />
-                  </button>{" "}
-                  <button className="quantity-minus qty-btn">
-                    <i className="fa fa-chevron-down" />
-                  </button>
-                </div>
-                <button className="as-btn">Add to Cart</button>
-              </div>
-              <div className="product_meta">
-                <span className="sku_wrapper">
-                  SKU: <span className="sku">wheel-fits-chevy-camaro</span>
-                </span>{" "}
-                <span className="posted_in">
-                  Category:
-                  <Link href="shop.html" rel="tag">
-                    Tires &amp; Wheels
-                  </Link>
-                </span>{" "}
-                <span>
-                  Tags: <Link href="shop.html">automotive parts</Link>
-                  <Link href="shop.html">wheels</Link>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button title="Close (Esc)" type="button" className="mfp-close">
-          ×
-        </button>
-      </div>
-    </div> */}
-
-      <div
+      {/* <div
         className="breadcumb-wrapper"
         data-bg-src="assets/img/breadcumb/breadcumb-bg.jpg"
         style={{
@@ -142,7 +45,7 @@ const Shop = ({ products, categories }: any) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <section
         className="as-product-wrapper space-top space-extra-bottom"
         style={{ backgroundColor: "white" }}
@@ -215,65 +118,67 @@ const Shop = ({ products, categories }: any) => {
                 >
                   <div className="row gy-40">
                     {products.map((product: any, index: any) => (
-                      <div key={index} className="col-xl-4 col-sm-6">
-                        <Link href={`/product/${product.slug.current}`}>
-                          <div className="as-product">
-                            <div className="product-img">
-                              <div
+                      <div
+                        key={index}
+                        className="col-xl-4 col-sm-6"
+                        onClick={() => router.push(`/${product.slug.current}`)}
+                      >
+                        {/* <Link href={`/product/${product.slug.current}`}> */}
+                        <div className="as-product">
+                          <div className="product-img">
+                            <div
+                              style={{
+                                width: 282,
+                                height: 280,
+                                overflow: "hidden",
+                              }}
+                            >
+                              <img
+                                src={urlFor(product.image[0]).url()}
+                                alt="Product Image"
                                 style={{
-                                  width: 282,
-                                  height: 280,
-                                  overflow: "hidden",
+                                  objectFit: "cover",
+                                  width: "100%",
+                                  height: "100%",
                                 }}
-                              >
-                                <img
-                                  src={urlFor(product.image[0]).url()}
-                                  alt="Product Image"
-                                  style={{
-                                    objectFit: "cover",
-                                    width: "100%",
-                                    height: "100%",
-                                  }}
-                                />
-                              </div>
-                              <div className="actions">
-                                <a
-                                  href="#QuickView"
-                                  className="icon-btn popup-content"
-                                >
-                                  <i className="fa fa-eye" />
-                                </a>{" "}
-                                <a href="cart.html" className="icon-btn">
-                                  <i className="fa fa-cart-plus" />
-                                </a>{" "}
-                                <a href="wishlist.html" className="icon-btn">
-                                  <i className="fa fa-heart" />
-                                </a>
-                              </div>
-                              <span className="category">{product.filter}</span>
+                              />
                             </div>
-                            <div className="product-content">
-                              <div
-                                className="star-rating"
-                                role="img"
-                                aria-label="Rated 5.00 out of 5"
+                            <div className="actions">
+                              {/* <a
+                                href="#QuickView"
+                                className="icon-btn popup-content"
                               >
-                                <span>
-                                  Rated <strong className="rating">5.00</strong>{" "}
-                                  out of 5 based on{" "}
-                                  <span className="rating">1</span> customer
-                                  rating
-                                </span>
-                              </div>
-                              <h3 className="product-title">
-                                <Link href="shop-details.html">
-                                  {product.name}
-                                </Link>
-                              </h3>
-                              <span className="price">AUD{product.price}</span>
+                                <i className="fa fa-eye" />
+                              </a>{" "} */}
+                              <Link href="/Cart" className="icon-btn">
+                                <i className="fa fa-cart-plus" />
+                              </Link>{" "}
+                              {/* <a href="wishlist.html" className="icon-btn">
+                                <i className="fa fa-heart" />
+                              </a> */}
                             </div>
+                            <span className="category">{product.filter}</span>
                           </div>
-                        </Link>
+                          <div className="product-content">
+                            <div
+                              className="star-rating"
+                              role="img"
+                              aria-label="Rated 5.00 out of 5"
+                            >
+                              <span>
+                                Rated <strong className="rating">5.00</strong>{" "}
+                                out of 5 based on{" "}
+                                <span className="rating">1</span> customer
+                                rating
+                              </span>
+                            </div>
+                            <h3 className="product-title">
+                              <Link href="#">{product.name}</Link>
+                            </h3>
+                            <span className="price">AUD{product.price}</span>
+                          </div>
+                        </div>
+                        {/* </Link> */}
                       </div>
                     ))}
                   </div>
@@ -312,9 +217,9 @@ const Shop = ({ products, categories }: any) => {
                   <h3 className="widget_title">Categories</h3>
                   <ul>
                     {categories.map((category: any, index: any) => (
-                      <li key={index}>
-                        <Link href="blog.html">{category.title}</Link>
-                      </li>
+                      <Link key={index} href="blog.html">
+                        {category.title}
+                      </Link>
                     ))}
                   </ul>
                 </div>

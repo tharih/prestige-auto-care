@@ -43,10 +43,9 @@ export interface AboutType extends sanityBody {
 }
 export interface ProductType extends sanityBody {
   _type: "product";
-  title: string;
   name: string;
   details: string;
-  category: string;
+  category: CategoryType[];
   image: Array;
   price: Number;
 }

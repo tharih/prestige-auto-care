@@ -10,7 +10,6 @@ import { client, urlFor } from "../client";
 import GetPremiumParts from "../components/about/GetPremiumParts";
 import WhyChooseUs from "../components/about/WhyChooseUs";
 import Layout from "../components/Layout";
-import { useDataContext } from "../context/store";
 import { fetchAbout } from "../utils/fetchAbout";
 import { AboutType } from "../utils/type";
 import stylesIndex from "./index.module.css";
@@ -20,9 +19,6 @@ type Props = {
 };
 
 export default function About({ about }: Props) {
-  // @ts-ignore
-  const { aboutArr, setAboutArr } = useDataContext();
-
   const [showVideoPlayer, setShowVideoPlayer] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const settings_002 = {

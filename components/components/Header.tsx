@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
-import $ from "jquery";
 import { AiOutlinePlus } from "react-icons/ai";
 import Link from "next/link";
 import styles from "./Header.module.css";
@@ -26,10 +25,6 @@ const Header = () => {
   const [loading, setLoading] = useState<boolean>(false);
   // @ts-ignore
   const { data: session, status } = useSession();
-  console.log("🚀 ~ file: Header.tsx:29 ~ Header ~ session", session);
-
-  console.log(session);
-
   const cart =
     typeof window !== "undefined"
       ? // @ts-ignore
@@ -298,7 +293,19 @@ const Header = () => {
                           <i className="fal fa-user" />
                         </Link>
                         {/* @ts-ignore */}
-                        {session ? `Hello, ${session.user.name}` : "Sign In"}
+                        {session ? (
+                          <span
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            // @ts-ignore
+                            onClick={signOut}
+                          >
+                            sign out
+                          </span>
+                        ) : (
+                          <span>Sign In</span>
+                        )}
                         <button
                           onClick={handleShowMobileMenu}
                           className="as-menu-toggle d-inline-block d-lg-none"

@@ -26,7 +26,7 @@ type IProps = {
   category: string;
 };
 
-const index = (props: IProps) => {
+const ProductDetails = (props: IProps) => {
   const [qty, setQty] = useState<number>(1);
   const [count, setCount] = useState(false);
   const router = useRouter();
@@ -1064,4 +1064,4 @@ export async function getStaticProps(context: any) {
   };
 }
 
-export default index;
+export default ProductDetails;

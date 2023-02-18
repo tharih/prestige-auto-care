@@ -13,7 +13,7 @@ import { auth, db } from "../firebase";
 import { addUser } from "../store/reducers/userReducer";
 import { BsGoogle } from "react-icons/bs";
 type Props = {};
-import { StyledButton } from "./styles/LoginStyle";
+import StyledButton from "./styles/LoginStyle";
 
 const Login = (props: Props) => {
   const router = useRouter();

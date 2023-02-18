@@ -104,7 +104,7 @@ const Cart = () => {
                 {cartItems?.length > 0 ? (
                   <>
                     {cartItems?.map((item: any, index: any) => (
-                      <tr className="cart_item">
+                      <tr key={index} className="cart_item">
                         <td data-title="Product">
                           <img
                             width={91}

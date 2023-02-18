@@ -25,3 +25,5 @@ export const StyledButton = styled.button`
     border: 1px solid #e81c2e;
   }
 `;
+
+export default StyledButton;

@@ -44,7 +44,7 @@ const Services = ({ services }: any) => {
         <div className="container">
           <div className="row gy-30">
             {services.map((service: any, index: any) => (
-              <div className="col-md-6 col-lg-4">
+              <div key={index} className="col-md-6 col-lg-4">
                 <div className="service-grid">
                   <div className="service-grid_img">
                     <img

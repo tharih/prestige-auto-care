@@ -92,7 +92,6 @@ export const getServerSideProps = async () => {
   const about: AboutType[] = await fetchAbout();
   return {
     props: { services, about },
-    revalidate: 10,
   };
 };
 

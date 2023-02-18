@@ -378,7 +378,6 @@ export const getServerSideProps = async () => {
 
   return {
     props: { products, categories },
-    revalidate: 10,
   };
 };
 

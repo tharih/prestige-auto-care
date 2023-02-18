@@ -252,6 +252,5 @@ export const getServerSideProps = async () => {
     props: {
       about,
     },
-    revalidate: 10,
   };
 };

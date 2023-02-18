@@ -372,7 +372,7 @@ const Shop = ({ products, categories }: any) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const products = await fetchProducts();
   const categories = await fetchCategory();
 

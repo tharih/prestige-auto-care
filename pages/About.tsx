@@ -245,7 +245,7 @@ export default function About({ about }: Props) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const about: AboutType[] = await fetchAbout();
 
   return {

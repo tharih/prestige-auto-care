@@ -87,7 +87,7 @@ const Home = ({ services, about }: Props) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const services: any[] = await fetchService();
   const about: AboutType[] = await fetchAbout();
   return {

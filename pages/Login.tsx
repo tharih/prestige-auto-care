@@ -14,6 +14,7 @@ import { addUser } from "../store/reducers/userReducer";
 import { BsGoogle } from "react-icons/bs";
 type Props = {};
 import StyledButton from "./styles/LoginStyle";
+import { signIn } from "next-auth/react";
 
 const Login = (props: Props) => {
   const router = useRouter();
@@ -144,10 +145,16 @@ const Login = (props: Props) => {
                     <button onClick={login} className="as-btn">
                       Login
                     </button>
-                    <StyledButton>
-                      {" "}
+                    <button
+                      className="as-btn"
+                      style={{
+                        marginLeft: "10px",
+                      }}
+                      // @ts-ignore
+                      onClick={signIn}
+                    >
                       <BsGoogle /> Login With Google{" "}
-                    </StyledButton>
+                    </button>
                   </div>
                 </div>
                 <p className="form-messages mb-0 mt-3" />

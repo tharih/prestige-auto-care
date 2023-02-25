@@ -6072,6 +6072,7 @@ table.variations .reset_variations {
   -webkit-transition: all ease 0.4s;
   transition: all ease 0.4s;
   margin-left: 22px;
+  cursor: pointer;
 }
 .as-product .product-title {
   font-size: 20px;

@@ -18,13 +18,17 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { urlFor } from "../../client";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { selectUser } from "../../store/reducers/userReducer";
 
 const Header = () => {
   const [show, setShow] = useState<boolean>(false);
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+  const user = useSelector(selectUser);
+  console.log("🚀 ~ file: Header.tsx:28 ~ Header ~ user:", user);
   // @ts-ignore
   const { data: session, status } = useSession();
+  console.log("session:", session);
   const cart =
     typeof window !== "undefined"
       ? // @ts-ignore
@@ -290,7 +294,21 @@ const Header = () => {
                           href="/Login"
                           className="icon-btn d-none d-md-inline-block"
                         >
-                          <i className="fal fa-user" />
+                          {user ? (
+                            <img
+                              // @ts-ignore
+                              src={user?.user?.image}
+                              width={50}
+                              height={50}
+                              style={{
+                                borderRadius: "100px",
+                              }}
+                              // @ts-ignore
+                              alt={session.user?.name?.slice(0, 1)}
+                            />
+                          ) : (
+                            <i className="fal fa-user" />
+                          )}
                         </Link>
                         {/* @ts-ignore */}
                         {session ? (

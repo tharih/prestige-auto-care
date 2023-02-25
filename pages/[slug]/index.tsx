@@ -9,13 +9,16 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
   decreaseQty,
   getCartTotal,
 } from "../../store/reducers/cartReducer";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import { useSession } from "next-auth/react";
+import styles_1 from "../styles/shop.module.css";
 
 type IProps = {
   id: string;
@@ -24,6 +27,8 @@ type IProps = {
   price: number;
   details: string;
   category: string;
+  sku: string;
+  qty: number;
 };
 
 const ProductDetails = (props: IProps) => {
@@ -31,6 +36,7 @@ const ProductDetails = (props: IProps) => {
   const [count, setCount] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
+  const { data: session, status } = useSession();
   const settings = {
     infinite: true,
     speed: 1000,
@@ -46,13 +52,15 @@ const ProductDetails = (props: IProps) => {
   const handleAdd = (props: IProps) => {
     dispatch(
       addToCart({
-        id: props.id,
+        _key: props.id,
         category: props.category,
         details: props.details,
-        image: props.image[0],
+        image: urlFor(props.image[0]).url(),
         name: props.name,
         price: props.price,
+        qty: Number(props.qty),
         cartQuantity: Number(qty),
+        sku: props.sku,
       })
     );
     dispatch(getCartTotal());
@@ -60,11 +68,20 @@ const ProductDetails = (props: IProps) => {
   };
 
   const handleIncrement = (props: IProps) => {
-    setQty((prev) => prev + 1);
+    if (props.qty <= qty) {
+      toast.warning(`Quantity, out of stock`, {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        theme: "dark",
+      });
+    } else {
+      setQty((prev) => prev + 1);
+    }
   };
 
   const handleDecrement = (props: IProps) => {
-    if (qty === 1) return;
     setQty((prev) => prev - 1);
   };
 
@@ -185,6 +202,7 @@ const ProductDetails = (props: IProps) => {
                           <i className="fa fa-chevron-down" />
                         </button>
                       </div>
+
                       {count ? (
                         <button
                           className="as-btn"
@@ -195,26 +213,43 @@ const ProductDetails = (props: IProps) => {
                       ) : (
                         <button
                           className="as-btn"
-                          onClick={() => handleAdd(props)}
+                          onClick={
+                            session
+                              ? () => handleAdd(props)
+                              : () => router.push("/Login")
+                          }
                         >
                           Add to Cart
                         </button>
                       )}
                     </div>
+                    <div className="">
+                      <span
+                        className={`${
+                          props.qty >= 1
+                            ? styles_1.quantityInStock
+                            : styles_1.quantityOutOfStock
+                        }`}
+                      >
+                        {props.qty >= 1 ? `In Stock : ` : "Out of stock"}
+                        <span className="sku">
+                          {props.qty >= 1 ? `${props.qty}` : null}
+                        </span>
+                      </span>
+                    </div>
                     <div className="product_meta">
                       <span className="sku_wrapper">
-                        SKU:{" "}
-                        <span className="sku">wheel-fits-chevy-camaro</span>
-                      </span>{" "}
+                        SKU: <span className="sku">{props?.sku}</span>
+                      </span>
                       <span className="posted_in">
                         Category:
-                        <Link href="shop.html" rel="tag">
+                        <Link href="#" rel="tag">
                           {props?.category}
                         </Link>
-                      </span>{" "}
+                      </span>
                       <span>
-                        Tags: <Link href="shop.html">automotive parts</Link>
-                        <Link href="shop.html">wheels</Link>
+                        Tags: <Link href="#">automotive parts</Link>
+                        <Link href="#">wheels</Link>
                       </span>
                     </div>
                   </div>
@@ -1045,6 +1080,8 @@ export async function getStaticProps(context: any) {
     image,
     price,
     details,
+    sku,
+    quantity, 
     category->{title}
   }`;
   const product = await client.fetch(query);
@@ -1052,6 +1089,8 @@ export async function getStaticProps(context: any) {
   return {
     props: {
       id: product[0]._id,
+      sku: product[0].sku,
+      qty: product[0].quantity,
       name: product[0].name,
       image: product[0].image.map((img: any) => {
         return img.asset._ref;

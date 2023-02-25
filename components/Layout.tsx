@@ -10,6 +10,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { addUser } from "../store/reducers/userReducer";
+import { useSession } from "next-auth/react";
 type Props = {
   children: any;
 };
@@ -17,6 +18,7 @@ type Props = {
 const Layout = ({ children }: Props) => {
   const dispatch = useDispatch();
   const [showScrollBtn, setShowScrollBtn] = useState<boolean>(false);
+  const { data: session, status } = useSession();
   const scrollTop = () => {
     if (window.scrollY > 100) {
       setShowScrollBtn(true);
@@ -29,24 +31,27 @@ const Layout = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const uid = user.uid;
-        const email = user?.email;
-        const docRef = doc(db, "users", `${email}`);
-        const usersDoc = await getDoc(docRef);
-
-        dispatch(
-          addUser({
-            email: user.email,
-            uid: user.uid,
-            role: usersDoc.data()?.role,
-          })
-        );
-      } else {
-      }
-    });
-  }, []);
+    if (session) {
+      dispatch(addUser(session));
+    } else {
+      // onAuthStateChanged(auth, async (user) => {
+      //   if (user) {
+      //     const uid = user.uid;
+      //     const email = user?.email;
+      //     const docRef = doc(db, "users", `${email}`);
+      //     const usersDoc = await getDoc(docRef);
+      //     dispatch(
+      //       addUser({
+      //         email: user.email,
+      //         uid: user.uid,
+      //         role: usersDoc.data()?.role,
+      //       })
+      //     );
+      //   } else {
+      //   }
+      // });
+    }
+  }, [session, dispatch, status]);
 
   return (
     <>

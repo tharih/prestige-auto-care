@@ -4,6 +4,11 @@ export default {
   type: "document",
   fields: [
     {
+      name: "sku",
+      title: "SKU",
+      type: "string",
+    },
+    {
       name: "slug",
       title: "Slug",
       type: "slug",
@@ -41,6 +46,11 @@ export default {
       name: "details",
       title: "Details",
       type: "string",
+    },
+    {
+      name: "quantity",
+      title: "Quantity",
+      type: "number",
     },
   ],
 };

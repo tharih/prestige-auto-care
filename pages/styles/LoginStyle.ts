@@ -26,4 +26,18 @@ export const StyledButton = styled.button`
   }
 `;
 
+export const colors = {
+  white: {
+    100: "#ffffff",
+    200: "#ffffff",
+    300: "#ffffff",
+    400: "#ffffff",
+    500: "#ffffff",
+    600: "#cccccc",
+    700: "#999999",
+    800: "#666666",
+    900: "#333333",
+  },
+};
+
 export default StyledButton;

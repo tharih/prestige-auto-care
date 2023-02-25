@@ -6,6 +6,7 @@ import { client, urlFor } from "../client";
 import Layout from "../components/Layout";
 import { fetchCategory } from "../utils/fetchCategory";
 import { fetchProducts } from "../utils/fetchProduct";
+import styles_1 from "./styles/shop.module.css";
 
 type Props = {};
 
@@ -13,18 +14,9 @@ const Shop = ({ products, categories }: any) => {
   const [setProducts, setSetProducts] = useState(products);
   const router = useRouter();
 
+  const handleGetCategory = (title: any) => {};
   return (
     <Layout>
-      <Helmet>
-                        
-        <meta charSet="utf-8" />
-                        <title>Shop </title>
-        <meta
-          name="description"
-          content="Get your amazing Car Solutions Prestige Auto care"
-        />
-                                     
-      </Helmet>
       {/* <div
         className="breadcumb-wrapper"
         data-bg-src="assets/img/breadcumb/breadcumb-bg.jpg"
@@ -118,11 +110,7 @@ const Shop = ({ products, categories }: any) => {
                 >
                   <div className="row gy-40">
                     {products.map((product: any, index: any) => (
-                      <div
-                        key={index}
-                        className="col-xl-4 col-sm-6"
-                        onClick={() => router.push(`/${product.slug.current}`)}
-                      >
+                      <div key={index} className="col-xl-4 col-sm-6">
                         {/* <Link href={`/product/${product.slug.current}`}> */}
                         <div className="as-product">
                           <div className="product-img">
@@ -173,9 +161,27 @@ const Shop = ({ products, categories }: any) => {
                               </span>
                             </div>
                             <h3 className="product-title">
-                              <Link href="#">{product.name}</Link>
+                              <div
+                                className={styles_1.productTitle}
+                                onClick={() =>
+                                  router.push(`/${product.slug.current}`)
+                                }
+                              >
+                                {product.name}
+                              </div>
                             </h3>
                             <span className="price">AUD{product.price}</span>
+                            <span
+                              className={
+                                product.quantity >= 1
+                                  ? styles_1.quantityInStock
+                                  : styles_1.quantityOutOfStock
+                              }
+                            >
+                              {product.quantity >= 1
+                                ? `In Stock ${product.quantity}`
+                                : "Out of stock"}
+                            </span>
                           </div>
                         </div>
                         {/* </Link> */}
@@ -187,16 +193,16 @@ const Shop = ({ products, categories }: any) => {
               <div className="as-pagination text-center pt-50">
                 <ul>
                   <li>
-                    <Link href="blog.html">1</Link>
+                    <Link href="#">1</Link>
                   </li>
                   <li>
-                    <Link href="blog.html">2</Link>
+                    <Link href="#">2</Link>
                   </li>
                   <li>
-                    <Link href="blog.html">3</Link>
+                    <Link href="#">3</Link>
                   </li>
                   <li>
-                    <a href="blog.html">
+                    <a href="#">
                       <i className="fa fa-arrow-right" />
                     </a>
                   </li>
@@ -217,151 +223,15 @@ const Shop = ({ products, categories }: any) => {
                   <h3 className="widget_title">Categories</h3>
                   <ul>
                     {categories.map((category: any, index: any) => (
-                      <Link key={index} href="blog.html">
+                      <p
+                        className={styles_1.filterLabelP}
+                        key={index}
+                        onClick={() => handleGetCategory(category.title)}
+                      >
                         {category.title}
-                      </Link>
+                      </p>
                     ))}
                   </ul>
-                </div>
-                <div className="widget widget_price_filter">
-                  <h4 className="widget_title">Filter By Price</h4>
-                  <div className="price_slider_wrapper">
-                    <div className="price_label">
-                      Price: <span className="from">$0</span> —{" "}
-                      <span className="to">$70</span>
-                    </div>
-                    <div className="price_slider" />
-                    <button type="submit" className="button">
-                      Filter
-                    </button>
-                  </div>
-                </div>
-                <div className="widget widget_top_rated_products">
-                  <h4 className="widget_title">Popular Product</h4>
-                  <ul className="product_list_widget">
-                    <li className="recent-post">
-                      <div className="media-img">
-                        <Link href="shop-details.html">
-                          <img
-                            src="assets/img/product/thumb_1_1.jpg"
-                            alt="thumb"
-                            width={70}
-                            height={70}
-                          />
-                        </Link>
-                      </div>
-                      <div className="media-body">
-                        <h4 className="recent-post-title h5">
-                          <Link href="shop-details.html">Cool Light</Link>
-                        </h4>
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated
-                            <strong className="rating">5.00</strong> out of 5
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="recent-post">
-                      <div className="media-img">
-                        <Link href="shop-details.html">
-                          <img
-                            src="assets/img/product/thumb_1_2.jpg"
-                            alt="thumb"
-                            width={70}
-                            height={70}
-                          />
-                        </Link>
-                      </div>
-                      <div className="media-body">
-                        <h4 className="recent-post-title h5">
-                          <Link href="shop-details.html">Air Filter</Link>
-                        </h4>
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated
-                            <strong className="rating">5.00</strong> out of 5
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="recent-post">
-                      <div className="media-img">
-                        <Link href="shop-details.html">
-                          <img
-                            src="assets/img/product/thumb_1_3.jpg"
-                            alt="thumb"
-                            width={70}
-                            height={70}
-                          />
-                        </Link>
-                      </div>
-                      <div className="media-body">
-                        <h4 className="recent-post-title h5">
-                          <Link href="shop-details.html">Brake Liver</Link>
-                        </h4>
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated
-                            <strong className="rating">5.00</strong> out of 5
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="recent-post">
-                      <div className="media-img">
-                        <Link href="shop-details.html">
-                          <img
-                            src="assets/img/product/thumb_1_4.jpg"
-                            alt="thumb"
-                            width={70}
-                            height={70}
-                          />
-                        </Link>
-                      </div>
-                      <div className="media-body">
-                        <h4 className="recent-post-title h5">
-                          <Link href="shop-details.html">CSK Rim</Link>
-                        </h4>
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated
-                            <strong className="rating">5.00</strong> out of 5
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div className="widget widget_tag_cloud">
-                  <h3 className="widget_title">Popular Tags</h3>
-                  <div className="tagcloud">
-                    <Link href="blog.html">Technology</Link>{" "}
-                    <Link href="blog.html">Repair</Link>{" "}
-                    <Link href="blog.html">Services</Link>{" "}
-                    <Link href="blog.html">Mechon</Link>{" "}
-                    <Link href="blog.html">Engine</Link>{" "}
-                    <Link href="blog.html">Tires</Link>{" "}
-                    <Link href="blog.html">Speed</Link>{" "}
-                    <Link href="blog.html">Solution</Link>{" "}
-                    <Link href="blog.html">Car Repair</Link>
-                  </div>
                 </div>
               </aside>
             </div>

@@ -1,6 +1,5 @@
 "use client";
 import { createSlice } from "@reduxjs/toolkit";
-import toast from "react-hot-toast";
 // Define a type for the slice state
 interface cartState {
   [x: string]: any;
@@ -40,10 +39,15 @@ export const cartSlice = createSlice({
     addToCart: (state, action) => {
       // find product by id
       const itemIndex = state.cartItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item._key === action.payload._key
       );
 
-      if (itemIndex >= 0) {
+      if (
+        itemIndex >= 0 &&
+        state.cartItems[itemIndex].qty <=
+          state.cartItems[itemIndex].cartQuantity
+      ) {
+      } else if (itemIndex >= 0) {
         state.cartItems[itemIndex].cartQuantity += 1;
       } else {
         // const tempProducts: any[] = {
@@ -56,7 +60,7 @@ export const cartSlice = createSlice({
     },
     decreaseQty: (state, action) => {
       const itemIndex = state.cartItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item._key === action.payload._key
       );
 
       if (state.cartItems[itemIndex].cartQuantity > 1) {
@@ -65,7 +69,7 @@ export const cartSlice = createSlice({
     },
     removeItem: (state, action) => {
       const nextCartItems = state.cartItems.filter(
-        (cartItem) => cartItem.id !== action.payload.id
+        (cartItem) => cartItem._key !== action.payload._key
       );
 
       state.cartItems = nextCartItems;
@@ -92,10 +96,14 @@ export const cartSlice = createSlice({
       state.cartTotalQuantity = quantity;
       state.cartTotalAmount = total;
     },
+    clearCart: (state) => {
+      state.cartItems = [];
+      localStorage.removeItem("cart");
+    },
   },
 });
 
-export const { addToCart, decreaseQty, removeItem, getCartTotal } =
+export const { addToCart, decreaseQty, removeItem, getCartTotal, clearCart } =
   cartSlice.actions;
 
 export const selectCartItems = (state: cartState) => state.cart.cartItems;

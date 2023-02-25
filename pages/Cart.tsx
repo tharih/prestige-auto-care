@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
+  clearCart,
   decreaseQty,
   getCartTotal,
   removeItem,
@@ -14,22 +15,38 @@ import {
 
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import { urlFor } from "../client";
+import { toast } from "react-toastify";
+import { useSession } from "next-auth/react";
+import dynamic from "next/dynamic";
 
 const configValue: string = process.env.stripe_public_key as string;
 const stripePromise = loadStripe(configValue);
 
 const Cart = () => {
   const cartItems = useSelector(selectCartItems);
-  const { cartTotalAmount } = useSelector(selectCartAll);
+  const { cartTotalAmount, cartTotalQuantity } = useSelector(selectCartAll);
   const router = useRouter();
   const dispatch = useDispatch();
-
+  const { data: session, status } = useSession();
   useEffect(() => {
     dispatch(getCartTotal());
   }, [dispatch, cartItems]);
 
   const handleIncrement = (item: any) => {
-    dispatch(addToCart(item));
+    dispatch(
+      addToCart({
+        _key: item._key,
+        category: item.category,
+        details: item.details,
+        image: urlFor(item.image).url(),
+        name: item.name,
+        price: item.price,
+        qty: Number(item.qty),
+        cartQuantity: Number(item.cartQuantity + 1),
+        sku: item.sku,
+      })
+    );
   };
 
   const handleDecrement = (item: any) => {
@@ -46,7 +63,7 @@ const Cart = () => {
     // Call the backend to create a checkout session
     const checkOutSession = await axios.post("/api/create-checkout-session", {
       cartItems: cartItems,
-      email: "suvinjavax@gmail.com",
+      email: session?.user?.email,
     });
 
     // Redirect user/customer to stripe checkout
@@ -58,6 +75,70 @@ const Cart = () => {
       alert(result?.error.message);
     } else {
     }
+  };
+
+  const handleCreateOrder = async () => {
+    const formData = {
+      orderItem: cartItems.map((value: any) => ({
+        ...value,
+        category: undefined,
+      })),
+      customerName: session?.user?.name,
+      totalPrice: cartTotalAmount,
+      totalQuantity: cartTotalQuantity,
+      IsPaid: true,
+      IsDelivered: false,
+      DeliveredAt: new Date().toISOString(),
+    };
+
+    const productUpdateData = cartItems.map((value: any) => {
+      return {
+        _id: value._key,
+        quantity: value.qty - value.cartQuantity,
+      };
+    });
+
+    const result = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/order/`,
+      {
+        body: JSON.stringify(formData),
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
+    const json = result.json();
+
+    if (result) {
+      productUpdateData.map(async (value: any) => {
+        const resultOrder = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/update-products/`,
+          {
+            body: JSON.stringify(value),
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
+        );
+        const jsonResult = resultOrder.json();
+      });
+    }
+    dispatch(clearCart());
+    toast.success(`Order Placed Successfully`, {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      theme: "dark",
+    });
+    router.push("/Shop");
+    return json;
   };
 
   return (
@@ -211,7 +292,7 @@ const Cart = () => {
                         </span>
                       </td>
                     </tr>
-                    <tr className="shipping">
+                    {/* <tr className="shipping">
                       <th>Shipping and Handling</th>
                       <td data-title="Shipping and Handling">
                         <ul className="woocommerce-shipping-methods list-unstyled">
@@ -278,16 +359,16 @@ const Cart = () => {
                           </div>
                         </form>
                       </td>
-                    </tr>
+                    </tr> */}
                   </tbody>
                   <tfoot>
                     <tr className="order-total">
-                      <td>Order Total</td>
+                      <td>Customer Name </td>
                       <td data-title="Total">
                         <strong>
                           <span className="amount">
                             <bdi>
-                              <span>$</span>47
+                              <span>{session?.user?.name}</span>
                             </bdi>
                           </span>
                         </strong>
@@ -303,6 +384,14 @@ const Cart = () => {
                   >
                     Proceed to checkout
                   </button>
+
+                  <button
+                    className="as-btn"
+                    role="link"
+                    onClick={handleCreateOrder}
+                  >
+                    Place Order
+                  </button>
                 </div>
               </div>
             </div>
@@ -317,4 +406,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default dynamic(() => Promise.resolve(Cart), { ssr: false });

@@ -1,0 +1,30 @@
+.filterLabelP {
+  padding: 20px;
+  color: #999999;
+  background-color: #fff;
+  cursor: pointer;
+  font-weight: 800;
+  padding-top: 10;
+  transition: all 300ms ease-out;
+}
+
+.filterLabelP:hover {
+  background-color: #e81c2e;
+  color: #fff;
+}
+
+.productTitle {
+  cursor: pointer;
+}
+
+.productTitle:hover {
+  color: #e81c2e;
+}
+.quantityOutOfStock {
+  color: #e11d48;
+  font-size: 12px;
+}
+.quantityInStock {
+  color: #22c55e !important;
+  font-size: 12px;
+}

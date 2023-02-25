@@ -53,3 +53,32 @@ export interface CategoryType extends sanityBody {
   _type: "category";
   name: string;
 }
+
+export interface UserType extends sanityBody {
+  _type: "user";
+  name: string;
+  password: string;
+  email: string;
+  isAdmin: boolean;
+}
+
+export interface OrderItemType extends sanityBody {
+  _type: "orderItem";
+  name: string;
+  sku: string;
+  quantity: number;
+  image: string;
+  price: number;
+  Key: number;
+}
+
+export interface OrderType extends sanityBody {
+  _type: "order";
+  customerName: string;
+  totalPrice: number;
+  totalQuantity: number;
+  orderItems: Array;
+  IsPaid: boolean;
+  IsDelivered: boolean;
+  DeliveredAt: boolean;
+}

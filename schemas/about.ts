@@ -11,6 +11,27 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "home_title",
+      title: "Home Title",
+      type: "string",
+    }),
+    defineField({
+      name: "home_image_01",
+      title: "Home Image 01",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: "home_image_02",
+      title: "Home Image 03",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "string",

@@ -11,13 +11,13 @@ type Props = {};
 
 const SliderComponent = (props: Props) => {
   const [text, count] = useTypewriter({
-    words: ["Get Your Amazing"],
+    words: [""],
     delaySpeed: 2000,
     loop: true,
   });
 
   const [CarSolution, count1] = useTypewriter({
-    words: ["Car Solution"],
+    words: [""],
     delaySpeed: 2000,
     loop: false,
   });

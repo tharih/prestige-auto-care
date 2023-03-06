@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Helmet } from "react-helmet";
-import { AboutType } from "../utils/type";
+import { AboutType, BannerType, WorkProcessType } from "../utils/type";
 import { fetchAbout } from "../utils/fetchAbout";
 import { fetchService } from "../utils/fetchService";
 import WhyChooseUs from "../components/about/WhyChooseUs";
@@ -15,14 +15,19 @@ import LatestProducts from "../components/home/LatestProducts";
 import WorkProcess from "../components/home/WorkProcess";
 import Testimonials from "../components/home/Testimonials";
 import Layout from "../components/Layout";
+import { fetchBanner } from "../utils/fetchBanner";
+import { fetchProcess } from "../utils/fetchProcess";
 
 type Props = {
   services: [];
   about: AboutType[];
+  banner: BannerType[];
+  workProcess: WorkProcessType[];
+
 };
 const inter = Inter({ subsets: ["latin"] });
 
-const Home = ({ services, about }: Props) => {
+const Home = ({ services, about, banner, workProcess }: Props) => {
   const settings_003 = {
     dots: false,
     slidesToShow: 4,
@@ -77,11 +82,11 @@ const Home = ({ services, about }: Props) => {
       </Helmet>
       <SliderComponent />
       <BestServiceComponent services={services} />
-      <AboutCompanyComponent />
+      <AboutCompanyComponent about={about}/>
       <WhyChooseUs about={about} />
       <LatestProducts settings_003={settings_003} settings_005={settings_005} />
-      <GetPremiumParts />
-      <WorkProcess />
+      <GetPremiumParts  banner={banner}/>
+      <WorkProcess workProcess={workProcess}/>
       <Testimonials settings_004={settings_004} />
     </Layout>
   );
@@ -90,8 +95,10 @@ const Home = ({ services, about }: Props) => {
 export const getServerSideProps = async () => {
   const services: any[] = await fetchService();
   const about: AboutType[] = await fetchAbout();
+  const banner: any[] = await fetchBanner();
+  const workProcess: any[] = await fetchProcess();
   return {
-    props: { services, about },
+    props: { services, about, banner, workProcess },
   };
 };
 

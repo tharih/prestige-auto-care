@@ -1,9 +1,13 @@
 import Link from "next/link";
 import React from "react";
+import { fetchBanner } from "../../utils/fetchBanner";
+import { BannerType } from "../../utils/type";
 
-type Props = {};
+type Props = {
+  banner: BannerType[]
+};
 
-const GetPremiumParts = (props: Props) => {
+export default function GetPremiumParts ({banner}: Props) {
   return (
     <section
       className="space"
@@ -18,7 +22,7 @@ const GetPremiumParts = (props: Props) => {
             <div className="title-area mb-0 text-lg-start text-center">
               <span className="sub-title text-white">Get Our Service</span>
               <h2 className="sec-title text-white">
-                Get Premium Auto Car Service Feel Free To Contact Us.
+                {banner[0]?.home_title}
               </h2>
             </div>
           </div>
@@ -38,4 +42,12 @@ const GetPremiumParts = (props: Props) => {
   );
 };
 
-export default GetPremiumParts;
+export const getServerSideProps = async () => {
+  const banner: BannerType[] = await fetchBanner();
+
+  return {
+    props: {
+      banner,
+    },
+  };
+};

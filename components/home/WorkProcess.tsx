@@ -1,8 +1,12 @@
 import React from "react";
+import { fetchProcess } from "../../utils/fetchProcess";
+import { WorkProcessType } from "../../utils/type";
 
-type Props = {};
+type Props = {
+  workProcess: WorkProcessType[]
+};
 
-const WorkProcess = (props: Props) => {
+export default function WorkProcess({ workProcess }: Props) {
   return (
     <section className="space" style={{ backgroundColor: "white" }}>
       <div className="container">
@@ -19,10 +23,9 @@ const WorkProcess = (props: Props) => {
                   alt="service image"
                 />
               </div>
-              <h3 className="process-box_title">Identify Issues</h3>
+              <h3 className="process-box_title">{workProcess[0]?.title_1}</h3>
               <p className="process-box_text">
-                Extensible for web iterate process before meta services impact
-                with olisticly enable client.
+              {workProcess[0]?.description_1}
               </p>
             </div>
           </div>
@@ -34,10 +37,9 @@ const WorkProcess = (props: Props) => {
                   alt="service image"
                 />
               </div>
-              <h3 className="process-box_title">Prepare Solution</h3>
+              <h3 className="process-box_title">{workProcess[0]?.title_2}</h3>
               <p className="process-box_text">
-                Vulnerable for web iterate process before meta services impact
-                with olisticly enable geting.
+              {workProcess[0]?.description_2}
               </p>
             </div>
           </div>
@@ -49,10 +51,9 @@ const WorkProcess = (props: Props) => {
                   alt="service image"
                 />
               </div>
-              <h3 className="process-box_title">Working On This</h3>
+              <h3 className="process-box_title">{workProcess[0]?.title_3}</h3>
               <p className="process-box_text">
-                Of setting for web iterate process before meta services impact
-                with olisticly enable power.
+              {workProcess[0]?.description_3}
               </p>
             </div>
           </div>
@@ -64,10 +65,9 @@ const WorkProcess = (props: Props) => {
                   alt="service image"
                 />
               </div>
-              <h3 className="process-box_title">Deliver On Hand</h3>
+              <h3 className="process-box_title">{workProcess[0]?.title_4}</h3>
               <p className="process-box_text">
-                Getting on for web iterate process before meta services impact
-                with olisticly enable silent.
+              {workProcess[0]?.description_4}
               </p>
             </div>
           </div>
@@ -77,4 +77,13 @@ const WorkProcess = (props: Props) => {
   );
 };
 
-export default WorkProcess;
+export const getServerSideProps = async () => {
+  const workProcess: WorkProcessType[] = await fetchProcess();
+
+  return {
+    props: {
+      workProcess,
+    },
+  };
+};
+

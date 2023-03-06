@@ -11,14 +11,16 @@ import GetPremiumParts from "../components/about/GetPremiumParts";
 import WhyChooseUs from "../components/about/WhyChooseUs";
 import Layout from "../components/Layout";
 import { fetchAbout } from "../utils/fetchAbout";
-import { AboutType } from "../utils/type";
+import { fetchBanner } from "../utils/fetchBanner";
+import { AboutType, BannerType } from "../utils/type";
 import stylesIndex from "./index.module.css";
 
 type Props = {
   about: AboutType[];
+  banner: BannerType[];
 };
 
-export default function About({ about }: Props) {
+export default function About({ about, banner }: Props) {
   const [showVideoPlayer, setShowVideoPlayer] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const settings_002 = {
@@ -103,7 +105,7 @@ export default function About({ about }: Props) {
               <div className="title-area mb-40 text-md-start text-center">
                 <span className="sub-title">About Our Company</span>
                 <h2 className="sec-title">
-                  Make your car feel like a brand new one
+                {about[0].title}
                 </h2>
               </div>
               <p className="text-md-start text-center mt-n2 mb-30">
@@ -240,17 +242,18 @@ export default function About({ about }: Props) {
           </div>
         </div>
       </section>
-      <GetPremiumParts />
+      <GetPremiumParts banner={banner}/>
     </Layout>
   );
 }
 
 export const getServerSideProps = async () => {
   const about: AboutType[] = await fetchAbout();
-
+  const banner: any[] = await fetchBanner();
   return {
     props: {
       about,
+      banner,
     },
   };
 };

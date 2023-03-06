@@ -24,6 +24,13 @@ interface image_03 {
   _type: "image";
   asset: Reference;
 }
+interface home_image_01 {
+  _type: "image";
+  asset: Reference;
+}interface home_image_02 {
+  _type: "image";
+  asset: Reference;
+}
 interface choose_image {
   _type: "image";
   asset: Reference;
@@ -32,14 +39,34 @@ interface choose_image {
 export interface AboutType extends sanityBody {
   _type: "about";
   title: string;
+  home_title:string;
   description: string;
   options: Array;
   image_01: image_01;
   image_02: image_02;
   image_03: image_03;
+  home_image_01: home_image_01
+  home_image_02: home_image_02
   experienceYears: string;
   whyChooseUs: [];
   choose_image: choose_image;
+}
+
+export interface BannerType extends sanityBody {
+  _type: "banner";
+  home_title: string;
+}
+
+export interface WorkProcessType extends sanityBody {
+  _type: "workProcess";
+  title_1: string;
+  description_1: string;
+  title_2: string;
+  description_2: string;
+  title_3: string;
+  description_3: string;
+  title_4: string;
+  description_4: string;
 }
 export interface ProductType extends sanityBody {
   _type: "product";

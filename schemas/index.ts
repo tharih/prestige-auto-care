@@ -11,6 +11,9 @@ import orderItem from "./orderItem";
 import orders from "./orders";
 import banners from "./banners";
 import workProcess from "./workProcess";
+import paintDetails from "./paintDetails";
+import mechanicalDetails from "./mechanicalDetails";
+
 
 export const schemaTypes = [
   post,
@@ -23,6 +26,8 @@ export const schemaTypes = [
   product,
   about,
   services,
+  paintDetails,
+  mechanicalDetails,
   user,
   orders,
   orderItem,

@@ -49,7 +49,7 @@ const BestServiceComponent = ({ services }: Props) => {
                     <Link href="Shop">{service.name}</Link>
                   </h3>
                   <Link href="Shop" className="as-btn">
-                    View Shop
+                    View More
                   </Link>
                 </div>
               </div>

@@ -35,6 +35,14 @@ interface choose_image {
   _type: "image";
   asset: Reference;
 }
+interface service_image1 {
+  _type: "image";
+  asset: Reference;
+}
+interface service_image2 {
+  _type: "image";
+  asset: Reference;
+}
 
 export interface AboutType extends sanityBody {
   _type: "about";
@@ -50,6 +58,59 @@ export interface AboutType extends sanityBody {
   experienceYears: string;
   whyChooseUs: [];
   choose_image: choose_image;
+}
+
+export interface PaintType extends sanityBody {
+  _type: "paint";
+  title: string;
+  description: string;
+  service_title1: string;
+  service_description1: string;
+  service_title2: string;
+  service_description2: string;
+  service_title3: string;
+  service_description3: string;
+  service_title4: string;
+  service_description4: string;
+  description2: string;
+  title2:string;
+  process_description: string;
+  process_title1: string;
+  process_description1: string;
+  process_title2: string;
+  process_description2: string; 
+  process_title3: string;
+  process_description3: string;
+  benefits: Array;
+  service_image1: service_image1;
+  service_image2: service_image2;
+  customer_description: string;
+}
+export interface MechanicalType extends sanityBody {
+  _type: "mechanical";
+  title: string;
+  description: string;
+  service_title1: string;
+  service_description1: string;
+  service_title2: string;
+  service_description2: string;
+  service_title3: string;
+  service_description3: string;
+  service_title4: string;
+  service_description4: string;
+  description2: string;
+  title2:string;
+  process_description: string;
+  process_title1: string;
+  process_description1: string;
+  process_title2: string;
+  process_description2: string; 
+  process_title3: string;
+  process_description3: string;
+  benefits: Array;
+  service_image1: service_image1;
+  service_image2: service_image2;
+  customer_description: string;
 }
 
 export interface BannerType extends sanityBody {

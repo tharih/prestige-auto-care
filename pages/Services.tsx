@@ -63,7 +63,7 @@ const Services = ({ services }: any) => {
                       <Link href="Servicedetails">{service.name}</Link>
                     </h3>
                     <p className="service-grid_text">{service.details}</p>
-                    <Link href="Servicedetails" className="as-btn">
+                    <Link href="Paintdetails" className="as-btn">
                       View Details
                     </Link>
                   </div>

@@ -1,7 +1,5 @@
 import nodemailer from "nodemailer";
 
-import { NextRequest } from "next/server";
-
 export const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -11,5 +9,5 @@ export const transporter = nodemailer.createTransport({
 });
 
 export const mailOptions = {
-  from: process.env.MAIL_USERNAME,
+  // to: "rediantsparktechnology@gmail.com",
 };

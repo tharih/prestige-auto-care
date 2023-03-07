@@ -14,8 +14,10 @@ export default async function handler(
         to: "rediantsparktechnology@gmail.com",
         subject: data.subject,
         text: data.message,
-        html: `<h4>Full name: ${data.name}</h1><br/><a href=''>Sender : ${data.email}</a>`,
-        attachments: data.urls,
+        html: `<h4>Full name: ${data.name}</h1 style="color:red;"><br/><a href=''>Sender : ${data.email}</a>
+        <p> ${data.message}</p>
+        
+        `,
       });
 
       return res.status(200).json({ success: true });

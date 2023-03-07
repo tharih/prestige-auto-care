@@ -23,6 +23,7 @@ const Appointment = (props: Props) => {
   const handleImageChange = async (e: any) => {
     const selectedImages = Array.from(e.target.files);
     dispatch(clearQuote());
+
     selectedImages.map(async (file: any) => {
       const formData = new FormData();
       formData.append("file", file);
@@ -49,7 +50,6 @@ const Appointment = (props: Props) => {
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-
     setData({ ...data, [name]: value });
   };
   const handleSubmit = async () => {
@@ -58,14 +58,15 @@ const Appointment = (props: Props) => {
       ...data,
       urls: uploaded_url,
     };
+    console.log("newFormData:", newFormData);
     await sendQuote(newFormData)
       .then((res) => {
         if (res.status === 200) {
           toast.success("your quote has been sent", {
             id: submitQuote,
           });
-          dispatch(clearQuote());
-          setData({});
+          // dispatch(clearQuote());
+          // setData({});
         } else if (res.status === 400) {
           toast.error("sent unsuccessful", {
             id: submitQuote,

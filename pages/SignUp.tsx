@@ -13,7 +13,7 @@ const SignUp = (props: Props) => {
   const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
-    password: "suvin1234",
+    password: "",
     name: "",
   });
 
@@ -33,27 +33,8 @@ const SignUp = (props: Props) => {
           "Access-Control-Allow-Origin": "*",
         },
       }
-    );
-    const json = result.json();
-
-    // createUserWithEmailAndPassword(auth, formData.email, formData.password)
-    //   .then((userCredential) => {
-    //     const user = userCredential.user;
-    //     // @ts-ignore
-    //     const uid = userCredential.uid;
-    //     setDoc(doc(db, "users", formData.email), {
-    //       role: formData.userType,
-    //     });
-    //   })
-    //   .then(() => {
-    //     router.push("/Login");
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     console.log("errorMessage", errorMessage);
-    //     // ..
-    //   });
+    ).then((res) => res.json());
+    console.log(result);
   };
   return (
     <>

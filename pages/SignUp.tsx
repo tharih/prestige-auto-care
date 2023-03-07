@@ -5,49 +5,58 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
 import { useRouter } from "next/router";
+import styles from "./styles/signup.module.css";
 
 type Props = {};
 
 const SignUp = (props: Props) => {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    email: "suvinchandula93@gmail.com",
+    email: "",
     password: "suvin1234",
-    userType: "buyer",
+    name: "",
   });
 
-  const register = () => {
-    createUserWithEmailAndPassword(auth, formData.email, formData.password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        // @ts-ignore
-        const uid = userCredential.uid;
-        setDoc(doc(db, "users", formData.email), {
-          role: formData.userType,
-        });
-      })
-      .then(() => {
-        router.push("/Login");
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log("errorMessage", errorMessage);
-        // ..
-      });
+  const handleChange = (e: any) => {
+    const { value, name } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  const register = async () => {
+    const result = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/register`,
+      {
+        body: JSON.stringify(formData),
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
+    const json = result.json();
+
+    // createUserWithEmailAndPassword(auth, formData.email, formData.password)
+    //   .then((userCredential) => {
+    //     const user = userCredential.user;
+    //     // @ts-ignore
+    //     const uid = userCredential.uid;
+    //     setDoc(doc(db, "users", formData.email), {
+    //       role: formData.userType,
+    //     });
+    //   })
+    //   .then(() => {
+    //     router.push("/Login");
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     console.log("errorMessage", errorMessage);
+    //     // ..
+    //   });
   };
   return (
     <>
-      <Helmet>
-                        
-        <meta charSet="utf-8" />
-                        <title>Home</title>
-        <meta
-          name="description"
-          content="Get your amazing Car Solutions Prestige Auto care"
-        />
-                                     
-      </Helmet>
       <div
         className="breadcumb-wrapper"
         style={{ backgroundImage: `url('assets/img/bg/cta_bg_1.jpg')` }}
@@ -92,16 +101,17 @@ const SignUp = (props: Props) => {
               </div>
               <div className="appointment-form ajax-contact">
                 <div className="row gx-24">
-                  {/* <div className="form-group col-md-6">
-               <input
-                 type="text"
-                 className="form-control"
-                 name="name"
-                 id="name"
-                 placeholder="Enter Your Name"
-               />{" "}
-               <i className="fal fa-user" />
-             </div> */}
+                  <div className="form-group col-md-6">
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="name"
+                      id="name"
+                      placeholder="Enter Your Name"
+                      onChange={handleChange}
+                    />{" "}
+                    <i className="fal fa-user" />
+                  </div>
                   <div className="form-group col-md-6">
                     <input
                       type="email"
@@ -109,63 +119,28 @@ const SignUp = (props: Props) => {
                       name="email"
                       id="email"
                       placeholder="Email Address"
+                      onChange={handleChange}
                     />{" "}
                     <i className="fal fa-envelope" />
                   </div>
-                  {/* <div className="form-group col-12">
-               <select name="subject" id="subject" className="form-select">
-                 <option
-                  
-                  
-                 >
-                   Select Subject
-                 </option>
-                 <option value="Panel & Paint">Panel & Paint</option>
-                 <option value="Panel & Paint">Panel & Paint</option>
-                 <option value="Panel & Paint">Panel & Paint</option>
-                 <option value="Panel & Paint">
-                 Panel & Paint
-                 </option>
-               </select>
-             </div> */}
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-md-12">
                     <input
                       type="password"
                       className="date-pick form-control"
                       name="password"
                       id="date-pick"
                       placeholder="Password"
+                      onChange={handleChange}
                     />{" "}
                     <i className="fa fa-lock" />
                   </div>
-                  {/* <div className="form-group col-md-6">
-               <input
-                 type="text"
-                 className="time-pick form-control"
-                 name="time"
-                 id="time-pick"
-                 placeholder="Select Time"
-               />{" "}
-               <i className="fal fa-clock" />
-             </div> */}
-                  {/* <div className="form-group col-12">
-               <textarea
-                 name="message"
-                 id="message"
-                 cols={30}
-                 rows={3}
-                 className="form-control"
-                 placeholder="Message"
-                 defaultValue={""}
-               />{" "}
-               <i className="fal fa-comment" />
-             </div> */}
                   <Link
                     href="Login"
                     className="text-center"
                     style={{ color: "black" }}
                   >
-                    Login
+                    <small>Already have an account? </small>
+                    <strong>Login</strong>
                   </Link>{" "}
                   <div className="form-btn col-12 mt-10">
                     <button onClick={register} className="as-btn">

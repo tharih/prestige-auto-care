@@ -23,7 +23,6 @@ async function refreshAccessToken(token: any) {
     });
 
     const refreshedTokens = await response.json();
-    console.log("refreshedTokens:", refreshedTokens);
 
     if (!response.ok) {
       throw refreshedTokens;
@@ -55,7 +54,6 @@ export const authOptions = {
   secret: process.env.JWT_SECRET,
   callbacks: {
     async jwt({ token, account, user }: any) {
-      console.log("🚀 ~ file: [...nextauth].ts:18 ~ jwt ~ token:", token);
       if (account && user) {
         return {
           ...token,
@@ -67,11 +65,9 @@ export const authOptions = {
       }
 
       if (Date.now() < token.accessTokenExpires) {
-        console.log("Existing access token is valid");
         return token;
       }
 
-      console.log("refresh token has expired. refreshing....");
       return await refreshAccessToken(token);
     },
     async session({ session, token }: any) {

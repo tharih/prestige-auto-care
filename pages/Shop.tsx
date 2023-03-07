@@ -1,3 +1,4 @@
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -8,13 +9,18 @@ import { fetchCategory } from "../utils/fetchCategory";
 import { fetchProducts } from "../utils/fetchProduct";
 import styles_1 from "./styles/shop.module.css";
 
-type Props = {};
-
+type Props = {
+  products: any[];
+  categories: any[];
+};
 const Shop = ({ products, categories }: any) => {
-  const [setProducts, setSetProducts] = useState(products);
+  const [search, setSearch] = useState("");
   const router = useRouter();
 
-  const handleGetCategory = (title: any) => {};
+  const handleGetCategory = (id: any) => {
+    setSearch(id);
+  };
+
   return (
     <Layout>
       {/* <div
@@ -109,46 +115,53 @@ const Shop = ({ products, categories }: any) => {
                   aria-labelledby="tab-shop-grid"
                 >
                   <div className="row gy-40">
-                    {products.map((product: any, index: any) => (
-                      <div key={index} className="col-xl-4 col-sm-6">
-                        {/* <Link href={`/product/${product.slug.current}`}> */}
-                        <div className="as-product">
-                          <div className="product-img">
-                            <div
-                              style={{
-                                width: 282,
-                                height: 280,
-                                overflow: "hidden",
-                              }}
-                            >
-                              <img
-                                src={urlFor(product.image[0]).url()}
-                                alt="Product Image"
+                    {products
+                      .filter(
+                        (item: any) =>
+                          item.name.toLowerCase().includes(search) ||
+                          item.category.title.includes(search)
+                      )
+
+                      .map((product: any, index: any) => (
+                        <div key={index} className="col-xl-4 col-sm-6">
+                          {/* <Link href={`/product/${product.slug.current}`}> */}
+                          <div className="as-product">
+                            <div className="product-img">
+                              <div
                                 style={{
-                                  objectFit: "cover",
-                                  width: "100%",
-                                  height: "100%",
+                                  width: 282,
+                                  height: 280,
+                                  overflow: "hidden",
                                 }}
-                              />
-                            </div>
-                            <div className="actions">
-                              {/* <a
+                              >
+                                <img
+                                  src={urlFor(product.image[0]).url()}
+                                  alt="Product Image"
+                                  style={{
+                                    objectFit: "cover",
+                                    width: "100%",
+                                    height: "100%",
+                                  }}
+                                />
+                              </div>
+                              <div className="actions">
+                                {/* <a
                                 href="#QuickView"
                                 className="icon-btn popup-content"
                               >
                                 <i className="fa fa-eye" />
                               </a>{" "} */}
-                              <Link href="/Cart" className="icon-btn">
-                                <i className="fa fa-cart-plus" />
-                              </Link>{" "}
-                              {/* <a href="wishlist.html" className="icon-btn">
+                                <Link href="/Cart" className="icon-btn">
+                                  <i className="fa fa-cart-plus" />
+                                </Link>{" "}
+                                {/* <a href="wishlist.html" className="icon-btn">
                                 <i className="fa fa-heart" />
                               </a> */}
+                              </div>
+                              {/* <span className="category">{product.filter}</span> */}
                             </div>
-                            <span className="category">{product.filter}</span>
-                          </div>
-                          <div className="product-content">
-                            <div
+                            <div className="product-content">
+                              {/* <div
                               className="star-rating"
                               role="img"
                               aria-label="Rated 5.00 out of 5"
@@ -159,34 +172,34 @@ const Shop = ({ products, categories }: any) => {
                                 <span className="rating">1</span> customer
                                 rating
                               </span>
-                            </div>
-                            <h3 className="product-title">
-                              <div
-                                className={styles_1.productTitle}
-                                onClick={() =>
-                                  router.push(`/${product.slug.current}`)
+                            </div> */}
+                              <h3 className="product-title">
+                                <div
+                                  className={styles_1.productTitle}
+                                  onClick={() =>
+                                    router.push(`/${product.slug.current}`)
+                                  }
+                                >
+                                  {product.name}
+                                </div>
+                              </h3>
+                              <span className="price">AUD{product.price}</span>
+                              <span
+                                className={
+                                  product.quantity >= 1
+                                    ? styles_1.quantityInStock
+                                    : styles_1.quantityOutOfStock
                                 }
                               >
-                                {product.name}
-                              </div>
-                            </h3>
-                            <span className="price">AUD{product.price}</span>
-                            <span
-                              className={
-                                product.quantity >= 1
-                                  ? styles_1.quantityInStock
-                                  : styles_1.quantityOutOfStock
-                              }
-                            >
-                              {product.quantity >= 1
-                                ? `In Stock ${product.quantity}`
-                                : "Out of stock"}
-                            </span>
+                                {product.quantity >= 1
+                                  ? `In Stock ${product.quantity}`
+                                  : "Out of stock"}
+                              </span>
+                            </div>
                           </div>
+                          {/* </Link> */}
                         </div>
-                        {/* </Link> */}
-                      </div>
-                    ))}
+                      ))}
                   </div>
                 </div>
               </div>
@@ -213,7 +226,12 @@ const Shop = ({ products, categories }: any) => {
               <aside className="sidebar-area">
                 <div className="widget widget_search">
                   <form className="search-form">
-                    <input type="text" placeholder="Search..." />{" "}
+                    <input
+                      onChange={(e) => setSearch(e.target.value)}
+                      value={search}
+                      type="text"
+                      placeholder="Search..."
+                    />{" "}
                     <button type="submit">
                       <i className="fa fa-search" />
                     </button>

@@ -70,16 +70,6 @@ const Home = ({ services, about, banner, workProcess }: Props) => {
   // carousal settings End
   return (
     <Layout>
-      <Helmet>
-                        
-        <meta charSet="utf-8" />
-                        <title>Prestige Auto Care - Home</title>
-        <meta
-          name="description"
-          content="Get your amazing Car Solutions Prestige Auto care"
-        />
-                                     
-      </Helmet>
       <SliderComponent />
       <BestServiceComponent services={services} />
       <AboutCompanyComponent about={about}/>

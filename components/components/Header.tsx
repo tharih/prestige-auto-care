@@ -25,10 +25,8 @@ const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const user = useSelector(selectUser);
-  console.log("🚀 ~ file: Header.tsx:28 ~ Header ~ user:", user);
   // @ts-ignore
   const { data: session, status } = useSession();
-  console.log("session:", session);
   const cart =
     typeof window !== "undefined"
       ? // @ts-ignore
@@ -72,7 +70,7 @@ const Header = () => {
           <div className="widget woocommerce widget_shopping_cart">
             <h3 className="widget_title">Shopping cart</h3>
             <div className="widget_shopping_cart_content">
-              {/* <ul className="woocommerce-mini-cart cart_list product_list_widget">
+              <ul className="woocommerce-mini-cart cart_list product_list_widget">
                 {cart &&
                   cart.map((item: any, index: any) => (
                     <li
@@ -101,7 +99,7 @@ const Header = () => {
                       </span>
                     </li>
                   ))}
-              </ul> */}
+              </ul>
               <p className="woocommerce-mini-cart__total total">
                 <strong>Subtotal:</strong>{" "}
                 <span className="woocommerce-Price-amount amount">

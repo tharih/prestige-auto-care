@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { UserType } from "../../../utils/type";
+import bcrypt from "bcryptjs";
 
 type Data = {
   message: string;
@@ -12,19 +13,19 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const data: UserType = JSON.parse(req.body);
+  const data: UserType = req.body;
+
   const createMutations = [
     {
       create: {
         _type: "user",
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password,
+        password: bcrypt.hashAsync(req.body.password),
         isAdmin: false,
       },
     },
   ];
-
   const apiEndPoint = `https://${projectId}.api.sanity.io/v2022-11-15/data/mutate/${dataset}`;
   const result = await fetch(apiEndPoint, {
     headers: {
@@ -34,7 +35,6 @@ export default async function handler(
     body: JSON.stringify(createMutations),
     method: "POST",
   });
-
   const json = await result.json();
   res.status(200).json({ message: "Added" });
 }

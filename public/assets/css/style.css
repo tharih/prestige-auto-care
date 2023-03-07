@@ -7699,11 +7699,14 @@ span.select2-selection.select2-selection--single:focus {
   position: relative;
   overflow: hidden;
   z-index: 2;
+  width: 386px;
+  height: 510px;
 }
 .service-grid_img img {
   width: 100%;
   -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
+  object-fit: cover;
 }
 .service-grid_img:before,
 .service-grid_img:after {

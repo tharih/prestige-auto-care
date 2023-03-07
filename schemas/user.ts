@@ -24,5 +24,14 @@ export default {
       title: "Is Admin",
       type: "boolean",
     },
+    {
+      name: "image",
+      title: "Image",
+      type: "array",
+      of: [{ type: "image" }],
+      options: {
+        hotspot: true,
+      },
+    },
   ],
 };

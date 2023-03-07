@@ -8,7 +8,10 @@ type Data = {
 };
 
 const query = groq`
-*[_type == "product"]`;
+*[_type == "product"]{
+  ..., 
+  category->{title}
+}`;
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>

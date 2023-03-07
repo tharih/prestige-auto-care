@@ -109,3 +109,5 @@ export interface OrderType extends sanityBody {
   IsDelivered: boolean;
   DeliveredAt: boolean;
 }
+
+declare module "bcryptjs";

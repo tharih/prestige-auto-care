@@ -1,22 +1,86 @@
-import React from "react";
+import { async } from "@firebase/util";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import { toast } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
 import Layout from "../components/Layout";
+import {
+  addToQuote,
+  clearQuote,
+  selectSecureUrl,
+} from "../store/reducers/quoteReducer";
+import { sendQuote } from "../utils/sendQuote";
 
 type Props = {};
 
 const Appointment = (props: Props) => {
+  // @ts-ignore
+  const dispatch = useDispatch();
+  const uploaded_url = useSelector(selectSecureUrl);
+  const [data, setData] = useState({});
+  const [sentSuccess, setSentSuccess] = useState(false);
+
+  const handleImageChange = async (e: any) => {
+    const selectedImages = Array.from(e.target.files);
+    dispatch(clearQuote());
+    selectedImages.map(async (file: any) => {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "quotes");
+
+      const data = await fetch(
+        "https://api.cloudinary.com/v1_1/dy0suo4t5/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          dispatch(
+            addToQuote({
+              filename: `${res.asset_id}.${res.format}`,
+              path: res.secure_url,
+            })
+          );
+        });
+    });
+  };
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+
+    setData({ ...data, [name]: value });
+  };
+  const handleSubmit = async () => {
+    let submitQuote = toast.loading("sending quote...");
+    const newFormData = {
+      ...data,
+      urls: uploaded_url,
+    };
+    await sendQuote(newFormData)
+      .then((res) => {
+        if (res.status === 200) {
+          toast.success("your quote has been sent", {
+            id: submitQuote,
+          });
+          dispatch(clearQuote());
+          setData({});
+        } else if (res.status === 400) {
+          toast.error("sent unsuccessful", {
+            id: submitQuote,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.message, {
+          id: submitQuote,
+        });
+      });
+  };
   return (
     <Layout>
-      <Helmet>
-                        
-        <meta charSet="utf-8" />
-                        <title>Home</title>
-        <meta
-          name="description"
-          content="Get your amazing Car Solutions Prestige Auto care"
-        />
-                                     
-      </Helmet>
       <div
         className="breadcumb-wrapper"
         style={{ backgroundImage: `url('assets/img/bg/cta_bg_1.jpg')` }}
@@ -59,63 +123,60 @@ const Appointment = (props: Props) => {
               <div className="title-area mb-40 text-xl-start text-center">
                 <h2 className="sec-title">Make An Appointment</h2>
               </div>
-              <form
-                action="https://angfuzsoft.com/html/mechon/demo/mail.php"
-                method="POST"
-                className="appointment-form ajax-contact"
-              >
+              <div className="appointment-form ajax-contact">
                 <div className="row gx-24">
                   <div className="form-group col-md-6">
                     <input
+                      required
                       type="text"
                       className="form-control"
                       name="name"
                       id="name"
                       placeholder="Enter Your Name"
+                      onChange={handleChange}
                     />{" "}
                     <i className="fal fa-user" />
                   </div>
                   <div className="form-group col-md-6">
                     <input
+                      required
+                      type="text"
+                      className="form-control"
+                      name="subject"
+                      id="subject"
+                      placeholder="Subject Address"
+                      onChange={handleChange}
+                    />{" "}
+                    <i className="fal fa-envelope" />
+                  </div>
+                  <div className="form-group col-12">
+                    <input
+                      required
                       type="email"
                       className="form-control"
                       name="email"
                       id="email"
                       placeholder="Email Address"
+                      onChange={handleChange}
                     />{" "}
                     <i className="fal fa-envelope" />
                   </div>
-                  <div className="form-group col-12">
-                    <select name="subject" id="subject" className="form-select">
-                      <option>Select Subject</option>
-                      <option value="Panel & Paint">Panel & Paint</option>
-                      <option value="Panel & Paint">Panel & Paint</option>
-                      <option value="Panel & Paint">Panel & Paint</option>
-                      <option value="Panel & Paint">Panel & Paint</option>
-                    </select>
-                  </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-md-12">
                     <input
-                      type="text"
-                      className="date-pick form-control"
-                      name="date"
-                      id="date-pick"
-                      placeholder="Select Date"
-                    />{" "}
-                    <i className="far fa-calendar" />
-                  </div>
-                  <div className="form-group col-md-6">
-                    <input
-                      type="text"
+                      type="file"
                       className="time-pick form-control"
-                      name="time"
+                      name="file"
                       id="time-pick"
-                      placeholder="Select Time"
+                      multiple
+                      accept="image/*"
+                      placeholder="Select images"
+                      onChange={handleImageChange}
                     />{" "}
                     <i className="fal fa-clock" />
                   </div>
                   <div className="form-group col-12">
                     <textarea
+                      required
                       name="message"
                       id="message"
                       cols={30}
@@ -123,15 +184,18 @@ const Appointment = (props: Props) => {
                       className="form-control"
                       placeholder="Message"
                       defaultValue={""}
+                      onChange={handleChange}
                     />{" "}
                     <i className="fal fa-comment" />
                   </div>
                   <div className="form-btn col-12 mt-10">
-                    <button className="as-btn">Make An Appointment</button>
+                    <button onClick={handleSubmit} className="as-btn">
+                      Make An Appointment
+                    </button>
                   </div>
                 </div>
                 <p className="form-messages mb-0 mt-3" />
-              </form>
+              </div>
             </div>
           </div>
         </div>

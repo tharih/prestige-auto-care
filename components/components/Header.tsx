@@ -105,7 +105,7 @@ const Header = () => {
                 </span>
               </p>
               <p className="woocommerce-mini-cart__buttons buttons">
-                <Link href="Cart" className="as-btn wc-forward">
+                <Link href="/Cart" className="as-btn wc-forward">
                   View cart
                 </Link>{" "}
                 <Link href="Checkout" className="as-btn checkout wc-forward">

@@ -13,6 +13,7 @@ import banners from "./banners";
 import workProcess from "./workProcess";
 import paintDetails from "./paintDetails";
 import mechanicalDetails from "./mechanicalDetails";
+import gallery from "./gallery";
 
 
 export const schemaTypes = [
@@ -25,6 +26,7 @@ export const schemaTypes = [
   workProcess,
   product,
   about,
+  gallery,
   services,
   paintDetails,
   mechanicalDetails,

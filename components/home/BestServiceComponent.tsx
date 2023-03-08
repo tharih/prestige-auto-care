@@ -1,12 +1,15 @@
 import Link from "next/link";
 import React from "react";
 import { urlFor } from "../../client";
+import { fetchService } from "../../utils/fetchService";
+import { ServiceType } from "../../utils/type";
 
 type Props = {
-  services: [];
+  service: ServiceType[];
+  
 };
 
-const BestServiceComponent = ({ services }: Props) => {
+export default function BestServiceComponent({ service }: Props) {
   return (
     <section
       className="space"
@@ -23,7 +26,7 @@ const BestServiceComponent = ({ services }: Props) => {
           data-md-slide-show={2}
           data-arrows="true"
         >
-          {services.map((service: any, index: any) => (
+          {service.map((service: any, index: any) => (
             <div key={index} className="col-md-6 col-lg-4">
               <div className="service-block">
                 <div className="service-block_img">
@@ -32,8 +35,8 @@ const BestServiceComponent = ({ services }: Props) => {
                     alt="Service Image"
                     style={{
                       objectFit: "cover",
-                      width: "100%",
-                      height: "100%",
+                      width: "307px",
+                      height: "307px",
                     }}
                   />
                 </div>
@@ -46,9 +49,9 @@ const BestServiceComponent = ({ services }: Props) => {
                 >
                   {/* <span className="service-block_number">Service 01</span> */}
                   <h3 className="service-block_title">
-                    <Link href="Shop">{service.name}</Link>
+                    <Link href={`/${service.slug?.current}`}>{service.name}</Link>
                   </h3>
-                  <Link href="Shop" className="as-btn">
+                  <Link href={`/${service.slug?.current}`} className="as-btn">
                     View More
                   </Link>
                 </div>
@@ -61,4 +64,10 @@ const BestServiceComponent = ({ services }: Props) => {
   );
 };
 
-export default BestServiceComponent;
+export const getServerSideProps = async () => {
+  const service: ServiceType[] = await fetchService();
+
+  return {
+    props: { service },
+  };
+};

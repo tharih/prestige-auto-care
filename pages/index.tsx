@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Helmet } from "react-helmet";
-import { AboutType, BannerType, WorkProcessType } from "../utils/type";
+import { AboutType, BannerType, ProductType, ServiceType, WorkProcessType } from "../utils/type";
 import { fetchAbout } from "../utils/fetchAbout";
 import { fetchService } from "../utils/fetchService";
 import WhyChooseUs from "../components/about/WhyChooseUs";
@@ -17,17 +17,19 @@ import Testimonials from "../components/home/Testimonials";
 import Layout from "../components/Layout";
 import { fetchBanner } from "../utils/fetchBanner";
 import { fetchProcess } from "../utils/fetchProcess";
+import { fetchProducts } from "../utils/fetchProduct";
 
 type Props = {
-  services: [];
+  service: ServiceType[];
   about: AboutType[];
   banner: BannerType[];
   workProcess: WorkProcessType[];
+  products: ProductType[];
 
 };
 const inter = Inter({ subsets: ["latin"] });
 
-const Home = ({ services, about, banner, workProcess }: Props) => {
+const Home = ({ service, about, banner, workProcess, products }: Props) => {
   const settings_003 = {
     dots: false,
     slidesToShow: 4,
@@ -71,10 +73,10 @@ const Home = ({ services, about, banner, workProcess }: Props) => {
   return (
     <Layout>
       <SliderComponent />
-      <BestServiceComponent services={services} />
+      <BestServiceComponent service={service} />
       <AboutCompanyComponent about={about}/>
       <WhyChooseUs about={about} />
-      <LatestProducts settings_003={settings_003} settings_005={settings_005} />
+      <LatestProducts settings_003={settings_003} settings_005={settings_005} products={products} />
       <GetPremiumParts  banner={banner}/>
       <WorkProcess workProcess={workProcess}/>
       <Testimonials settings_004={settings_004} />
@@ -83,12 +85,13 @@ const Home = ({ services, about, banner, workProcess }: Props) => {
 };
 
 export const getServerSideProps = async () => {
-  const services: any[] = await fetchService();
+  const service: any[] = await fetchService();
   const about: AboutType[] = await fetchAbout();
   const banner: any[] = await fetchBanner();
   const workProcess: any[] = await fetchProcess();
+  const products: ProductType[]= await fetchProducts();
   return {
-    props: { services, about, banner, workProcess },
+    props: { service, about, banner, workProcess, products },
   };
 };
 

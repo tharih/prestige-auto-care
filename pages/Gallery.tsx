@@ -1,10 +1,18 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { urlFor } from "../client";
 import Layout from "../components/Layout";
+import { fetchGallery } from "../utils/fetchGallery";
+import { GalleryType } from "../utils/type";
 
-type Props = {};
+type Props = {
+  gallery: GalleryType[];
+  
+};
 
-const Gallery = (props: Props) => {
+export default function Gallery ({ gallery }: Props) {
+  console.log(gallery);
+  
   return (
     <Layout>
       <Helmet>
@@ -38,48 +46,15 @@ const Gallery = (props: Props) => {
       <section className="bg-white space">
         <div className="container">
           <div className="row gy-40">
-            <div className="col-md-6 col-lg-4">
+          {gallery.map((data: any, index: any) => (
+            <div key={index} className="col-md-6 col-lg-4">
               <div className="team-box">
                 <div className="team-img">
-                  <img src="assets/img/prestige/4.jpg" alt="Gallery" />
+                <img src={urlFor(data.asset._ref).url()} alt="Gallery" />
                 </div>
               </div>
             </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="team-box">
-                <div className="team-img">
-                  <img src="assets/img/prestige/5.jpg" alt="Gallery" />
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="team-box">
-                <div className="team-img">
-                  <img src="assets/img/prestige/2.jpg" alt="Gallery" />
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="team-box">
-                <div className="team-img">
-                  <img src="assets/img/prestige/1.jpg" alt="Gallery" />
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="team-box">
-                <div className="team-img">
-                  <img src="assets/img/prestige/10.jpg" alt="Gallery" />
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="team-box">
-                <div className="team-img">
-                  <img src="assets/img/prestige/13.jpg" alt="Gallery" />
-                </div>
-              </div>
-            </div>
+             ))}
           </div>
         </div>
       </section>
@@ -87,4 +62,13 @@ const Gallery = (props: Props) => {
   );
 };
 
-export default Gallery;
+export const getServerSideProps = async () => {
+  const gallery: GalleryType[] = await fetchGallery();
+
+  return {
+    props: {
+      gallery:gallery[0].images,
+    },
+    
+  };
+};

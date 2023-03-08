@@ -43,6 +43,28 @@ interface service_image2 {
   _type: "image";
   asset: Reference;
 }
+interface images {
+  _type: "image";
+  asset: Reference;
+}
+
+export interface GalleryType extends sanityBody{
+  _type:"gallery";
+  images: images;
+}
+
+export interface ServiceType extends sanityBody{
+  _type:"image";
+  image: image;
+}
+
+export interface ServiceType extends sanityBody {
+  _type: "service";
+  name: string;
+  image:image;
+  details: string;
+  slug:slug;
+}
 
 export interface AboutType extends sanityBody {
   _type: "about";

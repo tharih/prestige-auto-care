@@ -92,7 +92,7 @@ const Shop = ({ products, categories }: any) => {
                       >
                         <i className="fas fa-th" />
                       </Link>{" "}
-                      <Link
+                      {/* <Link
                         href="#"
                         id="tab-shop-list"
                         data-bs-toggle="tab"
@@ -102,7 +102,7 @@ const Shop = ({ products, categories }: any) => {
                         aria-selected="false"
                       >
                         <i className="fas fa-list" />
-                      </Link>
+                      </Link> */}
                     </div>
                   </div>
                 </div>

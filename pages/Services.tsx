@@ -3,22 +3,20 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { client, urlFor } from "../client";
 import Layout from "../components/Layout";
+import { fetchService } from "../utils/fetchService";
+import { ServiceType } from "../utils/type";
 
-type Props = {};
+type Props = {
+  service: ServiceType[];
+  
+};
 
-const Services = ({ services }: any) => {
+export default function Services ({ service }: Props) {
+  console.log(service);
+  
   return (
     <Layout>
-      <Helmet>
-                        
-        <meta charSet="utf-8" />
-                        <title>Home</title>
-        <meta
-          name="description"
-          content="Get your amazing Car Solutions Prestige Auto care"
-        />
-                                     
-      </Helmet>
+     
       <div
         className="breadcumb-wrapper"
         data-bg-src="assets/img/breadcumb/breadcumb-bg.jpg"
@@ -43,7 +41,7 @@ const Services = ({ services }: any) => {
       <section className="bg-smoke space">
         <div className="container">
           <div className="row gy-30">
-            {services.map((service: any, index: any) => (
+            {service.map((service: any, index: any) => (
               <div key={index} className="col-md-6 col-lg-4">
                 <div className="service-grid">
                   <div className="service-grid_img">
@@ -60,10 +58,10 @@ const Services = ({ services }: any) => {
 
                   <div className="service-grid_content">
                     <h3 className="service-grid_title">
-                      <Link href="Servicedetails">{service.name}</Link>
+                      <Link href={`/${service.slug?.current}`}>{service.name}</Link>
                     </h3>
                     <p className="service-grid_text">{service.details}</p>
-                    <Link href="Paintdetails" className="as-btn">
+                    <Link href={`/${service.slug?.current}`} className="as-btn">
                       View Details
                     </Link>
                   </div>
@@ -133,12 +131,11 @@ const Services = ({ services }: any) => {
 };
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "service"]';
-  const services = await client.fetch(query);
+  const service: ServiceType[] = await fetchService();
 
   return {
-    props: { services },
+    props: { service },
   };
 };
 
-export default Services;
+

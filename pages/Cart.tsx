@@ -153,7 +153,7 @@ const Cart = () => {
             <div className="breadcumb-menu-wrap">
               <ul className="breadcumb-menu">
                 <li>
-                  <a href="index.html">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>Shopping Cart</li>
               </ul>
@@ -190,17 +190,15 @@ const Cart = () => {
                           <img
                             width={91}
                             height={91}
-                            src="assets/img/cart/cart_1_1.jpg"
+                            src={item?.image}
                             alt="Image"
                           />
                         </td>
                         <td data-title="Name">
-                          <a
-                            className="cart-productname"
-                            href="shop-detailis.html"
-                          >
+                          <p
+                            className="cart-productname">
                             {item?.name}
-                          </a>
+                          </p>
                         </td>
                         <td data-title="Price">
                           <span className="amount">

@@ -14,14 +14,7 @@ type Props = {
 export default function Paintdetails({ paint }: Props) {
   return (
     <>
-     <Helmet>
-                        
-        <meta charSet="utf-8" />
-                        <title>Home</title>
-        <meta name="description" content="Get your amazing Car Solutions Prestige Auto care" />
-                        
-                    
-      </Helmet>
+     
   <div
     className="breadcumb-wrapper"
     data-bg-src="assets/img/breadcumb/breadcumb-bg.jpg"
@@ -33,7 +26,7 @@ export default function Paintdetails({ paint }: Props) {
         <div className="breadcumb-menu-wrap">
           <ul className="breadcumb-menu">
             <li>
-              <Link href="index.html">Home</Link>
+              <Link href="/">Home</Link>
             </li>
             <li>Paint Details</li>
           </ul>
@@ -46,9 +39,10 @@ export default function Paintdetails({ paint }: Props) {
       <div className="row flex-row-reverse">
         <div className="col-lg-8">
           <div className="mb-40">
-            <img
-              className="w-100"
-              src="assets/img/service/service_details_1.jpg"
+          <img
+              
+              style={{width:"803px", height:"343px"}}
+              src={urlFor(paint[0]?.service_image1.asset._ref).url()}
               alt="Service Image"
             />
           </div>
@@ -162,11 +156,11 @@ export default function Paintdetails({ paint }: Props) {
             <div className="row gy-30 mb-30">
               <div className="col-xl-6">
                 <div>
-                  <img
-                    className="w-100"
-                    src="assets/img/service/service_inner_1.jpg"
-                    alt="Service Image"
-                  />
+                <img
+              style={{width:"387px", height:"260px"}}
+              src={urlFor(paint[0]?.service_image2.asset._ref).url()}
+              alt="Service Image"
+            />
                 </div>
               </div>
               <div className="col-xl-6">

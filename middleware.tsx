@@ -1,19 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
 
 export async function middleware(req: NextRequest) {
-  const token = await getToken({ req, secret: process.env.JWT_SECRET });
+  const isLoggedIn = req.cookies.get("isLoggedIn");
+  const url = req.url;
 
-  const { pathname }: any = req.nextUrl;
-
-  // if (pathname.includes("/api/auth") || token) {
-  //   return NextResponse.next();
-  // }
-
-  // if (!token && pathname !== "/Login") {
+  // if (!isLoggedIn && url.includes("/")) {
   //   return NextResponse.redirect("/Login");
   // }
-  // if (token && pathname === "/") {
+  // if (isLoggedIn && url.includes("/Login")) {
   //   return NextResponse.redirect("/");
   // }
 }

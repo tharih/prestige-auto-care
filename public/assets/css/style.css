@@ -11079,11 +11079,15 @@ span.select2-selection.select2-selection--single:focus {
   overflow: hidden;
   position: relative;
   z-index: 3;
+  width: 306px;
+  height: 307px;
 }
 .service-block_img img {
   width: 100%;
   -webkit-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
+  object-fit: cover;
+  object-position: center;
 }
 .service-block_content {
   background-color: var(--title-color);

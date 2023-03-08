@@ -1,4 +1,4 @@
-"use client";
+import Cookies from "js-cookie";
 import { createSlice } from "@reduxjs/toolkit";
 // Define a type for the slice state
 interface cartState {
@@ -17,11 +17,10 @@ interface cartState {
 type ReducerProps = {};
 
 const initialState: cartState = {
-  cartItems:
-    typeof window !== "undefined" && localStorage.getItem("cart")
-      ? // @ts-ignore
-        JSON.parse(localStorage.getItem("cart"))
-      : [],
+  cartItems: Cookies.get("cart")
+    ? // @ts-ignore
+      JSON.parse(Cookies.get("cart"))
+    : [],
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
   cartTotalDiscount: 0,
@@ -56,7 +55,7 @@ export const cartSlice = createSlice({
         // };
         state.cartItems.push(action.payload);
       }
-      localStorage.setItem("cart", JSON.stringify(state.cartItems));
+      Cookies.set("cart", JSON.stringify(state.cartItems));
     },
     decreaseQty: (state, action) => {
       const itemIndex = state.cartItems.findIndex(
@@ -73,9 +72,7 @@ export const cartSlice = createSlice({
       );
 
       state.cartItems = nextCartItems;
-      typeof window !== "undefined"
-        ? localStorage.setItem("cart", JSON.stringify(state.cartItems))
-        : false;
+      Cookies.set("cart", JSON.stringify(state.cartItems));
     },
     getCartTotal: (state) => {
       let { total, quantity } = state.cartItems.reduce(
@@ -98,7 +95,7 @@ export const cartSlice = createSlice({
     },
     clearCart: (state) => {
       state.cartItems = [];
-      localStorage.removeItem("cart");
+      Cookies.remove("cart");
     },
   },
 });

@@ -19,19 +19,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { urlFor } from "../../client";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { selectUser } from "../../store/reducers/userReducer";
+import Image from "next/image";
 
 const Header = () => {
   const [show, setShow] = useState<boolean>(false);
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const user = useSelector(selectUser);
-  // @ts-ignore
-  const { data: session, status } = useSession();
-  const cart =
-    typeof window !== "undefined"
-      ? // @ts-ignore
-        JSON.parse(localStorage.getItem("cart"))
-      : false;
+  const cart = useSelector(selectCartItems);
   const dispatch = useDispatch();
   const handleShowCart = () => {
     setShow(true);
@@ -293,23 +288,23 @@ const Header = () => {
                           className="icon-btn d-none d-md-inline-block"
                         >
                           {user ? (
-                            <img
+                            <Image
                               // @ts-ignore
-                              src={user?.user?.image}
+                              src={user?.image}
                               width={50}
                               height={50}
                               style={{
                                 borderRadius: "100px",
                               }}
                               // @ts-ignore
-                              alt={session.user?.name?.slice(0, 1)}
+                              alt={user?.name.slice(0, 1)}
                             />
                           ) : (
                             <i className="fal fa-user" />
                           )}
                         </Link>
                         {/* @ts-ignore */}
-                        {session ? (
+                        {user ? (
                           <span
                             style={{
                               cursor: "pointer",

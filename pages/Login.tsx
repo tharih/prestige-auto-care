@@ -1,65 +1,49 @@
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useDispatch } from "react-redux";
-import { auth, db } from "../firebase";
 import { addUser } from "../store/reducers/userReducer";
-import { BsGoogle } from "react-icons/bs";
 type Props = {};
-import StyledButton from "./styles/LoginStyle";
-import { signIn } from "next-auth/react";
+import { toast } from "react-hot-toast";
+import Cookies from "js-cookie";
 
 const Login = (props: Props) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    email: "suvinchandula93@gmail.com",
-    password: "suvin1234",
+    email: "",
+    password: "",
   });
 
-  const login = () => {
-    signInWithEmailAndPassword(auth, formData.email, formData.password)
-      .then(async (userCredential) => {
-        const user = userCredential.user;
-        if (userCredential) {
-          const docRef = doc(db, "users", `${userCredential.user.email}`);
-          const usersDoc = await getDoc(docRef);
-          dispatch(
-            addUser({
-              email: userCredential.user.email,
-              uid: userCredential.user.uid,
-              role: usersDoc.data()?.role,
-            })
-          );
-          router.push("/");
-        }
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log("errorMessage", errorMessage);
-        // ..
+  const login = async () => {
+    const loginToast = toast.loading("processing...");
+    const result = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/login`,
+      {
+        body: JSON.stringify(formData),
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .catch((err) => console.log(err))
+      .finally(() => {
+        toast.success("Login successful", {
+          id: loginToast,
+        });
+        router.push("/");
       });
+    Cookies.set("user", JSON.stringify(result));
+    Cookies.set("isLoggedIn", true);
+    dispatch(addUser(result));
   };
   return (
     <>
-      <Helmet>
-                        
-        <meta charSet="utf-8" />
-                        <title>Home</title>
-        <meta
-          name="description"
-          content="Get your amazing Car Solutions Prestige Auto care"
-        />
-                                     
-      </Helmet>
       <div
         className="breadcumb-wrapper"
         style={{ backgroundImage: `url('assets/img/bg/cta_bg_1.jpg')` }}
@@ -70,7 +54,7 @@ const Login = (props: Props) => {
             <div className="breadcumb-menu-wrap">
               <ul className="breadcumb-menu">
                 <li>
-                  <a href="index">Home</a>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>Login</li>
               </ul>
@@ -104,16 +88,6 @@ const Login = (props: Props) => {
               </div>
               <div className="appointment-form ajax-contact">
                 <div className="row gx-24">
-                  {/* <div className="form-group col-md-6">
-               <input
-                 type="text"
-                 className="form-control"
-                 name="name"
-                 id="name"
-                 placeholder="Enter Your Name"
-               />{" "}
-               <i className="fal fa-user" />
-             </div> */}
                   <div className="form-group col-md-6">
                     <input
                       type="email"
@@ -121,6 +95,10 @@ const Login = (props: Props) => {
                       name="email"
                       id="email"
                       placeholder="Email Address"
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                     />{" "}
                     <i className="fal fa-envelope" />
                   </div>
@@ -131,6 +109,10 @@ const Login = (props: Props) => {
                       name="password"
                       id="date-pick"
                       placeholder="Password"
+                      value={formData.password}
+                      onChange={(e) =>
+                        setFormData({ ...formData, password: e.target.value })
+                      }
                     />{" "}
                     <i className="fa fa-lock" />
                   </div>
@@ -139,21 +121,11 @@ const Login = (props: Props) => {
                     className="text-center"
                     style={{ color: "black" }}
                   >
-                    Sign Up
+                    Don't have an account? <strong>Sign Up</strong>
                   </Link>{" "}
                   <div className="form-btn col-12 mt-10">
                     <button onClick={login} className="as-btn">
                       Login
-                    </button>
-                    <button
-                      className="as-btn"
-                      style={{
-                        marginLeft: "10px",
-                      }}
-                      // @ts-ignore
-                      onClick={signIn}
-                    >
-                      <BsGoogle /> Login With Google{" "}
                     </button>
                   </div>
                 </div>

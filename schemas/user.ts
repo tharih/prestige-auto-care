@@ -25,6 +25,11 @@ export default {
       type: "boolean",
     },
     {
+      name: "role",
+      title: "Role",
+      type: "string",
+    },
+    {
       name: "image",
       title: "Image",
       type: "array",

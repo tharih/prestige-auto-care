@@ -35,6 +35,7 @@ const SignUp = (props: Props) => {
       }
     ).then((res) => res.json());
     console.log(result);
+    
   };
   return (
     <>

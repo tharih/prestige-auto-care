@@ -11,7 +11,7 @@ const Logo = (props: any) => {
       }}
     >
       <Image
-        src="/assets/img/logo1.png"
+        src="/assets/img/logo-white1.png"
         alt="Prestige Auto Care Logo"
         height={50}
         width={50}

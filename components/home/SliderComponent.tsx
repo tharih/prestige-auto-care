@@ -227,7 +227,7 @@ const SliderComponent = (props: Props) => {
                     className="banner-arrow"
                     data-animation="fadeInRight"
                     data-delay=".9s"
-                    src="/assets/images/banner-arrow.png"
+                    // src="/assets/images/banner-arrow.png"
                     alt=""
                   />
                 </motion.div>
@@ -307,7 +307,7 @@ const SliderComponent = (props: Props) => {
                     className="banner-arrow"
                     data-animation="fadeInRight"
                     data-delay=".9s"
-                    src="/assets/images/banner-arrow.png"
+                    // src="/assets/images/banner-arrow.png"
                     alt=""
                   />
                 </motion.div>

@@ -30,7 +30,7 @@ export default function Services ({ service }: Props) {
             <div className="breadcumb-menu-wrap">
               <ul className="breadcumb-menu">
                 <li>
-                  <Link href="index.html">Home</Link>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>Our Services</li>
               </ul>

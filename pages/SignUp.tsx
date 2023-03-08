@@ -49,7 +49,7 @@ const SignUp = (props: Props) => {
             <div className="breadcumb-menu-wrap">
               <ul className="breadcumb-menu">
                 <li>
-                  <a href="index">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>Sign Up</li>
               </ul>

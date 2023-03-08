@@ -35,7 +35,7 @@ export default function Gallery ({ gallery }: Props) {
             <div className="breadcumb-menu-wrap">
               <ul className="breadcumb-menu">
                 <li>
-                  <a href="index">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>Work Gallery</li>
               </ul>

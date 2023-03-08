@@ -18,9 +18,9 @@ import {
 } from "../../store/reducers/cartReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { urlFor } from "../../client";
-import { useSession, signIn, signOut } from "next-auth/react";
-import { selectUser } from "../../store/reducers/userReducer";
+import { logOutHandle, selectUser } from "../../store/reducers/userReducer";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -30,6 +30,7 @@ const Header = () => {
   const cart = useSelector(selectCartItems);
   const grandTotal = useSelector(selectCarTotal);
   const dispatch = useDispatch();
+  const router = useRouter();
   const handleShowCart = () => {
     setShow(true);
   };
@@ -53,6 +54,11 @@ const Header = () => {
   const handleRemove = (item: any) => {
     dispatch(removeItem(item));
     dispatch(getCartTotal());
+  };
+
+  const handleSignOut = () => {
+    dispatch(logOutHandle());
+    router.push("/");
   };
 
   return (
@@ -312,7 +318,7 @@ const Header = () => {
                               cursor: "pointer",
                             }}
                             // @ts-ignore
-                            onClick={signOut}
+                            onClick={handleSignOut}
                           >
                             sign out
                           </span>

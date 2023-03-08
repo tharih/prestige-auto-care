@@ -20,7 +20,7 @@ export default function AboutCompanyComponent({ about }: Props) {
           <div className="col-xl-6">
             <div className="img-box-3">
               <div className="img1">
-                <img src={urlFor(about[0].home_image_01).url()} alt="About" />
+                <img style={{width:"530px", height:"560px"}} src={urlFor(about[0].home_image_01).url()} alt="About" />
               </div>
               <div className="img2">
                 <div className="as-experience style3">
@@ -29,7 +29,7 @@ export default function AboutCompanyComponent({ about }: Props) {
                   </h3>
                   <h4 className="experience-text">Years Of Experience</h4>
                 </div>
-                <img src={urlFor(about[0].home_image_02).url()} alt="About" />
+                <img style={{width:"313px", height:"310px"}} src={urlFor(about[0].home_image_02).url()} alt="About" />
               </div>
             </div>
           </div>

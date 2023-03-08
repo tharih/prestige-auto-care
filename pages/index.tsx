@@ -33,17 +33,19 @@ const Home = ({ service, about, banner, workProcess, products }: Props) => {
   const settings_003 = {
     dots: false,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
     speed: 500,
     arrows: false,
+    autoplay: true,
+    autoplaySpeed: 2000,
   };
   const settings_004 = {
     dots: false,
     slidesToShow: 2,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
     speed: 500,
     arrows: false,
-    autoPlay: true,
+    autoplay: true,
     responsive: [
       {
         breakpoint: 767,

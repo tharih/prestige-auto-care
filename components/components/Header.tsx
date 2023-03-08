@@ -14,6 +14,7 @@ import {
   getCartTotal,
   removeItem,
   selectCartItems,
+  selectCarTotal,
 } from "../../store/reducers/cartReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { urlFor } from "../../client";
@@ -27,6 +28,7 @@ const Header = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const user = useSelector(selectUser);
   const cart = useSelector(selectCartItems);
+  const grandTotal = useSelector(selectCarTotal);
   const dispatch = useDispatch();
   const handleShowCart = () => {
     setShow(true);
@@ -99,7 +101,7 @@ const Header = () => {
                 <strong>Subtotal:</strong>{" "}
                 <span className="woocommerce-Price-amount amount">
                   <span className="woocommerce-Price-currencySymbol">$</span>
-                  318.00
+                  {grandTotal}
                 </span>
               </p>
               <p className="woocommerce-mini-cart__buttons buttons">

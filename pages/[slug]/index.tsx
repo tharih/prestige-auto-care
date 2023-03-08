@@ -17,8 +17,8 @@ import {
 } from "../../store/reducers/cartReducer";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
-import { useSession } from "next-auth/react";
 import styles_1 from "../styles/shop.module.css";
+import { selectUser } from "../../store/reducers/userReducer";
 
 type IProps = {
   id: string;
@@ -36,7 +36,7 @@ const ProductDetails = (props: IProps) => {
   const [count, setCount] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
-  const { data: session, status } = useSession();
+  const user = useSelector(selectUser);
   const settings = {
     infinite: true,
     speed: 1000,
@@ -214,7 +214,7 @@ const ProductDetails = (props: IProps) => {
                         <button
                           className="as-btn"
                           onClick={
-                            session
+                            user
                               ? () => handleAdd(props)
                               : () => router.push("/Login")
                           }

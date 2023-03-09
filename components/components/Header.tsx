@@ -114,7 +114,7 @@ const Header = () => {
                 <Link href="/Cart" className="as-btn wc-forward">
                   View cart
                 </Link>{" "}
-                <Link href="Checkout" className="as-btn checkout wc-forward">
+                <Link href="#" className="as-btn checkout wc-forward">
                   Checkout
                 </Link>
               </p>
@@ -194,6 +194,7 @@ const Header = () => {
                     />
                   </p>
                 </div>
+
                 <div className="col-auto">
                   <div className="header-social">
                     <span className="social-title">Follow Us:</span>{" "}
@@ -325,6 +326,7 @@ const Header = () => {
                         ) : (
                           <span>Sign In</span>
                         )}
+
                         <button
                           onClick={handleShowMobileMenu}
                           className="as-menu-toggle d-inline-block d-lg-none"
@@ -364,6 +366,19 @@ const Header = () => {
                         </li> */}
                         <li>
                           <Link href="Contact">Contact</Link>
+                        </li>
+                        <li>
+                          <Link href="BlogDetails">Blog</Link>
+                        </li>
+                        <li>
+                          <Link
+                            style={{
+                              color: "#e81c2e",
+                            }}
+                            href="Appointment"
+                          >
+                            quote
+                          </Link>
                         </li>
                       </ul>
                     </nav>

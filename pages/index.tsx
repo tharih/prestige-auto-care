@@ -14,14 +14,6 @@ import {
 } from "../utils/type";
 import { fetchAbout } from "../utils/fetchAbout";
 import { fetchService } from "../utils/fetchService";
-import WhyChooseUs from "../components/about/WhyChooseUs";
-import GetPremiumParts from "../components/about/GetPremiumParts";
-import SliderComponent from "../components/home/SliderComponent";
-import BestServiceComponent from "../components/home/BestServiceComponent";
-import AboutCompanyComponent from "../components/home/AboutCompanyComponent";
-import LatestProducts from "../components/home/LatestProducts";
-import WorkProcess from "../components/home/WorkProcess";
-import Testimonials from "../components/home/Testimonials";
 import Layout from "../components/Layout";
 import { fetchBanner } from "../utils/fetchBanner";
 import { fetchProcess } from "../utils/fetchProcess";
@@ -29,6 +21,7 @@ import { fetchProducts } from "../utils/fetchProduct";
 import Cookie from "js-cookie";
 import { fetchSlider } from "../utils/fetchSlider";
 import { fetchMechanical } from "../utils/fetchMechanical";
+import dynamic from "next/dynamic";
 type Props = {
   service: ServiceType[];
   about: AboutType[];
@@ -39,7 +32,37 @@ type Props = {
 };
 const inter = Inter({ subsets: ["latin"] });
 
-const Home = ({ service, about, banner, workProcess, products, slider }: Props) => {
+const Home = ({
+  service,
+  about,
+  banner,
+  workProcess,
+  products,
+  slider,
+}: Props) => {
+  const GetPremiumParts = dynamic(
+    () => import("../components/about/GetPremiumParts")
+  );
+
+  const LatestProducts = dynamic(
+    () => import("../components/home/LatestProducts")
+  );
+
+  const SliderComponent = dynamic(
+    () => import("../components/home/SliderComponent")
+  );
+  const BestServiceComponent = dynamic(
+    () => import("../components/home/BestServiceComponent")
+  );
+  const AboutCompanyComponent = dynamic(
+    () => import("../components/home/AboutCompanyComponent")
+  );
+  const WhyChooseUs = dynamic(() => import("../components/about/WhyChooseUs"));
+
+  const WorkProcess = dynamic(() => import("../components/home/WorkProcess"));
+
+  const Testimonials = dynamic(() => import("../components/home/Testimonials"));
+
   const settings_003 = {
     dots: false,
     slidesToShow: 4,
@@ -84,7 +107,7 @@ const Home = ({ service, about, banner, workProcess, products, slider }: Props) 
   // carousal settings End
   return (
     <Layout>
-      <SliderComponent  slider={slider}/>
+      <SliderComponent slider={slider} />
       <BestServiceComponent service={service} />
       <AboutCompanyComponent about={about} />
       <WhyChooseUs about={about} />
@@ -107,9 +130,9 @@ export const getServerSideProps = async () => {
   const workProcess: any[] = await fetchProcess();
   const products: ProductType[] = await fetchProducts();
   const slider: SliderType[] = await fetchSlider();
-  
+
   return {
-    props: { service, about, banner, workProcess, products, slider},
+    props: { service, about, banner, workProcess, products, slider },
   };
 };
 

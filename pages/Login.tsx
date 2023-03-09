@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { Helmet } from "react-helmet";
 import { useDispatch } from "react-redux";
 import { addUser } from "../store/reducers/userReducer";
 type Props = {};
@@ -38,6 +37,7 @@ const Login = (props: Props) => {
         });
         router.push("/");
       });
+
     Cookies.set("user", JSON.stringify(result));
     Cookies.set("isLoggedIn", true);
     dispatch(addUser(result));

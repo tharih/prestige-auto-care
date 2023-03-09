@@ -25,6 +25,7 @@ type IProps = {
   name: string;
   image: image_01[];
   price: number;
+  sellerPrice: number;
   details: string;
   category: string;
   sku: string;
@@ -144,28 +145,18 @@ const ProductDetails = (props: IProps) => {
                 </div>
                 <div className="col-lg-6 align-self-center">
                   <div className="product-about">
-                    <p className="price">${props?.price}</p>
+                    {user ? (
+                      user.role === "seller" ? (
+                        <p className="price">${props?.sellerPrice}</p>
+                      ) : (
+                        <p className="price">${props?.price}</p>
+                      )
+                    ) : (
+                      <p className="price">${props?.price}</p>
+                    )}
+
                     <h2 className="product-title">{props?.name}</h2>
-                    {/* <div className="product-rating">
-                      <div
-                        className="star-rating"
-                        role="img"
-                        aria-label="Rated 5.00 out of 5"
-                      >
-                        <span style={{ width: "100%" }}>
-                          Rated <strong className="rating">5.00</strong> out of
-                          5 based on
-                          <span className="rating">1</span> customer rating
-                        </span>
-                      </div>
-                      <Link
-                        href="shop-details.html"
-                        className="woocommerce-review-link"
-                      >
-                        (<span className="count">3</span>
-                        customer reviews)
-                      </Link>
-                    </div> */}
+
                     <p className="text">{props?.details}</p>
                     <div className="checklist style3">
                       <ul>
@@ -1079,6 +1070,7 @@ export async function getStaticProps(context: any) {
     name,
     image,
     price,
+    sellerPrice,
     details,
     sku,
     quantity, 
@@ -1096,6 +1088,7 @@ export async function getStaticProps(context: any) {
         return img.asset._ref;
       }),
       price: product[0].price,
+      sellerPrice: product[0].sellerPrice,
       details: product[0].details,
       category: product[0].category.title,
     },

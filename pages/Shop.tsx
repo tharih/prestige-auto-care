@@ -1,10 +1,13 @@
 import axios from "axios";
+import { count } from "console";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
+import { useSelector } from "react-redux";
 import { client, urlFor } from "../client";
 import Layout from "../components/Layout";
+import { selectUser } from "../store/reducers/userReducer";
 import { fetchCategory } from "../utils/fetchCategory";
 import { fetchProducts } from "../utils/fetchProduct";
 import styles_1 from "./styles/shop.module.css";
@@ -13,37 +16,42 @@ type Props = {
   products: any[];
   categories: any[];
 };
-const Shop = ({ products, categories }: any) => {
+const Shop = ({ product, categories }: any) => {
+  const Pagination = dynamic(() => import("../components/Pagination"));
   const [search, setSearch] = useState("");
-  const router = useRouter();
+  const [shopsProducts, setShopsProducts] = useState<[]>(product);
+  const [currentPage, setCurrentPage] = useState<number | any>(1);
+  const [productPerPage, setProductPerPage] = useState<number>(5);
+  const user = useSelector(selectUser);
+  // pagination
+  const indexLastProduct = currentPage * productPerPage;
+  const indexOfFirstProduct = indexLastProduct - productPerPage;
+  const currentProduct = shopsProducts.slice(
+    indexOfFirstProduct,
+    indexLastProduct
+  );
 
+  const router = useRouter();
   const handleGetCategory = (id: any) => {
     setSearch(id);
   };
+  const handlePrevious = () => {
+    setCurrentPage((prev: number) => {
+      if (prev === currentPage) return 0;
+      prev - 1;
+    });
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prev: number) => {
+      if (prev === currentPage) return 0;
+      prev + 1;
+    });
+  };
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <Layout>
-      {/* <div
-        className="breadcumb-wrapper"
-        data-bg-src="assets/img/breadcumb/breadcumb-bg.jpg"
-        style={{
-          backgroundImage: `url('assets/img/breadcumb/breadcumb-bg.jpg')`,
-        }}
-      >
-        <div className="container z-index-common">
-          <div className="breadcumb-content">
-            <h1 className="breadcumb-title">Our Products</h1>
-            <div className="breadcumb-menu-wrap">
-              <ul className="breadcumb-menu">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>Our Products</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div> */}
       <section
         className="as-product-wrapper space-top space-extra-bottom"
         style={{ backgroundColor: "white" }}
@@ -55,10 +63,11 @@ const Shop = ({ products, categories }: any) => {
                 <div className="row justify-content-between align-items-center">
                   <div className="col-md">
                     <p className="woocommerce-result-count">
-                      Showing 1–12 of 16 results
+                      Showing {`${currentProduct.length} - ${currentPage}`} of{" "}
+                      {shopsProducts.length} results
                     </p>
                   </div>
-                  <div className="col-md-auto">
+                  {/* <div className="col-md-auto">
                     <form className="woocommerce-ordering" method="get">
                       <select
                         name="orderby"
@@ -77,7 +86,7 @@ const Shop = ({ products, categories }: any) => {
                         </option>
                       </select>
                     </form>
-                  </div>
+                  </div> */}
                   <div className="col-md-auto">
                     <div className="nav" role="tablist">
                       <Link
@@ -92,17 +101,6 @@ const Shop = ({ products, categories }: any) => {
                       >
                         <i className="fas fa-th" />
                       </Link>{" "}
-                      {/* <Link
-                        href="#"
-                        id="tab-shop-list"
-                        data-bs-toggle="tab"
-                        data-bs-target="#tab-list"
-                        role="tab"
-                        aria-controls="tab-grid"
-                        aria-selected="false"
-                      >
-                        <i className="fas fa-list" />
-                      </Link> */}
                     </div>
                   </div>
                 </div>
@@ -115,16 +113,14 @@ const Shop = ({ products, categories }: any) => {
                   aria-labelledby="tab-shop-grid"
                 >
                   <div className="row gy-40">
-                    {products
+                    {currentProduct
                       .filter(
                         (item: any) =>
                           item.name.toLowerCase().includes(search) ||
                           item.category.title.includes(search)
                       )
-
                       .map((product: any, index: any) => (
                         <div key={index} className="col-xl-4 col-sm-6">
-                          {/* <Link href={`/product/${product.slug.current}`}> */}
                           <div className="as-product">
                             <div className="product-img">
                               <div
@@ -145,34 +141,15 @@ const Shop = ({ products, categories }: any) => {
                                 />
                               </div>
                               <div className="actions">
-                                {/* <a
-                                href="#QuickView"
-                                className="icon-btn popup-content"
-                              >
-                                <i className="fa fa-eye" />
-                              </a>{" "} */}
                                 <Link href="/Cart" className="icon-btn">
                                   <i className="fa fa-cart-plus" />
                                 </Link>{" "}
-                                {/* <a href="wishlist.html" className="icon-btn">
-                                <i className="fa fa-heart" />
-                              </a> */}
                               </div>
-                              {/* <span className="category">{product.filter}</span> */}
+                              <span className="category">
+                                {product.category.title}
+                              </span>
                             </div>
                             <div className="product-content">
-                              {/* <div
-                              className="star-rating"
-                              role="img"
-                              aria-label="Rated 5.00 out of 5"
-                            >
-                              <span>
-                                Rated <strong className="rating">5.00</strong>{" "}
-                                out of 5 based on{" "}
-                                <span className="rating">1</span> customer
-                                rating
-                              </span>
-                            </div> */}
                               <h3 className="product-title">
                                 <div
                                   className={styles_1.productTitle}
@@ -183,7 +160,22 @@ const Shop = ({ products, categories }: any) => {
                                   {product.name}
                                 </div>
                               </h3>
-                              <span className="price">AUD{product.price}</span>
+                              {user ? (
+                                user.role === "seller" ? (
+                                  <span className="price">
+                                    AUD{product.sellerPrice}
+                                  </span>
+                                ) : (
+                                  <span className="price">
+                                    AUD{product.price}
+                                  </span>
+                                )
+                              ) : (
+                                <span className="price">
+                                  AUD{product.price}
+                                </span>
+                              )}
+
                               <span
                                 className={
                                   product.quantity >= 1
@@ -197,30 +189,19 @@ const Shop = ({ products, categories }: any) => {
                               </span>
                             </div>
                           </div>
-                          {/* </Link> */}
                         </div>
                       ))}
                   </div>
                 </div>
               </div>
-              <div className="as-pagination text-center pt-50">
-                <ul>
-                  <li>
-                    <Link href="#">1</Link>
-                  </li>
-                  <li>
-                    <Link href="#">2</Link>
-                  </li>
-                  <li>
-                    <Link href="#">3</Link>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="fa fa-arrow-right" />
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              <Pagination
+                productPerPage={productPerPage}
+                totalProducts={shopsProducts.length}
+                paginate={paginate}
+                handlePrevious={handlePrevious}
+                handleNext={handleNext}
+                currentPage={currentPage}
+              />
             </div>
             <div className="col-xl-3 col-lg-4">
               <aside className="sidebar-area">
@@ -261,11 +242,14 @@ const Shop = ({ products, categories }: any) => {
 };
 
 export const getServerSideProps = async () => {
-  const products = await fetchProducts();
+  const product = await fetchProducts();
   const categories = await fetchCategory();
 
   return {
-    props: { products, categories },
+    props: {
+      product,
+      categories,
+    },
   };
 };
 

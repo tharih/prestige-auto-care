@@ -3,15 +3,17 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { client, urlFor } from "../client";
 import Layout from "../components/Layout";
+import { fetchAbout } from "../utils/fetchAbout";
 import { fetchService } from "../utils/fetchService";
-import { ServiceType } from "../utils/type";
+import { AboutType, ServiceType } from "../utils/type";
 
 type Props = {
   service: ServiceType[];
+  about: AboutType[],
   
 };
 
-export default function Services ({ service }: Props) {
+export default function Services ({ service, about }: Props) {
   console.log(service);
   
   return (
@@ -84,7 +86,7 @@ export default function Services ({ service }: Props) {
             data-margin-bottom="155px"
           >
             <div className="title-area mb-40 text-center text-lg-start">
-              <span className="sub-title">Top News Updates</span>
+              <span className="sub-title">Best Service</span>
               <h2 className="sec-title">We Provide Best Service And Repair</h2>
             </div>
             <div className="quality-feature-wrap">
@@ -92,37 +94,42 @@ export default function Services ({ service }: Props) {
                 <div className="quality-feature_icon">
                   <img src="assets/img/icon/quality-feature_1.svg" alt="icon" />
                 </div>
-                <h3 className="quality-feature_title">Quality Services</h3>
+                <h3 className="quality-feature_title">{about[0]?.service_title1}</h3>
                 <p className="quality-feature_text">
-                  Purpose quality vectors with highly efficient incubate
+                  {about[0]?.service_description1}
                 </p>
               </div>
               <div className="quality-feature">
                 <div className="quality-feature_icon">
                   <img src="assets/img/icon/quality-feature_2.svg" alt="icon" />
                 </div>
-                <h3 className="quality-feature_title">Fast Delivery</h3>
+                <h3 className="quality-feature_title">{about[0]?.service_title2}</h3>
                 <p className="quality-feature_text">
-                  Purpose quality vectors with highly efficient incubate
+                  {about[0]?.service_description2}
                 </p>
               </div>
             </div>
-            <div className="skill-feature">
-              <h3 className="skill-feature_title">Product Design</h3>
-              <div className="progress">
-                <div className="progress-bar" style={{ width: "70%" }}>
-                  <div className="progress-value">70%</div>
+            <div className="quality-feature-wrap">
+              <div className="quality-feature">
+                <div className="quality-feature_icon">
+                  <img src="assets/img/icon/service_feature_1_3.svg" alt="icon" />
                 </div>
+                <h3 className="quality-feature_title">{about[0]?.service_title3}</h3>
+                <p className="quality-feature_text">
+                  {about[0]?.service_description3}
+                </p>
+              </div>
+              <div className="quality-feature">
+                <div className="quality-feature_icon">
+                  <img src="assets/img/icon/service_feature_1_2.svg" alt="icon" />
+                </div>
+                <h3 className="quality-feature_title">{about[0]?.service_title4}</h3>
+                <p className="quality-feature_text">
+                 {about[0]?.service_description4}
+                </p>
               </div>
             </div>
-            <div className="skill-feature">
-              <h3 className="skill-feature_title">Car Mechanic Service</h3>
-              <div className="progress">
-                <div className="progress-bar" style={{ width: "93%" }}>
-                  <div className="progress-value">93%</div>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>
@@ -132,9 +139,10 @@ export default function Services ({ service }: Props) {
 
 export const getServerSideProps = async () => {
   const service: ServiceType[] = await fetchService();
+  const about: AboutType[] = await fetchAbout();
 
   return {
-    props: { service },
+    props: { service, about },
   };
 };
 

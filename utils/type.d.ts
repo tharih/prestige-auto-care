@@ -80,6 +80,14 @@ export interface AboutType extends sanityBody {
   experienceYears: string;
   whyChooseUs: [];
   choose_image: choose_image;
+  service_title1:string;
+  service_description1:string;
+  service_title2:string;
+  service_description2:string;
+  service_title3:string;
+  service_description3:string;
+  service_title4:string;
+  service_description4:string;
 }
 
 export interface PaintType extends sanityBody {

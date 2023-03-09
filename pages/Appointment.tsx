@@ -9,11 +9,15 @@ import {
   clearQuote,
   selectSecureUrl,
 } from "../store/reducers/quoteReducer";
+import { fetchAbout } from "../utils/fetchAbout";
 import { sendQuote } from "../utils/sendQuote";
+import { AboutType } from "../utils/type";
 
-type Props = {};
+type Props = {
+  about: AboutType[];
+};
 
-const Appointment = (props: Props) => {
+export default function Appointment ({ about}: Props){
   // @ts-ignore
   const dispatch = useDispatch();
   const uploaded_url = useSelector(selectSecureUrl);
@@ -114,7 +118,7 @@ const Appointment = (props: Props) => {
                   data-bg-src="assets/img/normal/year_bg_2.png"
                 >
                   <h3 className="experience-year">
-                    <span className="counter-number">25</span>
+                    <span className="counter-number">{about[0]?.experienceYears}</span>
                   </h3>
                   <h4 className="experience-text">YEARS OF EXPERIENCE</h4>
                 </div>
@@ -205,4 +209,12 @@ const Appointment = (props: Props) => {
   );
 };
 
-export default Appointment;
+export const getServerSideProps = async () => {
+  const about: AboutType[] = await fetchAbout();
+  
+  return {
+    props: {
+      about,
+    },
+  };
+};

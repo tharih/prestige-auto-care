@@ -47,6 +47,10 @@ interface images {
   _type: "image";
   asset: Reference;
 }
+interface mainImage {
+  _type: "image";
+  asset: Reference;
+}
 
 export interface GalleryType extends sanityBody{
   _type:"gallery";
@@ -58,12 +62,21 @@ export interface ServiceType extends sanityBody{
   image: image;
 }
 
+
 export interface ServiceType extends sanityBody {
   _type: "service";
   name: string;
   image:image;
   details: string;
   slug:slug;
+}
+
+export interface SliderType extends sanityBody{
+  _type:"slider";
+  title: string;
+  tagline: string;
+  description: string;
+  mainImage: mainImage;
 }
 
 export interface AboutType extends sanityBody {

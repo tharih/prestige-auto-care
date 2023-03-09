@@ -1,3 +1,25 @@
+/* .container-style{
+  height: 100%;
+  position: relative;
+} */
+
+/* .description{
+  width: 600px;
+  position: absolute;
+  z-index: 999;
+  color: aliceblue;
+  top: 20%;
+  left: 20%;
+}
+
+.description h1{
+  font-size: 46px;
+}
+
+.description p{
+  font-size: 22px;
+} */
+
 .imageBG_01 {
   background-image: url("../../bg/10.jpg");
   width: 100%;

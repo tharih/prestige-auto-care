@@ -6,8 +6,10 @@ import { Helmet } from "react-helmet";
 import {
   AboutType,
   BannerType,
+  MechanicalType,
   ProductType,
   ServiceType,
+  SliderType,
   WorkProcessType,
 } from "../utils/type";
 import { fetchAbout } from "../utils/fetchAbout";
@@ -25,16 +27,19 @@ import { fetchBanner } from "../utils/fetchBanner";
 import { fetchProcess } from "../utils/fetchProcess";
 import { fetchProducts } from "../utils/fetchProduct";
 import Cookie from "js-cookie";
+import { fetchSlider } from "../utils/fetchSlider";
+import { fetchMechanical } from "../utils/fetchMechanical";
 type Props = {
   service: ServiceType[];
   about: AboutType[];
   banner: BannerType[];
   workProcess: WorkProcessType[];
   products: ProductType[];
+  slider: SliderType[];
 };
 const inter = Inter({ subsets: ["latin"] });
 
-const Home = ({ service, about, banner, workProcess, products }: Props) => {
+const Home = ({ service, about, banner, workProcess, products, slider }: Props) => {
   const settings_003 = {
     dots: false,
     slidesToShow: 4,
@@ -49,7 +54,7 @@ const Home = ({ service, about, banner, workProcess, products }: Props) => {
     slidesToShow: 2,
     slidesToScroll: 1,
     speed: 500,
-    arrows: false,
+    arrows: true,
     autoplay: true,
     responsive: [
       {
@@ -79,7 +84,7 @@ const Home = ({ service, about, banner, workProcess, products }: Props) => {
   // carousal settings End
   return (
     <Layout>
-      <SliderComponent />
+      <SliderComponent  slider={slider}/>
       <BestServiceComponent service={service} />
       <AboutCompanyComponent about={about} />
       <WhyChooseUs about={about} />
@@ -101,8 +106,10 @@ export const getServerSideProps = async () => {
   const banner: any[] = await fetchBanner();
   const workProcess: any[] = await fetchProcess();
   const products: ProductType[] = await fetchProducts();
+  const slider: SliderType[] = await fetchSlider();
+  
   return {
-    props: { service, about, banner, workProcess, products },
+    props: { service, about, banner, workProcess, products, slider},
   };
 };
 

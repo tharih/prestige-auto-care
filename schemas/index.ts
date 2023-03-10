@@ -14,6 +14,7 @@ import workProcess from "./workProcess";
 import paintDetails from "./paintDetails";
 import mechanicalDetails from "./mechanicalDetails";
 import gallery from "./gallery";
+import blog from "./blog";
 
 
 export const schemaTypes = [
@@ -25,6 +26,7 @@ export const schemaTypes = [
   banners,
   workProcess,
   product,
+  blog,
   about,
   gallery,
   services,

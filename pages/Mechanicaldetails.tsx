@@ -240,7 +240,7 @@ export default function Mechanicaldetails({ mechanical }: Props) {
                 >
                   <div className="offer-banner">
                     <div className="banner-logo">
-                      <img src="assets/img/logo-white1.png" alt="Mechon" />
+                      <img src="assets/img/logo-white1.png" alt="Prstige Auto Care" />
                     </div>
                     <h5 className="banner-title" style={{ color: "black" }}>
                       Need Help? We Are Here To Help You

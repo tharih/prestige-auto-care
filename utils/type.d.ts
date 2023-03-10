@@ -51,6 +51,14 @@ interface mainImage {
   _type: "image";
   asset: Reference;
 }
+interface image1 {
+  _type: "image";
+  asset: Reference;
+}
+interface image {
+  _type: "image";
+  asset: Reference;
+}
 
 export interface GalleryType extends sanityBody{
   _type:"gallery";
@@ -77,6 +85,20 @@ export interface SliderType extends sanityBody{
   tagline: string;
   description: string;
   mainImage: mainImage;
+}
+
+export interface BlogType extends sanityBody{
+  _type:"slider";
+  image: image;
+  title: string;
+  small_description: string;
+  description01:string;
+  image1: image1;
+  tag: string;
+  description02: string;
+  publishedAt: string;
+  writtenby: string;
+  slug: slug;
 }
 
 export interface AboutType extends sanityBody {

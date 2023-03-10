@@ -368,7 +368,7 @@ const Header = () => {
                           <Link href="Contact">Contact</Link>
                         </li>
                         <li>
-                          <Link href="BlogDetails">Blog</Link>
+                          <Link href="Blog">Blog</Link>
                         </li>
                         <li>
                           <Link

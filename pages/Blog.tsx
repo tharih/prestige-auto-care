@@ -1,9 +1,16 @@
 import Link from 'next/link'
 import React from 'react'
+import { urlFor } from '../client'
+import { fetchBlog } from '../utils/fetchBlog'
+import { BlogType } from '../utils/type'
 
-type Props = {}
+type Props = {
+  blog: BlogType[];
+}
 
-const Blog = (props: Props) => {
+export default function Blog({ blog }: Props)  {
+  console.log(blog);
+  
   return (
     <>
      <div
@@ -17,7 +24,7 @@ const Blog = (props: Props) => {
           <div className="breadcumb-menu-wrap">
             <ul className="breadcumb-menu">
               <li>
-                <a href="index.html">Home</a>
+                <a href="/">Home</a>
               </li>
               <li>Latest Posts</li>
             </ul>
@@ -32,35 +39,31 @@ const Blog = (props: Props) => {
             <div className="as-blog blog-single has-post-thumbnail">
               <div className="blog-img">
                 <a href="blog-details.html">
-                  <img src="assets/img/blog/blog-s-1-1.jpg" alt="Blog Image" />
+                  <img src={urlFor(blog[0]?.image.asset._ref).url()} alt="Blog Image" />
                 </a>
               </div>
               <div className="blog-content">
                 <div className="blog-meta">
-                  <a href="blog.html">
+                  <a >
                     <i className="fas fa-user" />
-                    by David Smith
+                    by {blog[0].writtenby}
                   </a>{" "}
-                  <a href="blog.html">
+                  <a >
                     <i className="far fa-calendar-alt" />
-                    March 15, 2022
+                    {blog[0]._createdAt}
                   </a>{" "}
-                  <a href="blog.html">
+                  <a >
                     <i className="fas fa-tags" />
-                    Oil Change
+                    {blog[0].tag}
                   </a>
                 </div>
                 <h2 className="blog-title">
                   <a href="blog-details.html">
-                    Give Your Small Car the Horn It Deserves
+                    {blog[0].title}
                   </a>
                 </h2>
                 <p>
-                  Collaboratively pontificate bleeding edge is resources with
-                  inexpensive methodologies. Globally initiate multidisciplinary
-                  compatible architectures. Rapidiously repurpose leading edge
-                  growth strategies with just in time web readiness communicate
-                  timely meta services for synergistic initiatives
+                  {blog[0].small_description}
                 </p>
                 <a href="blog-details.html" className="as-btn">
                   Read Details
@@ -100,26 +103,26 @@ const Blog = (props: Props) => {
                 </form>
               </div>
               <div className="widget widget_categories">
-                <h3 className="widget_title">Categories</h3>
+                <h3 className="widget_title">Visit Us</h3>
                 <ul>
-                  <li>
-                    <a href="blog.html">Car Repair</a>
-                  </li>
-                  <li>
-                    <a href="blog.html">Engine Repair</a>
-                  </li>
-                  <li>
-                    <a href="blog.html">Tyer Change</a>
-                  </li>
-                  <li>
-                    <a href="blog.html">Oil Change</a>
-                  </li>
-                  <li>
-                    <a href="blog.html">Battery Charge</a>
-                  </li>
-                </ul>
+                    <li>
+                      <Link href="/">Home</Link>
+                    </li>
+                    <li>
+                      <Link href="about">About</Link>
+                    </li>
+                    <li>
+                      <Link href="services">Service</Link>
+                    </li>
+                    <li>
+                      <Link href="shop">Shop</Link>
+                    </li>
+                    <li>
+                      <Link href="contact">Contact</Link>
+                    </li>
+                  </ul>
               </div>
-              <div className="widget">
+              {/* <div className="widget">
                 <h3 className="widget_title">Recent Posts</h3>
                 <div className="recent-post-wrap">
                   <div className="recent-post">
@@ -192,8 +195,8 @@ const Blog = (props: Props) => {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="widget">
+              </div> */}
+              {/* <div className="widget">
                 <h4 className="widget_title">Gallery Posts</h4>
                 <div className="sidebar-gallery">
                   <div className="gallery-thumb">
@@ -239,8 +242,8 @@ const Blog = (props: Props) => {
                     />
                   </div>
                 </div>
-              </div>
-              <div className="widget widget_tag_cloud">
+              </div> */}
+              {/* <div className="widget widget_tag_cloud">
                 <h3 className="widget_title">Popular Tags</h3>
                 <div className="tagcloud">
                   <a href="blog.html">Technology</a>{" "}
@@ -250,30 +253,30 @@ const Blog = (props: Props) => {
                   <a href="blog.html">Solution</a>{" "}
                   <a href="blog.html">Car Repair</a>
                 </div>
-              </div>
+              </div> */}
               <div
                 className="widget widget_offer"
                 data-bg-src="assets/img/bg/widget_bg_1.jpg"
               >
-                <div className="offer-banner">
-                  <div className="banner-logo">
-                    <img src="assets/img/logo-white.png" alt="Mechon" />
+                 <div className="offer-banner">
+                    <div className="banner-logo">
+                      <img src="assets/img/logo-white1.png" alt="Prstige Auto Care" />
+                    </div>
+                    <h5 className="banner-title" style={{ color: "black" }}>
+                      Need Help? We Are Here To Help You
+                    </h5>
+                    <div className="offer">
+                      <h6 className="offer-title">
+                        <span className="text-theme">Prestige </span>Auto Care
+                      </h6>
+                      {/* <p className="offer-text">
+                    Save up to <span className="text-theme">60% off</span>
+                  </p> */}
+                    </div>
+                    <Link href="Appointment" className="as-btn">
+                      Get A Quote
+                    </Link>
                   </div>
-                  <h5 className="banner-title">
-                    Need Help? We Are Here To Help You
-                  </h5>
-                  <div className="offer">
-                    <h6 className="offer-title">
-                      <span className="text-theme">Mechon</span> Special
-                    </h6>
-                    <p className="offer-text">
-                      Save up to <span className="text-theme">60% off</span>
-                    </p>
-                  </div>
-                  <a href="contact.html" className="as-btn">
-                    Get A Quote
-                  </a>
-                </div>
               </div>
             </aside>
           </div>
@@ -286,4 +289,12 @@ const Blog = (props: Props) => {
   )
 }
 
-export default Blog
+export const getServerSideProps = async () => {
+  const blog: BlogType[] = await fetchBlog();
+  
+  return {
+    props: {
+      blog,
+    },
+  };
+};

@@ -72,13 +72,13 @@ const BlogDetails = (props: Props) => {
               information. Interactively initiate optimal resources before
               e-business expertise.
             </p>
-            <blockquote>
+            {/* <blockquote>
               <p>
                 “IT IS A LONG FACT THAT A READER WILL BE DISTRACTED BY THE
                 READABLE CONTENT OF A PAGE WHEN LOOKING AT ITS LAYOUT.”
               </p>
               <cite>Md Sumon Mia</cite>
-            </blockquote>
+            </blockquote> */}
             <p>
               Appropriately mesh standards compliant communities vis-a-vis
               client-centric channels. Seamlessly reinvent open-source data via

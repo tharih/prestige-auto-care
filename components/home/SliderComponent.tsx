@@ -162,7 +162,7 @@ export default function SliderComponent({ slider }: Props) {
             data-ani="slideindown"
             data-ani-delay="0.6s"
           >
-            Make An Appointment
+            GET A QUOTE
           </Link>
 
         </div>

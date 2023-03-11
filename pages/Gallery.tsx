@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { Helmet } from "react-helmet";
 import { urlFor } from "../client";
@@ -15,16 +16,7 @@ export default function Gallery ({ gallery }: Props) {
   
   return (
     <Layout>
-      <Helmet>
-                        
-        <meta charSet="utf-8" />
-                        <title>Home</title>
-        <meta
-          name="description"
-          content="Get your amazing Car Solutions Prestige Auto care"
-        />
-                                     
-      </Helmet>
+      
       <div
         className="breadcumb-wrapper"
         style={{ backgroundImage: `url('assets/img/bg/cta_bg_1.jpg')` }}
@@ -35,7 +27,7 @@ export default function Gallery ({ gallery }: Props) {
             <div className="breadcumb-menu-wrap">
               <ul className="breadcumb-menu">
                 <li>
-                  <a href="/">Home</a>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>Work Gallery</li>
               </ul>

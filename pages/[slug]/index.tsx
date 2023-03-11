@@ -1043,6 +1043,8 @@ const ProductDetails = (props: IProps) => {
   );
 };
 
+
+
 export async function getStaticPaths() {
   const query = `*[_type == "product"]{
           slug{

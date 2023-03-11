@@ -7,7 +7,6 @@ import { Helmet } from "react-helmet";
 import { AiOutlineClose } from "react-icons/ai";
 import Slider from "react-slick";
 import { client, urlFor } from "../client";
-import Blog from "../components/about/Blog";
 import GetPremiumParts from "../components/about/GetPremiumParts";
 import WhyChooseUs from "../components/about/WhyChooseUs";
 import Layout from "../components/Layout";
@@ -46,16 +45,7 @@ export default function About({ about, banner }: Props) {
   };
   return (
     <Layout>
-      <Helmet>
-                        
-        <meta charSet="utf-8" />
-                        <title>Home</title>
-        <meta
-          name="description"
-          content="Get your amazing Car Solutions Prestige Auto care"
-        />
-                                     
-      </Helmet>
+      
       <div
         className="breadcumb-wrapper"
         data-bg-src=""
@@ -151,7 +141,6 @@ export default function About({ about, banner }: Props) {
       ></section>
       <div className="circle-bg space-bottom bg-smoke" />
       <WhyChooseUs about={about} />
-      <Blog />
       <GetPremiumParts banner={banner}/>
     </Layout>
   );

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { Helmet } from "react-helmet";
 
@@ -6,16 +7,7 @@ type Props = {};
 const Checkout = (props: Props) => {
   return (
     <>
-      <Helmet>
-                        
-        <meta charSet="utf-8" />
-                        <title>Home</title>
-        <meta
-          name="description"
-          content="Get your amazing Car Solutions Prestige Auto care"
-        />
-                                     
-      </Helmet>
+     
       <div
         className="breadcumb-wrapper"
         style={{ backgroundImage: `url('assets/img/bg/cta_bg_1.jpg')` }}
@@ -26,7 +18,7 @@ const Checkout = (props: Props) => {
             <div className="breadcumb-menu-wrap">
               <ul className="breadcumb-menu">
                 <li>
-                  <a href="/">Home</a>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>Checkout</li>
               </ul>
@@ -42,9 +34,9 @@ const Checkout = (props: Props) => {
           <div className="woocommerce-form-login-toggle">
             <div className="woocommerce-info">
               Returning customer?{" "}
-              <a href="#" className="showlogin">
+              <Link href="#" className="showlogin">
                 Click here to login
-              </a>
+              </Link>
             </div>
           </div>
           <div className="row">
@@ -88,9 +80,9 @@ const Checkout = (props: Props) => {
           <div className="woocommerce-form-coupon-toggle">
             <div className="woocommerce-info">
               Have a coupon?{" "}
-              <a href="#" className="showcoupon">
+              <Link href="#" className="showcoupon">
                 Click here to enter your code
-              </a>
+              </Link>
             </div>
           </div>
           <div className="row">

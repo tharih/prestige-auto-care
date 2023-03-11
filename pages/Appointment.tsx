@@ -1,4 +1,5 @@
 import { async } from "@firebase/util";
+import Link from "next/link";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { toast } from "react-hot-toast";
@@ -96,7 +97,7 @@ export default function Appointment ({ about}: Props){
             <div className="breadcumb-menu-wrap">
               <ul className="breadcumb-menu">
                 <li>
-                  <a href="/">Home</a>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>Appointment</li>
               </ul>

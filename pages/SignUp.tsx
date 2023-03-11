@@ -1,9 +1,5 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import { Helmet } from "react-helmet";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
-import { auth, db } from "../firebase";
 import { useRouter } from "next/router";
 import styles from "./styles/signup.module.css";
 
@@ -35,7 +31,6 @@ const SignUp = (props: Props) => {
       }
     ).then((res) => res.json());
     console.log(result);
-    
   };
   return (
     <>

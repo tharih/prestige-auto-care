@@ -17,8 +17,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { urlFor } from "../client";
 import { toast } from "react-toastify";
-import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
+import { selectUser } from "../store/reducers/userReducer";
 
 const configValue: string = process.env.stripe_public_key as string;
 const stripePromise = loadStripe(configValue);
@@ -26,9 +26,9 @@ const stripePromise = loadStripe(configValue);
 const Cart = () => {
   const cartItems = useSelector(selectCartItems);
   const { cartTotalAmount, cartTotalQuantity } = useSelector(selectCartAll);
+  const user = useSelector(selectUser);
   const router = useRouter();
   const dispatch = useDispatch();
-  const { data: session, status } = useSession();
   useEffect(() => {
     dispatch(getCartTotal());
   }, [dispatch, cartItems]);
@@ -63,7 +63,7 @@ const Cart = () => {
     // Call the backend to create a checkout session
     const checkOutSession = await axios.post("/api/create-checkout-session", {
       cartItems: cartItems,
-      email: session?.user?.email,
+      email: user?.email,
     });
 
     // Redirect user/customer to stripe checkout
@@ -83,7 +83,7 @@ const Cart = () => {
         ...value,
         category: undefined,
       })),
-      customerName: session?.user?.name,
+      customerName: user?.name,
       totalPrice: cartTotalAmount,
       totalQuantity: cartTotalQuantity,
       IsPaid: true,
@@ -195,10 +195,7 @@ const Cart = () => {
                           />
                         </td>
                         <td data-title="Name">
-                          <p
-                            className="cart-productname">
-                            {item?.name}
-                          </p>
+                          <p className="cart-productname">{item?.name}</p>
                         </td>
                         <td data-title="Price">
                           <span className="amount">
@@ -290,7 +287,6 @@ const Cart = () => {
                         </span>
                       </td>
                     </tr>
-                  
                   </tbody>
                   <tfoot>
                     <tr className="order-total">
@@ -299,7 +295,7 @@ const Cart = () => {
                         <strong>
                           <span className="amount">
                             <bdi>
-                              <span>{session?.user?.name}</span>
+                              <span>{user?.name}</span>
                             </bdi>
                           </span>
                         </strong>

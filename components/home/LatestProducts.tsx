@@ -68,7 +68,7 @@ const LatestProducts = ({products, settings_003, settings_005 }: Props) => {
                                 <i className="fa fa-heart" />
                               </a> */}
                         </div>
-                        {/* <span className="category">{product.filter}</span> */}
+                        <span className="category">  {product.category.title}</span>
                       </div>
                       <div className="product-content">
                         {/* <div

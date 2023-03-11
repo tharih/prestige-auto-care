@@ -171,6 +171,8 @@ export default function Blog({ blog }: any)  {
         </div>
       </div>
     </section>
+
+    {/* blog */}
   </>
   
 

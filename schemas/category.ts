@@ -10,14 +10,17 @@ export default defineType({
       title: "Title",
       type: "string",
     }),
-
     defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
+      name: "description",
+      title: "Description",
+      type: "text",
+    }),
+    defineField({
+      name: "mainImage",
+      title: "Main image",
+      type: "image",
       options: {
-        source: "title",
-        maxLength: 100,
+        hotspot: true,
       },
     }),
   ],

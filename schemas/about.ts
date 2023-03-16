@@ -32,54 +32,8 @@ export default defineType({
       ],
     }),
     defineField({
-      name: "whyChooseUs",
-      title: "why Choose Us",
-      type: "array",
-      of: [
-        {
-          type: "object",
-          fields: [
-            {
-              name: "mainTitle",
-              title: "Main Title",
-              type: "string",
-            },
-            {
-              name: "description",
-              title: "Description",
-              type: "string",
-            },
-          ],
-        },
-      ],
-    }),
-    defineField({
-      name: "image_01",
-      title: "Image 01",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: "image_02",
-      title: "Image 02",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: "image_03",
-      title: "Image 03",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: "choose_image",
-      title: "Choose us Image",
+      name: "image",
+      title: "Image",
       type: "image",
       options: {
         hotspot: true,

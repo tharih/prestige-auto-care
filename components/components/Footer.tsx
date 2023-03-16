@@ -15,14 +15,13 @@ const Footer = (props: Props) => {
                   <h3 className="widget_title">About Company</h3>
                   <div className="as-widget-about">
                     <p className="footer-text">
-                      Centric aplications productize before front end vortals
-                      visualize front end is results and value added
+                    "We're an independent auto body shop located in Rocklea Queensland. We are specialised in any medium to large body repairs with high quality for a reasonable price."
                     </p>
                     <h4 className="footer-info-title">WE ARE AVAILABLE</h4>
                     <p className="footer-text">Mon-Sat: 09.00 am to 6.30 pm</p>
-                    <Link href="contact.html" className="as-btn style3">
+                    {/* <Link href="Contact" className="as-btn style3">
                       Contact Us
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
               </div>
@@ -114,22 +113,21 @@ const Footer = (props: Props) => {
               </div>
               <div className="col-md-6 col-xl-auto">
                 <div className="widget widget_newsletter footer-widget">
-                  <h3 className="widget_title">Newsletter</h3>
+                  <h3 className="widget_title">Contat Us</h3>
                   <p className="footer-text">
-                    Aplications prodize before front end vortals visualize front
-                    end
+                  +61 478 033 023
                   </p>
-                  <form className="newsletter-form">
-                    <input
-                      className="form-control"
-                      type="email"
-                      placeholder="Email Address"
-                      // required=""
-                    />{" "}
-                    <button type="submit" className="as-btn style3">
-                      Subscribe
-                    </button>
-                  </form>
+                  <p className="footer-text">
+                  prestige@gmail.com
+                  </p>
+                  <p className="footer-text">
+                  Shop 14/115 Dollis St, Rocklea QLD 4106, Australia
+                  </p>
+                  <div className="newsletter-form">
+                    <Link href="https://goo.gl/maps/5BEL8ygWqYBDy6Bq7" className="as-btn style3">
+                     Visit Us
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -142,6 +140,7 @@ const Footer = (props: Props) => {
                 <p className="copyright-text">
                 Copyright <i className="fal fa-copyright" /> 2023{" "}
                   <Link
+                  style={{marginRight:"5px"}}
                     className="text-white"
                     href="#"
                     >
@@ -150,6 +149,7 @@ const Footer = (props: Props) => {
                     | Powered by
                   <Link
                     className="text-white"
+                    style={{marginLeft:"5px"}}
                     href="#"
                     >
                     Brilhante Group

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { Fragment, useEffect, useState } from "react";
-import About from "../pages/About";
+// import About from "../pages/About";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import stylesLayout from "./Layout.module.css";

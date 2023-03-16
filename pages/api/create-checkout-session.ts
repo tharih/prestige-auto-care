@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export const stripe = require("stripe")(
-  process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY
-);
+// export const stripe = require("stripe")(
+//   process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY
+// );
 
 interface checkoutData {
   cartItems: any;
@@ -25,23 +25,23 @@ export default async (req: NextRequest, res: NextResponse) => {
     },
   }));
 
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ["card"],
-    shipping_rates: ["shr_1McSGiH25kIPw05g9s6VXqgg"],
-    shipping_address_collection: {
-      allowed_countries: ["AU"],
-    },
-    line_items: transformedItems,
-    mode: "payment",
-    success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/?success=true`,
-    cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/?canceled=true`,
-    metadata: {
-      email,
-      images: JSON.stringify(cartItems.map((item: any) => item.image)),
-    },
-  });
+  // const session = await stripe.checkout.sessions.create({
+  //   payment_method_types: ["card"],
+  //   shipping_rates: ["shr_1McSGiH25kIPw05g9s6VXqgg"],
+  //   shipping_address_collection: {
+  //     allowed_countries: ["AU"],
+  //   },
+  //   line_items: transformedItems,
+  //   mode: "payment",
+  //   success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/?success=true`,
+  //   cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/?canceled=true`,
+  //   metadata: {
+  //     email,
+  //     images: JSON.stringify(cartItems.map((item: any) => item.image)),
+  //   },
+  // });
   // @ts-ignore
-  res.status(200).json({
-    id: session.id,
-  });
+  // res.status(200).json({
+  //   id: session.id,
+  // });
 };

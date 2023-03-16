@@ -15,12 +15,12 @@ import {
 import { fetchAbout } from "../utils/fetchAbout";
 import { fetchService } from "../utils/fetchService";
 import Layout from "../components/Layout";
-import { fetchBanner } from "../utils/fetchBanner";
-import { fetchProcess } from "../utils/fetchProcess";
-import { fetchProducts } from "../utils/fetchProduct";
+// import { fetchBanner } from "../utils/fetchBanner";
+// import { fetchProcess } from "../utils/fetchProcess";
+// import { fetchProducts } from "../utils/fetchProduct";
 import Cookie from "js-cookie";
-import { fetchSlider } from "../utils/fetchSlider";
-import { fetchMechanical } from "../utils/fetchMechanical";
+// import { fetchSlider } from "../utils/fetchSlider";
+// import { fetchMechanical } from "../utils/fetchMechanical";
 import dynamic from "next/dynamic";
 type Props = {
   service: ServiceType[];
@@ -40,17 +40,17 @@ const Home = ({
   products,
   slider,
 }: Props) => {
-  const GetPremiumParts = dynamic(
-    () => import("../components/about/GetPremiumParts")
-  );
+  // const GetPremiumParts = dynamic(
+  //   () => import("../components/about/GetPremiumParts")
+  // );
 
-  const LatestProducts = dynamic(
-    () => import("../components/home/LatestProducts")
-  );
+  // const LatestProducts = dynamic(
+  //   () => import("../components/home/LatestProducts")
+  // );
 
-  const SliderComponent = dynamic(
-    () => import("../components/home/SliderComponent")
-  );
+  // const SliderComponent = dynamic(
+  //   () => import("../components/home/SliderComponent")
+  // );
   const BestServiceComponent = dynamic(
     () => import("../components/home/BestServiceComponent")
   );
@@ -59,7 +59,7 @@ const Home = ({
   );
   const WhyChooseUs = dynamic(() => import("../components/about/WhyChooseUs"));
 
-  const WorkProcess = dynamic(() => import("../components/home/WorkProcess"));
+  // const WorkProcess = dynamic(() => import("../components/home/WorkProcess"));
 
   const Testimonials = dynamic(() => import("../components/home/Testimonials"));
 
@@ -107,17 +107,17 @@ const Home = ({
   // carousal settings End
   return (
     <Layout>
-      <SliderComponent slider={slider} />
+      {/* <SliderComponent slider={slider} /> */}
       <BestServiceComponent service={service} />
       <AboutCompanyComponent about={about} />
       <WhyChooseUs about={about} />
-      <LatestProducts
+      {/* <LatestProducts
         settings_003={settings_003}
         settings_005={settings_005}
         products={products}
-      />
-      <GetPremiumParts banner={banner} />
-      <WorkProcess workProcess={workProcess} />
+      /> */}
+      {/* <GetPremiumParts banner={banner} /> */}
+      {/* <WorkProcess workProcess={workProcess} /> */}
       <Testimonials settings_004={settings_004} />
     </Layout>
   );
@@ -126,13 +126,14 @@ const Home = ({
 export const getServerSideProps = async () => {
   const service: any[] = await fetchService();
   const about: AboutType[] = await fetchAbout();
-  const banner: any[] = await fetchBanner();
-  const workProcess: any[] = await fetchProcess();
-  const products: ProductType[] = await fetchProducts();
-  const slider: SliderType[] = await fetchSlider();
+  // const banner: any[] = await fetchBanner();
+  // const workProcess: any[] = await fetchProcess();
+  // const products: ProductType[] = await fetchProducts();
+  // const slider: SliderType[] = await fetchSlider();
 
   return {
-    props: { service, about, banner, workProcess, products, slider },
+    props: { service, about,  },
+    // banner, workProcess, products, slider
   };
 };
 

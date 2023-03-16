@@ -14,23 +14,23 @@ import {
   getCartTotal,
   removeItem,
   selectCartItems,
-  selectCarTotal,
 } from "../../store/reducers/cartReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { urlFor } from "../../client";
-import { logOutHandle, selectUser } from "../../store/reducers/userReducer";
-import Image from "next/image";
-import { useRouter } from "next/router";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Header = () => {
   const [show, setShow] = useState<boolean>(false);
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-  const user = useSelector(selectUser);
-  const cart = useSelector(selectCartItems);
-  const grandTotal = useSelector(selectCarTotal);
+  // @ts-ignore
+  const { data: session, status } = useSession();
+  const cart =
+    typeof window !== "undefined"
+      ? // @ts-ignore
+        JSON.parse(localStorage.getItem("cart"))
+      : false;
   const dispatch = useDispatch();
-  const router = useRouter();
   const handleShowCart = () => {
     setShow(true);
   };
@@ -56,11 +56,6 @@ const Header = () => {
     dispatch(getCartTotal());
   };
 
-  const handleSignOut = () => {
-    dispatch(logOutHandle());
-    router.push("/");
-  };
-
   return (
     <>
       <div
@@ -73,7 +68,7 @@ const Header = () => {
           <div className="widget woocommerce widget_shopping_cart">
             <h3 className="widget_title">Shopping cart</h3>
             <div className="widget_shopping_cart_content">
-              <ul className="woocommerce-mini-cart cart_list product_list_widget">
+              {/* <ul className="woocommerce-mini-cart cart_list product_list_widget">
                 {cart &&
                   cart.map((item: any, index: any) => (
                     <li
@@ -102,19 +97,19 @@ const Header = () => {
                       </span>
                     </li>
                   ))}
-              </ul>
+              </ul> */}
               <p className="woocommerce-mini-cart__total total">
                 <strong>Subtotal:</strong>{" "}
                 <span className="woocommerce-Price-amount amount">
                   <span className="woocommerce-Price-currencySymbol">$</span>
-                  {grandTotal}
+                  318.00
                 </span>
               </p>
               <p className="woocommerce-mini-cart__buttons buttons">
-                <Link href="/Cart" className="as-btn wc-forward">
+                <Link href="Cart" className="as-btn wc-forward">
                   View cart
                 </Link>{" "}
-                <Link href="#" className="as-btn checkout wc-forward">
+                <Link href="Checkout" className="as-btn checkout wc-forward">
                   Checkout
                 </Link>
               </p>
@@ -194,7 +189,6 @@ const Header = () => {
                     />
                   </p>
                 </div>
-
                 <div className="col-auto">
                   <div className="header-social">
                     <span className="social-title">Follow Us:</span>{" "}
@@ -296,37 +290,22 @@ const Header = () => {
                           href="/Login"
                           className="icon-btn d-none d-md-inline-block"
                         >
-                          {user ? (
-                            <Image
-                              // @ts-ignore
-                              src={user?.image}
-                              width={50}
-                              height={50}
-                              style={{
-                                borderRadius: "100px",
-                              }}
-                              // @ts-ignore
-                              alt={user?.name.slice(0, 1)}
-                            />
-                          ) : (
-                            <i className="fal fa-user" />
-                          )}
+                          <i className="fal fa-user" />
                         </Link>
                         {/* @ts-ignore */}
-                        {user ? (
+                        {session ? (
                           <span
                             style={{
                               cursor: "pointer",
                             }}
                             // @ts-ignore
-                            onClick={handleSignOut}
+                            onClick={signOut}
                           >
                             sign out
                           </span>
                         ) : (
                           <span>Sign In</span>
                         )}
-
                         <button
                           onClick={handleShowMobileMenu}
                           className="as-menu-toggle d-inline-block d-lg-none"
@@ -366,19 +345,6 @@ const Header = () => {
                         </li> */}
                         <li>
                           <Link href="Contact">Contact</Link>
-                        </li>
-                        <li>
-                          <Link href="Blog">Blog</Link>
-                        </li>
-                        <li>
-                          <Link
-                            style={{
-                              color: "#e81c2e",
-                            }}
-                            href="Appointment"
-                          >
-                            quote
-                          </Link>
                         </li>
                       </ul>
                     </nav>

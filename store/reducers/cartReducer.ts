@@ -1,5 +1,6 @@
-import Cookies from "js-cookie";
+"use client";
 import { createSlice } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 // Define a type for the slice state
 interface cartState {
   [x: string]: any;
@@ -17,10 +18,11 @@ interface cartState {
 type ReducerProps = {};
 
 const initialState: cartState = {
-  cartItems: Cookies.get("cart")
-    ? // @ts-ignore
-      JSON.parse(Cookies.get("cart"))
-    : [],
+  cartItems:
+    typeof window !== "undefined" && localStorage.getItem("cart")
+      ? // @ts-ignore
+        JSON.parse(localStorage.getItem("cart"))
+      : [],
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
   cartTotalDiscount: 0,
@@ -38,15 +40,10 @@ export const cartSlice = createSlice({
     addToCart: (state, action) => {
       // find product by id
       const itemIndex = state.cartItems.findIndex(
-        (item) => item._key === action.payload._key
+        (item) => item.id === action.payload.id
       );
 
-      if (
-        itemIndex >= 0 &&
-        state.cartItems[itemIndex].qty <=
-          state.cartItems[itemIndex].cartQuantity
-      ) {
-      } else if (itemIndex >= 0) {
+      if (itemIndex >= 0) {
         state.cartItems[itemIndex].cartQuantity += 1;
       } else {
         // const tempProducts: any[] = {
@@ -55,11 +52,11 @@ export const cartSlice = createSlice({
         // };
         state.cartItems.push(action.payload);
       }
-      Cookies.set("cart", JSON.stringify(state.cartItems));
+      localStorage.setItem("cart", JSON.stringify(state.cartItems));
     },
     decreaseQty: (state, action) => {
       const itemIndex = state.cartItems.findIndex(
-        (item) => item._key === action.payload._key
+        (item) => item.id === action.payload.id
       );
 
       if (state.cartItems[itemIndex].cartQuantity > 1) {
@@ -68,11 +65,13 @@ export const cartSlice = createSlice({
     },
     removeItem: (state, action) => {
       const nextCartItems = state.cartItems.filter(
-        (cartItem) => cartItem._key !== action.payload._key
+        (cartItem) => cartItem.id !== action.payload.id
       );
 
       state.cartItems = nextCartItems;
-      Cookies.set("cart", JSON.stringify(state.cartItems));
+      typeof window !== "undefined"
+        ? localStorage.setItem("cart", JSON.stringify(state.cartItems))
+        : false;
     },
     getCartTotal: (state) => {
       let { total, quantity } = state.cartItems.reduce(
@@ -93,14 +92,10 @@ export const cartSlice = createSlice({
       state.cartTotalQuantity = quantity;
       state.cartTotalAmount = total;
     },
-    clearCart: (state) => {
-      state.cartItems = [];
-      Cookies.remove("cart");
-    },
   },
 });
 
-export const { addToCart, decreaseQty, removeItem, getCartTotal, clearCart } =
+export const { addToCart, decreaseQty, removeItem, getCartTotal } =
   cartSlice.actions;
 
 export const selectCartItems = (state: cartState) => state.cart.cartItems;

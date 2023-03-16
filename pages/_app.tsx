@@ -2,30 +2,29 @@
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
+import { SessionProvider } from "next-auth/react";
 import { useEffect } from "react";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Toaster } from "react-hot-toast";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase";
 
 export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const uid = user.uid;
+        const email = user?.email;
+      } else {
+      }
+    });
+  }, []);
+
   return (
-    <Provider store={store}>
-      <Toaster />
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
-      {/* <Layout> */}
-      <Component {...pageProps} />
-      {/* </Layout> */}
-    </Provider>
+    <SessionProvider session={pageProps.session}>
+      <Provider store={store}>
+        {/* <Layout> */}
+        <Component {...pageProps} />
+        {/* </Layout> */}
+      </Provider>
+    </SessionProvider>
   );
 }

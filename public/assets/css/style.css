@@ -25,7 +25,6 @@
 html,
 body {
   scroll-behavior: auto !important;
-  overflow-x: hidden;
 }
 body {
   font-family: var(--body-font);
@@ -6073,7 +6072,6 @@ table.variations .reset_variations {
   -webkit-transition: all ease 0.4s;
   transition: all ease 0.4s;
   margin-left: 22px;
-  cursor: pointer;
 }
 .as-product .product-title {
   font-size: 20px;
@@ -7700,14 +7698,11 @@ span.select2-selection.select2-selection--single:focus {
   position: relative;
   overflow: hidden;
   z-index: 2;
-  width: 386px;
-  height: 510px;
 }
 .service-grid_img img {
   width: 100%;
   -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
-  object-fit: cover;
 }
 .service-grid_img:before,
 .service-grid_img:after {
@@ -11080,15 +11075,11 @@ span.select2-selection.select2-selection--single:focus {
   overflow: hidden;
   position: relative;
   z-index: 3;
-  width: 306px;
-  height: 307px;
 }
 .service-block_img img {
   width: 100%;
   -webkit-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
-  object-fit: cover;
-  object-position: center;
 }
 .service-block_content {
   background-color: var(--title-color);

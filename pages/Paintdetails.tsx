@@ -260,12 +260,4 @@ export default function Paintdetails() {
   );
 }
 
-export const getServerSideProps = async () => {
-  const paint: PaintType[] = await fetchPaint();
-
-  return {
-    props: {
-      paint,
-    },
-  };
-};
+;

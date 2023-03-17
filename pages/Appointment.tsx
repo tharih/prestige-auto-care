@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../components/Layout";
@@ -16,7 +16,11 @@ type Props = {
   about: AboutType[];
 };
 
-export default function Appointment({ about }: Props) {
+export default function Appointment() {
+  const [about, setAbout] = useState<any>(null)
+  const [loading, setLoading] = useState(false);
+
+
   // @ts-ignore
   const dispatch = useDispatch();
   const uploaded_url = useSelector(selectSecureUrl);
@@ -83,6 +87,27 @@ export default function Appointment({ about }: Props) {
         });
       });
   };
+
+  const getAbout = async () => {
+    const aboutPage = await fetchAbout();
+    setAbout(aboutPage)
+    console.log(aboutPage);
+  }
+  useEffect(() => {
+    setLoading(true);
+    getAbout();
+   
+    setLoading(false);
+    return () => {
+      getAbout();
+     
+
+
+
+    };
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
   return (
     <Layout>
       <div
@@ -117,9 +142,12 @@ export default function Appointment({ about }: Props) {
                   data-bg-src="assets/img/normal/year_bg_2.png"
                 >
                   <h3 className="experience-year">
+                    {about && (
+
                     <span className="counter-number">
                       {about[0]?.experienceYears}
                     </span>
+                    )}
                   </h3>
                   <h4 className="experience-text">YEARS OF EXPERIENCE</h4>
                 </div>
@@ -210,12 +238,4 @@ export default function Appointment({ about }: Props) {
   );
 }
 
-export const getServerSideProps = async () => {
-  const about: AboutType[] = await fetchAbout();
 
-  return {
-    props: {
-      about,
-    },
-  };
-};

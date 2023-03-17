@@ -242,8 +242,8 @@ const Header = () => {
                                 Email Us
                               </span>
                               <div className="header-info_link">
-                                <Link href="mailto:prestigeautocare@gmail.com">
-                                  prestige@gmail.com
+                                <Link href="mailto:prestigepaint.panelshop@gmail.com">
+                                prestigepaint.panelshop@gmail.com
                                 </Link>
                               </div>
                             </div>

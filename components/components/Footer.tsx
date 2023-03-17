@@ -118,7 +118,7 @@ const Footer = (props: Props) => {
                   +61 478 033 023
                   </p>
                   <p className="footer-text">
-                  prestige@gmail.com
+                  prestigepaint.panelshop@gmail.com
                   </p>
                   <p className="footer-text">
                   Shop 14/115 Dollis St, Rocklea QLD 4106, Australia

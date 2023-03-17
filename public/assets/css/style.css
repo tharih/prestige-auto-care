@@ -770,7 +770,7 @@ ul.wp-block-rss a {
 }
 @media (min-width: 1199px) {
   .row:not([class*="gx-"]) {
-    --bs-gutter-x: 30px;
+    --bs-gutter-x: 1px;
   }
 }
 .gy-30 {

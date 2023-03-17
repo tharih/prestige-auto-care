@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { client, urlFor } from "../client";
 import Layout from "../components/Layout";
@@ -13,7 +13,43 @@ type Props = {
   
 };
 
-export default function Services ({ service, about }: Props) {
+export default function Services () {
+  const [service, setService] = useState<any>([])
+  const [about, setAbout] = useState<any>(null)
+  const [loading, setLoading] = useState(false);
+
+
+  const getService = async () => {
+    const service = await fetchService();
+    setService(service)
+  }
+
+  const getAbout = async () => {
+    const about = await fetchAbout();
+    setAbout(about)
+    // console.log(about);
+  }
+
+  useEffect(() => {
+    setLoading(true);
+
+  
+    getService();
+    getAbout();
+ 
+
+    setLoading(false);
+    return () => {
+    
+      getService();
+      getAbout();
+     
+
+
+    };
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
   console.log(service);
   
   return (
@@ -46,6 +82,8 @@ export default function Services ({ service, about }: Props) {
             {service.map((service: any, index: any) => (
               <div key={index} className="col-md-6 col-lg-4">
                 <div className="service-grid">
+                  {service && (
+
                   <div className="service-grid_img">
                     <img
                       src={urlFor(service.image[0]).url()}
@@ -57,6 +95,7 @@ export default function Services ({ service, about }: Props) {
                       }}
                     />
                   </div>
+                  )}
 
                   <div className="service-grid_content">
                     <h3 className="service-grid_title">
@@ -78,6 +117,8 @@ export default function Services ({ service, about }: Props) {
         data-bg-src="assets/img/bg/service_bg_1.jpg"
         style={{ backgroundImage: `url('assets/img/bg/service_bg_1.jpg')` }}
       >
+        {about && (
+
         <div className="container">
           <div
             className="quality-card"
@@ -132,18 +173,12 @@ export default function Services ({ service, about }: Props) {
             
           </div>
         </div>
+        )}
       </section>
     </Layout>
   );
 };
 
-export const getServerSideProps = async () => {
-  const service: ServiceType[] = await fetchService();
-  const about: AboutType[] = await fetchAbout();
 
-  return {
-    props: { service, about },
-  };
-};
 
 

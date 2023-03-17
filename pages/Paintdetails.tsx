@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { urlFor } from "../client";
 import { fetchPaint } from "../utils/fetchPaint";
@@ -9,7 +9,31 @@ type Props = {
   paint: PaintType[];
 };
 
-export default function Paintdetails({ paint }: Props) {
+export default function Paintdetails() {
+  const [paint, setPaint] = useState<any>(null)
+  const [loading, setLoading] = useState(false);
+
+  const getPaint = async () => {
+    const paint = await fetchPaint();
+    setPaint(paint[0])
+    // console.log(paint);
+  }
+
+  useEffect(() => {
+    setLoading(true);
+
+    getPaint();
+
+
+    setLoading(false);
+    return () => {
+     getPaint();
+
+
+    };
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
   return (
     <>
       <div
@@ -40,16 +64,19 @@ export default function Paintdetails({ paint }: Props) {
         <div className="container">
           <div className="row flex-row-reverse">
             <div className="col-lg-8">
+              {paint && (
+
               <div className="mb-40">
                 <img
                   style={{ width: "803px", height: "343px" }}
-                  src={urlFor(paint[0]?.service_image1.asset._ref).url()}
+                  src={urlFor(paint?.service_image1.asset._ref).url()}
                   alt="Service Image"
                 />
               </div>
-              <h3 className="single-title">{paint[0]?.title}</h3>
+              )}
+              <h3 className="single-title">{paint?.title}</h3>
               <div className="service-content">
-                <p className="mb-30">{paint[0]?.description}</p>
+                <p className="mb-30">{paint?.description}</p>
                 <div className="service-feature-wrap">
                   <div className="service-feature">
                     <div className="service-feature_icon">
@@ -60,10 +87,10 @@ export default function Paintdetails({ paint }: Props) {
                     </div>
                     <div className="service-feature_content">
                       <h4 className="service-feature_title">
-                        {paint[0]?.service_title1}
+                        {paint?.service_title1}
                       </h4>
                       <p className="service-feature_text">
-                        {paint[0]?.service_description1}
+                        {paint?.service_description1}
                       </p>
                     </div>
                   </div>
@@ -76,10 +103,10 @@ export default function Paintdetails({ paint }: Props) {
                     </div>
                     <div className="service-feature_content">
                       <h4 className="service-feature_title">
-                        {paint[0]?.service_title2}
+                        {paint?.service_title2}
                       </h4>
                       <p className="service-feature_text">
-                        {paint[0]?.service_description2}
+                        {paint?.service_description2}
                       </p>
                     </div>
                   </div>
@@ -92,10 +119,10 @@ export default function Paintdetails({ paint }: Props) {
                     </div>
                     <div className="service-feature_content">
                       <h4 className="service-feature_title">
-                        {paint[0]?.service_title3}
+                        {paint?.service_title3}
                       </h4>
                       <p className="service-feature_text">
-                        {paint[0]?.service_description3}
+                        {paint?.service_description3}
                       </p>
                     </div>
                   </div>
@@ -108,64 +135,67 @@ export default function Paintdetails({ paint }: Props) {
                     </div>
                     <div className="service-feature_content">
                       <h4 className="service-feature_title">
-                        {paint[0]?.service_title4}
+                        {paint?.service_title4}
                       </h4>
                       <p className="service-feature_text">
-                        {paint[0]?.service_description4}
+                        {paint?.service_description4}
                       </p>
                     </div>
                   </div>
                 </div>
-                <p className="mt-20 mb-40">{paint[0]?.description2}</p>
-                <h4 className="service-subtitle mb-20">{paint[0]?.title2}</h4>
-                <p className="mb-30">{paint[0]?.process_description}</p>
+                <p className="mt-20 mb-40">{paint?.description2}</p>
+                <h4 className="service-subtitle mb-20">{paint?.title2}</h4>
+                <p className="mb-30">{paint?.process_description}</p>
 
                 <div className="service-process-wrap">
                   <div className="service-process">
                     <div className="service-process_num">01</div>
                     <h5 className="service-process_title">
-                      {paint[0]?.process_title1}
+                      {paint?.process_title1}
                     </h5>
                     <p className="service-process_text">
-                      {paint[0]?.process_description1}
+                      {paint?.process_description1}
                     </p>
                   </div>
                   <div className="service-process">
                     <div className="service-process_num">02</div>
                     <h5 className="service-process_title">
-                      {paint[0]?.process_title2}
+                      {paint?.process_title2}
                     </h5>
                     <p className="service-process_text">
-                      {paint[0]?.process_description2}
+                      {paint?.process_description2}
                     </p>
                   </div>
                   <div className="service-process">
                     <div className="service-process_num">03</div>
                     <h5 className="service-process_title">
-                      {paint[0]?.process_title3}
+                      {paint?.process_title3}
                     </h5>
                     <p className="service-process_text">
-                      {paint[0]?.process_description3}
+                      {paint?.process_description3}
                     </p>
                   </div>
                 </div>
 
                 <div className="row gy-30 mb-30">
                   <div className="col-xl-6">
+                    {paint && (
+
                     <div>
                       <img
                         style={{ width: "387px", height: "260px" }}
-                        src={urlFor(paint[0]?.service_image2.asset._ref).url()}
+                        src={urlFor(paint?.service_image2.asset._ref).url()}
                         alt="Service Image"
                       />
                     </div>
+                    )}
                   </div>
                   <div className="col-xl-6">
                     <h4 className="h4">Customer Benefits</h4>
-                    <p className="mb-30">{paint[0]?.customer_description}</p>
+                    <p className="mb-30">{paint?.customer_description}</p>
                     <div className="checklist style3">
                       <ul>
-                        {paint[0].benefits?.map((data: any, index: any) => (
+                        {paint?.benefits?.map((data: any, index: any) => (
                           <li key={index}>{data}</li>
                         ))}
                       </ul>
@@ -183,48 +213,20 @@ export default function Paintdetails({ paint }: Props) {
                       <Link href="/">Home</Link>
                     </li>
                     <li>
-                      <Link href="about">About</Link>
+                      <Link href="About">About</Link>
                     </li>
                     <li>
-                      <Link href="services">Service</Link>
+                      <Link href="Services">Service</Link>
                     </li>
                     <li>
-                      <Link href="shop">Shop</Link>
+                      <Link href="Shop">Shop</Link>
                     </li>
                     <li>
-                      <Link href="contact">Contact</Link>
+                      <Link href="Contact">Contact</Link>
                     </li>
                   </ul>
                 </div>
-                {/* <div className="widget widget_download">
-              <h4 className="widget_title">Download</h4>
-              <div className="donwload-media-wrap">
-                <div className="download-media">
-                  <div className="download-media_icon">
-                    <i className="fal fa-file-pdf" />
-                  </div>
-                  <div className="download-media_info">
-                    <h5 className="download-media_title">Our Brochures</h5>
-                    <span className="download-media_text">Download</span>
-                  </div>
-                  <Link href="about.html" className="download-media_btn">
-                    <i className="fa fa-arrow-right" />
-                  </Link>
-                </div>
-                <div className="download-media">
-                  <div className="download-media_icon">
-                    <i className="fal fa-file-lines" />
-                  </div>
-                  <div className="download-media_info">
-                    <h5 className="download-media_title">Company Details</h5>
-                    <span className="download-media_text">Download</span>
-                  </div>
-                  <Link href="about.html" className="download-media_btn">
-                    <i className="fa fa-arrow-right" />
-                  </Link>
-                </div>
-              </div>
-            </div> */}
+                
                 <div
                   className="widget widget_offer"
                   data-bg-src="assets/img/widget_bg_1.jpg"

@@ -8,6 +8,8 @@ type Props = {
 };
 
 export default function GetPremiumParts ({banner}: Props) {
+  console.log(banner);
+  
   return (
     <section
       className="space"
@@ -28,10 +30,10 @@ export default function GetPremiumParts ({banner}: Props) {
           </div>
           <div className="col-xl-5 col-lg-6">
             <div className="btn-group justify-content-lg-end justify-content-center">
-              <Link href="service.html" className="as-btn style3">
+              <Link href="Services" className="as-btn style3">
                 Get Our Service
               </Link>{" "}
-              <Link href="contact.html" className="as-btn style2">
+              <Link href="Contact" className="as-btn style2">
                 Contact Us
               </Link>
             </div>
@@ -42,12 +44,4 @@ export default function GetPremiumParts ({banner}: Props) {
   );
 };
 
-export const getServerSideProps = async () => {
-  const banner: BannerType[] = await fetchBanner();
 
-  return {
-    props: {
-      banner,
-    },
-  };
-};

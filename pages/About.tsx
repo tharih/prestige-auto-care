@@ -36,7 +36,7 @@ export default function About() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/api/getAbout`, {
+    fetch(`https://prestige-auto-care.vercel.app/api/getAbout`, {
       method: "GET",
     })
       .then((res) => res.json())

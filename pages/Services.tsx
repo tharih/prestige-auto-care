@@ -1,20 +1,24 @@
 import Link from "next/link";
 import React from "react";
 import { Helmet } from "react-helmet";
+import { client, urlFor } from "../client";
+import Layout from "../components/Layout";
+import { fetchAbout } from "../utils/fetchAbout";
+import { fetchService } from "../utils/fetchService";
+import { AboutType, ServiceType } from "../utils/type";
 
-type Props = {};
+type Props = {
+  service: ServiceType[];
+  about: AboutType[],
+  
+};
 
-export default function Services({}: Props) {
+export default function Services ({ service, about }: Props) {
+  console.log(service);
+  
   return (
-    <>
-     <Helmet>
-                        
-        <meta charSet="utf-8" />
-                        <title>Home</title>
-        <meta name="description" content="Get your amazing Car Solutions Prestige Auto care" />
-                        
-                    
-      </Helmet>
+    <Layout>
+     
       <div
         className="breadcumb-wrapper"
         data-bg-src="assets/img/breadcumb/breadcumb-bg.jpg"
@@ -28,7 +32,7 @@ export default function Services({}: Props) {
             <div className="breadcumb-menu-wrap">
               <ul className="breadcumb-menu">
                 <li>
-                  <Link href="index.html">Home</Link>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>Our Services</li>
               </ul>
@@ -39,72 +43,33 @@ export default function Services({}: Props) {
       <section className="bg-smoke space">
         <div className="container">
           <div className="row gy-30">
-            <div className="col-md-6 col-lg-4">
-              <div className="service-grid">
-                <div className="service-grid_img">
-                  <img
-                    src="assets/img/prestige/24.jpg"
-                    alt="service image"
-                  />
-                </div>
-                <div className="service-grid_content">
-                  <h3 className="service-grid_title">
-                    <Link href="Servicedetails">Parts</Link>
-                  </h3>
-                  <p className="service-grid_text">
-                    Unique core competen resource sucking methods of empowerment
-                    disciplinary deliverables after cost effective
-                  </p>
-                  <Link href="Servicedetails" className="as-btn">
-                    View Details
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="service-grid">
-                <div className="service-grid_img">
-                  <img
-                    src="assets/img/prestige/20.jpg"
-                    alt="service image"
-                  />
-                </div>
-                <div className="service-grid_content">
-                  <h3 className="service-grid_title">
-                    <Link href="service-details.html">Panel & Paint</Link>
-                  </h3>
-                  <p className="service-grid_text">
-                    Unique core competen resource sucking methods of empowerment
-                    disciplinary deliverables after cost effective
-                  </p>
-                  <Link href="service-details.html" className="as-btn">
-                    View Details
-                  </Link>
+            {service.map((service: any, index: any) => (
+              <div key={index} className="col-md-6 col-lg-4">
+                <div className="service-grid">
+                  <div className="service-grid_img">
+                    <img
+                      src={urlFor(service.image[0]).url()}
+                      alt="Service Image"
+                      style={{
+                        objectFit: "cover",
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    />
+                  </div>
+
+                  <div className="service-grid_content">
+                    <h3 className="service-grid_title">
+                      <Link href={`/${service.slug?.current}`}>{service.name}</Link>
+                    </h3>
+                    <p className="service-grid_text">{service.details}</p>
+                    <Link href={`/${service.slug?.current}`} className="as-btn">
+                      View Details
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="service-grid">
-                <div className="service-grid_img">
-                  <img
-                    src="assets/img/prestige/6.jpg"
-                    alt="service image"
-                  />
-                </div>
-                <div className="service-grid_content">
-                  <h3 className="service-grid_title">
-                    <Link href="service-details.html">Mechanical</Link>
-                  </h3>
-                  <p className="service-grid_text">
-                    Unique core competen resource sucking methods of empowerment
-                    disciplinary deliverables after cost effective
-                  </p>
-                  <Link href="service-details.html" className="as-btn">
-                    View Details
-                  </Link>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -121,7 +86,7 @@ export default function Services({}: Props) {
             data-margin-bottom="155px"
           >
             <div className="title-area mb-40 text-center text-lg-start">
-              <span className="sub-title">Top News Updates</span>
+              <span className="sub-title">Best Service</span>
               <h2 className="sec-title">We Provide Best Service And Repair</h2>
             </div>
             <div className="quality-feature-wrap">
@@ -129,40 +94,56 @@ export default function Services({}: Props) {
                 <div className="quality-feature_icon">
                   <img src="assets/img/icon/quality-feature_1.svg" alt="icon" />
                 </div>
-                <h3 className="quality-feature_title">Quality Services</h3>
+                <h3 className="quality-feature_title">{about[0]?.service_title1}</h3>
                 <p className="quality-feature_text">
-                  Purpose quality vectors with highly efficient incubate
+                  {about[0]?.service_description1}
                 </p>
               </div>
               <div className="quality-feature">
                 <div className="quality-feature_icon">
                   <img src="assets/img/icon/quality-feature_2.svg" alt="icon" />
                 </div>
-                <h3 className="quality-feature_title">Fast Delivery</h3>
+                <h3 className="quality-feature_title">{about[0]?.service_title2}</h3>
                 <p className="quality-feature_text">
-                  Purpose quality vectors with highly efficient incubate
+                  {about[0]?.service_description2}
                 </p>
               </div>
             </div>
-            <div className="skill-feature">
-              <h3 className="skill-feature_title">Product Design</h3>
-              <div className="progress">
-                <div className="progress-bar" style={{ width: "70%" }}>
-                  <div className="progress-value">70%</div>
+            <div className="quality-feature-wrap">
+              <div className="quality-feature">
+                <div className="quality-feature_icon">
+                  <img src="assets/img/icon/service_feature_1_3.svg" alt="icon" />
                 </div>
+                <h3 className="quality-feature_title">{about[0]?.service_title3}</h3>
+                <p className="quality-feature_text">
+                  {about[0]?.service_description3}
+                </p>
+              </div>
+              <div className="quality-feature">
+                <div className="quality-feature_icon">
+                  <img src="assets/img/icon/service_feature_1_2.svg" alt="icon" />
+                </div>
+                <h3 className="quality-feature_title">{about[0]?.service_title4}</h3>
+                <p className="quality-feature_text">
+                 {about[0]?.service_description4}
+                </p>
               </div>
             </div>
-            <div className="skill-feature">
-              <h3 className="skill-feature_title">Car Mechanic Service</h3>
-              <div className="progress">
-                <div className="progress-bar" style={{ width: "93%" }}>
-                  <div className="progress-value">93%</div>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   );
-}
+};
+
+export const getServerSideProps = async () => {
+  const service: ServiceType[] = await fetchService();
+  const about: AboutType[] = await fetchAbout();
+
+  return {
+    props: { service, about },
+  };
+};
+
+

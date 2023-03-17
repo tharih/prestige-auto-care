@@ -12,7 +12,7 @@ type Props = {
 };
 
 const Layout = ({ children }: Props) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [showScrollBtn, setShowScrollBtn] = useState<boolean>(false);
   const scrollTop = () => {
     if (window.scrollY > 100) {

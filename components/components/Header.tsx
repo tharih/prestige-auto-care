@@ -1,5 +1,5 @@
+"use client";
 import React, { useEffect, useMemo, useState } from "react";
-import $ from "jquery";
 import { AiOutlinePlus } from "react-icons/ai";
 import Link from "next/link";
 import styles from "./Header.module.css";
@@ -10,12 +10,27 @@ import { Typewriter } from "react-simple-typewriter";
 import { WhatsAppWidget } from "react-whatsapp-widget";
 import "react-whatsapp-widget/dist/index.css";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
-type Props = {};
+import {
+  getCartTotal,
+  removeItem,
+  selectCartItems,
+  selectCarTotal,
+} from "../../store/reducers/cartReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { urlFor } from "../../client";
+import { logOutHandle, selectUser } from "../../store/reducers/userReducer";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
-const Header = (props: Props) => {
+const Header = () => {
   const [show, setShow] = useState<boolean>(false);
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+  const user = useSelector(selectUser);
+  const cart = useSelector(selectCartItems);
+  const grandTotal = useSelector(selectCarTotal);
+  const dispatch = useDispatch();
+  const router = useRouter();
   const handleShowCart = () => {
     setShow(true);
   };
@@ -36,6 +51,16 @@ const Header = (props: Props) => {
     }, 5000);
   }, [loading]);
 
+  const handleRemove = (item: any) => {
+    dispatch(removeItem(item));
+    dispatch(getCartTotal());
+  };
+
+  const handleSignOut = () => {
+    dispatch(logOutHandle());
+    router.push("/");
+  };
+
   return (
     <>
       <div
@@ -49,109 +74,47 @@ const Header = (props: Props) => {
             <h3 className="widget_title">Shopping cart</h3>
             <div className="widget_shopping_cart_content">
               <ul className="woocommerce-mini-cart cart_list product_list_widget">
-                <li className="woocommerce-mini-cart-item mini_cart_item">
-                  <Link href="#" className="remove remove_from_cart_button">
-                    <i className="fa fa-times" />
-                  </Link>{" "}
-                  <Link href="#">
-                    <img src="assets/img/cart/cart_1_1.jpg" alt="Cart Image" />
-                    Adderall
-                  </Link>{" "}
-                  <span className="quantity">
-                    1 ×{" "}
-                    <span className="woocommerce-Price-amount amount">
-                      <span className="woocommerce-Price-currencySymbol">
-                        $
+                {cart &&
+                  cart.map((item: any, index: any) => (
+                    <li
+                      key={index}
+                      className="woocommerce-mini-cart-item mini_cart_item"
+                    >
+                      <Link
+                        href="#"
+                        onClick={() => handleRemove(item)}
+                        className="remove remove_from_cart_button"
+                      >
+                        <i className="fa fa-times" />
+                      </Link>{" "}
+                      <Link href="#">
+                        <img src={urlFor(item?.image).url()} alt="Cart Image" />
+                        {item?.name}
+                      </Link>{" "}
+                      <span className="quantity">
+                        {item?.cartQuantity} ×{" "}
+                        <span className="woocommerce-Price-amount amount">
+                          <span className="woocommerce-Price-currencySymbol">
+                            $
+                          </span>
+                          {item?.price}
+                        </span>
                       </span>
-                      40.00
-                    </span>
-                  </span>
-                </li>
-                <li className="woocommerce-mini-cart-item mini_cart_item">
-                  <Link href="#" className="remove remove_from_cart_button">
-                    <i className="fa fa-times" />
-                  </Link>{" "}
-                  <Link href="#">
-                    <img src="assets/img/cart/cart_1_2.jpg" alt="Cart Image" />
-                    Januvia
-                  </Link>{" "}
-                  <span className="quantity">
-                    1 ×{" "}
-                    <span className="woocommerce-Price-amount amount">
-                      <span className="woocommerce-Price-currencySymbol">
-                        $
-                      </span>
-                      99.00
-                    </span>
-                  </span>
-                </li>
-                <li className="woocommerce-mini-cart-item mini_cart_item">
-                  <Link href="#" className="remove remove_from_cart_button">
-                    <i className="fa fa-times" />
-                  </Link>{" "}
-                  <Link href="#">
-                    <img src="assets/img/cart/cart_1_3.jpg" alt="Cart Image" />
-                    Zubsolv
-                  </Link>{" "}
-                  <span className="quantity">
-                    1 ×{" "}
-                    <span className="woocommerce-Price-amount amount">
-                      <span className="woocommerce-Price-currencySymbol">
-                        $
-                      </span>
-                      56.00
-                    </span>
-                  </span>
-                </li>
-                <li className="woocommerce-mini-cart-item mini_cart_item">
-                  <Link href="#" className="remove remove_from_cart_button">
-                    <i className="fa fa-times" />
-                  </Link>{" "}
-                  <Link href="#">
-                    <img src="assets/img/cart/cart_1_4.jpg" alt="Cart Image" />
-                    Invokana
-                  </Link>{" "}
-                  <span className="quantity">
-                    1 ×{" "}
-                    <span className="woocommerce-Price-amount amount">
-                      <span className="woocommerce-Price-currencySymbol">
-                        $
-                      </span>
-                      23.00
-                    </span>
-                  </span>
-                </li>
-                <li className="woocommerce-mini-cart-item mini_cart_item">
-                  <Link href="#" className="remove remove_from_cart_button">
-                    <i className="fa fa-times" />
-                  </Link>{" "}
-                  <Link href="#">
-                    <img src="assets/img/cart/cart_1_5.jpg" alt="Cart Image" />
-                    Sublocade
-                  </Link>{" "}
-                  <span className="quantity">
-                    1 ×{" "}
-                    <span className="woocommerce-Price-amount amount">
-                      <span className="woocommerce-Price-currencySymbol">
-                        $
-                      </span>
-                      100.00
-                    </span>
-                  </span>
-                </li>
+                    </li>
+                  ))}
               </ul>
               <p className="woocommerce-mini-cart__total total">
                 <strong>Subtotal:</strong>{" "}
                 <span className="woocommerce-Price-amount amount">
                   <span className="woocommerce-Price-currencySymbol">$</span>
-                  318.00
+                  {grandTotal}
                 </span>
               </p>
               <p className="woocommerce-mini-cart__buttons buttons">
-                <Link href="Cart" className="as-btn wc-forward">
+                <Link href="/Cart" className="as-btn wc-forward">
                   View cart
                 </Link>{" "}
-                <Link href="Checkout" className="as-btn checkout wc-forward">
+                <Link href="#" className="as-btn checkout wc-forward">
                   Checkout
                 </Link>
               </p>
@@ -186,7 +149,7 @@ const Header = (props: Props) => {
           </div>
           <div className="as-mobile-menu">
             <ul>
-              {menuItems.map((item, index) => (
+              {menuItems?.map((item, index) => (
                 <SideBarItems item={item} key={index} />
               ))}
             </ul>
@@ -231,6 +194,7 @@ const Header = (props: Props) => {
                     />
                   </p>
                 </div>
+
                 <div className="col-auto">
                   <div className="header-social">
                     <span className="social-title">Follow Us:</span>{" "}
@@ -327,18 +291,42 @@ const Header = (props: Props) => {
                         >
                           <i className="fal fa-search" />
                         </button>{" "} */}
+
                         <Link
+                          href="/Login"
                           className="icon-btn d-none d-md-inline-block"
-                          href="Login"
                         >
-                          <i className="fal fa-user" />
-                        </Link>{" "}
-                        <Link
-                          className="icon-btn d-none d-md-inline-block"
-                          href="https://goo.gl/maps/5BEL8ygWqYBDy6Bq7"
-                        >
-                          <i className="fal fa-building" />
-                        </Link>{" "}
+                          {user ? (
+                            <Image
+                              // @ts-ignore
+                              src={user?.image}
+                              width={50}
+                              height={50}
+                              style={{
+                                borderRadius: "100px",
+                              }}
+                              // @ts-ignore
+                              alt={user?.name.slice(0, 1)}
+                            />
+                          ) : (
+                            <i className="fal fa-user" />
+                          )}
+                        </Link>
+                        {/* @ts-ignore */}
+                        {user ? (
+                          <span
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            // @ts-ignore
+                            onClick={handleSignOut}
+                          >
+                            sign out
+                          </span>
+                        ) : (
+                          <span>Sign In</span>
+                        )}
+
                         <button
                           onClick={handleShowMobileMenu}
                           className="as-menu-toggle d-inline-block d-lg-none"
@@ -379,12 +367,28 @@ const Header = (props: Props) => {
                         <li>
                           <Link href="Contact">Contact</Link>
                         </li>
+                        <li>
+                          <Link href="Blog">Blog</Link>
+                        </li>
+                        <li>
+                          <Link
+                            style={{
+                              color: "#e81c2e",
+                            }}
+                            href="Appointment"
+                          >
+                            quote
+                          </Link>
+                        </li>
                       </ul>
                     </nav>
                   </div>
                   <div className="col-auto">
                     <div className="d-flex align-items-center">
-                      <Link href="https://goo.gl/maps/5BEL8ygWqYBDy6Bq7" className="header-link-btn">
+                      <Link
+                        href="https://goo.gl/maps/5BEL8ygWqYBDy6Bq7"
+                        className="header-link-btn"
+                      >
                         <FaMapMarkerAlt
                           color="#fefefe"
                           size={24}

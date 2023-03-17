@@ -65,9 +65,9 @@ export default function BestServiceComponent({ service }: Props) {
 };
 
 export const getServerSideProps = async () => {
-  // const service: ServiceType[] = await fetchService();
+  const service: ServiceType[] = await fetchService();
 
   return {
-    // props: { service },
+    props: { service },
   };
 };

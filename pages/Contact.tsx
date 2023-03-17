@@ -1,20 +1,61 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import { toast } from "react-hot-toast";
+import Layout from "../components/Layout";
+import { sendContact } from "../utils/sendQuote";
 
 type Props = {};
 
 const Contact = (props: Props) => {
+  const [data, setData] = useState({
+    email: "",
+    subject: "",
+    message: "",
+    name: "",
+  });
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
+  };
+
+  const handleSubmit = async () => {
+    let submitQuote = toast.loading("sending message...");
+
+    if (data.email === "" || data.name === "" || data.subject === "") {
+      toast.error("Please enter required fields", {
+        id: submitQuote,
+      });
+    } else {
+      await sendContact(data)
+        .then((res) => {
+          if (res.status === 200) {
+            toast.success("your message has been sent", {
+              id: submitQuote,
+            });
+            setData({
+              email: "",
+              subject: "",
+              message: "",
+              name: "",
+            });
+          } else if (res.status === 400) {
+            toast.error("sent unsuccessful", {
+              id: submitQuote,
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error(err.message, {
+            id: submitQuote,
+          });
+        });
+    }
+  };
+
   return (
-    <>
-     <Helmet>
-                        
-        <meta charSet="utf-8" />
-                        <title>Home</title>
-        <meta name="description" content="Get your amazing Car Solutions Prestige Auto care" />
-                        
-                    
-      </Helmet>
+    <Layout>
       <div
         className="breadcumb-wrapper"
         data-bg-src=""
@@ -28,7 +69,7 @@ const Contact = (props: Props) => {
             <div className="breadcumb-menu-wrap">
               <ul className="breadcumb-menu">
                 <li>
-                  <Link href="index.html">Home</Link>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>Contact Us</li>
               </ul>
@@ -130,19 +171,17 @@ const Contact = (props: Props) => {
           </div>
           <div className="row justify-content-center">
             <div className="col-lg-10">
-              <form
-                action="https://angfuzsoft.com/html/mechon/demo/mail.php"
-                method="POST"
-                className="contact-form ajax-contact"
-              >
+              <div className="contact-form ajax-contact">
                 <div className="row">
                   <div className="form-group col-md-6">
                     <input
                       type="text"
                       className="form-control"
                       name="name"
+                      value={data.name}
                       id="name"
                       placeholder="Enter Your Name"
+                      onChange={handleChange}
                     />{" "}
                     <i className="fal fa-user" />
                   </div>
@@ -152,31 +191,23 @@ const Contact = (props: Props) => {
                       className="form-control"
                       name="email"
                       id="email"
+                      value={data.email}
                       placeholder="Email Address"
+                      onChange={handleChange}
                     />{" "}
                     <i className="fal fa-envelope" />
                   </div>
                   <div className="form-group col-12">
-                    <select name="subject" id="subject" className="form-select">
-                      <option
-                        value=""
-                        // disabled="disabled"
-                        // selected="selected"
-                        // hidden=""
-                      >
-                        Select Subject
-                      </option>
-                      <option value="Electrical System">
-                        Electrical System
-                      </option>
-                      <option value="Auto Car Repair">Auto Car Repair</option>
-                      <option value="Engine Diagnostics">
-                        Engine Diagnostics
-                      </option>
-                      <option value="Car & Engine Clean">
-                        Car &amp; Engine Clean
-                      </option>
-                    </select>
+                    <input
+                      required
+                      type="text"
+                      className="form-control"
+                      name="subject"
+                      id="subject"
+                      value={data.subject}
+                      placeholder="Subject Address"
+                      onChange={handleChange}
+                    />
                   </div>
                   <div className="form-group col-12">
                     <textarea
@@ -184,18 +215,22 @@ const Contact = (props: Props) => {
                       id="message"
                       cols={30}
                       rows={3}
+                      value={data.message}
                       className="form-control"
                       placeholder="Message"
                       defaultValue={""}
+                      onChange={handleChange}
                     />{" "}
                     <i className="fal fa-comment" />
                   </div>
                   <div className="form-btn col-12 mt-10 text-center">
-                    <button className="as-btn">Send Message Now</button>
+                    <button onClick={handleSubmit} className="as-btn">
+                      Send Message Now
+                    </button>
                   </div>
                 </div>
                 <p className="form-messages mb-0 mt-3" />
-              </form>
+              </div>
             </div>
           </div>
         </div>
@@ -211,7 +246,7 @@ const Contact = (props: Props) => {
           loading="lazy"
         ></iframe>
       </div>
-    </>
+    </Layout>
   );
 };
 

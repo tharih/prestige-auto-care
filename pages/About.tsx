@@ -2,7 +2,7 @@
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { AiOutlineClose } from "react-icons/ai";
 import Slider from "react-slick";
@@ -20,9 +20,14 @@ type Props = {
   banner: BannerType[];
 };
 
-export default function About({ about, banner }: Props) {
+export default function About() {
+
   const [showVideoPlayer, setShowVideoPlayer] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [about, setAbout] = useState<any>(null)
+  const [banner, setBanner] = useState<any>(null)
+  const [loading, setLoading] = useState(false);
+
   const settings_002 = {
     dots: false,
     infinite: true,
@@ -43,9 +48,42 @@ export default function About({ about, banner }: Props) {
   const handleCloseVideoPlayer = () => {
     setShowVideoPlayer(false);
   };
+
+  const getAbout = async () => {
+    const aboutPage = await fetchAbout();
+    setAbout(aboutPage)
+    console.log(aboutPage);
+  }
+
+  const getPremiumParts = async () => {
+    const banner = await fetchBanner();
+    setBanner(banner)
+    console.log(banner);
+    
+  }
+
+  useEffect(() => {
+    setLoading(true);
+
+    getAbout();
+    getPremiumParts();
+
+
+    setLoading(false);
+    return () => {
+
+      getAbout();
+      getPremiumParts();
+
+
+
+    };
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
   return (
     <Layout>
-      
+
       <div
         className="breadcumb-wrapper"
         data-bg-src=""
@@ -67,18 +105,22 @@ export default function About({ about, banner }: Props) {
       </div>
       <div className="space" style={{ backgroundColor: "white" }}>
         <div className="container">
+                {about && (
           <div className="row flex-row-reverse">
             <div className="col-xl-6 mb-35 mb-xl-0">
               <div className="img-box-2">
-                <div className="img1">
-                  <img src={urlFor(about[0].image_01).url()} alt="About" />
-                </div>
-                <div className="img2">
-                  <img src={urlFor(about[0].image_02).url()} alt="About" />
-                </div>
-                <div className="img3">
-                  <img src={urlFor(about[0].image_03).url()} alt="About" />
-                </div>
+                  <>
+                    <div className="img1">
+                      <img src={urlFor(about[0].image_01).url()} alt="About" />
+                    </div>
+                    <div className="img2">
+                      <img src={urlFor(about[0].image_02).url()} alt="About" />
+                    </div>
+                    <div className="img3">
+                      <img src={urlFor(about[0].image_03).url()} alt="About" />
+                    </div>
+                  </>
+               
                 <div
                   className="as-experience style2"
                   data-bg-src="assets/img/normal/year_bg_2.png"
@@ -96,40 +138,22 @@ export default function About({ about, banner }: Props) {
               <div className="title-area mb-40 text-md-start text-center">
                 <span className="sub-title">About Our Company</span>
                 <h2 className="sec-title">
-                {about[0].title}
+                  {about[0]?.title}
                 </h2>
               </div>
               <p className="text-md-start text-center mt-n2 mb-30">
-                {about[0].description}
+                {about[0]?.description}
               </p>
               <div className="checklist style2 about-checklist">
                 <ul>
-                  {about[0].options.map((data: any, index: any) => (
+                  {about[0]?.options.map((data: any, index: any) => (
                     <li key={index}>{data}</li>
                   ))}
                 </ul>
               </div>
-              {/* <div className="about-author-wrap">
-                <div className="about-author">
-                  <div className="about-author_avater">
-                    <img
-                      src="assets/img/normal/about_avater.jpg"
-                      alt="Author"
-                    />
-                  </div>
-                  <div className="about-author_info">
-                    <h3 className="about-author_name">Daniel H. Smith</h3>
-                    <span className="about-author_desig">
-                      Founder &amp; Ceo
-                    </span>
-                  </div>
-                </div>
-                <Link href="about.html" className="as-btn">
-                  Get More Info
-                </Link>
-              </div> */}
             </div>
           </div>
+           )}
         </div>
       </div>
       <section
@@ -140,19 +164,17 @@ export default function About({ about, banner }: Props) {
         data-margin-bottom="225px"
       ></section>
       <div className="circle-bg space-bottom bg-smoke" />
-      <WhyChooseUs about={about} />
-      <GetPremiumParts banner={banner}/>
+     {about && (
+
+          <WhyChooseUs about={about} />
+     )}
+
+     {banner && (
+
+          <GetPremiumParts banner={banner} />
+     )}
+        
     </Layout>
   );
 }
 
-export const getServerSideProps = async () => {
-  const about: AboutType[] = await fetchAbout();
-  const banner: any[] = await fetchBanner();
-  return {
-    props: {
-      about,
-      banner,
-    },
-  };
-};

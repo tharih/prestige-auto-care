@@ -139,10 +139,6 @@ const Home = () => {
     setWorkProcess(workProcess)
   }
 
-  
-
-  
-
   useEffect(() => {
     setLoading(true);
 
@@ -152,17 +148,17 @@ const Home = () => {
     getLatestProduct();
     getPremiumParts();
     getWorkProcess();
-   
+
     setLoading(false);
     return () => {
       getSlider();
-    getService();
-    getAbout();
-    getLatestProduct();
-    getPremiumParts();
-    getWorkProcess();
+      getService();
+      getAbout();
+      getLatestProduct();
+      getPremiumParts();
+      getWorkProcess();
 
-    
+
     };
   }, []);
 
@@ -175,9 +171,9 @@ const Home = () => {
       {about && (
 
         <>
-        <AboutCompanyComponent about={about} />
-      <WhyChooseUs about={about} />
-      </>
+          <AboutCompanyComponent about={about} />
+          <WhyChooseUs about={about} />
+        </>
       )}
       <LatestProducts
         settings_003={settings_003}
@@ -185,28 +181,15 @@ const Home = () => {
         products={products}
       />
       {banner && (
-      <GetPremiumParts banner={banner} />
+        <GetPremiumParts banner={banner} />
       )}
-  {workProcess && (
+      {workProcess && (
 
-      <WorkProcess workProcess={workProcess} />
-  )}
+        <WorkProcess workProcess={workProcess} />
+      )}
       <Testimonials settings_004={settings_004} />
     </Layout>
   );
 };
-
-// export const getServerSideProps = async () => {
-//   const service: any[] = await fetchService();
-//   const about: AboutType[] = await fetchAbout();
-//   const banner: any[] = await fetchBanner();
-//   const workProcess: any[] = await fetchProcess();
-//   const products: ProductType[] = await fetchProducts();
-  
-
-//   return {
-//     props: { service, about, banner, workProcess, products,  },
-//   };
-// };
 
 export default Home;

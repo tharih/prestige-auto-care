@@ -10,15 +10,17 @@ type Props = {
   blog: BlogType[];
 }
 
-export default function Blog({ blog }: any)  {
+export default function Blog()  {
+  const [blog, setBlog] = useState<any>([])
+  const [loading, setLoading] = useState(false);
   const Pagination = dynamic(() => import("../components/Pagination"));
-  const [prestigeBlog, setPrestigeBlog] = useState<[]>(blog);
+  // const [prestigeBlog, setPrestigeBlog] = useState<[]>(blog);
   const [currentPage, setCurrentPage] = useState<number | any>(1);
   const [blogPerPage, setBlogPerPage] = useState<number>(5);
   // pagination
   const indexLastBlog = currentPage * blogPerPage;
   const indexOfFirstBlog = indexLastBlog - blogPerPage;
-  const currentBlog = prestigeBlog.slice(
+  const currentBlog = blog.slice(
     indexOfFirstBlog,
     indexLastBlog
   );
@@ -37,6 +39,30 @@ export default function Blog({ blog }: any)  {
     });
   };
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const getBlog = async () => {
+    const blog = await fetchBlog();
+    setBlog(blog)
+    console.log(blog);
+  }
+
+  useEffect(() => {
+    setLoading(true);
+
+    getBlog();
+   
+
+    setLoading(false);
+    return () => {
+
+      getBlog();
+     
+
+
+    };
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
   
   return (
     <>
@@ -66,11 +92,14 @@ export default function Blog({ blog }: any)  {
             {currentBlog.map((blog: any, index: any) => (
 
             <div key={index} className="as-blog blog-single has-post-thumbnail">
+              
+
               <div className="blog-img">
                 <Link href={`/BlogDetails/${blog?._id}`}>
                   <img src={urlFor(blog?.image.asset._ref)?.url()} alt="Blog Image" />
                 </Link>
               </div>
+              
               <div className="blog-content">
                 <div className="blog-meta">
                   <p >
@@ -105,7 +134,7 @@ export default function Blog({ blog }: any)  {
            
            <Pagination
                 productPerPage={blogPerPage}
-                totalProducts={prestigeBlog.length}
+                totalProducts={blog.length}
                 paginate={paginate}
                 handlePrevious={handlePrevious}
                 handleNext={handleNext}

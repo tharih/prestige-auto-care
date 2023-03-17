@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { urlFor } from "../client";
 import Layout from "../components/Layout";
@@ -11,8 +11,31 @@ type Props = {
   
 };
 
-export default function Gallery ({ gallery }: Props) {
+export default function Gallery () {
+  const [gallery, setGallery] = useState<any>([])
+  const [loading, setLoading] = useState(false);
+
   console.log(gallery);
+
+  const getGallery = async () => {
+    const gallery = await fetchGallery();
+    setGallery(gallery[0])
+    console.log(gallery);
+  }
+
+  useEffect(() => {
+    setLoading(true);
+    getGallery();
+   
+    setLoading(false);
+    return () => {
+
+      getGallery();
+
+    };
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
   
   return (
     <Layout>
@@ -38,12 +61,15 @@ export default function Gallery ({ gallery }: Props) {
       <section className="bg-white space">
         <div className="container">
           <div className="row gy-40">
-          {gallery.map((data: any, index: any) => (
+          {gallery.images?.map((data: any, index: any) => (
             <div key={index} className="col-md-6 col-lg-4">
               <div className="team-box">
+                {gallery && (
+
                 <div className="team-img">
                 <img src={urlFor(data.asset._ref).url()} alt="Gallery" />
                 </div>
+                )}
               </div>
             </div>
              ))}
@@ -54,13 +80,4 @@ export default function Gallery ({ gallery }: Props) {
   );
 };
 
-export const getServerSideProps = async () => {
-  const gallery: GalleryType[] = await fetchGallery();
 
-  return {
-    props: {
-      gallery:gallery[0].images,
-    },
-    
-  };
-};

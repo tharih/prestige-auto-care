@@ -148,7 +148,7 @@ const Home = () => {
       <SliderComponent slider={slider} />
       <BestServiceComponent service={service} />
       <AboutCompanyComponent about={about} />
-      <WhyChooseUs about={about} />
+      {/* <WhyChooseUs about={about} /> */}
       {/* <LatestProducts
         settings_003={settings_003}
         settings_005={settings_005}

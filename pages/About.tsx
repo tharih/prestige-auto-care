@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { AiOutlineClose } from "react-icons/ai";
 import Slider from "react-slick";
+import { urlFor } from "../client";
 import { fetchAbout } from "../utils/fetchAbout";
 import { fetchBanner } from "../utils/fetchBanner";
 import { AboutType } from "../utils/type";
@@ -36,7 +37,7 @@ export default function About() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://prestige-auto-care.vercel.app/api/getAbout`, {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getAbout`, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -72,15 +73,20 @@ export default function About() {
           <div className="row flex-row-reverse">
             <div className="col-xl-6 mb-35 mb-xl-0">
               <div className="img-box-2">
-                <div className="img1">
-                  <img src="assets/img/normal/about_3_1.jpg" alt="About" />
-                </div>
-                <div className="img2">
-                  <img src="assets/img/normal/about_3_2.jpg" alt="About" />
-                </div>
-                <div className="img3">
-                  <img src="assets/img/normal/about_3_3.jpg" alt="About" />
-                </div>
+                {data && (
+                  <>
+                    <div className="img1">
+                      <img src={urlFor(data.image_01).url()} alt="About" />
+                    </div>
+                    <div className="img2">
+                      <img src={urlFor(data.image_02).url()} alt="About" />
+                    </div>
+                    <div className="img3">
+                      <img src={urlFor(data.image_03).url()} alt="About" />
+                    </div>
+                  </>
+                )}
+
                 <div
                   className="as-experience style2"
                   data-bg-src="assets/img/normal/year_bg_2.png"
@@ -101,9 +107,7 @@ export default function About() {
                 <h2 className="sec-title">{data?.title}</h2>
               </div>
               <p className="text-md-start text-center mt-n2 mb-30">
-                "We're an independent auto body shop located in Rocklea
-                Queensland. We are specialised in any medium to large body
-                repairs with high quality for a reasonable price."
+                {data?.description}
               </p>
               <div className="checklist style2 about-checklist">
                 <ul>

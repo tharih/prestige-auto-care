@@ -16,17 +16,22 @@ type Props = {
   products: any[];
   categories: any[];
 };
-const Shop = ({ product, categories }: any) => {
+const Shop = () => {
+  const [product, setProduct] = useState<any>([])
+  const [categories, setCategories] = useState<any>([])
+  const [loading, setLoading] = useState(false);
+
+
   const Pagination = dynamic(() => import("../components/Pagination"));
   const [search, setSearch] = useState("");
-  const [shopsProducts, setShopsProducts] = useState<[]>(product);
+  // const [shopsProducts, setShopsProducts] = useState<[]>(product);
   const [currentPage, setCurrentPage] = useState<number | any>(1);
   const [productPerPage, setProductPerPage] = useState<number>(5);
   const user = useSelector(selectUser);
   // pagination
   const indexLastProduct = currentPage * productPerPage;
   const indexOfFirstProduct = indexLastProduct - productPerPage;
-  const currentProduct = shopsProducts.slice(
+  const currentProduct = product.slice(
     indexOfFirstProduct,
     indexLastProduct
   );
@@ -50,6 +55,35 @@ const Shop = ({ product, categories }: any) => {
   };
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
+  const getProduct = async () => {
+    const product = await fetchProducts();
+    setProduct(product)
+  }
+
+  const getCategory = async () => {
+    const categories = await fetchCategory();
+    setCategories(categories)
+  }
+
+  useEffect(() => {
+    setLoading(true);
+    getProduct();
+    getCategory();
+    
+
+    setLoading(false);
+    return () => {
+      getProduct();
+      getCategory();
+
+
+
+    };
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+
+
   return (
     <Layout>
       <section
@@ -64,7 +98,7 @@ const Shop = ({ product, categories }: any) => {
                   <div className="col-md">
                     <p className="woocommerce-result-count">
                       Showing {`${currentProduct.length} - ${currentPage}`} of{" "}
-                      {shopsProducts.length} results
+                      {product.length} results
                     </p>
                   </div>
                   {/* <div className="col-md-auto">
@@ -196,7 +230,7 @@ const Shop = ({ product, categories }: any) => {
               </div>
               <Pagination
                 productPerPage={productPerPage}
-                totalProducts={shopsProducts.length}
+                totalProducts={product.length}
                 paginate={paginate}
                 handlePrevious={handlePrevious}
                 handleNext={handleNext}
@@ -241,16 +275,16 @@ const Shop = ({ product, categories }: any) => {
   );
 };
 
-export const getServerSideProps = async () => {
-  const product = await fetchProducts();
-  const categories = await fetchCategory();
+// export const getServerSideProps = async () => {
+//   const product = await fetchProducts();
+//   const categories = await fetchCategory();
 
-  return {
-    props: {
-      product,
-      categories,
-    },
-  };
-};
+//   return {
+//     props: {
+//       product,
+//       categories,
+//     },
+//   };
+// };
 
 export default Shop;

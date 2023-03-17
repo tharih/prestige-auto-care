@@ -5,11 +5,13 @@ import { fetchService } from "../../utils/fetchService";
 import { ServiceType } from "../../utils/type";
 
 type Props = {
-  service: ServiceType[];
+  service: any[];
   
 };
 
 export default function BestServiceComponent({ service }: Props) {
+  console.log(service);
+  
   return (
     <section
       className="space"
@@ -26,10 +28,13 @@ export default function BestServiceComponent({ service }: Props) {
           data-md-slide-show={2}
           data-arrows="true"
         >
-          {service.map((service: any, index: any) => (
+          {service?.map((service: any, index: any) => (
             <div key={index} className="col-md-6 col-lg-4">
               <div className="service-block">
+                {service && (
+
                 <div className="service-block_img">
+
                   <img
                     src={urlFor(service.image[0]).url()}
                     alt="Service Image"
@@ -40,6 +45,7 @@ export default function BestServiceComponent({ service }: Props) {
                     }}
                   />
                 </div>
+                )}
                 <div
                   className="service-block_content"
                   data-bg-src="assets/img/bg/pattern_bg_7.png"

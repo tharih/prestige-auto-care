@@ -35,6 +35,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 const Home = () => {
   const [slider, setSlider] = useState<any>([])
+  const [service, setService] = useState<any>([])
   const [loading, setLoading] = useState(false);
 
   const GetPremiumParts = dynamic(
@@ -108,16 +109,24 @@ const Home = () => {
     setSlider(slider)
   }
 
+  const getService = async () => {
+    const service = await fetchService();
+    setService(service)
+  }
+
   
 
   useEffect(() => {
     setLoading(true);
 
     getSlider();
+    getService();
    
     setLoading(false);
     return () => {
       getSlider();
+    getService();
+
     
     };
   }, []);
@@ -127,7 +136,7 @@ const Home = () => {
   return (
     <Layout>
       <SliderComponent slider={slider} />
-      {/* <BestServiceComponent service={service} /> */}
+      <BestServiceComponent service={service} />
       {/* <AboutCompanyComponent about={about} /> */}
       {/* <WhyChooseUs about={about} /> */}
       {/* <LatestProducts

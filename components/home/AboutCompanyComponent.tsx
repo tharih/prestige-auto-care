@@ -19,9 +19,12 @@ export default function AboutCompanyComponent({ about }: Props) {
         <div className="row flex-row-reverse">
           <div className="col-xl-6">
             <div className="img-box-3">
+              {about && (
+
               <div className="img1">
                 <img style={{width:"530px", height:"560px"}} src={urlFor(about[0].home_image_01).url()} alt="About" />
               </div>
+              )}
               <div className="img2">
                 <div className="as-experience style3">
                   <h3 className="experience-year">
@@ -97,12 +100,4 @@ export default function AboutCompanyComponent({ about }: Props) {
   );
 };
 
-export const getServerSideProps = async () => {
-  const about: AboutType[] = await fetchAbout();
 
-  return {
-    props: {
-      about,
-    },
-  };
-};

@@ -208,12 +208,3 @@ export default function Blog()  {
   )
 }
 
-export const getServerSideProps = async () => {
-  const blog: BlogType[] = await fetchBlog();
-  
-  return {
-    props: {
-      blog,
-    },
-  };
-};

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { AiOutlineClose } from "react-icons/ai";
 import Slider from "react-slick";
@@ -8,12 +8,10 @@ import { fetchBanner } from "../utils/fetchBanner";
 import { AboutType } from "../utils/type";
 import stylesIndex from "./index.module.css";
 
-type Props = {
-  about: AboutType[];
-};
-
-export default function About({ about }: Props) {
+export default function About() {
   const [showVideoPlayer, setShowVideoPlayer] = useState(false);
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const settings_002 = {
     dots: false,
@@ -35,6 +33,18 @@ export default function About({ about }: Props) {
   const handleCloseVideoPlayer = () => {
     setShowVideoPlayer(false);
   };
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`http://localhost:3000/api/getAbout`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((res) => setData(res.about[0]))
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <>
       <div
@@ -75,7 +85,10 @@ export default function About({ about }: Props) {
                   data-bg-src="assets/img/normal/year_bg_2.png"
                 >
                   <h3 className="experience-year">
-                    <span className="counter-number">25</span>
+                    <span className="counter-number">
+                      {" "}
+                      {data?.experienceYears}
+                    </span>
                   </h3>
                   <h4 className="experience-text">YEARS OF EXPERIENCE</h4>
                 </div>
@@ -84,9 +97,7 @@ export default function About({ about }: Props) {
             <div className="col-xl-6">
               <div className="title-area mb-40 text-md-start text-center">
                 <span className="sub-title">About Our Company</span>
-                <h2 className="sec-title">
-                  Make your car feel like a brand new one
-                </h2>
+                <h2 className="sec-title">{data?.title}</h2>
               </div>
               <p className="text-md-start text-center mt-n2 mb-30">
                 "We're an independent auto body shop located in Rocklea
@@ -339,13 +350,3 @@ export default function About({ about }: Props) {
     </>
   );
 }
-
-export const getServerSideProps = async () => {
-  const about: AboutType[] = await fetchAbout();
-  const banner: any[] = await fetchBanner();
-  return {
-    props: {
-      about,
-    },
-  };
-};

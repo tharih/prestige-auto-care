@@ -191,7 +191,7 @@ const Home = () => {
 
       <WorkProcess workProcess={workProcess} />
   )}
-      {/* <Testimonials settings_004={settings_004} /> */}
+      <Testimonials settings_004={settings_004} />
     </Layout>
   );
 };

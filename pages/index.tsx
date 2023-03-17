@@ -37,6 +37,7 @@ const Home = () => {
   const [slider, setSlider] = useState<any>([])
   const [service, setService] = useState<any>([])
   const [about, setAbout] = useState<any>(null)
+  const [products, setProducts] = useState<any>([])
   const [loading, setLoading] = useState(false);
 
   const GetPremiumParts = dynamic(
@@ -123,6 +124,8 @@ const Home = () => {
   }
 
   const getLatestProduct = async () => {
+    const products = await fetchProducts();
+    setProducts(products)
 
   }
 
@@ -136,12 +139,14 @@ const Home = () => {
     getSlider();
     getService();
     getAbout();
+    getLatestProduct();
    
     setLoading(false);
     return () => {
       getSlider();
     getService();
     getAbout();
+    getLatestProduct();
 
     
     };
@@ -160,11 +165,11 @@ const Home = () => {
       <WhyChooseUs about={about} />
       </>
       )}
-      {/* <LatestProducts
+      <LatestProducts
         settings_003={settings_003}
         settings_005={settings_005}
         products={products}
-      /> */}
+      />
       {/* <GetPremiumParts banner={banner} /> */}
       {/* <WorkProcess workProcess={workProcess} /> */}
       {/* <Testimonials settings_004={settings_004} /> */}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -16,8 +16,29 @@ type Props = {
   products: any[];
 };
 
-const LatestProducts = ({products, settings_003, settings_005 }: Props) => {
+const LatestProducts = ({settings_003, settings_005 }: Props) => {
+  const [products, setProducts] = useState<any>([])
+
   const router = useRouter();
+
+  const getLatestProduct = async () => {
+    const products = await fetchProducts();
+    setProducts(products)
+  }
+
+  useEffect(() => {
+   
+    
+    getLatestProduct();
+   
+   
+    return () => {
+     
+    getLatestProduct();
+
+    
+    };
+  }, []);
   return (
     <>
       <section
@@ -44,6 +65,8 @@ const LatestProducts = ({products, settings_003, settings_005 }: Props) => {
                             overflow: "hidden",
                           }}
                         >
+                          {products && (
+
                           <img
                             src={urlFor(product.image[0]).url()}
                             alt="Product Image"
@@ -53,6 +76,7 @@ const LatestProducts = ({products, settings_003, settings_005 }: Props) => {
                               height: "100%",
                             }}
                           />
+                          )}
                         </div>
                         <div className="actions">
                           {/* <a
@@ -110,47 +134,7 @@ const LatestProducts = ({products, settings_003, settings_005 }: Props) => {
                     {/* </Link> */}
                   </div>
                 ))}
-              {/* <div className="col-xl-3 col-lg-4 col-sm-6">
-                <div className="as-product">
-                  <div className="product-img">
-                    <img
-                      src="assets/img/product/product_1_1.jpg"
-                      alt="Product Image"
-                    />
-                    <div className="actions">
-                      <a href="#QuickView" className="icon-btn popup-content">
-                        <i className="fa fa-eye" />
-                      </a>{" "}
-                      <a href="Cart" className="icon-btn">
-                        <i className="fa fa-cart-plus" />
-                      </a>{" "}
-                      <a href="wishlist.html" className="icon-btn">
-                        <i className="fa fa-heart" />
-                      </a>
-                    </div>
-                    <span className="category">Wheel</span>
-                  </div>
-                  <div className="product-content">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span>
-                        customer rating
-                      </span>
-                    </div>
-                    <h3 className="product-title">
-                      <Link href="shop-details.html">Car Engine Plug</Link>
-                    </h3>
-                    <span className="price">
-                      $180.85<del>$350.99</del>
-                    </span>
-                  </div>
-                </div>
-              </div> */}
+              
 
             </Slider>
           </div>
@@ -161,13 +145,6 @@ const LatestProducts = ({products, settings_003, settings_005 }: Props) => {
   );
 };
 
-export const getServerSideProps = async () => {
-  const products = await fetchProducts();
 
-
-  return {
-    props: { products},
-  };
-};
 
 export default LatestProducts;

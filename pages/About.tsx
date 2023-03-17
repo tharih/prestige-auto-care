@@ -11,7 +11,9 @@ import stylesIndex from "./index.module.css";
 
 export default function About() {
   const [showVideoPlayer, setShowVideoPlayer] = useState(false);
+  const [about, setAbout] = useState<any>(null);
   const [data, setData] = useState<any>(null);
+  const [bannerData, setBannerData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const settings_002 = {
@@ -35,18 +37,29 @@ export default function About() {
     setShowVideoPlayer(false);
   };
 
+  const getAbout = async () => {
+    const about = await fetchAbout();
+    setAbout(about[0]);
+  };
+
+  const getBanner = async () => {
+    const banner = await fetchBanner();
+    setBannerData(banner[0]);
+  };
   useEffect(() => {
     setLoading(true);
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getAbout`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((res) => setData(res.about[0]))
-      .catch((err) => console.log(err))
-      .finally(() => setLoading(false));
+
+    getAbout();
+    getBanner();
+    setLoading(false);
+    return () => {
+      getAbout();
+      getBanner();
+    };
   }, []);
 
   if (loading) return <div>Loading...</div>;
+
   return (
     <>
       <div
@@ -73,16 +86,16 @@ export default function About() {
           <div className="row flex-row-reverse">
             <div className="col-xl-6 mb-35 mb-xl-0">
               <div className="img-box-2">
-                {data && (
+                {about && (
                   <>
                     <div className="img1">
-                      <img src={urlFor(data.image_01).url()} alt="About" />
+                      <img src={urlFor(about.image_01).url()} alt="About" />
                     </div>
                     <div className="img2">
-                      <img src={urlFor(data.image_02).url()} alt="About" />
+                      <img src={urlFor(about.image_02).url()} alt="About" />
                     </div>
                     <div className="img3">
-                      <img src={urlFor(data.image_03).url()} alt="About" />
+                      <img src={urlFor(about.image_03).url()} alt="About" />
                     </div>
                   </>
                 )}
@@ -94,7 +107,7 @@ export default function About() {
                   <h3 className="experience-year">
                     <span className="counter-number">
                       {" "}
-                      {data?.experienceYears}
+                      {about?.experienceYears}
                     </span>
                   </h3>
                   <h4 className="experience-text">YEARS OF EXPERIENCE</h4>
@@ -104,10 +117,10 @@ export default function About() {
             <div className="col-xl-6">
               <div className="title-area mb-40 text-md-start text-center">
                 <span className="sub-title">About Our Company</span>
-                <h2 className="sec-title">{data?.title}</h2>
+                <h2 className="sec-title">{about?.title}</h2>
               </div>
               <p className="text-md-start text-center mt-n2 mb-30">
-                {data?.description}
+                {about?.description}
               </p>
               <div className="checklist style2 about-checklist">
                 <ul>
@@ -230,98 +243,7 @@ export default function About() {
           <img src="assets/img/shape/shape_2.png" alt="shape" />
         </div>
       </div>
-      <section className="space" style={{ backgroundColor: "white" }}>
-        <div className="container">
-          <div className="title-area text-center">
-            <span className="sub-title">News &amp; Updates</span>
-            <h2 className="sec-title">Latest Blog Posts</h2>
-          </div>
-          <div className="blog-box-wrap">
-            <div className="blog-box">
-              <div className="blog-img">
-                <img src="assets/img/blog/blog_1_1.jpg" alt="blog image" />
-              </div>
-              <div className="blog-content">
-                <div className="blog-meta">
-                  <Link href="blog.html">
-                    <i className="fas fa-calendar-alt" />
-                    March 15, 2022
-                  </Link>
-                  <Link href="blog.html">
-                    <i className="fas fa-tags" />
-                    Test Drive
-                  </Link>
-                </div>
-                <h3 className="blog-title">
-                  <Link href="blog-details.html">
-                    How to Make the Most of Your Test Drive
-                  </Link>
-                </h3>
-                <Link href="blog-details.html" className="link-btn">
-                  Read More
-                  <i className="fas fa-arrow-right" />
-                </Link>
-              </div>
-            </div>
-            <div className="blog-box">
-              <div className="blog-img">
-                <img src="assets/img/blog/blog_1_2.jpg" alt="blog image" />
-              </div>
-              <div className="blog-content">
-                <div className="blog-meta">
-                  <Link href="blog.html">
-                    <i className="fas fa-calendar-alt" />
-                    March 16, 2022
-                  </Link>
-                  <Link href="blog.html">
-                    <i className="fas fa-tags" />
-                    Oil Change
-                  </Link>
-                </div>
-                <h3 className="blog-title">
-                  <Link href="blog-details.html">
-                    How to Jump Start Your Car Maintenance?
-                  </Link>
-                </h3>
-                <p className="blog-text">
-                  Centric aplications productize before front end vortals
-                  visualize.
-                </p>
-                <Link href="blog-details.html" className="link-btn">
-                  Read More
-                  <i className="fas fa-arrow-right" />
-                </Link>
-              </div>
-            </div>
-            <div className="blog-box">
-              <div className="blog-img">
-                <img src="assets/img/blog/blog_1_3.jpg" alt="blog image" />
-              </div>
-              <div className="blog-content">
-                <div className="blog-meta">
-                  <Link href="blog.html">
-                    <i className="fas fa-calendar-alt" />
-                    March 17, 2022
-                  </Link>
-                  <Link href="blog.html">
-                    <i className="fas fa-tags" />
-                    Car Drive
-                  </Link>
-                </div>
-                <h3 className="blog-title">
-                  <Link href="blog-details.html">
-                    How to Decorate Your Car for Halloween
-                  </Link>
-                </h3>
-                <Link href="blog-details.html" className="link-btn">
-                  Read More
-                  <i className="fas fa-arrow-right" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
       <section
         className="space"
         data-overlay="title"

@@ -9,6 +9,8 @@ type Props = {
 };
 
 export default function AboutCompanyComponent({ about }: Props) {
+  console.log(about);
+  
   return (
     <div
       className="space position-relative overflow-hidden"

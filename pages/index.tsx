@@ -118,6 +118,12 @@ const Home = () => {
   const getAbout = async () => {
     const about = await fetchAbout();
     setAbout(about)
+    // console.log(about);
+    
+  }
+
+  const getLatestProduct = async () => {
+
   }
 
   
@@ -147,8 +153,13 @@ const Home = () => {
     <Layout>
       <SliderComponent slider={slider} />
       <BestServiceComponent service={service} />
-      {/* <AboutCompanyComponent about={about} /> */}
-      {/* <WhyChooseUs about={about} /> */}
+      {about && (
+
+        <>
+        <AboutCompanyComponent about={about} />
+      <WhyChooseUs about={about} />
+      </>
+      )}
       {/* <LatestProducts
         settings_003={settings_003}
         settings_005={settings_005}

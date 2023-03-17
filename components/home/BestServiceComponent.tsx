@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default function BestServiceComponent({ service }: Props) {
-  console.log(service);
+  // console.log(service);
   
   return (
     <section

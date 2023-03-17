@@ -39,6 +39,7 @@ const Home = () => {
   const [about, setAbout] = useState<any>(null)
   const [products, setProducts] = useState<any>([])
   const [banner, setBanner] = useState<any>(null)
+  const [workProcess, setWorkProcess] = useState<any>(null)
   const [loading, setLoading] = useState(false);
 
   const GetPremiumParts = dynamic(
@@ -121,21 +122,21 @@ const Home = () => {
     const about = await fetchAbout();
     setAbout(about)
     // console.log(about);
-    
   }
 
   const getLatestProduct = async () => {
     const products = await fetchProducts();
     setProducts(products)
-
   }
 
   const getPremiumParts = async () => {
     const banner = await fetchBanner();
     setBanner(banner)
-  
-    
+  }
 
+  const getWorkProcess = async () => {
+    const workProcess = await fetchProcess();
+    setWorkProcess(workProcess)
   }
 
   
@@ -150,6 +151,7 @@ const Home = () => {
     getAbout();
     getLatestProduct();
     getPremiumParts();
+    getWorkProcess();
    
     setLoading(false);
     return () => {
@@ -158,6 +160,7 @@ const Home = () => {
     getAbout();
     getLatestProduct();
     getPremiumParts();
+    getWorkProcess();
 
     
     };
@@ -182,10 +185,12 @@ const Home = () => {
         products={products}
       />
       {banner && (
-
       <GetPremiumParts banner={banner} />
       )}
-      {/* <WorkProcess workProcess={workProcess} /> */}
+  {workProcess && (
+
+      <WorkProcess workProcess={workProcess} />
+  )}
       {/* <Testimonials settings_004={settings_004} /> */}
     </Layout>
   );

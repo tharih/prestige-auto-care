@@ -77,13 +77,5 @@ export default function WorkProcess({ workProcess }: Props) {
   );
 };
 
-export const getServerSideProps = async () => {
-  const workProcess: WorkProcessType[] = await fetchProcess();
 
-  return {
-    props: {
-      workProcess,
-    },
-  };
-};
 

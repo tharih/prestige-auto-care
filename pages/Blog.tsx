@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link'
 import React, { useEffect, useState } from "react";
 import { urlFor } from '../client'
+import Layout from '../components/Layout';
 import Pagination from '../components/Pagination'
 import { fetchBlog } from '../utils/fetchBlog'
 import { BlogType } from '../utils/type'
@@ -65,7 +66,7 @@ export default function Blog()  {
   if (loading) return <div>Loading...</div>;
   
   return (
-    <>
+    <Layout>
      <div
         className="breadcumb-wrapper"
         data-bg-src=""
@@ -158,16 +159,16 @@ export default function Blog()  {
                       <Link href="/">Home</Link>
                     </li>
                     <li>
-                      <Link href="about">About</Link>
+                      <Link href="About">About</Link>
                     </li>
                     <li>
-                      <Link href="services">Service</Link>
+                      <Link href="Services">Service</Link>
                     </li>
                     <li>
-                      <Link href="shop">Shop</Link>
+                      <Link href="Shop">Shop</Link>
                     </li>
                     <li>
-                      <Link href="contact">Contact</Link>
+                      <Link href="Contact">Contact</Link>
                     </li>
                   </ul>
               </div>
@@ -202,7 +203,7 @@ export default function Blog()  {
     </section>
 
     {/* blog */}
-  </>
+  </Layout>
   
 
   )

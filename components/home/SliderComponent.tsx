@@ -11,7 +11,7 @@ import { AboutType, MechanicalType, SliderType } from "../../utils/type";
 // import "slick-carousel/slick/slick-theme.css";
 // import { motion } from "framer-motion";
 // import { useTypewriter, Cursor, Typewriter } from "react-simple-typewriter";
-import "./SliderComponent.module.css";
+import styles_1 from "./SliderComponent.module.css";
 // import Link from "next/link";
 
 
@@ -65,7 +65,7 @@ export default function SliderComponent({ slider }: Props) {
   return (
 
 
-    <div className="container-style" style={{ height: "100%", position: 'relative' }}>
+    <div className={styles_1.container_style} >
         {data && (
       <div style={{ backgroundPosition: 'center', backgroundSize: 'cover', height: '100%' }}>
 
@@ -83,7 +83,8 @@ export default function SliderComponent({ slider }: Props) {
           transition={{
             duration: 1,
             ease: "easeInOut",
-          }} className="description" style={{ width: '600px', position: 'absolute', zIndex: 999, color: 'white', top: '20%', left: '20%' }}>
+          }} 
+          className={styles_1.description}>
 
 {data && (
 

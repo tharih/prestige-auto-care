@@ -1,9 +1,28 @@
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { urlFor } from "../../client";
+import { fetchLatestBlog } from "../../utils/fetchBlog";
 
 type Props = {};
 
 const Footer = (props: Props) => {
+  const [blog, setBlog] = useState<any>([])
+  const router = useRouter();
+
+  const getLatestBlog = async () => {
+    const blog = await fetchLatestBlog();
+    setBlog(blog)
+  }
+
+  useEffect(() => {
+    getLatestBlog();
+    return () => { 
+    getLatestBlog();
+
+    
+    };
+  }, []);
   return (
     <>
       <footer className="footer-wrapper footer-layout3">
@@ -56,20 +75,20 @@ const Footer = (props: Props) => {
                 <div className="widget footer-widget">
                   <h3 className="widget_title">Recent Posts</h3>
                   <div className="recent-post-wrap">
-                    <div className="recent-post">
+                    {blog && blog.map ((latestblog:any, index:any) => (
+
+                    <div key={index} className="recent-post">
                       <div className="media-img">
-                        <Link href="#">
-                          <img
-                            src="assets/img/blog/recent-post-1-2.jpg"
-                            alt="Blog Image"
-                          />
-                        </Link>
+                      <Link href={`/BlogDetails/${latestblog?._id}`}>
+                  <img src={urlFor(latestblog?.image.asset._ref)?.url()} alt="Blog Image" />
+                </Link>
                       </div>
                       <div className="media-body">
                         <div className="recent-post-meta">
                           <Link href="blog.html">
                             <i className="fal fa-clock" />
-                            6th January, 2023
+                            {latestblog?._createdAt}
+
                           </Link>
                         </div>
                         <h4 className="post-title">
@@ -77,37 +96,14 @@ const Footer = (props: Props) => {
                             className="text-inherit"
                             href="blog-details.html"
                           >
-                            Here are things every car have
+                           {latestblog?.title}
+
                           </Link>
                         </h4>
                       </div>
                     </div>
-                    <div className="recent-post">
-                      <div className="media-img">
-                        <Link href="#">
-                          <img
-                            src="assets/img/blog/recent-post-1-3.jpg"
-                            alt="Blog Image"
-                          />
-                        </Link>
-                      </div>
-                      <div className="media-body">
-                        <div className="recent-post-meta">
-                          <Link href="blog.html">
-                            <i className="fal fa-clock" />
-                            6th January, 2023
-                          </Link>
-                        </div>
-                        <h4 className="post-title">
-                          <Link
-                            className="text-inherit"
-                            href="blog-details.html"
-                          >
-                            How to start car engine slowly
-                          </Link>
-                        </h4>
-                      </div>
-                    </div>
+                    ))}
+                   
                   </div>
                 </div>
               </div>

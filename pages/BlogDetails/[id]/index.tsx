@@ -95,16 +95,16 @@ const BlogDetails = ({ blog }: any) => {
                       <Link href="/">Home</Link>
                     </li>
                     <li>
-                      <Link href="About">About</Link>
+                      <Link href="/About">About</Link>
                     </li>
                     <li>
-                      <Link href="Services">Service</Link>
+                      <Link href="/Services">Service</Link>
                     </li>
                     <li>
-                      <Link href="Shop">Shop</Link>
+                      <Link href="/Shop">Shop</Link>
                     </li>
                     <li>
-                      <Link href="Contact">Contact</Link>
+                      <Link href="/Contact">Contact</Link>
                     </li>
                   </ul>
                 </div>
@@ -131,7 +131,7 @@ const BlogDetails = ({ blog }: any) => {
                     Save up to <span className="text-theme">60% off</span>
                   </p> */}
                     </div>
-                    <Link href="Appointment" className="as-btn">
+                    <Link href="/Appointment" className="as-btn">
                       Get A Quote
                     </Link>
                   </div>

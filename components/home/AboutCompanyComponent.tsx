@@ -45,21 +45,14 @@ export default function AboutCompanyComponent({ about }: Props) {
               {about[0].home_title}
               </h2>
             </div>
-            <div className="nav tab-menu4" role="tablist">
-              <button
-                className="as-btn active"
-                id="nav-one-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#nav-one"
-                type="button"
-                role="tab"
-                aria-controls="nav-one"
-                aria-selected="true"
-              >
-                About Us
-              </button>{" "}
+            <div className="tab-pane fade show active" >
+            <div className="pt-2">
+                  <Link href="Appointment" className="as-btn">
+                  About Us
+                  </Link>
+                </div>
             </div>
-            <div className="tab-content why-tabcontent" id="why-tabContent">
+            <div className="tab-content why-tabcontent" id="why-tabContent" style={{marginTop:"20px"}}>
               <div
                 className="tab-pane fade show active"
                 id="nav-one"

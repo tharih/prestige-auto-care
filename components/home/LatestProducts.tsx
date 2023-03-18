@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import stylesIndex from "./SliderComponent.module.css";
 import Link from "next/link";
 import { urlFor } from "../../client";
-import { fetchProducts } from "../../utils/fetchProduct";
+import { fetchLatestProducts, fetchProducts } from "../../utils/fetchProduct";
 import { useRouter } from "next/router";
 import styles_1 from "../../pages/styles/shop.module.css";
 
@@ -18,22 +18,16 @@ type Props = {
 
 const LatestProducts = ({settings_003, settings_005 }: Props) => {
   const [products, setProducts] = useState<any>([])
-
   const router = useRouter();
 
   const getLatestProduct = async () => {
-    const products = await fetchProducts();
+    const products = await fetchLatestProducts();
     setProducts(products)
   }
 
   useEffect(() => {
-   
-    
     getLatestProduct();
-   
-   
-    return () => {
-     
+    return () => { 
     getLatestProduct();
 
     

@@ -26,7 +26,7 @@ const Shop = () => {
   const [search, setSearch] = useState("");
   // const [shopsProducts, setShopsProducts] = useState<[]>(product);
   const [currentPage, setCurrentPage] = useState<number | any>(1);
-  const [productPerPage, setProductPerPage] = useState<number>(5);
+  const [productPerPage, setProductPerPage] = useState<number>(12);
   const user = useSelector(selectUser);
   // pagination
   const indexLastProduct = currentPage * productPerPage;

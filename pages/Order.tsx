@@ -95,7 +95,7 @@ const Order = (props: Props) => {
                
                 <td >
                   <div className="quantity">
-                  <p className="cart-quantity">
+                  <p className="order_qty__num">
                     {order?.totalQuantity}
                   </p>
                   </div>
@@ -104,7 +104,7 @@ const Order = (props: Props) => {
                 <td >
                   <div className="quantity">
                   <p className="cart-quantity">
-                    {order?.totalPrice}
+                   <span>$</span> {order?.totalPrice}
                   </p>
                   </div>
                 </td>
@@ -113,15 +113,15 @@ const Order = (props: Props) => {
                 
                 <td >
                 
-                    {order?.IsPaid === true? <p className="cart-productname"> Paid
-                  </p>: <p className="cart-productname"> Not Paid
+                    {order?.IsPaid === true? <p className="pay"> Paid
+                  </p>: <p className="notpay"> Not Paid
                   </p>}
                 </td>
 
                 <td >
                 
-                {order?.IsDelivered === true? <p className="cart-productname"> Delivered
-              </p>: <p className="cart-productname"> Not Delivered
+                {order?.IsDelivered === true? <p className="delivery"> Delivered
+              </p>: <p className="notdelivery"> Not Delivered
               </p>}
             </td>
 
@@ -129,7 +129,7 @@ const Order = (props: Props) => {
                  
                    {/* <AiOutlineDelete /> */}
                   
-                  <Link href={`/orderDetail/${order._id}`}>
+                  <Link className='remove' href={`/orderDetail/${order._id}`}>
                   
                     <AiFillEye  
                     

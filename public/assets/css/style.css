@@ -6727,7 +6727,51 @@ table.variations .reset_variations {
 }
 .cart_table .remove {
   color: var(--theme-color);
+  font-size: 28px;
+}
+.cart_table .notdelivery {
+  color: var(--success-color);
   font-size: 18px;
+  font-weight: bold;
+  /* width: 50px;
+  height: 50px;
+  line-height: 50px;
+  min-width: 50px;
+  line-height: 53px;
+  background-color: #272a35;
+  font-weight: bold;
+  font-family: var(--title-font);
+  text-align: center;
+  border-radius: 50%;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out; */
+}
+.cart_table .notdelivery {
+  color: var(--theme-color);
+  font-size: 18px;
+  font-weight: bold;
+}
+.cart_table .pay {
+  color: var(--success-color);
+  font-size: 18px;
+  font-weight: bold;
+  /* width: 50px;
+  height: 50px;
+  line-height: 50px;
+  min-width: 75px;
+  line-height: 53px;
+  background-color: #272a35;
+  font-weight: bold;
+  font-family: var(--title-font);
+  text-align: center;
+  border-radius: 50%;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out; */
+}
+.cart_table .notpay {
+  color: var(--theme-color);
+  font-size: 18px;
+  font-weight: bold;
 }
 .cart_table .quantity {
   display: -webkit-inline-box;
@@ -9464,6 +9508,22 @@ span.select2-selection.select2-selection--single:focus {
   line-height: 80px;
   min-width: 80px;
   line-height: 83px;
+  color: var(--theme-color);
+  background-color: #272a35;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: var(--title-font);
+  text-align: center;
+  border-radius: 50%;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+}
+.order_qty__num {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  min-width: 50px;
+  line-height: 53px;
   color: var(--theme-color);
   background-color: #272a35;
   font-size: 30px;

@@ -75,13 +75,13 @@ console.log(order);
                 <td >
                   <div className="quantity">
                   <p className="cart-quantity">
-                    {order?.orderItem[0].price}
+                  <span>$</span> {order?.orderItem[0].price}
                   </p>
                   </div>
                 </td>
                 <td >
                   <div className="quantity">
-                  <p className="cart-quantity">
+                  <p className="order_qty__num">
                     {order?.orderItem[0].quantity}
                   </p>
                   </div>

@@ -1,5 +1,7 @@
 import Link from 'next/link'
+import {  useRouter } from 'next/navigation';
 import React, { useEffect, useState } from "react";
+import { AiFillEye, AiOutlineDelete } from 'react-icons/ai';
 import { fetchOrder } from '../utils/fetchOrder';
 
 type Props = {}
@@ -7,23 +9,26 @@ type Props = {}
 const Order = (props: Props) => {
   const [order, setOrder] = useState<any>([])
   const [loading, setLoading] = useState(false);
+  const route = useRouter()
 
+  
   const getOrder = async () => {
     const order = await fetchOrder();
     setOrder(order)
     console.log(order);
   }
-
+  
   useEffect(() => {
     setLoading(true);
-
+    
     getOrder();
     setLoading(false);
     return () => {
       getOrder();
-
+      
     };
   }, []);
+  
 
   if (loading) return <div>Loading...</div>;
   return (
@@ -57,13 +62,13 @@ const Order = (props: Props) => {
               <tr>
                 {/* <th className="cart-col-image">Image</th> */}
                 <th className="cart-col-productname">Customer Name</th>
-                <th className="cart-col-productname">Order Item</th>
+                {/* <th className="cart-col-productname">Order Item</th> */}
+                <th className="cart-col-quantity">Quantity</th>
                 <th className="cart-col-price">Total Price</th>
                 <th className="cart-col-productname">Payment</th>
                 <th className="cart-col-productname">Delivery</th>
-                <th className="cart-col-quantity">Quantity</th>
                 {/* <th className="cart-col-total">Total</th> */}
-                {/* <th className="cart-col-remove">Actions</th> */}
+                <th className="cart-col-remove">Actions</th>
               </tr>
             </thead>
             {order?.map((order: any, index:any) => (
@@ -80,49 +85,60 @@ const Order = (props: Props) => {
                     />
                   </a>
                 </td> */}
-                <td data-title="Name">
+                
+                {/* order items */}
+                <td >
                   <p className="cart-productname">
                     {order?.customerName}
                   </p>
                 </td>
                
-                <td data-title="Quantity">
+                <td >
                   <div className="quantity">
                   <p className="cart-quantity">
                     {order?.totalQuantity}
                   </p>
-                    {/* <button className="quantity-minus qut-btn">
-                      <i className="far fa-minus" />
-                    </button>{" "} */}
-                    {/* <input
-                      type="number"
-                      className="qty-input"
-                      defaultValue={1}
-                      min={1}
-                      max={99}
-                    />{" "} */}
-                    {/* <button className="quantity-plus qut-btn">
-                      <i className="far fa-plus" />
-                    </button> */}
                   </div>
                 </td>
-                <td data-title="Price">
-                  <span className="amount">
-                    <bdi>
-                      <span>$</span>{order?.totalPrice}
-                    </bdi>
-                  </span>
-                </td>
-                <td data-title="Total">
-                <p className="cart-productname">
-                    {order?.IsPaid}
+
+                <td >
+                  <div className="quantity">
+                  <p className="cart-quantity">
+                    {order?.totalPrice}
                   </p>
+                  </div>
                 </td>
-                {/* <td data-title="Remove">
-                  <a href="#" className="remove">
-                    <i className="fal fa-trash-alt" />
-                  </a>
-                </td> */}
+
+               
+                
+                <td >
+                
+                    {order?.IsPaid === true? <p className="cart-productname"> Paid
+                  </p>: <p className="cart-productname"> Not Paid
+                  </p>}
+                </td>
+
+                <td >
+                
+                {order?.IsDelivered === true? <p className="cart-productname"> Delivered
+              </p>: <p className="cart-productname"> Not Delivered
+              </p>}
+            </td>
+
+                <td>
+                 
+                   {/* <AiOutlineDelete /> */}
+                  
+                  <Link href={`/orderDetail/${order._id}`}>
+                  
+                    <AiFillEye  
+                    
+                    />
+                  </Link>
+                  
+                  
+                  
+                </td>
               </tr>
               
                

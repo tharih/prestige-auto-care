@@ -1,13 +1,16 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../store/reducers/userReducer";
 type Props = {};
 import { toast } from "react-hot-toast";
 import Cookies from "js-cookie";
+import { fetchAbout } from "../utils/fetchAbout";
 
 const Login = (props: Props) => {
+  const [about, setAbout] = useState<any>(null)
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -42,6 +45,26 @@ const Login = (props: Props) => {
     Cookies.set("isLoggedIn", true);
     dispatch(addUser(result));
   };
+  const getAbout = async () => {
+    const aboutPage = await fetchAbout();
+    setAbout(aboutPage)
+    console.log(aboutPage);
+  }
+  useEffect(() => {
+    setLoading(true);
+    getAbout();
+   
+    setLoading(false);
+    return () => {
+      getAbout();
+     
+
+
+
+    };
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
   return (
     <>
       <div
@@ -76,7 +99,12 @@ const Login = (props: Props) => {
                   data-bg-src="assets/img/normal/year_bg_2.png"
                 >
                   <h3 className="experience-year">
-                    <span className="counter-number">25</span>
+                  {about && (
+
+<span className="counter-number">
+  {about[0]?.experienceYears}
+</span>
+)}
                   </h3>
                   <h4 className="experience-text">YEARS OF EXPERIENCE</h4>
                 </div>

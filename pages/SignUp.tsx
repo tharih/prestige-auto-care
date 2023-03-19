@@ -1,11 +1,14 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "./styles/signup.module.css";
+import { fetchAbout } from "../utils/fetchAbout";
 
 type Props = {};
 
 const SignUp = (props: Props) => {
+  const [about, setAbout] = useState<any>(null)
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
@@ -32,6 +35,27 @@ const SignUp = (props: Props) => {
     ).then((res) => res.json());
     console.log(result);
   };
+
+  const getAbout = async () => {
+    const aboutPage = await fetchAbout();
+    setAbout(aboutPage)
+    console.log(aboutPage);
+  }
+  useEffect(() => {
+    setLoading(true);
+    getAbout();
+   
+    setLoading(false);
+    return () => {
+      getAbout();
+     
+
+
+
+    };
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
   return (
     <>
       <div
@@ -66,7 +90,12 @@ const SignUp = (props: Props) => {
                   data-bg-src="assets/img/normal/year_bg_2.png"
                 >
                   <h3 className="experience-year">
-                    <span className="counter-number">25</span>
+                  {about && (
+
+<span className="counter-number">
+  {about[0]?.experienceYears}
+</span>
+)}
                   </h3>
                   <h4 className="experience-text">YEARS OF EXPERIENCE</h4>
                 </div>

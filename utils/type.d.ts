@@ -27,7 +27,8 @@ interface image_03 {
 interface home_image_01 {
   _type: "image";
   asset: Reference;
-}interface home_image_02 {
+}
+interface home_image_02 {
   _type: "image";
   asset: Reference;
 }
@@ -60,39 +61,38 @@ interface image {
   asset: Reference;
 }
 
-export interface GalleryType extends sanityBody{
-  _type:"gallery";
+export interface GalleryType extends sanityBody {
+  _type: "gallery";
   images: images;
 }
 
-export interface ServiceType extends sanityBody{
-  _type:"image";
+export interface ServiceType extends sanityBody {
+  _type: "image";
   image: image;
 }
-
 
 export interface ServiceType extends sanityBody {
   _type: "service";
   name: string;
-  image:image;
+  image: image;
   details: string;
-  slug:slug;
+  slug: slug;
 }
 
-export interface SliderType extends sanityBody{
-  _type:"slider";
+export interface SliderType extends sanityBody {
+  _type: "slider";
   title: string;
   tagline: string;
   description: string;
   mainImage: mainImage;
 }
 
-export interface BlogType extends sanityBody{
-  _type:"slider";
+export interface BlogType extends sanityBody {
+  _type: "slider";
   image: image;
   title: string;
   small_description: string;
-  description01:string;
+  description01: string;
   image1: image1;
   tag: string;
   description02: string;
@@ -104,25 +104,25 @@ export interface BlogType extends sanityBody{
 export interface AboutType extends sanityBody {
   _type: "about";
   title: string;
-  home_title:string;
+  home_title: string;
   description: string;
   options: Array;
   image_01: image_01;
   image_02: image_02;
   image_03: image_03;
-  home_image_01: home_image_01
-  home_image_02: home_image_02
+  home_image_01: home_image_01;
+  home_image_02: home_image_02;
   experienceYears: string;
   whyChooseUs: [];
   choose_image: choose_image;
-  service_title1:string;
-  service_description1:string;
-  service_title2:string;
-  service_description2:string;
-  service_title3:string;
-  service_description3:string;
-  service_title4:string;
-  service_description4:string;
+  service_title1: string;
+  service_description1: string;
+  service_title2: string;
+  service_description2: string;
+  service_title3: string;
+  service_description3: string;
+  service_title4: string;
+  service_description4: string;
 }
 
 export interface PaintType extends sanityBody {
@@ -138,12 +138,12 @@ export interface PaintType extends sanityBody {
   service_title4: string;
   service_description4: string;
   description2: string;
-  title2:string;
+  title2: string;
   process_description: string;
   process_title1: string;
   process_description1: string;
   process_title2: string;
-  process_description2: string; 
+  process_description2: string;
   process_title3: string;
   process_description3: string;
   benefits: Array;
@@ -164,12 +164,12 @@ export interface MechanicalType extends sanityBody {
   service_title4: string;
   service_description4: string;
   description2: string;
-  title2:string;
+  title2: string;
   process_description: string;
   process_title1: string;
   process_description1: string;
   process_title2: string;
-  process_description2: string; 
+  process_description2: string;
   process_title3: string;
   process_description3: string;
   benefits: Array;
@@ -218,11 +218,15 @@ export interface UserType extends sanityBody {
 export interface OrderItemType extends sanityBody {
   _type: "orderItem";
   name: string;
+  id: string;
   sku: string;
-  quantity: number;
   image: string;
+  category: string;
+  details: string;
+  qty: number;
   price: number;
   Key: number;
+  cartQuantity: number;
 }
 
 export interface OrderType extends sanityBody {

@@ -3,3 +3,4 @@ declare module "nodemailer";
 declare module "multer";
 declare module "jsonwebtoken";
 declare module "js-cookie";
+declare module "canvas-confetti";

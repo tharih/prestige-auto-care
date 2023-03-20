@@ -33,8 +33,8 @@ export default async (req: NextRequest, res: NextResponse) => {
     },
     line_items: transformedItems,
     mode: "payment",
-    success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/?success=true`,
-    cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/?canceled=true`,
+    success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/Success`,
+    cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/canceled`,
     metadata: {
       email,
       images: JSON.stringify(cartItems.map((item: any) => item.image)),

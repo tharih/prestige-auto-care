@@ -9,7 +9,7 @@ import Cookies from "js-cookie";
 import { fetchAbout } from "../utils/fetchAbout";
 
 const Login = (props: Props) => {
-  const [about, setAbout] = useState<any>(null)
+  const [about, setAbout] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -33,34 +33,62 @@ const Login = (props: Props) => {
       }
     )
       .then((res) => res.json())
-      .catch((err) => console.log(err))
-      .finally(() => {
-        toast.success("Login successful", {
-          id: loginToast,
-        });
-        router.push("/");
+      .then((res) => {
+        if (res.message === "Invalid email or password") {
+          toast.error(res.message, {
+            id: loginToast,
+          });
+        } else {
+          toast.success("Login Success", {
+            id: loginToast,
+          });
+          Cookies.set(
+            "user",
+            JSON.stringify({
+              id: res._id,
+              name: res.name,
+              email: res.email,
+              isAdmin: res.isAdmin,
+              role: res.role,
+              token: res.token,
+            })
+          );
+          Cookies.set("isLoggedIn", true);
+          dispatch(
+            addUser({
+              id: res._id,
+              name: res.name,
+              email: res.email,
+              isAdmin: res.isAdmin,
+              role: res.role,
+              token: res.token,
+            })
+          );
+          router.push("/");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
       });
-
-    Cookies.set("user", JSON.stringify(result));
-    Cookies.set("isLoggedIn", true);
-    dispatch(addUser(result));
+    // .finally(() => {
+    //   toast.success("Login successful", {
+    //     id: loginToast,
+    //   });
+    //   // router.push("/");
+    // });
   };
   const getAbout = async () => {
     const aboutPage = await fetchAbout();
-    setAbout(aboutPage)
+    setAbout(aboutPage);
     console.log(aboutPage);
-  }
+  };
   useEffect(() => {
     setLoading(true);
     getAbout();
-   
+
     setLoading(false);
     return () => {
       getAbout();
-     
-
-
-
     };
   }, []);
 
@@ -99,12 +127,11 @@ const Login = (props: Props) => {
                   data-bg-src="assets/img/normal/year_bg_2.png"
                 >
                   <h3 className="experience-year">
-                  {about && (
-
-<span className="counter-number">
-  {about[0]?.experienceYears}
-</span>
-)}
+                    {about && (
+                      <span className="counter-number">
+                        {about[0]?.experienceYears}
+                      </span>
+                    )}
                   </h3>
                   <h4 className="experience-text">YEARS OF EXPERIENCE</h4>
                 </div>

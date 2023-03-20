@@ -2,12 +2,19 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function middleware(req: NextRequest) {
   const isLoggedIn = req.cookies.get("isLoggedIn");
-  const url = req.url;
+  const url = req.nextUrl;
 
-  // if (!isLoggedIn && url.includes("/")) {
+  const cartCookie = req.cookies.get("cart");
+
+  if (!cartCookie && req.nextUrl.pathname.startsWith("/Success")) {
+    return NextResponse.rewrite(new URL("/Shop", req.url));
+  }
+
+  // if (!isLoggedIn && url.pathname("/")) {
   //   return NextResponse.redirect("/Login");
   // }
-  // if (isLoggedIn && url.includes("/Login")) {
-  //   return NextResponse.redirect("/");
+
+  // if (isLoggedIn && req.nextUrl.pathname.startsWith("/Login")) {
+  //   return NextResponse.redirect("http://localhost:3000/");
   // }
 }

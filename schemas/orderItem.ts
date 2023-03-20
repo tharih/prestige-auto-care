@@ -22,7 +22,7 @@ export default {
       type: "string",
     },
     {
-      name: "quantity",
+      name: "qty",
       title: "Quantity",
       type: "number",
     },
@@ -35,6 +35,21 @@ export default {
       name: "price",
       title: "price",
       type: "number",
+    },
+    {
+      name: "cartQuantity",
+      title: "Cart Quantity",
+      type: "number",
+    },
+    {
+      name: "category",
+      title: "Category",
+      type: "string",
+    },
+    {
+      name: "details",
+      title: "Details",
+      type: "string",
     },
   ],
 };

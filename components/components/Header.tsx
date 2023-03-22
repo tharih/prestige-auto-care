@@ -174,7 +174,7 @@ const Header = () => {
                 buttonStyle={{ backgroundColor: "#f5222d", bottom: "50%" }}
                 darkMode
                 notificationSound
-                phoneNumber={"+94768679313"}
+                phoneNumber={"+61478033023"}
                 accountName={"Prestige Auto Care"}
                 avatar="assets/img/PrestigeLogoWhite.png"
               />
